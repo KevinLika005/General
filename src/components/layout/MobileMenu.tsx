@@ -16,9 +16,9 @@ interface MobileMenuProps {
 }
 
 const mainLinks = [
-  { label: 'Equipment', to: routes.equipment },
+  { label: 'Catalog', to: routes.equipment },
   { label: 'Brands', to: routes.brands },
-  { label: 'Deals', to: routes.deals },
+  { label: 'Available Now', to: routes.deals },
   { label: 'How It Works', to: routes.howItWorks },
   { label: 'Financing', to: routes.financingContracts },
   { label: 'Contact', to: routes.contact },
@@ -39,12 +39,12 @@ export function MobileMenu({
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-rafin-black xl:hidden">
-      <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+    <div aria-label="Mobile navigation" aria-modal="true" className="fixed inset-0 z-50 bg-surface-page xl:hidden" role="dialog">
+      <div className="flex items-center justify-between border-b border-border px-5 py-4">
         <img alt="Rafin Company" className="h-10 w-auto object-contain" src={rafinLogo} />
         <button
           aria-label="Close mobile menu"
-          className="border border-white/10 p-2 text-white"
+          className="rounded-xl border border-border p-2 text-brand-navy"
           onClick={onClose}
           type="button"
         >
@@ -61,9 +61,9 @@ export function MobileMenu({
             onClose();
           }}
         >
-          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/45" />
+          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" />
           <input
-            className="h-11 w-full border border-white/10 bg-white/6 pl-11 pr-4 text-white placeholder:text-white/40"
+            className="h-11 w-full rounded-xl border border-border bg-surface-card pl-11 pr-4 text-text placeholder:text-text-muted/70"
             onChange={(event) => onSearchChange(event.target.value)}
             placeholder="Search machinery, brand, model..."
             type="search"
@@ -74,7 +74,7 @@ export function MobileMenu({
         <div className="mt-5 grid gap-2">
           {mainLinks.map((link) => (
             <NavLink
-              className="border border-white/10 bg-white/[0.03] px-4 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-white/78"
+              className="rounded-2xl border border-border bg-surface-card px-4 py-3 text-sm font-semibold text-brand-navy shadow-card"
               key={link.to}
               onClick={onClose}
               to={link.to}
@@ -84,7 +84,7 @@ export function MobileMenu({
           ))}
         </div>
 
-        <div className="mt-5 border border-white/10 bg-white/[0.03] p-4">
+        <div className="mt-5 rounded-3xl border border-border bg-brand-navy p-4 text-white shadow-card">
           <div className="flex items-center justify-between gap-3">
             <div>
               <p className="eyebrow">Inquiry List</p>
@@ -96,13 +96,19 @@ export function MobileMenu({
           </div>
         </div>
 
+        <div className="mt-4">
+          <Button className="w-full" onClick={onClose} size="lg" to={routes.requestQuote}>
+            Request Quote
+          </Button>
+        </div>
+
         <div className="mt-6 space-y-2">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-white">Equipment Groups</h2>
+          <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-navy">Equipment Groups</h2>
           {categories.map((category) => {
             const isExpanded = expanded === category.slug;
 
             return (
-              <div className="border border-white/10 bg-white/[0.03]" key={category.slug}>
+              <div className="rounded-2xl border border-border bg-surface-card shadow-card" key={category.slug}>
                 <button
                   aria-expanded={isExpanded}
                   className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left"
@@ -110,19 +116,19 @@ export function MobileMenu({
                   type="button"
                 >
                   <div>
-                    <p className="text-[0.74rem] font-semibold uppercase tracking-[0.16em] text-white">
+                    <p className="text-[0.74rem] font-semibold uppercase tracking-[0.16em] text-brand-navy">
                       {category.title}
                     </p>
-                    <p className="mt-1 text-sm text-white/55">{category.shortDescription}</p>
+                    <p className="mt-1 text-sm text-text-muted">{category.shortDescription}</p>
                   </div>
                   <ChevronDown
-                    className={['h-5 w-5 text-rafin-gold-soft transition', isExpanded ? 'rotate-180' : ''].join(' ')}
+                    className={['h-5 w-5 text-brand-gold transition', isExpanded ? 'rotate-180' : ''].join(' ')}
                   />
                 </button>
                 {isExpanded ? (
-                  <div className="border-t border-white/10 px-4 py-3">
+                  <div className="border-t border-border px-4 py-3">
                     <Link
-                      className="mb-3 block border border-rafin-gold/25 bg-rafin-gold/10 px-3 py-2 text-sm font-medium text-rafin-gold-soft"
+                      className="mb-3 block rounded-xl border border-brand-gold/30 bg-brand-gold/10 px-3 py-2 text-sm font-medium text-brand-navy"
                       onClick={onClose}
                       to={routes.category(category.slug)}
                     >
@@ -131,7 +137,7 @@ export function MobileMenu({
                     <div className="grid gap-1">
                       {category.subcategories.map((subcategory) => (
                         <Link
-                          className="px-3 py-2 text-sm text-white/70"
+                          className="rounded-lg px-3 py-2 text-sm text-text-muted"
                           key={subcategory.slug}
                           onClick={onClose}
                           to={`${routes.category(category.slug)}?subcategory=${encodeURIComponent(subcategory.title)}`}

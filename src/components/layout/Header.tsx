@@ -1,9 +1,10 @@
-import { ChevronDown, ClipboardList, Menu } from 'lucide-react';
+import { ChevronDown, ClipboardList, Menu, Phone, Search } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import rafinLogo from '../../assets/rafin-logo.png';
 import { companyProfile } from '../../data/catalog';
 import { routes } from '../../utils/routes';
+import { Button } from '../common/Button';
 import { SearchBar } from '../common/SearchBar';
 import { MegaMenu } from './MegaMenu';
 import { MobileMenu } from './MobileMenu';
@@ -14,18 +15,17 @@ interface HeaderProps {
 }
 
 const navLinks = [
-  { label: 'Equipment', to: routes.equipment, withMenu: true },
+  { label: 'Catalog', to: routes.equipment, withMenu: true },
   { label: 'Brands', to: routes.brands },
-  { label: 'Deals', to: routes.deals },
+  { label: 'Available Now', to: routes.deals },
   { label: 'How It Works', to: routes.howItWorks },
-  { label: 'Financing', to: routes.financingContracts },
   { label: 'Contact', to: routes.contact },
 ];
 
 function navClass(isActive: boolean) {
   return [
-    'text-[0.72rem] font-semibold uppercase tracking-[0.18em] transition',
-    isActive ? 'text-white' : 'text-white/70 hover:text-rafin-gold-soft',
+    'text-sm font-semibold transition',
+    isActive ? 'text-brand-navy' : 'text-text-muted hover:text-brand-navy',
   ].join(' ');
 }
 
@@ -55,47 +55,57 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
   }, []);
 
   const submitSearch = () => {
-    navigate(routes.equipmentSearch(search));
+    navigate(search.trim() ? routes.equipmentSearch(search) : routes.equipment);
   };
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-rafin-black/96 backdrop-blur-md">
-        <div className="border-b border-white/8">
-          <div className="section-shell flex flex-wrap items-center justify-between gap-3 py-2 text-[0.68rem] uppercase tracking-[0.12em] text-white/58">
+      <a className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-3 focus:py-2 focus:text-brand-navy" href="#main-content">
+        Skip to main content
+      </a>
+      <header className="sticky top-0 z-40 border-b border-border bg-surface-page/95 backdrop-blur-md">
+        <div className="border-b border-border bg-brand-navy text-white">
+          <div className="section-shell flex flex-wrap items-center justify-between gap-3 py-2 text-[0.72rem]">
             <div className="flex flex-wrap items-center gap-4">
-              <a className="transition hover:text-rafin-gold-soft" href={`tel:${companyProfile.phone}`}>
+              <a className="transition hover:text-brand-gold-soft" href={`tel:${companyProfile.phone}`}>
                 {companyProfile.phone}
               </a>
-              <a className="transition hover:text-rafin-gold-soft" href={`mailto:${companyProfile.email}`}>
+              <a className="transition hover:text-brand-gold-soft" href={`mailto:${companyProfile.email}`}>
                 {companyProfile.email}
               </a>
               <span>{companyProfile.locationLabel}</span>
             </div>
             <div className="flex items-center gap-3">
               <span>{companyProfile.topUtilityNote}</span>
-              <button className="border border-white/10 px-2 py-1 text-white/72" type="button">
+              <button aria-label="Language selector" className="rounded-md border border-white/15 px-2 py-1 text-white/80" type="button">
                 EN / SQ
               </button>
             </div>
           </div>
         </div>
 
-        <div className="section-shell grid min-h-[4.75rem] grid-cols-[auto_1fr_auto] items-center gap-4 py-3">
-          <Link className="flex items-center" to={routes.home}>
+        <div className="section-shell grid min-h-[4.75rem] grid-cols-[auto_1fr_auto] items-center gap-4 py-4">
+          <Link className="flex items-center gap-3" to={routes.home}>
             <img
               alt="Rafin Company"
               className="h-11 w-auto object-contain sm:h-12"
               src={rafinLogo}
             />
+            <div className="hidden xl:block">
+              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-brand-gold">
+                Inquiry-commerce catalog
+              </p>
+              <p className="text-sm text-text-muted">Machinery, equipment, trucks, parts, and tools</p>
+            </div>
           </Link>
 
           <div className="hidden px-4 lg:block xl:px-6">
             <SearchBar
+              buttonLabel="Search"
               compact
               onChange={setSearch}
               onSubmit={submitSearch}
-              placeholder="Search machine, brand, model or category"
+              placeholder="Search by machine, SKU, model, brand, or part"
               value={search}
             />
           </div>
@@ -123,7 +133,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
                       <button
                         aria-expanded={megaMenuOpen}
                         aria-label="Open equipment categories"
-                        className="p-1 text-white/68 transition hover:text-rafin-gold-soft"
+                        className="p-1 text-text-muted transition hover:text-brand-navy"
                         onClick={() => setMegaMenuOpen((current) => !current)}
                         type="button"
                       >
@@ -144,21 +154,42 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
 
             <button
               aria-label="Open inquiry list summary"
-              className="hidden border border-white/14 px-3 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white transition hover:border-rafin-gold hover:text-rafin-gold-soft md:inline-flex md:items-center md:gap-2"
+              className="hidden rounded-xl border border-border bg-surface-card px-3 py-2 text-sm font-semibold text-brand-navy transition hover:border-brand-gold md:inline-flex md:items-center md:gap-2"
               onClick={onOpenInquirySummary}
               type="button"
             >
               <ClipboardList className="h-4 w-4" />
               Inquiry List
-              <span className="border border-rafin-gold bg-rafin-gold px-1.5 py-0.5 text-[0.58rem] text-rafin-ink">
+              <span className="rounded-full border border-brand-gold bg-brand-gold px-2 py-0.5 text-[0.65rem] text-brand-navy">
                 {inquiryCount}
               </span>
+            </button>
+
+            <Button className="hidden lg:inline-flex" size="sm" to={routes.requestQuote}>
+              Request Quote
+            </Button>
+
+            <a
+              aria-label="Call Rafin sales"
+              className="hidden h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface-card text-brand-navy transition hover:border-brand-gold lg:inline-flex xl:hidden"
+              href={`tel:${companyProfile.phone}`}
+            >
+              <Phone className="h-4 w-4" />
+            </a>
+
+            <button
+              aria-label="Search catalog"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface-card text-brand-navy transition hover:border-brand-gold lg:hidden"
+              onClick={submitSearch}
+              type="button"
+            >
+              <Search className="h-4 w-4" />
             </button>
 
             <button
               aria-expanded={mobileOpen}
               aria-label="Open mobile navigation"
-              className="border border-white/14 p-2.5 text-white xl:hidden"
+              className="rounded-xl border border-border bg-surface-card p-2.5 text-brand-navy xl:hidden"
               onClick={() => setMobileOpen(true)}
               type="button"
             >

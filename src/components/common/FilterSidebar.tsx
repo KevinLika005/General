@@ -21,7 +21,7 @@ interface FilterSidebarProps {
 }
 
 function inputClasses() {
-  return 'mt-2 h-11 w-full border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/35';
+  return 'mt-2 h-11 w-full rounded-xl border border-border bg-surface-card px-3 py-2 text-sm text-text placeholder:text-text-muted/70 shadow-card';
 }
 
 export function FilterSidebar({
@@ -32,15 +32,15 @@ export function FilterSidebar({
   setFilters,
 }: FilterSidebarProps) {
   return (
-    <div className="border border-white/10 bg-rafin-panel p-5">
+    <div className="rounded-3xl border border-border bg-surface-card p-5 shadow-card">
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <SlidersHorizontal className="h-5 w-5 text-rafin-gold-soft" />
-          <h2 className="text-lg font-semibold text-white">Filter Equipment</h2>
+          <SlidersHorizontal className="h-5 w-5 text-brand-gold" />
+          <h2 className="text-lg font-semibold text-brand-navy">Filter Catalog</h2>
         </div>
         <div className="flex items-center gap-2">
           <button
-            className="text-xs font-semibold uppercase tracking-[0.16em] text-rafin-gold-soft"
+            className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-gold"
             onClick={clearAllFilters}
             type="button"
           >
@@ -49,7 +49,7 @@ export function FilterSidebar({
           {onClose ? (
             <button
               aria-label="Close filters"
-              className="inline-flex h-10 w-10 items-center justify-center border border-white/10 text-white lg:hidden"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border text-text lg:hidden"
               onClick={onClose}
               type="button"
             >
@@ -60,7 +60,7 @@ export function FilterSidebar({
       </div>
 
       <div className="mt-5 space-y-5">
-        <label className="block text-sm text-white/72">
+        <label className="block text-sm text-text-muted">
           Category
           <select
             className={inputClasses()}
@@ -82,7 +82,7 @@ export function FilterSidebar({
           </select>
         </label>
 
-        <label className="block text-sm text-white/72">
+        <label className="block text-sm text-text-muted">
           Subcategory
           <select
             className={inputClasses()}
@@ -100,7 +100,7 @@ export function FilterSidebar({
           </select>
         </label>
 
-        <label className="block text-sm text-white/72">
+        <label className="block text-sm text-text-muted">
           Brand
           <select
             className={inputClasses()}
@@ -118,7 +118,7 @@ export function FilterSidebar({
           </select>
         </label>
 
-        <label className="block text-sm text-white/72">
+        <label className="block text-sm text-text-muted">
           Condition
           <select
             className={inputClasses()}
@@ -137,7 +137,7 @@ export function FilterSidebar({
           </select>
         </label>
 
-        <label className="block text-sm text-white/72">
+        <label className="block text-sm text-text-muted">
           Availability
           <select
             className={inputClasses()}
@@ -157,7 +157,7 @@ export function FilterSidebar({
           </select>
         </label>
 
-        <label className="block text-sm text-white/72">
+        <label className="block text-sm text-text-muted">
           Price range
           <select
             className={inputClasses()}
@@ -179,7 +179,7 @@ export function FilterSidebar({
         </label>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          <label className="block text-sm text-white/72">
+          <label className="block text-sm text-text-muted">
             Year from
             <input
               className={inputClasses()}
@@ -191,7 +191,7 @@ export function FilterSidebar({
               value={filters.yearMin}
             />
           </label>
-          <label className="block text-sm text-white/72">
+          <label className="block text-sm text-text-muted">
             Year to
             <input
               className={inputClasses()}
@@ -205,7 +205,7 @@ export function FilterSidebar({
           </label>
         </div>
 
-        <label className="block text-sm text-white/72">
+        <label className="block text-sm text-text-muted">
           Operating hours under
           <input
             className={inputClasses()}
@@ -218,7 +218,7 @@ export function FilterSidebar({
           />
         </label>
 
-        <label className="block text-sm text-white/72">
+        <label className="block text-sm text-text-muted">
           Location
           <select
             className={inputClasses()}
@@ -236,7 +236,7 @@ export function FilterSidebar({
           </select>
         </label>
 
-        <label className="block text-sm text-white/72">
+        <label className="block text-sm text-text-muted">
           Tags
           <select
             className={inputClasses()}
@@ -254,7 +254,7 @@ export function FilterSidebar({
           </select>
         </label>
 
-        <label className="block text-sm text-white/72">
+        <label className="block text-sm text-text-muted">
           Sort
           <select
             className={inputClasses()}

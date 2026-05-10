@@ -124,7 +124,11 @@ export function useCatalogFilters(
         return false;
       }
 
-      if (filters.hoursMax && product.operatingHours && product.operatingHours > Number(filters.hoursMax)) {
+      if (
+        filters.hoursMax &&
+        product.operatingHours !== undefined &&
+        product.operatingHours > Number(filters.hoursMax)
+      ) {
         return false;
       }
 
@@ -134,19 +138,34 @@ export function useCatalogFilters(
     const sortedProducts = [...baseProducts];
 
     sortedProducts.sort((first, second) => {
+      const firstPrice = getComparablePrice(first);
+      const secondPrice = getComparablePrice(second);
+
       switch (filters.sort) {
         case 'newest':
         case 'year-desc':
+          if (second.createdAt !== first.createdAt) {
+            return second.createdAt.localeCompare(first.createdAt);
+          }
           return second.year - first.year;
         case 'price-asc':
-          return getComparablePrice(first) - getComparablePrice(second);
+          if (firstPrice === null && secondPrice === null) return 0;
+          if (firstPrice === null) return 1;
+          if (secondPrice === null) return -1;
+          return firstPrice - secondPrice;
         case 'price-desc':
-          return getComparablePrice(second) - getComparablePrice(first);
+          if (firstPrice === null && secondPrice === null) return 0;
+          if (firstPrice === null) return 1;
+          if (secondPrice === null) return -1;
+          return secondPrice - firstPrice;
         case 'hours-asc':
           return (first.operatingHours ?? Number.MAX_SAFE_INTEGER) - (second.operatingHours ?? Number.MAX_SAFE_INTEGER);
         case 'featured':
         default:
-          return Number(second.featured === true) - Number(first.featured === true);
+          return (
+            Number(second.featured === true) - Number(first.featured === true) ||
+            second.createdAt.localeCompare(first.createdAt)
+          );
       }
     });
 

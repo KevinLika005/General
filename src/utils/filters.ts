@@ -1,9 +1,13 @@
-import type { Product } from '../data/catalog';
+import { categories, type Product } from '../data/catalog';
 
 export type PriceBand = 'all' | 'under-5000' | 'under-25000' | 'under-100000' | 'price-on-request';
 
 export function normalizeText(value: string) {
-  return value.trim().toLowerCase();
+  return value
+    .trim()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '');
 }
 
 export function matchesSearch(product: Product, search: string) {
@@ -13,18 +17,30 @@ export function matchesSearch(product: Product, search: string) {
     return true;
   }
 
-  return [
+  const categoryTitle =
+    categories.find((category) => category.slug === product.categorySlug)?.title ?? '';
+
+  const haystack = [
     product.title,
     product.brand,
     product.model,
     product.categorySlug,
+    categoryTitle,
     product.subcategory,
     product.sku,
+    product.serialNumber ?? '',
+    product.excerpt,
+    product.description,
+    product.location,
     ...product.tags,
+    ...product.specs.flatMap((spec) => [spec.label, spec.value]),
   ]
-    .join(' ')
-    .toLowerCase()
-    .includes(query);
+    .map(normalizeText)
+    .join(' ');
+
+  return query
+    .split(/\s+/)
+    .every((token) => haystack.includes(token));
 }
 
 export function matchesPriceBand(product: Product, priceBand: PriceBand) {
@@ -52,8 +68,8 @@ export function matchesPriceBand(product: Product, priceBand: PriceBand) {
 }
 
 export function getComparablePrice(product: Product) {
-  if (product.priceMode === 'price-on-request' || !product.price) {
-    return Number.MAX_SAFE_INTEGER;
+  if (product.priceMode === 'price-on-request' || product.price === undefined) {
+    return null;
   }
 
   return product.price;

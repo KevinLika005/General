@@ -6,28 +6,27 @@ import { ImageWithFallback } from './ImageWithFallback';
 
 export function CategoryCard({ category }: { category: EquipmentCategory }) {
   return (
-    <article className="group relative overflow-hidden border border-white/10 bg-rafin-panel">
+    <article className="group overflow-hidden rounded-3xl border border-border bg-surface-card shadow-card transition duration-200 hover:-translate-y-0.5 hover:shadow-hover">
       <ImageWithFallback
         alt={category.title}
-        className="absolute inset-0 h-full w-full"
+        aspectRatio="video"
+        className="rounded-none"
         imageClassName="transition duration-500 group-hover:scale-105"
         src={category.heroImage}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-rafin-black via-rafin-black/70 to-rafin-black/10" />
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(227,198,99,0.14),transparent_36%)]" />
-      <div className="relative flex min-h-[250px] flex-col justify-end p-5">
+      <div className="p-5">
         <div className="flex items-center justify-between gap-3">
-          <p className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-rafin-gold-soft">
+          <p className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-brand-gold">
             {category.subcategories.length} subcategories
           </p>
-          <ArrowRight className="h-4 w-4 text-rafin-gold-soft" />
+          <ArrowRight className="h-4 w-4 text-brand-gold" />
         </div>
-        <h3 className="mt-3 text-[2rem] text-white">{category.title}</h3>
-        <p className="mt-2 max-w-md text-sm text-white/72">{category.shortDescription}</p>
+        <h3 className="mt-3 text-[1.65rem] text-brand-navy">{category.title}</h3>
+        <p className="mt-2 max-w-md text-sm text-text-muted">{category.shortDescription}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           {category.subcategories.slice(0, 3).map((subcategory) => (
             <span
-              className="border border-white/10 bg-black/20 px-2.5 py-1 text-[0.65rem] text-white/70"
+              className="rounded-full border border-border bg-surface-subtle px-2.5 py-1 text-[0.72rem] text-text-muted"
               key={subcategory.slug}
             >
               {subcategory.title}

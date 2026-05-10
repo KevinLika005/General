@@ -5,14 +5,14 @@ import { Button } from './Button';
 
 export function BrandCard({ brand }: { brand: Brand }) {
   return (
-    <article className="border border-white/10 bg-rafin-panel p-5">
-      <div className="inline-flex h-10 w-10 items-center justify-center border border-rafin-gold/35 bg-rafin-gold/12 text-[0.64rem] font-bold uppercase tracking-[0.2em] text-rafin-gold-soft">
+    <article className="rounded-3xl border border-border bg-surface-card p-5 shadow-card transition duration-200 hover:-translate-y-0.5 hover:shadow-hover">
+      <div className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-gold/35 bg-brand-gold/10 text-[0.64rem] font-bold uppercase tracking-[0.2em] text-brand-navy">
         {brand.logoText}
       </div>
-      <h3 className="mt-4 text-[1.65rem] text-white">{brand.name}</h3>
-      <p className="mt-2 text-sm text-rafin-muted-light">{brand.description}</p>
-      <div className="mt-4 flex items-center justify-between gap-4 border-t border-white/10 pt-4">
-        <span className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-white/55">
+      <h3 className="mt-4 text-[1.65rem] text-brand-navy">{brand.name}</h3>
+      <p className="mt-2 text-sm text-text-muted">{brand.description}</p>
+      <div className="mt-4 flex items-center justify-between gap-4 border-t border-border pt-4">
+        <span className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-text-muted">
           {brand.productCount} listings
         </span>
         <Button size="sm" to={routes.equipmentWithBrand(brand.name)} variant="secondary">

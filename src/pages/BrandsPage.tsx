@@ -1,23 +1,29 @@
 import { BrandCard } from '../components/common/BrandCard';
 import { SectionHeader } from '../components/common/SectionHeader';
 import { brands } from '../data/catalog';
+import { usePageMetadata } from '../hooks/usePageMetadata';
 
 export function BrandsPage() {
+  usePageMetadata({
+    title: 'Brands | Rafin Machinery',
+    description: 'Browse manufacturers represented in the current Rafin Machinery inventory and jump straight into brand-filtered catalog results.',
+  });
+
   return (
     <>
-      <section className="section-shell py-16 sm:py-20">
-        <div className="border border-white/10 bg-rafin-panel px-6 py-8 sm:px-8 sm:py-9">
+      <section className="page-shell">
+        <div className="surface-panel p-6 sm:p-8">
           <p className="eyebrow">Brands</p>
-          <h1 className="mt-4 text-4xl text-white sm:text-5xl">Browse the machinery brands in current stock</h1>
-          <p className="mt-4 max-w-3xl text-base text-rafin-muted-light sm:text-lg">
-            Each brand card opens the catalog filtered by brand so buyers can move quickly from manufacturer preference to specific available listings.
+          <h1 className="mt-3 text-[2.8rem] text-brand-navy sm:text-[4rem]">Browse the manufacturers represented in current stock</h1>
+          <p className="mt-4 max-w-3xl text-base text-text-muted sm:text-lg">
+            Each brand tile leads back into the catalog filtered by manufacturer so buyers can move quickly from brand preference to specific available listings.
           </p>
         </div>
       </section>
 
       <section className="section-shell pb-24">
         <SectionHeader
-          description="Real-world heavy equipment and support brands across construction, logistics, roadwork, and fleet maintenance."
+          description="Machinery, roadwork, transport, support-equipment, and parts brands already present in the current static catalog."
           eyebrow="Manufacturers"
           title="Active brands in the Rafin catalog"
         />

@@ -15,10 +15,10 @@ export function EmptyState({
   title,
 }: EmptyStateProps) {
   return (
-    <div className="border border-dashed border-white/10 bg-rafin-panel px-6 py-8 text-center sm:px-8 sm:py-10">
-      <SearchX className="mx-auto h-9 w-9 text-rafin-gold-soft" />
-      <h3 className="mt-4 text-xl text-white sm:text-2xl">{title}</h3>
-      <p className="mx-auto mt-3 max-w-xl text-sm text-rafin-muted-light sm:text-base">{description}</p>
+    <div className="rounded-3xl border border-dashed border-border bg-surface-card px-6 py-8 text-center shadow-card sm:px-8 sm:py-10">
+      <SearchX className="mx-auto h-9 w-9 text-brand-gold" />
+      <h3 className="mt-4 text-xl text-brand-navy sm:text-2xl">{title}</h3>
+      <p className="mx-auto mt-3 max-w-xl text-sm text-text-muted sm:text-base">{description}</p>
       {actionLabel && onAction ? (
         <Button className="mt-6" onClick={onAction} variant="secondary">
           {actionLabel}

@@ -15,9 +15,9 @@ export function Layout({ children }: { children: ReactNode }) {
   }, [location.pathname, location.search, location.hash]);
 
   return (
-    <div className="min-h-screen bg-rafin-black text-white">
+    <div className="min-h-screen bg-surface-page text-text">
       <Header inquiryCount={itemCount} onOpenInquirySummary={() => setSummaryOpen(true)} />
-      <main>{children}</main>
+      <main id="main-content">{children}</main>
       <Footer />
       <InquirySummary onClose={() => setSummaryOpen(false)} open={summaryOpen} />
     </div>

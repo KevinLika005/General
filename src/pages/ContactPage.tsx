@@ -1,41 +1,48 @@
 import { Clock3, Mail, MapPin, Phone } from 'lucide-react';
 import { SectionHeader } from '../components/common/SectionHeader';
 import { ContactForm } from '../components/forms/ContactForm';
-import { companyProfile } from '../data/catalog';
+import { companyProfile, salesContacts } from '../data/catalog';
+import { usePageMetadata } from '../hooks/usePageMetadata';
 
 export function ContactPage() {
+  usePageMetadata({
+    title: 'Contact | Rafin Machinery',
+    description: 'Contact the Rafin Machinery sales team for product details, inspection scheduling, delivery planning, spare parts, and contract discussion.',
+  });
+
   return (
     <>
-      <section className="section-shell py-16 sm:py-20">
+      <section className="page-shell">
         <SectionHeader
           description="Talk directly to the sales side of Rafin Machinery for product information, inspection coordination, delivery discussion, or contract handling."
           eyebrow="Contact"
           title="Reach the machinery sales team"
+          titleAs="h1"
         />
       </section>
 
       <section className="section-shell pb-12">
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          <article className="border border-white/10 bg-rafin-panel p-5">
-            <Phone className="h-6 w-6 text-rafin-gold-soft" />
-            <h2 className="mt-4 text-2xl text-white">Sales Phone</h2>
-            <p className="mt-3 text-rafin-muted-light">{companyProfile.phone}</p>
-            <p className="text-rafin-muted-light">{companyProfile.secondaryPhone}</p>
+          <article className="rounded-3xl border border-border bg-surface-card p-5 shadow-card">
+            <Phone className="h-6 w-6 text-brand-gold" />
+            <h2 className="mt-4 text-2xl text-brand-navy">Sales Phone</h2>
+            <p className="mt-3 text-text-muted">{companyProfile.phone}</p>
+            <p className="text-text-muted">{companyProfile.secondaryPhone}</p>
           </article>
-          <article className="border border-white/10 bg-rafin-panel p-5">
-            <Mail className="h-6 w-6 text-rafin-gold-soft" />
-            <h2 className="mt-4 text-2xl text-white">Email</h2>
-            <p className="mt-3 text-rafin-muted-light">{companyProfile.email}</p>
+          <article className="rounded-3xl border border-border bg-surface-card p-5 shadow-card">
+            <Mail className="h-6 w-6 text-brand-gold" />
+            <h2 className="mt-4 text-2xl text-brand-navy">Email</h2>
+            <p className="mt-3 text-text-muted">{companyProfile.email}</p>
           </article>
-          <article className="border border-white/10 bg-rafin-panel p-5">
-            <MapPin className="h-6 w-6 text-rafin-gold-soft" />
-            <h2 className="mt-4 text-2xl text-white">Address</h2>
-            <p className="mt-3 text-rafin-muted-light">{companyProfile.address}</p>
+          <article className="rounded-3xl border border-border bg-surface-card p-5 shadow-card">
+            <MapPin className="h-6 w-6 text-brand-gold" />
+            <h2 className="mt-4 text-2xl text-brand-navy">Address</h2>
+            <p className="mt-3 text-text-muted">{companyProfile.address}</p>
           </article>
-          <article className="border border-white/10 bg-rafin-panel p-5">
-            <Clock3 className="h-6 w-6 text-rafin-gold-soft" />
-            <h2 className="mt-4 text-2xl text-white">Business Hours</h2>
-            <p className="mt-3 text-rafin-muted-light">{companyProfile.hours}</p>
+          <article className="rounded-3xl border border-border bg-surface-card p-5 shadow-card">
+            <Clock3 className="h-6 w-6 text-brand-gold" />
+            <h2 className="mt-4 text-2xl text-brand-navy">Business Hours</h2>
+            <p className="mt-3 text-text-muted">{companyProfile.hours}</p>
           </article>
         </div>
       </section>
@@ -43,14 +50,35 @@ export function ContactPage() {
       <section className="section-shell pb-24">
         <div className="grid gap-8 xl:grid-cols-[1fr_0.8fr]">
           <ContactForm />
-          <div className="border border-white/10 bg-rafin-panel p-7">
-            <p className="eyebrow">Map Placeholder</p>
-            <h2 className="mt-3 text-3xl text-white">Tirane sales and coordination point</h2>
-            <p className="mt-4 text-rafin-muted-light">
-              No external map dependency is added in this frontend build. This placeholder keeps the page complete without shipping a broken integration.
-            </p>
-            <div className="mt-6 border border-dashed border-white/10 bg-black/20 p-8 text-center text-rafin-muted-light">
-              Map placeholder for Rafin office and machinery sales contact point
+          <div className="space-y-5">
+            <div className="surface-panel p-7">
+              <p className="eyebrow">Sales contacts</p>
+              <h2 className="mt-3 text-3xl text-brand-navy">Commercial contacts by scope</h2>
+              <div className="mt-6 grid gap-4">
+                {salesContacts.map((contact) => (
+                  <article className="rounded-2xl border border-border bg-surface-subtle p-4" key={contact.email}>
+                    <h3 className="text-xl text-brand-navy">{contact.name}</h3>
+                    <p className="mt-1 text-sm font-semibold text-text-muted">{contact.title}</p>
+                    <p className="mt-3 text-sm text-text-muted">{contact.note}</p>
+                    <p className="mt-3 text-sm text-brand-navy">{contact.phone}</p>
+                    <p className="text-sm text-brand-navy">{contact.email}</p>
+                    <p className="mt-2 text-xs uppercase tracking-[0.14em] text-text-muted">
+                      Preferred: {contact.preferredMethod} | {contact.markets.join(', ')}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <div className="surface-panel p-7">
+              <p className="eyebrow">Visit and inspection</p>
+              <h2 className="mt-3 text-3xl text-brand-navy">Tirane sales and coordination point</h2>
+              <p className="mt-4 text-text-muted">
+                The current frontend keeps mapping simple. Use the address and sales contacts to arrange office meetings, yard visits, machine inspection, or delivery coordination.
+              </p>
+              <div className="mt-6 rounded-3xl border border-dashed border-border bg-surface-subtle p-8 text-center text-text-muted">
+                Coordination point for office meetings, inspection scheduling, and delivery handover planning
+              </div>
             </div>
           </div>
         </div>

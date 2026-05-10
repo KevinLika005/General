@@ -15,7 +15,7 @@ export function NewsletterForm() {
       <label className="block">
         <span className="sr-only">Email address</span>
         <input
-          className="h-11 w-full border border-white/10 bg-white/6 px-4 py-3 text-white placeholder:text-white/35"
+          className="h-11 w-full rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/45"
           placeholder="name@company.com"
           required
           type="email"
@@ -25,8 +25,8 @@ export function NewsletterForm() {
         Get alerts
       </Button>
       {submitted ? (
-        <p className="text-sm text-rafin-gold-soft">
-          Alert request saved for this frontend preview. Rafin can connect delivery later.
+        <p aria-live="polite" className="text-sm text-brand-gold-soft" role="status">
+          Alert request recorded in this frontend build. Delivery and mailing integration can be connected later.
         </p>
       ) : null}
     </form>

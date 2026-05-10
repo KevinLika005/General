@@ -1,32 +1,39 @@
 import { SectionHeader } from '../components/common/SectionHeader';
 import { companyProfile, trustFeatures } from '../data/catalog';
+import { usePageMetadata } from '../hooks/usePageMetadata';
 
 export function AboutPage() {
+  usePageMetadata({
+    title: 'About | Rafin Machinery',
+    description: 'Learn how Rafin Machinery presents construction equipment, attachments, and support inventory for professional company buyers.',
+  });
+
   return (
     <>
-      <section className="section-shell py-16 sm:py-20">
+      <section className="page-shell">
         <SectionHeader
-          description="Rafin Machinery is a commercial equipment catalog powered by Rafin Company. The focus is machinery knowledge, trustworthy listing detail, and a clear company-to-company sales process."
+          description="Rafin Machinery is a commercial equipment catalog powered by Rafin Company. The focus is trustworthy listing detail, machinery knowledge, and a clear company-to-company sales process."
           eyebrow="About"
           title="Rafin Machinery, built for professional equipment buying"
+          titleAs="h1"
         />
       </section>
 
       <section className="section-shell pb-20">
         <div className="grid gap-5 lg:grid-cols-[1fr_1fr]">
-          <article className="border border-white/10 bg-rafin-panel p-7">
-            <h2 className="text-3xl text-white">What this business does</h2>
-            <p className="mt-4 text-rafin-muted-light">
+          <article className="rounded-3xl border border-border bg-surface-card p-7 shadow-card">
+            <h2 className="text-3xl text-brand-navy">What this business does</h2>
+            <p className="mt-4 text-text-muted">
               {companyProfile.parentName} uses this catalog to present machinery, transport assets, attachments, spare parts, and site-support equipment in a way that helps company buyers evaluate inventory before making direct contact.
             </p>
-            <p className="mt-4 text-rafin-muted-light">
-              It is intentionally not a corporate portfolio rebuild and not a consumer ecommerce purchase flow. The sales process remains offline, negotiated, and document-driven.
+            <p className="mt-4 text-text-muted">
+              It is intentionally not a corporate portfolio rebuild. The sales process remains offline, negotiated, and document-driven.
             </p>
           </article>
-          <article className="border border-white/10 bg-rafin-panel p-7">
-            <h2 className="text-3xl text-white">Why buyers use it</h2>
-            <p className="mt-4 text-rafin-muted-light">
-              Buyers can review specs, condition, availability, inspection notes, and pricing style, then collect multiple products into one inquiry list before requesting a quote or contract discussion.
+          <article className="rounded-3xl border border-border bg-surface-card p-7 shadow-card">
+            <h2 className="text-3xl text-brand-navy">Why buyers use it</h2>
+            <p className="mt-4 text-text-muted">
+              Buyers can review specs, condition, availability, inspection notes, and pricing style, then collect multiple products into one Inquiry List before requesting a quote or contract discussion.
             </p>
           </article>
         </div>
@@ -35,9 +42,9 @@ export function AboutPage() {
       <section className="section-shell pb-24">
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {trustFeatures.map((feature) => (
-            <article className="border border-white/10 bg-rafin-panel p-5" key={feature.title}>
-              <h2 className="text-2xl text-white">{feature.title}</h2>
-              <p className="mt-3 text-rafin-muted-light">{feature.description}</p>
+            <article className="rounded-3xl border border-border bg-surface-card p-5 shadow-card" key={feature.title}>
+              <h2 className="text-2xl text-brand-navy">{feature.title}</h2>
+              <p className="mt-3 text-text-muted">{feature.description}</p>
             </article>
           ))}
         </div>

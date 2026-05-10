@@ -6,14 +6,28 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
-    --rafin-black: 17 29 74;
-    --rafin-ink: 20 33 61;
-    --rafin-panel: 14 25 56;
-    --rafin-muted-light: 198 206 222;
-    --rafin-gold: 209 162 31;
-    --rafin-gold-soft: 227 198 99;
-    --rafin-border: 84 99 131;
+    color-scheme: light;
+    --brand-navy: 17 29 74;
+    --brand-ink: 20 33 61;
+    --brand-gold: 209 162 31;
+    --brand-gold-soft: 227 198 99;
+    --surface-page: 245 247 250;
+    --surface-card: 255 255 255;
+    --surface-subtle: 239 243 248;
+    --surface-strong: 229 235 242;
+    --text-default: 23 32 51;
+    --text-muted: 97 110 128;
+    --border-default: 220 228 237;
+    --status-available: 18 128 92;
+    --status-available-bg: 236 253 243;
+    --status-incoming: 181 71 8;
+    --status-incoming-bg: 255 247 230;
+    --status-reserved: 107 114 128;
+    --status-reserved-bg: 243 244 246;
+    --status-sold: 180 35 24;
+    --status-sold-bg: 254 243 242;
+    --status-info: 23 92 211;
+    --status-info-bg: 239 248 255;
   }
 
   html {
@@ -21,16 +35,15 @@
   }
 
   body {
-    @apply bg-rafin-black font-sans text-white antialiased;
+    @apply bg-surface-page font-sans text-text antialiased;
     min-height: 100vh;
     background-image:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
-      radial-gradient(circle at top left, rgba(227, 198, 99, 0.14), transparent 26%),
-      linear-gradient(180deg, rgba(17, 29, 74, 1), rgba(20, 33, 61, 1));
+      radial-gradient(circle at top, rgba(227, 198, 99, 0.09), transparent 18%),
+      linear-gradient(180deg, rgba(245, 247, 250, 1), rgba(240, 244, 248, 1));
   }
 
   * {
-    @apply border-rafin-border;
+    @apply border-border;
   }
 
   a,
@@ -46,7 +59,7 @@
   input:focus-visible,
   select:focus-visible,
   textarea:focus-visible {
-    @apply ring-2 ring-rafin-gold ring-offset-2 ring-offset-rafin-black;
+    @apply ring-2 ring-brand-gold ring-offset-2 ring-offset-surface-page;
   }
 
   h1,
@@ -55,8 +68,9 @@
   h4,
   h5,
   h6 {
-    @apply font-display text-white;
-    line-height: 0.95;
+    @apply font-display text-brand-navy;
+    line-height: 1;
+    letter-spacing: -0.02em;
   }
 
   p {
@@ -64,13 +78,13 @@
   }
 
   option {
-    background-color: rgb(var(--rafin-panel));
-    color: white;
+    background-color: rgb(var(--surface-card));
+    color: rgb(var(--text-default));
   }
 
   ::selection {
-    background-color: rgba(209, 162, 31, 0.25);
-    color: white;
+    background-color: rgba(209, 162, 31, 0.24);
+    color: rgb(var(--text-default));
   }
 }
 
@@ -79,22 +93,41 @@
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
+  .page-shell {
+    @apply section-shell py-10 sm:py-12 lg:py-14;
+  }
+
   .eyebrow {
-    @apply text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-rafin-gold-soft;
+    @apply text-[0.72rem] font-bold uppercase tracking-[0.18em] text-brand-gold;
   }
 
   .field {
-    @apply mt-2 w-full border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/35;
-    border-radius: 0;
+    @apply mt-2 w-full rounded-xl border border-border bg-surface-card px-4 py-3 text-sm text-text shadow-card placeholder:text-text-muted/70;
   }
 
   .surface-panel {
-    @apply border border-white/10 bg-rafin-panel;
-    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.18);
+    @apply rounded-3xl border border-border bg-surface-card shadow-card;
+  }
+
+  .subtle-panel {
+    @apply rounded-2xl border border-border bg-surface-subtle;
   }
 
   .shadow-panel {
-    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 20px 48px rgba(17, 29, 74, 0.08);
+  }
+
+  .industrial-grid {
+    background-image:
+      linear-gradient(rgba(17, 29, 74, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17, 29, 74, 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .hero-band {
+    background-image:
+      linear-gradient(135deg, rgba(17, 29, 74, 0.98), rgba(20, 33, 61, 0.96)),
+      radial-gradient(circle at top right, rgba(227, 198, 99, 0.16), transparent 22%);
   }
 }
 

@@ -46,23 +46,27 @@ function clearStoredItems() {
   }
 }
 
+function getInitialItems() {
+  if (typeof window === 'undefined') {
+    return [];
+  }
+
+  const saved = readStoredItems();
+
+  if (!saved) {
+    return [];
+  }
+
+  try {
+    return JSON.parse(saved) as InquiryItem[];
+  } catch {
+    clearStoredItems();
+    return [];
+  }
+}
+
 export function InquiryProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<InquiryItem[]>([]);
-
-  useEffect(() => {
-    const saved = readStoredItems();
-
-    if (!saved) {
-      return;
-    }
-
-    try {
-      const parsed = JSON.parse(saved) as InquiryItem[];
-      setItems(parsed);
-    } catch {
-      clearStoredItems();
-    }
-  }, []);
+  const [items, setItems] = useState<InquiryItem[]>(getInitialItems);
 
   useEffect(() => {
     writeStoredItems(items);

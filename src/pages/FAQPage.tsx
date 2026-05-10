@@ -1,25 +1,32 @@
 import { SectionHeader } from '../components/common/SectionHeader';
 import { faqItems } from '../data/catalog';
+import { usePageMetadata } from '../hooks/usePageMetadata';
 
 export function FAQPage() {
   const mainFaqs = faqItems.filter((item) => !item.categorySlug);
 
+  usePageMetadata({
+    title: 'FAQ | Rafin Machinery',
+    description: 'Common questions about the Rafin Machinery inquiry workflow, pricing modes, inspections, documents, delivery support, and contract handling.',
+  });
+
   return (
     <>
-      <section className="section-shell py-16 sm:py-20">
+      <section className="page-shell">
         <SectionHeader
-          description="Answers for buyers, contractors, and procurement teams using the inquiry-commerce catalog."
+          description="Answers for buyers, contractors, and procurement teams using the inquiry-commerce machinery catalog."
           eyebrow="FAQ"
           title="Common questions about buying through Rafin Machinery"
+          titleAs="h1"
         />
       </section>
 
       <section className="section-shell pb-24">
         <div className="grid gap-4">
           {mainFaqs.map((faq) => (
-            <article className="border border-white/10 bg-rafin-panel p-5" key={faq.question}>
-              <h2 className="text-2xl text-white">{faq.question}</h2>
-              <p className="mt-3 text-rafin-muted-light">{faq.answer}</p>
+            <article className="rounded-3xl border border-border bg-surface-card p-5 shadow-card" key={faq.question}>
+              <h2 className="text-2xl text-brand-navy">{faq.question}</h2>
+              <p className="mt-3 text-text-muted">{faq.answer}</p>
             </article>
           ))}
         </div>

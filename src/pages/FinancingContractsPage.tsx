@@ -1,15 +1,22 @@
 import { Button } from '../components/common/Button';
 import { SectionHeader } from '../components/common/SectionHeader';
+import { usePageMetadata } from '../hooks/usePageMetadata';
 import { routes } from '../utils/routes';
 
 export function FinancingContractsPage() {
+  usePageMetadata({
+    title: 'Financing and Contracts | Rafin Machinery',
+    description: 'Review how commercial terms, contracts, invoices, and buyer-side approvals are handled directly with Rafin after inquiry.',
+  });
+
   return (
     <>
-      <section className="section-shell py-16 sm:py-20">
+      <section className="page-shell">
         <SectionHeader
-          description="Rafin does not present an online finance or payment flow here. Instead, the website supports contract-based sales and direct company-to-company negotiation."
-          eyebrow="Financing & Contracts"
+          description="The catalog supports contract-based sales and direct company-to-company negotiation rather than instant transaction handling."
+          eyebrow="Financing & contracts"
           title="Commercial terms are discussed directly with Rafin"
+          titleAs="h1"
         />
       </section>
 
@@ -18,19 +25,19 @@ export function FinancingContractsPage() {
           {[
             'Contract-based sales only',
             'Company-to-company negotiation',
-            'Payment terms discussed directly with Rafin',
+            'Commercial terms discussed directly with Rafin',
             'Invoices, documentation, and delivery terms handled after inquiry',
             'Inspection and logistics support can be part of the same discussion',
             'No financing promise is made unless confirmed directly by Rafin',
           ].map((item) => (
-            <article className="border border-white/10 bg-rafin-panel p-5 text-rafin-muted-light" key={item}>
+            <article className="rounded-3xl border border-border bg-surface-card p-5 text-text-muted shadow-card" key={item}>
               {item}
             </article>
           ))}
         </div>
 
         <div className="mt-10">
-          <Button to={routes.requestQuote}>Request Contract</Button>
+          <Button to={routes.requestQuote}>Request Contract Discussion</Button>
         </div>
       </section>
     </>
