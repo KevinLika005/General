@@ -89,7 +89,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
       </a>
       <header className="sticky top-0 z-40 border-b border-border bg-surface-card/95 backdrop-blur-md">
         <div className="hidden border-b border-surface-dark bg-surface-blue text-text-on-dark xl:block">
-          <div className="section-shell flex flex-wrap items-center justify-between gap-3 py-2 text-[0.72rem]">
+          <div className="wide-shell flex flex-wrap items-center justify-between gap-3 py-2 text-[0.72rem]">
             <div className="flex flex-wrap items-center gap-4">
               <a className="transition hover:text-white" href={`tel:${companyProfile.phone}`}>
                 {companyProfile.phone}
@@ -108,7 +108,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
           </div>
         </div>
 
-        <div className="section-shell grid min-h-[4.15rem] grid-cols-[auto_1fr_auto] items-center gap-3 py-3 xl:min-h-[4.9rem] xl:gap-4">
+        <div className="wide-shell grid min-h-[4.15rem] grid-cols-[auto_1fr_auto] items-center gap-3 py-3 xl:min-h-[4.9rem] xl:gap-4">
           <Link className="flex min-w-0 items-center gap-3" to={routes.home}>
             <img alt="Rafin Company" className="h-11 w-auto object-contain sm:h-12" src={rafinLogo} />
             <div className="hidden min-w-0 wide:block">
@@ -119,7 +119,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
             </div>
           </Link>
 
-          <div className="hidden px-2 xl:block xl:px-4">
+          <div className="hidden px-2 xl:block xl:max-w-[52rem] xl:flex-1 xl:px-4">
             <SearchBar
               buttonLabel="Search"
               compact
@@ -179,7 +179,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
           </div>
         </div>
 
-        <div className="section-shell border-t border-border py-3 xl:hidden">
+        <div className="wide-shell border-t border-border py-3 xl:hidden">
           <SearchBar
             buttonLabel="Search"
             compact
@@ -191,7 +191,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
         </div>
 
         <div className="hidden border-t border-border xl:block">
-          <div className="section-shell flex items-center justify-between gap-4 py-3">
+          <div className="wide-shell flex items-center justify-between gap-4 py-3">
             <nav aria-label="Primary" className="flex items-center gap-6">
               {primaryNavigation.map((link) => {
                 if ('kind' in link && link.kind === 'products') {
@@ -301,7 +301,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
               })}
             </nav>
 
-            <div className="hidden wide:block">
+            <div className="hidden max-w-[22rem] wide:block">
               <p className="text-[0.72rem] uppercase tracking-[0.12em] text-text-muted">
                 Product-first catalog. Search by product, SKU, model, brand, or technical keyword.
               </p>

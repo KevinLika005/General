@@ -43,12 +43,12 @@ function FooterGroup({
 export function Footer() {
   return (
     <footer className="mt-16 border-t border-surface-blue bg-surface-blue text-white">
-      <div className="section-shell py-8 xl:py-12">
+      <div className="wide-shell py-8 xl:py-12">
         <div className="mb-8 border border-white/10 bg-white/5 px-5 py-5 lg:flex lg:items-center lg:justify-between">
           <div>
             <p className="kicker text-white/80">Buyer support</p>
-            <h2 className="mt-2 text-[1.5rem] leading-[1.08] text-white xl:text-[1.8rem]">Build an Inquiry List, then request a quote, document pack, or contract discussion</h2>
-            <p className="mt-3 max-w-2xl text-sm text-white/70">
+            <h2 className="mt-2 max-w-[26ch] text-[clamp(1.4rem,1rem+0.9vw,1.85rem)] leading-[1.08] text-white">Build an Inquiry List, then request a quote, document pack, or contract discussion</h2>
+            <p className="text-measure mt-3 text-sm text-white/70">
               This website is a procurement-oriented catalog. Final negotiation, inspection,
               documentation, delivery, and contract handling stay direct between companies.
             </p>

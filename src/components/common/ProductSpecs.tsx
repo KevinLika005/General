@@ -7,10 +7,10 @@ interface ProductSpecsProps {
 
 export function ProductSpecs({ specs, title = 'Technical specifications' }: ProductSpecsProps) {
   return (
-    <div className="surface-panel overflow-hidden">
+    <div className="surface-panel h-full overflow-hidden">
       <div className="border-b border-border px-4 py-4 sm:px-5">
         <p className="kicker">Technical data</p>
-        <h2 className="mt-2 text-[1.6rem] text-navy">{title}</h2>
+        <h2 className="mt-2 text-[clamp(1.35rem,1rem+0.8vw,1.8rem)] text-navy">{title}</h2>
       </div>
       <div className="overflow-x-auto">
         <table className="spec-table min-w-full">

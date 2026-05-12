@@ -72,8 +72,8 @@ export function TechnicalLibraryPage() {
         </div>
       </section>
 
-      <section className="section-shell pb-24">
-        <div className="grid gap-4 xl:grid-cols-2">
+      <section className="wide-shell pb-24">
+        <div className="grid gap-4 3xl:grid-cols-2">
           {filteredGroups.map((group) => {
             const Icon = iconMap[group.key];
             const isExpanded = expanded === group.key;
@@ -83,7 +83,7 @@ export function TechnicalLibraryPage() {
                 <div className="hidden items-start justify-between gap-4 xl:flex">
                   <div>
                     <p className="line-label">Placeholder group</p>
-                    <h2 className="mt-2 text-[1.45rem] text-navy">{group.title}</h2>
+                    <h2 className="mt-2 max-w-[18ch] text-[clamp(1.25rem,1rem+0.7vw,1.55rem)] text-navy">{group.title}</h2>
                   </div>
                   <span className="inline-flex h-11 w-11 items-center justify-center border border-border bg-surface-subtle text-navy">
                     <Icon className="h-5 w-5" />
@@ -107,7 +107,7 @@ export function TechnicalLibraryPage() {
                     <ChevronDown className={['h-5 w-5 text-primary transition', isExpanded ? 'rotate-180' : ''].join(' ')} />
                   </span>
                 </button>
-                <p className="mt-3 max-w-2xl text-sm text-text-muted">{group.description}</p>
+                <p className="text-measure mt-3 text-sm text-text-muted">{group.description}</p>
                 <div className={['mt-5 grid gap-2', isExpanded ? '' : 'hidden xl:grid'].join(' ')} id={`library-group-${group.key}`}>
                   {group.items.map((item) => (
                     <div className="subtle-panel px-4 py-3 text-sm text-text-muted" key={item}>
@@ -124,8 +124,8 @@ export function TechnicalLibraryPage() {
           <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-center">
             <div>
               <p className="kicker">Need product-specific support?</p>
-              <h2 className="mt-2 text-[1.6rem] text-navy">Ask Rafin for a document pack tied to a specific listing</h2>
-              <p className="mt-3 max-w-3xl text-sm text-text-muted">
+              <h2 className="mt-2 max-w-[20ch] text-[clamp(1.4rem,1rem+0.8vw,1.9rem)] text-navy">Ask Rafin for a document pack tied to a specific listing</h2>
+              <p className="text-measure mt-3 text-sm text-text-muted">
                 Mention the category, model, SKU, or product page in your message and Rafin can prepare the relevant manual, inspection record, specification sheet, or delivery reference.
               </p>
             </div>

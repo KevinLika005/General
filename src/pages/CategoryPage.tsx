@@ -91,11 +91,6 @@ export function CategoryPage() {
     return <NotFoundPage />;
   }
 
-  const gridClass =
-    filters.viewMode === 'list'
-      ? 'grid-cols-1'
-      : 'md:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4';
-
   return (
     <>
       <section className="page-shell">
@@ -108,10 +103,10 @@ export function CategoryPage() {
             ]}
           />
           <p className="kicker mt-4">{category.title}</p>
-          <h1 className="mt-2 text-[1.8rem] leading-[1.08] text-navy sm:text-[2.2rem] xl:text-[2.8rem]">{category.title}</h1>
-          <p className="mt-3 max-w-3xl text-sm text-text-muted sm:text-base">{category.description}</p>
+          <h1 className="mt-2 max-w-[20ch] text-[clamp(1.8rem,1.2rem+1.5vw,3rem)] leading-[1.02] text-navy">{category.title}</h1>
+          <p className="text-measure mt-3 text-sm text-text-muted sm:text-base">{category.description}</p>
 
-          <div className="mt-4 grid gap-3 xl:grid-cols-[1fr_18rem] xl:items-center">
+          <div className="mt-4 grid gap-3 3xl:grid-cols-[minmax(0,1fr)_18rem] 3xl:items-center">
             <SearchBar
               buttonLabel="Search Category"
               onChange={(value) => setFilters((current) => ({ ...current, search: value }))}
@@ -149,8 +144,8 @@ export function CategoryPage() {
         </div>
       </section>
 
-      <section className="section-shell pb-12">
-        <div className="grid gap-6 xl:grid-cols-[18.5rem_minmax(0,1fr)]">
+      <section className="catalog-shell pb-12">
+        <div className="grid gap-6 xl:grid-cols-[clamp(17rem,18vw,19rem)_minmax(0,1fr)]">
           <div className="hidden xl:block xl:sticky xl:top-[9rem] xl:self-start">
             <FilterSidebar
               clearAllFilters={clearAllFilters}
@@ -214,9 +209,9 @@ export function CategoryPage() {
                   title="No matching products in this category"
                 />
               ) : (
-                <div className={`grid gap-4 ${gridClass}`}>
+                <div className={filters.viewMode === 'list' ? 'grid gap-4' : 'catalog-product-grid'}>
                   {filteredProducts.map((product) => (
-                    <ProductCard key={product.id} product={product} />
+                    <ProductCard key={product.id} layout={filters.viewMode} product={product} />
                   ))}
                 </div>
               )}
@@ -225,8 +220,8 @@ export function CategoryPage() {
         </div>
       </section>
 
-      <section className="section-shell pb-24">
-        <div className="grid gap-6 xl:grid-cols-[1fr_20rem]">
+      <section className="wide-shell pb-24">
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_20rem]">
           <div>
             <SectionHeader
               description="Answers focused on this machinery group and how Rafin handles inspection, availability, documentation, and contract discussion."
@@ -244,8 +239,8 @@ export function CategoryPage() {
           </div>
           <aside className="surface-panel p-5 xl:sticky xl:top-28 xl:self-start">
             <p className="kicker">Support for this category</p>
-            <h2 className="mt-2 text-[1.45rem] text-navy">Need documents, inspection details, or a bundled request?</h2>
-            <p className="mt-3 text-sm text-text-muted">
+            <h2 className="mt-2 text-[clamp(1.3rem,1rem+0.8vw,1.6rem)] text-navy">Need documents, inspection details, or a bundled request?</h2>
+            <p className="text-measure mt-3 text-sm text-text-muted">
               Use the inquiry workflow for product packs, compatibility questions, delivery planning, or contract handling tied to this category.
             </p>
             <div className="mt-5 grid gap-3">

@@ -16,10 +16,10 @@ export function SectionHeader({
   const TitleTag = titleAs;
 
   return (
-    <div className={align === 'center' ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl'}>
+    <div className={align === 'center' ? 'mx-auto max-w-[min(100%,56rem)] text-center' : 'max-w-[min(100%,56rem)]'}>
       {eyebrow ? <p className="kicker">{eyebrow}</p> : null}
-      <TitleTag className="mt-2 text-[1.65rem] leading-[1.08] text-navy sm:text-[1.9rem] lg:text-[2.2rem] xl:text-[2.5rem]">{title}</TitleTag>
-      {description ? <p className="mt-2 max-w-2xl text-sm text-text-muted md:text-[0.94rem]">{description}</p> : null}
+      <TitleTag className="mt-2 text-[clamp(1.65rem,1.1rem+1.3vw,2.7rem)] leading-[1.04] text-navy">{title}</TitleTag>
+      {description ? <p className="text-measure mt-2 text-sm text-text-muted md:text-[0.94rem]">{description}</p> : null}
     </div>
   );
 }

@@ -128,24 +128,19 @@ export function CatalogPage() {
     }
   }, [filters, searchParams, setSearchParams]);
 
-  const gridClass =
-    filters.viewMode === 'list'
-      ? 'grid-cols-1'
-      : 'md:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4';
-
   return (
     <>
       <section className="page-shell">
         <div className="surface-panel p-4 sm:p-5 xl:p-6">
           <p className="kicker">Products</p>
-          <h1 className="mt-2 text-[1.8rem] leading-[1.08] text-navy sm:text-[2.2rem] xl:text-[2.8rem]">
+          <h1 className="mt-2 max-w-[20ch] text-[clamp(1.8rem,1.2rem+1.5vw,3rem)] leading-[1.02] text-navy">
             Browse machinery, parts, attachments, trucks, and support equipment
           </h1>
-          <p className="mt-3 max-w-3xl text-sm text-text-muted sm:text-base">
+          <p className="text-measure mt-3 text-sm text-text-muted sm:text-base">
             Search inventory, narrow by brand or stock status, and add products to your Inquiry List before requesting pricing, inspection, information, or contract follow-up.
           </p>
 
-          <div className="mt-4 grid gap-3 xl:grid-cols-[1fr_18rem] xl:items-center">
+          <div className="mt-4 grid gap-3 3xl:grid-cols-[minmax(0,1fr)_18rem] 3xl:items-center">
             <SearchBar
               buttonLabel="Search Catalog"
               onChange={(value) => setFilters((current) => ({ ...current, search: value }))}
@@ -172,8 +167,8 @@ export function CatalogPage() {
         </div>
       </section>
 
-      <section className="section-shell pb-24">
-        <div className="grid gap-6 xl:grid-cols-[18.5rem_minmax(0,1fr)]">
+      <section className="catalog-shell pb-24">
+        <div className="grid gap-6 xl:grid-cols-[clamp(17rem,18vw,19rem)_minmax(0,1fr)]">
           <div className="hidden xl:block xl:sticky xl:top-[9rem] xl:self-start">
             <FilterSidebar
               clearAllFilters={clearAllFilters}
@@ -261,9 +256,9 @@ export function CatalogPage() {
                 />
               </div>
             ) : (
-              <div className={`mt-6 grid gap-4 ${gridClass}`}>
+              <div className={filters.viewMode === 'list' ? 'mt-6 grid gap-4' : 'catalog-product-grid mt-6'}>
                 {filteredProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
+                  <ProductCard key={product.id} layout={filters.viewMode} product={product} />
                 ))}
               </div>
             )}

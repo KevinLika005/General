@@ -28,7 +28,7 @@ export function SearchBar({
       <div
         className={[
           'flex gap-2',
-          compact ? 'items-center' : 'flex-col items-stretch md:flex-row md:items-stretch',
+          compact ? 'items-center' : 'flex-col items-stretch lg:flex-row lg:items-stretch',
         ].join(' ')}
       >
         <label className="relative block w-full">
@@ -49,7 +49,7 @@ export function SearchBar({
           <button
             className={[
               'shrink-0 rounded-none border border-primary bg-primary px-4 text-[0.8rem] font-semibold text-text-on-dark transition hover:border-primary-hover hover:bg-primary-hover',
-              compact ? 'h-11' : 'min-h-[3rem] md:min-w-[9rem]',
+              compact ? 'h-11' : 'min-h-[3rem] lg:min-w-[9rem]',
             ].join(' ')}
             type="submit"
           >

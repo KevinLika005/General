@@ -8,7 +8,7 @@ export function CategoryCard({ category }: { category: EquipmentCategory }) {
   const productCount = products.filter((product) => product.categorySlug === category.slug).length;
 
   return (
-    <article className="group overflow-hidden border border-border bg-surface-card shadow-card transition duration-150 hover:border-primary hover:shadow-hover">
+    <article className="group mx-auto w-full max-w-[23rem] overflow-hidden border border-border bg-surface-card shadow-card transition duration-150 hover:border-primary hover:shadow-hover">
       <ImageWithFallback
         alt={category.title}
         aspectRatio="wide"
@@ -24,7 +24,7 @@ export function CategoryCard({ category }: { category: EquipmentCategory }) {
           <ArrowRight className="h-4 w-4 text-primary" />
         </div>
         <h3 className="mt-2 text-[1.05rem] text-navy md:text-[1.12rem]">{category.title}</h3>
-        <p className="mt-1.5 max-w-md text-sm text-text-muted">{category.shortDescription}</p>
+        <p className="text-measure mt-1.5 text-sm text-text-muted">{category.shortDescription}</p>
         <div className="mt-3 grid gap-1">
           {category.subcategories.slice(0, 4).map((subcategory) => (
             <span

@@ -22,16 +22,16 @@ export function InquiryListPage() {
       <section className="page-shell">
         <div className="surface-panel p-5 sm:p-6">
           <p className="kicker">Inquiry List</p>
-          <h1 className="mt-2 text-[1.9rem] text-navy sm:text-[2.3rem] xl:text-[2.7rem]">
+          <h1 className="mt-2 max-w-[20ch] text-[clamp(1.9rem,1.35rem+1.3vw,2.9rem)] leading-[1.02] text-navy">
             Build one useful request around the products your team needs
           </h1>
-          <p className="mt-3 max-w-3xl text-sm text-text-muted sm:text-base">
+          <p className="text-measure mt-3 text-sm text-text-muted sm:text-base">
             This is not a checkout. Your Inquiry List helps Rafin prepare product details, pricing, inspection options, document support, delivery discussion, and contract next steps.
           </p>
         </div>
       </section>
 
-      <section className="section-shell pb-24">
+      <section className="catalog-shell pb-24">
         {products.length === 0 ? (
           <EmptyState
             actionLabel="Browse Equipment"
@@ -42,14 +42,14 @@ export function InquiryListPage() {
             title="Your Inquiry List is empty"
           />
         ) : (
-          <div className="grid gap-6 xl:grid-cols-[1fr_340px]">
+          <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_clamp(19rem,22vw,22rem)]">
             <div className="space-y-4">
               {products.map((product) => {
                 const item = items.find((entry) => entry.productId === product.id);
 
                 return (
                   <article
-                    className="grid gap-5 border border-border bg-surface-card p-4 shadow-card sm:grid-cols-[180px_1fr]"
+                    className="grid gap-5 border border-border bg-surface-card p-4 shadow-card sm:grid-cols-[180px_minmax(0,1fr)]"
                     key={product.id}
                   >
                     <ImageWithFallback alt={product.title} aspectRatio="video" className="h-full" src={product.images[0]?.src} />
@@ -59,8 +59,8 @@ export function InquiryListPage() {
                           <p className="line-label">
                             {product.brand} / {product.model} / {product.sku}
                           </p>
-                          <h2 className="mt-2 text-[1.35rem] text-navy">{product.title}</h2>
-                          <p className="mt-2 text-sm text-text-muted">{product.excerpt}</p>
+                          <h2 className="mt-2 max-w-[24ch] text-[clamp(1.15rem,1rem+0.6vw,1.45rem)] text-navy">{product.title}</h2>
+                          <p className="text-measure mt-2 text-sm text-text-muted">{product.excerpt}</p>
                         </div>
                         <button
                           aria-label={`Remove ${product.title}`}

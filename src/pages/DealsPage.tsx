@@ -32,23 +32,18 @@ export function DealsPage() {
     setMobileFiltersOpen,
   } = useCatalogFilters(availableOrDealProducts);
 
-  const gridClass =
-    filters.viewMode === 'list'
-      ? 'grid-cols-1'
-      : 'md:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4';
-
   return (
     <>
       <section className="page-shell">
         <div className="surface-panel p-4 sm:p-5 xl:p-6">
           <p className="kicker">Available now</p>
-          <h1 className="mt-2 text-[1.8rem] leading-[1.08] text-navy sm:text-[2.2rem] xl:text-[2.8rem]">
+          <h1 className="mt-2 max-w-[20ch] text-[clamp(1.8rem,1.2rem+1.5vw,3rem)] leading-[1.02] text-navy">
             Fast-moving stock, incoming units, and deal-tagged listings
           </h1>
-          <p className="mt-3 max-w-3xl text-sm text-text-muted sm:text-base">
+          <p className="text-measure mt-3 text-sm text-text-muted sm:text-base">
             Focus on products suited to shorter procurement cycles. These listings still move through direct inquiry, inspection review, and offline company-to-company agreement.
           </p>
-          <div className="mt-4 grid gap-3 xl:grid-cols-[1fr_18rem] xl:items-center">
+          <div className="mt-4 grid gap-3 3xl:grid-cols-[minmax(0,1fr)_18rem] 3xl:items-center">
             <SearchBar
               buttonLabel="Search Available Stock"
               onChange={(value) => setFilters((current) => ({ ...current, search: value }))}
@@ -63,8 +58,8 @@ export function DealsPage() {
         </div>
       </section>
 
-      <section className="section-shell pb-24">
-        <div className="grid gap-6 xl:grid-cols-[18.5rem_minmax(0,1fr)]">
+      <section className="catalog-shell pb-24">
+        <div className="grid gap-6 xl:grid-cols-[clamp(17rem,18vw,19rem)_minmax(0,1fr)]">
           <div className="hidden xl:block xl:sticky xl:top-[9rem] xl:self-start">
             <FilterSidebar
               clearAllFilters={clearAllFilters}
@@ -148,9 +143,9 @@ export function DealsPage() {
                   title="No matching available stock"
                 />
               ) : (
-                <div className={`grid gap-4 ${gridClass}`}>
+                <div className={filters.viewMode === 'list' ? 'grid gap-4' : 'catalog-product-grid'}>
                   {filteredProducts.map((product) => (
-                    <ProductCard key={product.id} product={product} />
+                    <ProductCard key={product.id} layout={filters.viewMode} product={product} />
                   ))}
                 </div>
               )}
@@ -158,8 +153,8 @@ export function DealsPage() {
 
             <div className="mt-10 hero-band border border-surface-dark p-6 text-white shadow-card">
               <p className="kicker text-white/80">Need confirmation?</p>
-              <h2 className="mt-2 text-[1.6rem] text-white">Current stock still follows the same offline inquiry process</h2>
-              <p className="mt-3 max-w-3xl text-sm text-white/72">
+              <h2 className="mt-2 max-w-[22ch] text-[clamp(1.35rem,1rem+0.8vw,1.8rem)] text-white">Current stock still follows the same offline inquiry process</h2>
+              <p className="text-measure mt-3 text-sm text-white/72">
                 If a listing looks close but not exact, use the Inquiry List or request sourcing support directly from the sales team.
               </p>
             </div>

@@ -6,19 +6,19 @@ import { routes } from '../../utils/routes';
 
 export function MegaMenu() {
   return (
-    <div className="absolute left-1/2 top-full z-40 mt-3 w-[72rem] max-w-[calc(100vw-2rem)] -translate-x-1/2 border border-border bg-surface-card p-5 shadow-dropdown backdrop-blur">
-      <div className="grid gap-5 wide:grid-cols-[minmax(0,1fr)_280px]">
+    <div className="absolute left-1/2 top-full z-40 mt-3 w-[min(96vw,96rem)] -translate-x-1/2 border border-border bg-surface-card p-5 shadow-dropdown backdrop-blur">
+      <div className="grid gap-5 ultra:grid-cols-[minmax(0,1fr)_18rem]">
         <div>
           <div className="mb-5 flex items-start justify-between gap-6 border-b border-border pb-4">
             <div>
               <p className="kicker">Products</p>
-              <h3 className="mt-2 max-w-3xl text-[1.55rem] text-navy">Browse machinery, attachments, tools, parts, and support equipment</h3>
+              <h3 className="mt-2 max-w-3xl text-[clamp(1.35rem,1rem+0.8vw,1.75rem)] text-navy">Browse machinery, attachments, tools, parts, and support equipment</h3>
             </div>
             <Link className="inline-flex min-h-11 items-center justify-center border border-border px-4 text-[0.82rem] font-semibold text-navy transition hover:border-primary" to={routes.requestQuote}>
               Request Quote
             </Link>
           </div>
-          <div className="grid gap-3 lg:grid-cols-2 wide:grid-cols-3">
+          <div className="grid gap-3 lg:grid-cols-2 ultra:grid-cols-3">
             {categories.map((category) => {
               const productCount = products.filter((product) => product.categorySlug === category.slug).length;
 
@@ -55,7 +55,7 @@ export function MegaMenu() {
           </div>
         </div>
 
-        <aside className="space-y-3">
+        <aside className="space-y-3 ultra:max-w-[18rem]">
           <div className="border border-surface-blue bg-surface-blue p-4 text-text-on-dark">
             <p className="kicker text-white/80">Featured path</p>
             <h3 className="mt-2 text-[1.4rem] text-white">Available stock and inbound units</h3>

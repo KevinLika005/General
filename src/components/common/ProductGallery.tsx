@@ -17,11 +17,11 @@ export function ProductGallery({ images, title }: ProductGalleryProps) {
   const activeImage = images[activeImageIndex] ?? images[0];
 
   return (
-    <div>
+    <div className="mx-auto max-w-[52rem] 3xl:max-w-none">
       <ImageWithFallback
         alt={activeImage?.alt ?? title}
         aspectRatio="wide"
-        className="min-h-[320px] rounded-none"
+        className="min-h-[320px] rounded-none 3xl:min-h-[360px]"
         loading="eager"
         src={activeImage?.src}
       />

@@ -27,7 +27,7 @@ export function Layout({ children }: { children: ReactNode }) {
   }, [location.pathname, location.search, location.hash]);
 
   return (
-    <div className="min-h-screen bg-surface-page text-text">
+    <div className="min-h-screen overflow-x-clip bg-surface-page text-text">
       <Header inquiryCount={itemCount} onOpenInquirySummary={() => setSummaryOpen(true)} />
       <main id="main-content">{children}</main>
       <Footer />

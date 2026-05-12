@@ -71,16 +71,16 @@ export function HomePage() {
 
   return (
     <>
-      <section className="border-b border-border bg-surface-card">
-        <div className="section-shell py-5 sm:py-7 xl:py-8">
-          <div className="grid gap-5 xl:grid-cols-[1.18fr_0.82fr]">
+      <section className="section-band border-b border-border bg-surface-card">
+        <div className="band-shell py-[clamp(1.5rem,2vw,2.5rem)]">
+          <div className="grid gap-5 3xl:grid-cols-[minmax(0,1.16fr)_minmax(20rem,0.84fr)]">
             <div className="space-y-4">
               <div>
                 <p className="kicker">Rafin Machinery</p>
-                <h1 className="mt-2 max-w-4xl text-[2.1rem] text-navy sm:text-[2.5rem] lg:text-[2.95rem] xl:text-[3.35rem]">
+                <h1 className="mt-2 max-w-[18ch] text-[clamp(2.15rem,1.4rem+2.5vw,4.2rem)] leading-[0.98] text-navy">
                   Technical product discovery for serious construction and equipment buyers
                 </h1>
-                <p className="mt-3 max-w-3xl text-sm text-text-muted sm:text-[0.97rem]">
+                <p className="text-measure mt-3 text-sm text-text-muted sm:text-[0.97rem]">
                   Browse construction machinery, attachments, spare parts, tools, trucks, and support equipment. Build an Inquiry List, request technical information, and continue with pricing, inspection, delivery, or contract discussion directly with Rafin.
                 </p>
               </div>
@@ -119,10 +119,10 @@ export function HomePage() {
               </div>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-1">
+            <div className="grid gap-4 md:grid-cols-2 3xl:grid-cols-1">
               <div className="surface-panel p-5">
                 <p className="kicker">Catalog structure</p>
-                <h2 className="mt-2 text-[1.4rem] text-navy xl:text-[1.55rem]">Search first, then move into products, support, and document paths</h2>
+                <h2 className="mt-2 max-w-[18ch] text-[clamp(1.25rem,1rem+0.7vw,1.55rem)] text-navy">Search first, then move into products, support, and document paths</h2>
                 <div className="mt-4 grid gap-px border border-border bg-border">
                   {quickLinks.map((link) => (
                     <Button className="justify-between border-0 bg-surface-card hover:bg-surface-subtle" key={link.to} to={link.to} variant="ghost">
@@ -144,41 +144,41 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="section-shell py-8">
+      <section className="wide-shell py-[clamp(2rem,3vw,3rem)]">
         <SectionHeader
           description="Start with the main inventory groups, then move into compact product listings, sharper filters, and technical product pages."
           eyebrow="Browse categories"
           title="Product groups built for fast buyer orientation"
         />
-        <div className="mt-6 grid gap-4 md:grid-cols-2 wide:grid-cols-4">
+        <div className="category-grid mt-6">
           {categories.map((category) => (
             <CategoryCard category={category} key={category.slug} />
           ))}
         </div>
       </section>
 
-      <section className="section-shell py-8">
+      <section className="wide-shell py-[clamp(2rem,3vw,3rem)]">
         <SectionHeader
           description="Compact support blocks that stay close to product discovery instead of sitting behind a separate corporate layer."
           eyebrow="Support structure"
           title="A utilitarian B2B interface with stronger support paths"
         />
-        <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
+        <div className="support-grid mt-6">
           {supportTiles.map((tile) => {
             const Icon = tile.icon;
 
             return (
-              <article className="toolbar-panel p-4 shadow-card" key={tile.title}>
+              <article className="toolbar-panel h-full p-4 shadow-card" key={tile.title}>
                 <Icon className="h-5 w-5 text-primary" />
                 <h2 className="mt-3 text-[1.1rem] text-navy">{tile.title}</h2>
-                <p className="mt-2 text-sm text-text-muted">{tile.description}</p>
+                <p className="text-measure mt-2 text-sm text-text-muted">{tile.description}</p>
               </article>
             );
           })}
         </div>
       </section>
 
-      <section className="section-shell py-8">
+      <section className="wide-shell py-[clamp(2rem,3vw,3rem)]">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeader
             description="Priority listings with clear availability, price mode, and direct next actions."
@@ -190,14 +190,14 @@ export function HomePage() {
             <ArrowRight className="h-4 w-4" />
           </Button>
         </div>
-        <div className="mt-6 grid gap-4 md:grid-cols-2 2xl:grid-cols-4">
+        <div className="product-grid mt-6">
           {featuredProducts.slice(0, 8).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </section>
 
-      <section className="section-shell py-8">
+      <section className="wide-shell py-[clamp(2rem,3vw,3rem)]">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeader
             description="Current stock and inbound units for buyers who need shorter procurement cycles."
@@ -208,32 +208,33 @@ export function HomePage() {
             View Available Now
           </Button>
         </div>
-        <div className="mt-6 grid gap-4 md:grid-cols-2 2xl:grid-cols-4">
+        <div className="product-grid mt-6">
           {availableNowProducts.slice(0, 8).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </section>
 
-      <section className="section-shell py-8">
+      <section className="wide-shell py-[clamp(2rem,3vw,3rem)]">
         <SectionHeader
           eyebrow="Brands in stock"
           title="Browse current manufacturers in the catalog"
           description="Use brand preference as a direct path into filtered inventory."
         />
-        <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
+        <div className="brand-grid mt-6">
           {brands.map((brand) => (
             <BrandCard brand={brand} key={brand.slug} />
           ))}
         </div>
       </section>
 
-      <section className="section-shell py-8 pb-16">
-        <div className="hero-band border border-surface-dark px-5 py-6 text-white lg:flex lg:items-center lg:justify-between">
+      <section className="section-band py-[clamp(2rem,3vw,3.5rem)]">
+        <div className="band-shell">
+          <div className="hero-band border border-surface-dark px-5 py-6 text-white lg:flex lg:items-center lg:justify-between">
           <div>
             <p className="kicker text-white/80">Technical library and sourcing</p>
-            <h2 className="mt-2 text-[1.6rem] text-white xl:text-[1.8rem]">Need a document pack or a specific unit that is not listed?</h2>
-            <p className="mt-3 max-w-2xl text-sm text-white/72">
+            <h2 className="mt-2 max-w-[20ch] text-[clamp(1.45rem,1.1rem+0.9vw,1.95rem)] text-white">Need a document pack or a specific unit that is not listed?</h2>
+            <p className="text-measure mt-3 text-sm text-white/72">
               Use the Technical Library for support materials, or submit a request for quote, information, inspection, or contract discussion tied to a specific model or requirement.
             </p>
           </div>
@@ -245,6 +246,7 @@ export function HomePage() {
               Request Quote
             </Button>
           </div>
+        </div>
         </div>
       </section>
     </>

@@ -31,12 +31,12 @@ export function RequestQuoteForm({ inquiryItems }: RequestQuoteFormProps) {
   };
 
   return (
-    <form className="grid gap-6 xl:grid-cols-[1.12fr_0.88fr]" onSubmit={handleSubmit}>
+    <form className="grid gap-6 xl:grid-cols-[minmax(0,1.08fr)_clamp(19rem,24vw,24rem)]" onSubmit={handleSubmit}>
       <div className="surface-panel p-5 sm:p-6">
         <div className="border-b border-border pb-5">
           <p className="kicker">Request quote or contract</p>
-          <h2 className="mt-2 text-[1.75rem] text-navy xl:text-[1.9rem]">Prepare one commercial request for your selected products</h2>
-          <p className="mt-3 text-sm text-text-muted">
+          <h2 className="mt-2 max-w-[22ch] text-[clamp(1.55rem,1.2rem+0.8vw,1.95rem)] text-navy">Prepare one commercial request for your selected products</h2>
+          <p className="text-measure mt-3 text-sm text-text-muted">
             Use one form for product information, quote requests, contract discussion, inspection planning, delivery questions, or document requests.
           </p>
         </div>
@@ -153,7 +153,7 @@ export function RequestQuoteForm({ inquiryItems }: RequestQuoteFormProps) {
       <aside className="space-y-6 xl:sticky xl:top-[8.65rem] xl:self-start">
         <div className="surface-panel p-5">
           <p className="kicker">Selected products</p>
-          <h3 className="mt-2 text-[1.45rem] text-navy xl:text-[1.6rem]">Products in this request</h3>
+          <h3 className="mt-2 text-[clamp(1.3rem,1rem+0.7vw,1.6rem)] text-navy">Products in this request</h3>
           <div className="mt-4 space-y-3">
             {products.length === 0 ? (
               <p className="text-sm text-text-muted">

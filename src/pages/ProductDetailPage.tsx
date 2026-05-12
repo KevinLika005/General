@@ -96,8 +96,8 @@ export function ProductDetailPage() {
         />
       </section>
 
-      <section className="section-shell pb-10">
-        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] 2xl:grid-cols-[1.02fr_0.92fr_0.62fr]">
+      <section className="catalog-shell pb-10">
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] 3xl:grid-cols-[minmax(0,0.98fr)_minmax(0,0.76fr)_clamp(19rem,20vw,23rem)]">
           <div>
             <ProductGallery images={product.images} title={product.title} />
           </div>
@@ -113,9 +113,9 @@ export function ProductDetailPage() {
               <p className="mt-4 line-label">
                 {product.brand} / {product.model} / {product.year} / {product.sku}
               </p>
-              <h1 className="mt-2 text-[1.8rem] leading-[1.08] text-navy sm:text-[2.15rem] xl:text-[2.45rem]">{product.title}</h1>
-              <p className="mt-3 text-sm text-text-muted">{product.excerpt}</p>
-              <p className="mt-3 text-sm text-text-muted">{product.description}</p>
+              <h1 className="mt-2 max-w-[18ch] text-[clamp(1.85rem,1.35rem+1.3vw,2.85rem)] leading-[1.02] text-navy">{product.title}</h1>
+              <p className="text-measure mt-3 text-sm text-text-muted">{product.excerpt}</p>
+              <p className="text-measure mt-3 text-sm text-text-muted">{product.description}</p>
 
               <div className="mt-5 grid gap-px border border-border bg-border md:grid-cols-2">
                 {keyFacts.map((fact) => (
@@ -129,7 +129,7 @@ export function ProductDetailPage() {
 
             <div className="surface-panel p-5">
               <p className="kicker">Inspection highlights</p>
-              <h2 className="mt-2 text-[1.35rem] text-navy">Why buyers ask about this listing</h2>
+              <h2 className="mt-2 text-[clamp(1.3rem,1rem+0.7vw,1.6rem)] text-navy">Why buyers ask about this listing</h2>
               <div className="mt-4 grid gap-3">
                 {product.keyFeatures.map((feature) => (
                   <div className="flex items-start gap-3 border border-border bg-surface-subtle p-4" key={feature}>
@@ -141,7 +141,7 @@ export function ProductDetailPage() {
             </div>
           </div>
 
-          <aside className="xl:order-last xl:col-span-2 xl:sticky xl:top-[8.65rem] xl:self-start 2xl:col-span-1 2xl:order-none">
+          <aside className="xl:order-last xl:col-span-2 xl:sticky xl:top-[8.65rem] xl:self-start 3xl:col-span-1 3xl:order-none">
             <div className="surface-panel p-5">
               <p className="kicker">Inquiry actions</p>
               <p className="mt-2 text-2xl font-bold text-navy">{formatProductPrice(product)}</p>
@@ -182,8 +182,8 @@ export function ProductDetailPage() {
         </div>
       </section>
 
-      <section className="section-shell pb-10">
-        <div className="grid gap-6 xl:grid-cols-[1fr_0.82fr]">
+      <section className="catalog-shell pb-10">
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(19rem,0.82fr)]">
           <ProductSpecs specs={technicalSpecs} />
 
           <div className="space-y-6">
@@ -241,7 +241,7 @@ export function ProductDetailPage() {
         </div>
       </section>
 
-      <section className="section-shell pb-20">
+      <section className="catalog-shell pb-20">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           {previous ? (
             <Button to={routes.product(previous.categorySlug, previous.slug)} variant="secondary">
@@ -267,10 +267,10 @@ export function ProductDetailPage() {
         </div>
       </section>
 
-      <section className="section-shell pb-24">
-        <h2 className="text-[1.8rem] text-navy">Similar products</h2>
+      <section className="catalog-shell pb-24">
+        <h2 className="text-[clamp(1.6rem,1.2rem+0.9vw,2rem)] text-navy">Similar products</h2>
         {relatedProducts.length > 0 ? (
-          <div className="mt-6 grid gap-4 md:grid-cols-2 2xl:grid-cols-3">
+          <div className="product-grid mt-6">
             {relatedProducts.map((relatedProduct) => (
               <ProductCard key={relatedProduct.id} product={relatedProduct} />
             ))}
@@ -291,7 +291,7 @@ export function ProductDetailPage() {
 
       <div className="h-24 xl:hidden" />
       <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-surface-page/95 px-4 py-3 backdrop-blur xl:hidden">
-        <div className="mx-auto flex max-w-7xl items-center gap-3">
+        <div className="wide-shell flex items-center gap-3">
           <div className="min-w-0 flex-1">
             <p className="text-xs uppercase tracking-[0.12em] text-text-muted">Inquiry action</p>
             <p className="truncate text-base font-semibold text-navy">{formatProductPrice(product)}</p>

@@ -14,20 +14,20 @@ export function BrandsPage() {
       <section className="page-shell">
         <div className="surface-panel p-5 sm:p-6">
           <p className="kicker">Brands</p>
-          <h1 className="mt-2 text-[2rem] text-navy sm:text-[2.5rem]">Browse the manufacturers represented in current stock</h1>
-          <p className="mt-3 max-w-3xl text-sm text-text-muted sm:text-base">
+          <h1 className="mt-2 max-w-[18ch] text-[clamp(1.85rem,1.25rem+1.5vw,3rem)] leading-[1.02] text-navy">Browse the manufacturers represented in current stock</h1>
+          <p className="text-measure mt-3 text-sm text-text-muted sm:text-base">
             Each brand tile leads back into the catalog filtered by manufacturer so buyers can move quickly from brand preference to specific available listings.
           </p>
         </div>
       </section>
 
-      <section className="section-shell pb-24">
+      <section className="wide-shell pb-24">
         <SectionHeader
           description="Machinery, roadwork, transport, support-equipment, and parts brands already present in the current static catalog."
           eyebrow="Manufacturers"
           title="Active brands in the catalog"
         />
-        <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="brand-grid mt-6">
           {brands.map((brand) => (
             <BrandCard brand={brand} key={brand.slug} />
           ))}

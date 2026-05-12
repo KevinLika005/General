@@ -21,8 +21,8 @@ export function ContactPage() {
         />
       </section>
 
-      <section className="section-shell pb-12">
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <section className="wide-shell pb-12">
+        <div className="support-grid">
           <article className="toolbar-panel p-4 shadow-card">
             <Phone className="h-5 w-5 text-primary" />
             <h2 className="mt-3 text-[1.1rem] text-navy">Sales Phone</h2>
@@ -47,8 +47,8 @@ export function ContactPage() {
         </div>
       </section>
 
-      <section className="section-shell pb-24">
-        <div className="grid gap-8 xl:grid-cols-[1fr_0.8fr]">
+      <section className="catalog-shell pb-24">
+        <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(19rem,0.82fr)]">
           <ContactForm />
           <div className="space-y-5">
             <div className="surface-panel p-5">

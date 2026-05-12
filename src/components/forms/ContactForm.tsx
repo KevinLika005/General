@@ -14,8 +14,8 @@ export function ContactForm() {
     <form className="surface-panel p-5 sm:p-6" onSubmit={handleSubmit}>
       <div className="border-b border-border pb-5">
         <p className="kicker">Contact sales</p>
-        <h2 className="mt-2 text-[1.75rem] text-navy xl:text-[1.9rem]">Start a direct equipment conversation</h2>
-        <p className="mt-3 text-sm text-text-muted">
+        <h2 className="mt-2 max-w-[20ch] text-[clamp(1.55rem,1.2rem+0.8vw,1.95rem)] text-navy">Start a direct equipment conversation</h2>
+        <p className="text-measure mt-3 text-sm text-text-muted">
           Use this form for product details, quote requests, inspection planning, delivery coordination, or contract discussion.
         </p>
       </div>
