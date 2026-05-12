@@ -14,10 +14,11 @@ export function RequestQuotePage() {
     <>
       <section className="page-shell">
         <div className="surface-panel p-6 sm:p-8">
-          <p className="eyebrow">Request quote</p>
-          <h1 className="mt-3 text-[2.8rem] text-brand-navy sm:text-[4rem]">Send a commercial request to Rafin Machinery</h1>
+          <p className="kicker">Request quote</p>
+          <h1 className="mt-3 text-[2.45rem] text-brand-navy sm:text-[3.2rem]">Send a commercial request to Rafin Machinery</h1>
           <p className="mt-4 max-w-3xl text-base text-text-muted sm:text-lg">
-            Use one form for product information, price quotations, inspection appointments, delivery discussion, or a contract request.
+            Use one form for product information, quotations, inspection appointments, delivery
+            discussion, or contract follow-up. This is an inquiry-only process, not a checkout.
           </p>
         </div>
       </section>

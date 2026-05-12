@@ -21,19 +21,23 @@ export function AboutPage() {
 
       <section className="section-shell pb-20">
         <div className="grid gap-5 lg:grid-cols-[1fr_1fr]">
-          <article className="rounded-3xl border border-border bg-surface-card p-7 shadow-card">
+          <article className="toolbar-panel p-7 shadow-card">
             <h2 className="text-3xl text-brand-navy">What this business does</h2>
             <p className="mt-4 text-text-muted">
-              {companyProfile.parentName} uses this catalog to present machinery, transport assets, attachments, spare parts, and site-support equipment in a way that helps company buyers evaluate inventory before making direct contact.
+              {companyProfile.parentName} uses this catalog to present machinery, transport assets,
+              attachments, spare parts, and site-support equipment in a way that helps company buyers evaluate inventory before making direct contact.
             </p>
             <p className="mt-4 text-text-muted">
-              It is intentionally not a corporate portfolio rebuild. The sales process remains offline, negotiated, and document-driven.
+              It is intentionally not a corporate portfolio rebuild. The sales process remains
+              offline, negotiated, inspection-aware, and document-driven.
             </p>
           </article>
-          <article className="rounded-3xl border border-border bg-surface-card p-7 shadow-card">
+          <article className="toolbar-panel p-7 shadow-card">
             <h2 className="text-3xl text-brand-navy">Why buyers use it</h2>
             <p className="mt-4 text-text-muted">
-              Buyers can review specs, condition, availability, inspection notes, and pricing style, then collect multiple products into one Inquiry List before requesting a quote or contract discussion.
+              Buyers can review specs, condition, availability, inspection notes, and pricing
+              style, then collect multiple products into one Inquiry List before requesting a quote
+              or contract discussion.
             </p>
           </article>
         </div>
@@ -42,7 +46,7 @@ export function AboutPage() {
       <section className="section-shell pb-24">
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {trustFeatures.map((feature) => (
-            <article className="rounded-3xl border border-border bg-surface-card p-5 shadow-card" key={feature.title}>
+            <article className="toolbar-panel p-5 shadow-card" key={feature.title}>
               <h2 className="text-2xl text-brand-navy">{feature.title}</h2>
               <p className="mt-3 text-text-muted">{feature.description}</p>
             </article>

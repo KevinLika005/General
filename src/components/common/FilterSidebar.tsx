@@ -21,7 +21,7 @@ interface FilterSidebarProps {
 }
 
 function inputClasses() {
-  return 'mt-2 h-11 w-full rounded-xl border border-border bg-surface-card px-3 py-2 text-sm text-text placeholder:text-text-muted/70 shadow-card';
+  return 'mt-2 h-11 w-full rounded-[6px] border border-border bg-surface-card px-3 py-2 text-sm text-text placeholder:text-text-muted/70 shadow-card';
 }
 
 export function FilterSidebar({
@@ -32,24 +32,24 @@ export function FilterSidebar({
   setFilters,
 }: FilterSidebarProps) {
   return (
-    <div className="rounded-3xl border border-border bg-surface-card p-5 shadow-card">
+    <div className="rounded-xl border border-border bg-surface-card shadow-card">
       <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 px-5 pt-5">
           <SlidersHorizontal className="h-5 w-5 text-brand-gold" />
-          <h2 className="text-lg font-semibold text-brand-navy">Filter Catalog</h2>
+          <h2 className="text-lg font-semibold text-brand-navy">Filter Results</h2>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 px-5 pt-5">
           <button
             className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-gold"
             onClick={clearAllFilters}
             type="button"
           >
-            Clear Filters
+            Clear All
           </button>
           {onClose ? (
             <button
               aria-label="Close filters"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border text-text lg:hidden"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-[6px] border border-border text-text lg:hidden"
               onClick={onClose}
               type="button"
             >
@@ -59,7 +59,7 @@ export function FilterSidebar({
         </div>
       </div>
 
-      <div className="mt-5 space-y-5">
+      <div className="mt-5 space-y-5 px-5 pb-5">
         <label className="block text-sm text-text-muted">
           Category
           <select
@@ -276,9 +276,16 @@ export function FilterSidebar({
       </div>
 
       {onClose ? (
-        <Button className="mt-6 w-full lg:hidden" onClick={onClose} variant="primary">
-          Apply Filters
-        </Button>
+        <div className="sticky bottom-0 border-t border-border bg-surface-card px-5 py-4 lg:hidden">
+          <div className="grid gap-3 sm:grid-cols-2">
+            <Button onClick={clearAllFilters} variant="secondary">
+              Clear All
+            </Button>
+            <Button className="w-full" onClick={onClose} variant="primary">
+              Apply Filters
+            </Button>
+          </div>
+        </div>
       ) : null}
     </div>
   );

@@ -5,7 +5,7 @@ import { EmptyState } from '../components/common/EmptyState';
 import { FilterSidebar } from '../components/common/FilterSidebar';
 import { ProductCard } from '../components/common/ProductCard';
 import { SearchBar } from '../components/common/SearchBar';
-import { categories, products } from '../data/catalog';
+import { categories, products, sortOptions } from '../data/catalog';
 import { usePageMetadata } from '../hooks/usePageMetadata';
 import { useCatalogFilters } from '../hooks/useCatalogFilters';
 import { routes } from '../utils/routes';
@@ -127,26 +127,32 @@ export function CatalogPage() {
     <>
       <section className="page-shell">
         <div className="surface-panel p-6 sm:p-8">
-          <p className="eyebrow">Equipment catalog</p>
-          <h1 className="mt-3 text-[2.8rem] text-brand-navy sm:text-[4rem]">Browse the full machinery and industrial catalog</h1>
+          <p className="kicker">Products</p>
+          <h1 className="mt-3 text-[2.45rem] text-brand-navy sm:text-[3.2rem]">
+            Browse machinery, parts, attachments, trucks, and site equipment
+          </h1>
           <p className="mt-4 max-w-3xl text-base text-text-muted sm:text-lg">
-            Search by machine type, brand, model, SKU, availability, price band, and location. Shortlist products into your Inquiry List before requesting a quote or contract discussion.
+            Search inventory, narrow by brand or stock status, and add products to your Inquiry
+            List before requesting information, pricing, inspection, or contract follow-up.
           </p>
-          <div className="mt-6 max-w-3xl">
+
+          <div className="mt-6 grid gap-4 xl:grid-cols-[1fr_auto] xl:items-center">
             <SearchBar
-              buttonLabel="Search"
-              onChange={(value) =>
-                setFilters((current) => ({ ...current, search: value }))
-              }
-              placeholder="Search by machine, brand, model, SKU, category or tag"
+              buttonLabel="Search Catalog"
+              onChange={(value) => setFilters((current) => ({ ...current, search: value }))}
+              onSubmit={() => undefined}
+              placeholder="Search by machine, brand, model, SKU, category, location, or technical keyword"
               value={filters.search}
             />
+            <div className="subtle-panel px-4 py-3 text-sm text-text-muted">
+              Inquiry-only workflow. Final pricing, inspection, delivery, and contract handling stay offline.
+            </div>
           </div>
 
           <div className="mt-6 flex flex-wrap gap-2">
             {categories.map((category) => (
               <Link
-                className="rounded-full border border-border bg-surface-subtle px-3 py-2 text-sm text-text-muted transition hover:border-brand-gold hover:text-brand-navy"
+                className="rounded-[4px] border border-border bg-surface-subtle px-3 py-2 text-sm text-text-muted transition hover:border-brand-gold hover:text-brand-navy"
                 key={category.slug}
                 to={routes.category(category.slug)}
               >
@@ -169,13 +175,16 @@ export function CatalogPage() {
           </div>
 
           <div>
-            <div className="rounded-3xl border border-border bg-surface-card px-5 py-4 shadow-card">
+            <div className="toolbar-panel px-5 py-4 shadow-card">
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <SlidersHorizontal className="h-5 w-5 text-brand-gold" />
-                  <p className="text-sm text-text-muted">
-                    <span className="font-semibold text-brand-navy">{filteredProducts.length}</span> products found
-                  </p>
+                  <div>
+                    <p className="text-sm font-semibold text-brand-navy">{filteredProducts.length} results</p>
+                    <p className="text-xs text-text-muted">
+                      Ready for direct inquiry, quote preparation, inspection review, or contract discussion
+                    </p>
+                  </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <button
@@ -189,7 +198,7 @@ export function CatalogPage() {
                   <label className="text-sm text-text-muted">
                     Sort
                     <select
-                      className="ml-3 h-10 rounded-xl border border-border bg-surface-card px-3 py-2 text-sm text-text"
+                      className="ml-3 h-10 rounded-[6px] border border-border bg-surface-card px-3 py-2 text-sm text-text"
                       onChange={(event) =>
                         setFilters((current) => ({
                           ...current,
@@ -198,22 +207,21 @@ export function CatalogPage() {
                       }
                       value={filters.sort}
                     >
-                      <option value="featured">Featured</option>
-                      <option value="newest">Newest</option>
-                      <option value="price-asc">Price low to high</option>
-                      <option value="price-desc">Price high to low</option>
-                      <option value="year-desc">Year newest</option>
-                      <option value="hours-asc">Hours low to high</option>
+                      {sortOptions.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
                     </select>
                   </label>
                 </div>
               </div>
 
               {appliedFilters.length > 0 ? (
-                <div className="mt-4 flex flex-wrap gap-3">
+                <div className="mt-4 flex flex-wrap items-center gap-3">
                   {appliedFilters.map((filter) => (
                     <button
-                      className="rounded-full border border-border bg-surface-subtle px-4 py-2 text-sm text-text-muted transition hover:border-brand-gold hover:text-brand-navy"
+                      className="rounded-[4px] border border-border bg-surface-subtle px-4 py-2 text-sm text-text-muted transition hover:border-brand-gold hover:text-brand-navy"
                       key={`${filter.key}-${filter.label}`}
                       onClick={() => clearFilter(filter.key)}
                       type="button"
@@ -221,6 +229,13 @@ export function CatalogPage() {
                       {filter.label} x
                     </button>
                   ))}
+                  <button
+                    className="text-sm font-semibold text-brand-navy underline decoration-brand-gold underline-offset-4"
+                    onClick={clearAllFilters}
+                    type="button"
+                  >
+                    Clear all filters
+                  </button>
                 </div>
               ) : null}
             </div>
@@ -229,13 +244,15 @@ export function CatalogPage() {
               <div className="mt-8">
                 <EmptyState
                   actionLabel="Clear Filters"
-                  description="No products match the current search and filter combination. Reset filters and try a broader machinery or brand query."
+                  description="No products match the current search and filter combination. Reset the filters or return to the broader catalog view."
                   onAction={clearAllFilters}
+                  secondaryActionLabel="Browse Equipment"
+                  secondaryActionTo={routes.equipment}
                   title="No matching products"
                 />
               </div>
             ) : (
-              <div className="mt-8 grid gap-5 md:grid-cols-2 2xl:grid-cols-3">
+              <div className="mt-8 grid gap-4 md:grid-cols-2 2xl:grid-cols-3">
                 {filteredProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
@@ -246,7 +263,12 @@ export function CatalogPage() {
       </section>
 
       {mobileFiltersOpen ? (
-        <div className="fixed inset-0 z-50 bg-brand-navy/45 px-4 py-6 xl:hidden">
+        <div
+          aria-label="Catalog filters"
+          aria-modal="true"
+          className="fixed inset-0 z-50 bg-brand-navy/45 px-4 py-6 xl:hidden"
+          role="dialog"
+        >
           <div className="mx-auto max-w-lg">
             <FilterSidebar
               clearAllFilters={clearAllFilters}

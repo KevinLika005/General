@@ -1,4 +1,4 @@
-import { Trash2 } from 'lucide-react';
+import { ClipboardList, Trash2 } from 'lucide-react';
 import { Button } from '../components/common/Button';
 import { EmptyState } from '../components/common/EmptyState';
 import { ImageWithFallback } from '../components/common/ImageWithFallback';
@@ -21,10 +21,13 @@ export function InquiryListPage() {
     <>
       <section className="page-shell">
         <div className="surface-panel p-6 sm:p-8">
-          <p className="eyebrow">Inquiry List</p>
-          <h1 className="mt-3 text-[2.8rem] text-brand-navy sm:text-[4rem]">Build one request around the products your team needs</h1>
+          <p className="kicker">Inquiry List</p>
+          <h1 className="mt-3 text-[2.45rem] text-brand-navy sm:text-[3.2rem]">
+            Build one useful request around the products your team needs
+          </h1>
           <p className="mt-4 max-w-3xl text-base text-text-muted sm:text-lg">
-            This is an inquiry workspace for machines, parts, and notes. Use it to send one consolidated quote or contract request to Rafin.
+            This is not a checkout. Your Inquiry List helps Rafin prepare product details, pricing,
+            inspection options, delivery discussion, and contract next steps.
           </p>
         </div>
       </section>
@@ -32,7 +35,11 @@ export function InquiryListPage() {
       <section className="section-shell pb-24">
         {products.length === 0 ? (
           <EmptyState
-            description="Add products from the catalog to start a company inquiry. You can still contact Rafin directly for a general request."
+            actionLabel="Browse Equipment"
+            actionTo={routes.equipment}
+            description="Add products from the catalog to start a company inquiry, or contact the sales team directly for a general machinery request."
+            secondaryActionLabel="Contact Sales"
+            secondaryActionTo={routes.contact}
             title="Your Inquiry List is empty"
           />
         ) : (
@@ -43,22 +50,22 @@ export function InquiryListPage() {
 
                 return (
                   <article
-                    className="grid gap-5 rounded-3xl border border-border bg-surface-card p-5 shadow-card sm:grid-cols-[240px_1fr]"
+                    className="grid gap-5 rounded-xl border border-border bg-surface-card p-5 shadow-card sm:grid-cols-[220px_1fr]"
                     key={product.id}
                   >
                     <ImageWithFallback alt={product.title} aspectRatio="video" className="h-full" src={product.images[0]?.src} />
                     <div>
                       <div className="flex flex-wrap items-start justify-between gap-4">
-                        <div>
-                          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-gold">
-                            {product.brand}
+                        <div className="min-w-0">
+                          <p className="line-label">
+                            {product.brand} / {product.model} / {product.sku}
                           </p>
-                          <h2 className="mt-2 text-2xl text-brand-navy">{product.title}</h2>
+                          <h2 className="mt-2 text-[1.9rem] text-brand-navy">{product.title}</h2>
                           <p className="mt-3 text-sm text-text-muted">{product.excerpt}</p>
                         </div>
                         <button
                           aria-label={`Remove ${product.title}`}
-                          className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border text-text-muted transition hover:border-brand-gold hover:text-brand-navy"
+                          className="inline-flex h-10 w-10 items-center justify-center rounded-[6px] border border-border text-text-muted transition hover:border-brand-gold hover:text-brand-navy"
                           onClick={() => removeItem(product.id)}
                           type="button"
                         >
@@ -67,12 +74,12 @@ export function InquiryListPage() {
                       </div>
 
                       <div className="mt-5 grid gap-4 sm:grid-cols-3">
-                        <div className="rounded-2xl border border-border bg-surface-subtle p-4">
-                          <p className="text-xs uppercase tracking-[0.14em] text-text-muted">Price</p>
+                        <div className="rounded-xl border border-border bg-surface-subtle p-4">
+                          <p className="line-label">Price mode</p>
                           <p className="mt-2 text-lg font-semibold text-brand-navy">{formatProductPrice(product)}</p>
                           <p className="mt-2 text-sm text-text-muted">{getProductAvailabilityLabel(product.availability)}</p>
                         </div>
-                        <label className="rounded-2xl border border-border bg-surface-subtle p-4 text-sm text-text-muted">
+                        <label className="rounded-xl border border-border bg-surface-subtle p-4 text-sm text-text-muted">
                           Quantity
                           <input
                             className="field mt-3"
@@ -82,18 +89,18 @@ export function InquiryListPage() {
                             value={item?.quantity ?? 1}
                           />
                         </label>
-                        <div className="rounded-2xl border border-border bg-surface-subtle p-4">
-                          <p className="text-xs uppercase tracking-[0.14em] text-text-muted">Location</p>
+                        <div className="rounded-xl border border-border bg-surface-subtle p-4">
+                          <p className="line-label">Location</p>
                           <p className="mt-2 text-lg font-semibold text-brand-navy">{product.location}</p>
                         </div>
                       </div>
 
                       <label className="mt-4 block text-sm text-text-muted">
-                        Internal or buyer notes
+                        Product notes for Rafin
                         <textarea
                           className="field mt-3 min-h-[120px]"
                           onChange={(event) => updateNotes(product.id, event.target.value)}
-                          placeholder="Example: include delivery timing, serial confirmation, compatibility, spare parts, or inspection requests."
+                          placeholder="Example: request inspection timing, serial confirmation, compatibility checks, spare parts, or delivery discussion."
                           value={item?.notes ?? ''}
                         />
                       </label>
@@ -103,21 +110,43 @@ export function InquiryListPage() {
               })}
             </div>
 
-            <aside className="xl:sticky xl:top-28 xl:self-start">
+            <aside className="space-y-5 xl:sticky xl:top-28 xl:self-start">
               <div className="surface-panel p-6">
-                <p className="eyebrow">Request summary</p>
+                <p className="kicker">Request summary</p>
                 <h2 className="mt-3 text-3xl text-brand-navy">{items.length} product line(s)</h2>
                 <p className="mt-3 text-text-muted">
-                  Continue to the request form when your list reflects the machines, tools, or parts your company wants to discuss.
+                  Continue to the request form when your list reflects the machines, tools, or
+                  parts your company wants to discuss.
                 </p>
-                <div className="mt-6 grid gap-3">
-                  <Button to={routes.requestQuote}>Continue to Request</Button>
-                  <Button onClick={clearItems} variant="dark">
+                <div className="mt-5 grid gap-3">
+                  <Button to={routes.requestQuote}>Request Quote</Button>
+                  <Button onClick={clearItems} variant="secondary">
                     Clear Inquiry List
                   </Button>
-                  <Button to={routes.equipment} variant="secondary">
+                  <Button to={routes.equipment} variant="ghost">
                     Continue Browsing
                   </Button>
+                </div>
+              </div>
+
+              <div className="surface-panel p-6">
+                <div className="flex items-start gap-3">
+                  <ClipboardList className="mt-0.5 h-5 w-5 text-brand-gold" />
+                  <div>
+                    <h2 className="text-xl text-brand-navy">What Rafin prepares from this list</h2>
+                    <div className="mt-4 grid gap-3">
+                      {[
+                        'Pricing mode and commercial clarification for each selected product',
+                        'Inspection options, condition review, and documentation follow-up',
+                        'Bundled parts or accessory discussion where relevant',
+                        'Contract, delivery, and next-step coordination after buyer contact',
+                      ].map((point) => (
+                        <div className="rounded-xl border border-border bg-surface-subtle p-4 text-sm text-text-muted" key={point}>
+                          {point}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </aside>

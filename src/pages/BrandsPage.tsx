@@ -13,8 +13,8 @@ export function BrandsPage() {
     <>
       <section className="page-shell">
         <div className="surface-panel p-6 sm:p-8">
-          <p className="eyebrow">Brands</p>
-          <h1 className="mt-3 text-[2.8rem] text-brand-navy sm:text-[4rem]">Browse the manufacturers represented in current stock</h1>
+          <p className="kicker">Brands</p>
+          <h1 className="mt-3 text-[2.8rem] text-brand-navy sm:text-[3.8rem]">Browse the manufacturers represented in current stock</h1>
           <p className="mt-4 max-w-3xl text-base text-text-muted sm:text-lg">
             Each brand tile leads back into the catalog filtered by manufacturer so buyers can move quickly from brand preference to specific available listings.
           </p>
@@ -27,7 +27,7 @@ export function BrandsPage() {
           eyebrow="Manufacturers"
           title="Active brands in the Rafin catalog"
         />
-        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {brands.map((brand) => (
             <BrandCard brand={brand} key={brand.slug} />
           ))}

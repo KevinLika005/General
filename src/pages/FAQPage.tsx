@@ -16,15 +16,15 @@ export function FAQPage() {
         <SectionHeader
           description="Answers for buyers, contractors, and procurement teams using the inquiry-commerce machinery catalog."
           eyebrow="FAQ"
-          title="Common questions about buying through Rafin Machinery"
+          title="Common questions about the Rafin buyer process"
           titleAs="h1"
         />
       </section>
 
       <section className="section-shell pb-24">
-        <div className="grid gap-4">
+        <div className="grid gap-4 lg:grid-cols-2">
           {mainFaqs.map((faq) => (
-            <article className="rounded-3xl border border-border bg-surface-card p-5 shadow-card" key={faq.question}>
+            <article className="toolbar-panel p-5 shadow-card" key={faq.question}>
               <h2 className="text-2xl text-brand-navy">{faq.question}</h2>
               <p className="mt-3 text-text-muted">{faq.answer}</p>
             </article>

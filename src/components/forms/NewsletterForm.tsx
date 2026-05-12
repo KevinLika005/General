@@ -15,7 +15,7 @@ export function NewsletterForm() {
       <label className="block">
         <span className="sr-only">Email address</span>
         <input
-          className="h-11 w-full rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/45"
+          className="h-11 w-full rounded-[6px] border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/45"
           placeholder="name@company.com"
           required
           type="email"

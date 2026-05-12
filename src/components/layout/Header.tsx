@@ -1,4 +1,4 @@
-import { ChevronDown, ClipboardList, Menu, Phone, Search } from 'lucide-react';
+import { ChevronDown, ClipboardList, Menu, Phone } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import rafinLogo from '../../assets/rafin-logo.png';
@@ -15,30 +15,42 @@ interface HeaderProps {
 }
 
 const navLinks = [
-  { label: 'Catalog', to: routes.equipment, withMenu: true },
-  { label: 'Brands', to: routes.brands },
+  { label: 'Products', to: routes.equipment, withMenu: true },
+  { label: 'Solutions', to: routes.howItWorks },
+  { label: 'Services & Support', to: routes.howItWorks, withSupportMenu: true },
   { label: 'Available Now', to: routes.deals },
-  { label: 'How It Works', to: routes.howItWorks },
+  { label: 'Technical Library', to: routes.technicalLibrary },
   { label: 'Contact', to: routes.contact },
+];
+
+const supportLinks = [
+  { label: 'How It Works', to: routes.howItWorks },
+  { label: 'Financing & Contracts', to: routes.financingContracts },
+  { label: 'Delivery & Inspection', to: routes.deliveryInspection },
+  { label: 'FAQ', to: routes.faq },
+  { label: 'Brands', to: routes.brands },
 ];
 
 function navClass(isActive: boolean) {
   return [
-    'text-sm font-semibold transition',
+    'text-[0.8rem] font-semibold uppercase tracking-[0.08em] transition',
     isActive ? 'text-brand-navy' : 'text-text-muted hover:text-brand-navy',
   ].join(' ');
 }
 
 export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [supportMenuOpen, setSupportMenuOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [search, setSearch] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const supportRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     setMegaMenuOpen(false);
+    setSupportMenuOpen(false);
     setMobileOpen(false);
   }, [location.pathname]);
 
@@ -46,6 +58,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setMegaMenuOpen(false);
+        setSupportMenuOpen(false);
         setMobileOpen(false);
       }
     };
@@ -60,11 +73,11 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
 
   return (
     <>
-      <a className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-3 focus:py-2 focus:text-brand-navy" href="#main-content">
+      <a className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-[6px] focus:bg-white focus:px-3 focus:py-2 focus:text-brand-navy" href="#main-content">
         Skip to main content
       </a>
-      <header className="sticky top-0 z-40 border-b border-border bg-surface-page/95 backdrop-blur-md">
-        <div className="border-b border-border bg-brand-navy text-white">
+      <header className="sticky top-0 z-40 border-b border-border bg-surface-card/95 backdrop-blur-md">
+        <div className="border-b border-brand-navy/10 bg-brand-navy text-white">
           <div className="section-shell flex flex-wrap items-center justify-between gap-3 py-2 text-[0.72rem]">
             <div className="flex flex-wrap items-center gap-4">
               <a className="transition hover:text-brand-gold-soft" href={`tel:${companyProfile.phone}`}>
@@ -77,14 +90,14 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
             </div>
             <div className="flex items-center gap-3">
               <span>{companyProfile.topUtilityNote}</span>
-              <button aria-label="Language selector" className="rounded-md border border-white/15 px-2 py-1 text-white/80" type="button">
+              <button aria-label="Language selector" className="rounded-[4px] border border-white/15 px-2 py-1 text-white/80" type="button">
                 EN / SQ
               </button>
             </div>
           </div>
         </div>
 
-        <div className="section-shell grid min-h-[4.75rem] grid-cols-[auto_1fr_auto] items-center gap-4 py-4">
+        <div className="section-shell grid min-h-[4.5rem] grid-cols-[auto_1fr_auto] items-center gap-4 py-3">
           <Link className="flex items-center gap-3" to={routes.home}>
             <img
               alt="Rafin Company"
@@ -92,10 +105,10 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
               src={rafinLogo}
             />
             <div className="hidden xl:block">
-              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-brand-gold">
+              <p className="kicker">
                 Inquiry-commerce catalog
               </p>
-              <p className="text-sm text-text-muted">Machinery, equipment, trucks, parts, and tools</p>
+              <p className="text-sm text-text-muted">Construction machinery, tools, parts, trucks, and heavy equipment</p>
             </div>
           </Link>
 
@@ -144,6 +157,51 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
                     </div>
                     {megaMenuOpen ? <MegaMenu /> : null}
                   </div>
+                ) : link.withSupportMenu ? (
+                  <div
+                    className="relative"
+                    key={link.to}
+                    onBlurCapture={(event) => {
+                      if (!supportRef.current?.contains(event.relatedTarget as Node | null)) {
+                        setSupportMenuOpen(false);
+                      }
+                    }}
+                    onMouseEnter={() => setSupportMenuOpen(true)}
+                    onMouseLeave={() => setSupportMenuOpen(false)}
+                    ref={supportRef}
+                  >
+                    <div className="flex items-center gap-1.5">
+                      <NavLink className={({ isActive }) => navClass(isActive)} to={link.to}>
+                        {link.label}
+                      </NavLink>
+                      <button
+                        aria-expanded={supportMenuOpen}
+                        aria-label="Open services and support menu"
+                        className="p-1 text-text-muted transition hover:text-brand-navy"
+                        onClick={() => setSupportMenuOpen((current) => !current)}
+                        type="button"
+                      >
+                        <ChevronDown
+                          className={['h-4 w-4 transition', supportMenuOpen ? 'rotate-180' : ''].join(' ')}
+                        />
+                      </button>
+                    </div>
+                    {supportMenuOpen ? (
+                      <div className="absolute right-0 top-full z-40 mt-3 w-72 rounded-2xl border border-border bg-surface-card p-3 shadow-dropdown">
+                        <div className="grid gap-1">
+                          {supportLinks.map((supportLink) => (
+                            <NavLink
+                              className="rounded-[6px] px-3 py-3 text-sm font-medium text-brand-navy transition hover:bg-surface-subtle"
+                              key={supportLink.to}
+                              to={supportLink.to}
+                            >
+                              {supportLink.label}
+                            </NavLink>
+                          ))}
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
                 ) : (
                   <NavLink className={({ isActive }) => navClass(isActive)} key={link.to} to={link.to}>
                     {link.label}
@@ -154,13 +212,13 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
 
             <button
               aria-label="Open inquiry list summary"
-              className="hidden rounded-xl border border-border bg-surface-card px-3 py-2 text-sm font-semibold text-brand-navy transition hover:border-brand-gold md:inline-flex md:items-center md:gap-2"
+              className="hidden rounded-[6px] border border-border bg-surface-card px-3 py-2 text-[0.76rem] font-semibold uppercase tracking-[0.08em] text-brand-navy transition hover:border-brand-gold md:inline-flex md:items-center md:gap-2"
               onClick={onOpenInquirySummary}
               type="button"
             >
               <ClipboardList className="h-4 w-4" />
               Inquiry List
-              <span className="rounded-full border border-brand-gold bg-brand-gold px-2 py-0.5 text-[0.65rem] text-brand-navy">
+              <span className="rounded-[4px] border border-brand-gold bg-brand-gold px-2 py-0.5 text-[0.65rem] text-brand-navy">
                 {inquiryCount}
               </span>
             </button>
@@ -171,31 +229,33 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
 
             <a
               aria-label="Call Rafin sales"
-              className="hidden h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface-card text-brand-navy transition hover:border-brand-gold lg:inline-flex xl:hidden"
+              className="hidden h-11 w-11 items-center justify-center rounded-[6px] border border-border bg-surface-card text-brand-navy transition hover:border-brand-gold lg:inline-flex xl:hidden"
               href={`tel:${companyProfile.phone}`}
             >
               <Phone className="h-4 w-4" />
             </a>
 
             <button
-              aria-label="Search catalog"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface-card text-brand-navy transition hover:border-brand-gold lg:hidden"
-              onClick={submitSearch}
-              type="button"
-            >
-              <Search className="h-4 w-4" />
-            </button>
-
-            <button
               aria-expanded={mobileOpen}
               aria-label="Open mobile navigation"
-              className="rounded-xl border border-border bg-surface-card p-2.5 text-brand-navy xl:hidden"
+              className="rounded-[6px] border border-border bg-surface-card p-2.5 text-brand-navy xl:hidden"
               onClick={() => setMobileOpen(true)}
               type="button"
             >
               <Menu className="h-5 w-5" />
             </button>
           </div>
+        </div>
+
+        <div className="section-shell pb-4 lg:hidden">
+          <SearchBar
+            buttonLabel="Search"
+            compact
+            onChange={setSearch}
+            onSubmit={submitSearch}
+            placeholder="Search by machine, SKU, model, or part"
+            value={search}
+          />
         </div>
       </header>
 

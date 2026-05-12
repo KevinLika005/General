@@ -22,9 +22,14 @@ export function InquiryButton({
 
   return (
     <Button
+      aria-pressed={added}
       className={[fullWidth ? 'w-full' : '', className].filter(Boolean).join(' ')}
       disabled={disabled}
-      onClick={() => addItem(productId)}
+      onClick={() => {
+        if (!added && !disabled) {
+          addItem(productId);
+        }
+      }}
       size="sm"
       variant={added ? 'secondary' : 'primary'}
     >
@@ -35,11 +40,11 @@ export function InquiryButton({
           : 'Sold Reference'
         : compact
           ? added
-            ? 'Added'
-            : 'Add to Inquiry'
+            ? 'In Inquiry'
+            : 'Add Inquiry'
           : added
-            ? 'Added to Inquiry List'
-            : 'Add to Inquiry List'}
+            ? 'In Inquiry List'
+            : 'Add to Inquiry'}
     </Button>
   );
 }

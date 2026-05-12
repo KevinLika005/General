@@ -3,6 +3,7 @@ export const routes = {
   equipment: '/equipment',
   brands: '/brands',
   deals: '/deals',
+  technicalLibrary: '/technical-library',
   inquiryList: '/inquiry-list',
   requestQuote: '/request-quote',
   howItWorks: '/how-it-works',

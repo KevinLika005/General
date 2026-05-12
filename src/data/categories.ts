@@ -110,7 +110,7 @@ export const categories: EquipmentCategory[] = [
     description: 'This category is built for contractors, warehouses, precast yards, and mixed industrial operations that need lifting reach, handling reliability, and clear availability status.',
     heroImage: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1600&q=80',
     accent: 'from-stone-200/15 via-transparent to-transparent',
-    seoIntro: 'View cranes, telehandlers, forklifts, and access machines for commercial handling and lifting work. Product pages emphasize inspection readiness, availability, and direct inquiry rather than instant purchase.',
+    seoIntro: 'View cranes, telehandlers, forklifts, and access machines for commercial handling and lifting work. Product pages emphasize inspection readiness, availability, and direct inquiry rather than self-serve website agreement.',
     subcategories: liftingSubcategories,
   },
   {

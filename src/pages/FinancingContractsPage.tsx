@@ -13,7 +13,7 @@ export function FinancingContractsPage() {
     <>
       <section className="page-shell">
         <SectionHeader
-          description="The catalog supports contract-based sales and direct company-to-company negotiation rather than instant transaction handling."
+          description="The catalog supports contract-based sales and direct company-to-company negotiation rather than online transaction handling."
           eyebrow="Financing & contracts"
           title="Commercial terms are discussed directly with Rafin"
           titleAs="h1"
@@ -28,9 +28,9 @@ export function FinancingContractsPage() {
             'Commercial terms discussed directly with Rafin',
             'Invoices, documentation, and delivery terms handled after inquiry',
             'Inspection and logistics support can be part of the same discussion',
-            'No financing promise is made unless confirmed directly by Rafin',
+            'Payment terms and financing are discussed directly only when available',
           ].map((item) => (
-            <article className="rounded-3xl border border-border bg-surface-card p-5 text-text-muted shadow-card" key={item}>
+            <article className="toolbar-panel p-5 text-text-muted shadow-card" key={item}>
               {item}
             </article>
           ))}

@@ -15,16 +15,17 @@ export function Footer() {
   return (
     <footer className="mt-16 border-t border-brand-navy/10 bg-brand-navy text-white">
       <div className="section-shell py-12">
-        <div className="mb-8 rounded-3xl border border-white/10 bg-white/5 px-6 py-6 lg:flex lg:items-center lg:justify-between">
+        <div className="mb-8 rounded-2xl border border-white/10 bg-white/5 px-6 py-6 lg:flex lg:items-center lg:justify-between">
           <div>
-            <p className="eyebrow">Buyer support</p>
-            <h2 className="mt-2 text-[2rem] text-white">Build an Inquiry List, then request quote or contract terms</h2>
+            <p className="kicker text-brand-gold-soft">Buyer support</p>
+            <h2 className="mt-2 text-[2rem] text-white">Build an Inquiry List, then request a quote, document pack, or contract discussion</h2>
             <p className="mt-3 max-w-2xl text-sm text-white/70">
-              This website is a procurement-oriented catalog. Final negotiation, inspection, contract, and document handling stay direct between companies.
+              This website is a procurement-oriented catalog. Final negotiation, inspection,
+              documentation, delivery, and contract handling stay direct between companies.
             </p>
           </div>
           <div className="mt-4 lg:mt-0">
-            <Link className="inline-flex min-h-12 items-center justify-center rounded-xl border border-brand-gold bg-brand-gold px-6 text-sm font-semibold text-brand-navy transition hover:bg-brand-gold-soft" to={routes.requestQuote}>
+            <Link className="inline-flex min-h-12 items-center justify-center rounded-[6px] border border-brand-gold bg-brand-gold px-6 text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-brand-navy transition hover:bg-brand-gold-soft" to={routes.requestQuote}>
               Request Quote
             </Link>
           </div>
@@ -69,7 +70,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-[0.74rem] font-semibold uppercase tracking-[0.2em] text-white">Catalog Categories</h3>
+            <h3 className="text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-white">Products</h3>
             <div className="mt-4 grid gap-2 text-sm text-white/70">
               {categories.map((category) => (
                 <Link className="transition hover:text-brand-gold-soft" key={category.slug} to={routes.category(category.slug)}>
@@ -80,29 +81,30 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-[0.74rem] font-semibold uppercase tracking-[0.2em] text-white">Buyer Support</h3>
+            <h3 className="text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-white">Services & Support</h3>
             <div className="mt-4 grid gap-2 text-sm text-white/70">
               <Link to={routes.inquiryList}>Inquiry List</Link>
               <Link to={routes.requestQuote}>Request Quote</Link>
               <Link to={routes.howItWorks}>How It Works</Link>
               <Link to={routes.financingContracts}>Financing & Contracts</Link>
               <Link to={routes.deliveryInspection}>Delivery & Inspection</Link>
+              <Link to={routes.technicalLibrary}>Technical Library</Link>
               <Link to={routes.faq}>FAQ</Link>
               <Link to={routes.contact}>Contact</Link>
             </div>
           </div>
 
           <div>
-            <h3 className="text-[0.74rem] font-semibold uppercase tracking-[0.2em] text-white">Get new machinery alerts</h3>
+            <h3 className="text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-white">Technical and stock updates</h3>
             <p className="mt-3 text-sm text-white/70">
-              Request stock alerts for available-now machinery, parts, and fleet arrivals.
+              Request stock alerts for available-now machinery, parts, and technical-document support updates.
             </p>
             <NewsletterForm />
           </div>
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-6 text-sm text-white/55">
-          <p>Inquiry-first catalog. Contracts and commercial terms are handled directly with Rafin.</p>
+          <p>Inquiry-first catalog. Quotes, contracts, inspection, and commercial terms are handled directly with Rafin.</p>
           <div className="flex flex-wrap items-center gap-4">
             <Link to={routes.about}>About</Link>
             <Link to={routes.privacy}>Privacy</Link>

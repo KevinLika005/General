@@ -21,7 +21,7 @@ export const companyProfile: CompanyProfile = {
   hours: 'Mon - Sat, 08:00 - 18:00',
   heroHeadline: 'Construction Machinery, Equipment & Parts for Serious Work',
   heroSubheadline: 'Browse available machinery, attachments, spare parts, and site equipment. Request product details, pricing, inspection, or contract discussion directly with Rafin.',
-  topUtilityNote: 'B2B inquiry-commerce only. No instant online purchase.',
+  topUtilityNote: 'Inquiry-commerce only. Quote, inspection, and contract follow-up handled directly.',
   socialLinks: [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
     { label: 'Instagram', href: 'https://www.instagram.com/' },
@@ -31,42 +31,42 @@ export const companyProfile: CompanyProfile = {
 
 export const trustFeatures: TrustFeature[] = [
   {
-    title: 'Verified machinery details',
-    description: 'Listings include specification highlights, condition notes, and clear commercial context for professional buyers.',
+    title: 'Commercially useful listing detail',
+    description: 'Listings prioritize specification highlights, condition notes, and availability context for technical buyers.',
     icon: 'shield',
   },
   {
-    title: 'Company-to-company process',
-    description: 'Requests are handled directly with Rafin, suitable for procurement teams, contractors, and fleet operators.',
+    title: 'Company-to-company request handling',
+    description: 'Requests are reviewed directly with Rafin for procurement teams, contractors, and fleet operators.',
     icon: 'building',
   },
   {
     title: 'Inspection support',
-    description: 'Machines can be reviewed in person or prepared for scheduled inspection before contract confirmation.',
+    description: 'Machines can be reviewed in person or prepared for scheduled inspection before commercial confirmation.',
     icon: 'search',
   },
   {
     title: 'Delivery and logistics support',
-    description: 'Transport planning, export handling, and local delivery terms can be discussed after inquiry.',
+    description: 'Transport planning, export handling, and local delivery terms are handled after inquiry review.',
     icon: 'truck',
   },
   {
     title: 'Documentation support',
-    description: 'Invoices, serial verification, and relevant machine documents are handled through the offline sales process.',
+    description: 'Inspection references, serial verification, and relevant machine documents are handled through the offline sales process.',
     icon: 'file',
   },
   {
-    title: 'Direct commercial handling',
-    description: 'There is no instant purchase flow. Negotiation, contracts, and approvals are handled directly with Rafin.',
+    title: 'No online payment flow',
+    description: 'Negotiation, contracts, approvals, and final agreement remain direct between companies and off the website.',
     icon: 'wrench',
   },
 ];
 
 export const homeStats = [
-  { label: 'Inventory records', value: '30+' },
-  { label: 'Attachments & parts', value: 'Stock-backed' },
-  { label: 'Commercial handling', value: 'B2B only' },
-  { label: 'Process', value: 'Offline agreement' },
+  { label: 'Inventory records', value: '33' },
+  { label: 'Product groups', value: '7' },
+  { label: 'Active brands', value: '29' },
+  { label: 'Sales model', value: 'B2B only' },
 ];
 
 export const budgetBands = [
@@ -79,22 +79,37 @@ export const budgetBands = [
 export const howItWorksSteps = [
   {
     step: '01',
-    title: 'Browse inventory',
-    description: 'Search by machine type, brand, model, SKU, stock status, or budget band.',
+    title: 'Browse the catalog',
+    description: 'Search by machine type, brand, model, SKU, stock status, or technical keyword.',
   },
   {
     step: '02',
-    title: 'Add products to the inquiry list',
-    description: 'Collect one or multiple products and keep internal notes for your procurement or technical team.',
+    title: 'Build an Inquiry List',
+    description: 'Collect one or multiple products and keep notes for procurement, technical review, or contract follow-up.',
   },
   {
     step: '03',
-    title: 'Request product details, quote, or contract discussion',
-    description: 'Choose whether you need pricing, technical clarification, inspection scheduling, delivery planning, or contract review.',
+    title: 'Send one commercial request',
+    description: 'Ask for pricing, technical clarification, inspection scheduling, delivery planning, or contract discussion.',
   },
   {
     step: '04',
-    title: 'Rafin follows up directly',
-    description: 'Inspection, negotiation, documentation, delivery, and company-to-company agreement are handled offline after contact.',
+    title: 'Rafin reviews your request',
+    description: 'The sales team checks product availability, technical fit, documentation, and the right commercial follow-up path.',
+  },
+  {
+    step: '05',
+    title: 'Inspection and clarification follow',
+    description: 'Machine review, clarifications, bundled parts, and documentation discussion continue directly with Rafin.',
+  },
+  {
+    step: '06',
+    title: 'Contract terms are handled offline',
+    description: 'Invoices, approvals, contract wording, and payment terms are discussed company-to-company after the inquiry stage.',
+  },
+  {
+    step: '07',
+    title: 'Delivery and logistics are coordinated',
+    description: 'Pickup, local delivery, export planning, and handover details are discussed once the commercial basis is agreed.',
   },
 ];

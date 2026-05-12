@@ -36,7 +36,7 @@ export function ImageWithFallback({
             : '';
 
   return (
-    <div className={['relative overflow-hidden rounded-2xl bg-surface-subtle', aspectClass, className].filter(Boolean).join(' ')}>
+    <div className={['relative overflow-hidden rounded-xl bg-surface-subtle', aspectClass, className].filter(Boolean).join(' ')}>
       {!failed && src ? (
         <img
           alt={alt}
@@ -46,8 +46,8 @@ export function ImageWithFallback({
           src={src}
         />
       ) : (
-        <div className="industrial-grid flex h-full min-h-[220px] w-full items-end bg-surface-subtle p-5">
-          <div className="rounded-2xl border border-border bg-white/80 px-4 py-4 text-text shadow-card backdrop-blur-sm">
+        <div className="technical-grid flex h-full min-h-[220px] w-full items-end bg-surface-subtle p-5">
+          <div className="rounded-xl border border-border bg-white/90 px-4 py-4 text-text shadow-card">
             <div className="flex items-center gap-3">
               <ImageOff className="h-5 w-5 text-brand-gold" />
               <span className="text-sm font-semibold text-brand-navy">

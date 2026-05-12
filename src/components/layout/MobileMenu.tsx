@@ -16,12 +16,19 @@ interface MobileMenuProps {
 }
 
 const mainLinks = [
-  { label: 'Catalog', to: routes.equipment },
-  { label: 'Brands', to: routes.brands },
+  { label: 'Products', to: routes.equipment },
+  { label: 'Solutions', to: routes.howItWorks },
+  { label: 'Services & Support', to: routes.howItWorks },
   { label: 'Available Now', to: routes.deals },
-  { label: 'How It Works', to: routes.howItWorks },
-  { label: 'Financing', to: routes.financingContracts },
+  { label: 'Technical Library', to: routes.technicalLibrary },
   { label: 'Contact', to: routes.contact },
+];
+
+const supportLinks = [
+  { label: 'Financing & Contracts', to: routes.financingContracts },
+  { label: 'Delivery & Inspection', to: routes.deliveryInspection },
+  { label: 'FAQ', to: routes.faq },
+  { label: 'Brands', to: routes.brands },
 ];
 
 export function MobileMenu({
@@ -44,7 +51,7 @@ export function MobileMenu({
         <img alt="Rafin Company" className="h-10 w-auto object-contain" src={rafinLogo} />
         <button
           aria-label="Close mobile menu"
-          className="rounded-xl border border-border p-2 text-brand-navy"
+          className="rounded-[6px] border border-border p-2 text-brand-navy"
           onClick={onClose}
           type="button"
         >
@@ -63,7 +70,7 @@ export function MobileMenu({
         >
           <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" />
           <input
-            className="h-11 w-full rounded-xl border border-border bg-surface-card pl-11 pr-4 text-text placeholder:text-text-muted/70"
+            className="h-11 w-full rounded-[6px] border border-border bg-surface-card pl-11 pr-4 text-text placeholder:text-text-muted/70"
             onChange={(event) => onSearchChange(event.target.value)}
             placeholder="Search machinery, brand, model..."
             type="search"
@@ -74,7 +81,7 @@ export function MobileMenu({
         <div className="mt-5 grid gap-2">
           {mainLinks.map((link) => (
             <NavLink
-              className="rounded-2xl border border-border bg-surface-card px-4 py-3 text-sm font-semibold text-brand-navy shadow-card"
+              className="rounded-[6px] border border-border bg-surface-card px-4 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-brand-navy shadow-card"
               key={link.to}
               onClick={onClose}
               to={link.to}
@@ -84,11 +91,12 @@ export function MobileMenu({
           ))}
         </div>
 
-        <div className="mt-5 rounded-3xl border border-border bg-brand-navy p-4 text-white shadow-card">
+        <div className="mt-5 rounded-xl border border-border bg-brand-navy p-4 text-white shadow-card">
           <div className="flex items-center justify-between gap-3">
             <div>
-              <p className="eyebrow">Inquiry List</p>
+              <p className="kicker text-brand-gold-soft">Inquiry List</p>
               <p className="mt-2 text-base text-white">{inquiryCount} item(s)</p>
+              <p className="mt-2 text-sm text-white/75">Save products here before requesting pricing, inspection, or contract follow-up.</p>
             </div>
             <Button onClick={onClose} size="sm" to={routes.inquiryList}>
               Open List
@@ -103,12 +111,12 @@ export function MobileMenu({
         </div>
 
         <div className="mt-6 space-y-2">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-navy">Equipment Groups</h2>
+          <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-brand-navy">Product Groups</h2>
           {categories.map((category) => {
             const isExpanded = expanded === category.slug;
 
             return (
-              <div className="rounded-2xl border border-border bg-surface-card shadow-card" key={category.slug}>
+              <div className="rounded-xl border border-border bg-surface-card shadow-card" key={category.slug}>
                 <button
                   aria-expanded={isExpanded}
                   className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left"
@@ -116,7 +124,7 @@ export function MobileMenu({
                   type="button"
                 >
                   <div>
-                    <p className="text-[0.74rem] font-semibold uppercase tracking-[0.16em] text-brand-navy">
+                    <p className="text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-brand-navy">
                       {category.title}
                     </p>
                     <p className="mt-1 text-sm text-text-muted">{category.shortDescription}</p>
@@ -128,7 +136,7 @@ export function MobileMenu({
                 {isExpanded ? (
                   <div className="border-t border-border px-4 py-3">
                     <Link
-                      className="mb-3 block rounded-xl border border-brand-gold/30 bg-brand-gold/10 px-3 py-2 text-sm font-medium text-brand-navy"
+                      className="mb-3 block rounded-[6px] border border-brand-gold/30 bg-brand-gold/10 px-3 py-2 text-sm font-medium text-brand-navy"
                       onClick={onClose}
                       to={routes.category(category.slug)}
                     >
@@ -137,7 +145,7 @@ export function MobileMenu({
                     <div className="grid gap-1">
                       {category.subcategories.map((subcategory) => (
                         <Link
-                          className="rounded-lg px-3 py-2 text-sm text-text-muted"
+                          className="rounded-[6px] px-3 py-2 text-sm text-text-muted"
                           key={subcategory.slug}
                           onClick={onClose}
                           to={`${routes.category(category.slug)}?subcategory=${encodeURIComponent(subcategory.title)}`}
@@ -151,6 +159,22 @@ export function MobileMenu({
               </div>
             );
           })}
+        </div>
+
+        <div className="mt-6 rounded-xl border border-border bg-surface-card p-4 shadow-card">
+          <p className="line-label">Support links</p>
+          <div className="mt-3 grid gap-1">
+            {supportLinks.map((link) => (
+              <NavLink
+                className="rounded-[6px] px-3 py-2 text-sm text-brand-navy transition hover:bg-surface-subtle"
+                key={link.to}
+                onClick={onClose}
+                to={link.to}
+              >
+                {link.label}
+              </NavLink>
+            ))}
+          </div>
         </div>
       </div>
     </div>

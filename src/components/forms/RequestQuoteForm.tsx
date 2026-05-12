@@ -9,6 +9,14 @@ interface RequestQuoteFormProps {
   inquiryItems: InquiryItem[];
 }
 
+function RequiredLabel({ children }: { children: string }) {
+  return (
+    <span>
+      {children} <span aria-hidden="true" className="text-brand-gold">*</span>
+    </span>
+  );
+}
+
 export function RequestQuoteForm({ inquiryItems }: RequestQuoteFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const products = useMemo(
@@ -26,130 +34,149 @@ export function RequestQuoteForm({ inquiryItems }: RequestQuoteFormProps) {
     <form className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]" onSubmit={handleSubmit}>
       <div className="surface-panel p-6 sm:p-8">
         <div>
-          <p className="eyebrow">Request quote or contract</p>
-          <h2 className="mt-3 text-3xl text-brand-navy">Submit one B2B request for one or many products</h2>
+          <p className="kicker">Request quote or contract</p>
+          <h2 className="mt-3 text-[2.35rem] text-brand-navy">Prepare one commercial request for your selected products</h2>
           <p className="mt-3 text-text-muted">
-            Rafin will review your request and continue the commercial discussion directly with your company.
+            Use this form for product information, quotation, inspection planning, delivery
+            discussion, or contract follow-up. Fields marked with * are required.
           </p>
         </div>
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <label className="block text-sm text-text-muted">
-            Full name
-            <input className="field" name="fullName" required type="text" />
-          </label>
-          <label className="block text-sm text-text-muted">
-            Company name
-            <input className="field" name="companyName" required type="text" />
-          </label>
-          <label className="block text-sm text-text-muted">
-            NIPT / VAT number
-            <input className="field" name="vatNumber" type="text" />
-          </label>
-          <label className="block text-sm text-text-muted">
-            Email
-            <input className="field" name="email" required type="email" />
-          </label>
-          <label className="block text-sm text-text-muted">
-            Phone
-            <input className="field" name="phone" required type="tel" />
-          </label>
-          <label className="block text-sm text-text-muted">
-            Country / city
-            <input className="field" name="location" required type="text" />
-          </label>
-          <label className="block text-sm text-text-muted">
-            Preferred contact method
-            <select className="field" name="contactMethod" required>
-              <option value="">Choose one</option>
-              <option value="email">Email</option>
-              <option value="phone">Phone</option>
-              <option value="whatsapp">WhatsApp</option>
-            </select>
-          </label>
-          <label className="block text-sm text-text-muted">
-            Inquiry type
-            <select className="field" name="inquiryType" required>
-              <option value="">Choose one</option>
-              <option value="product-information">Request information</option>
-              <option value="price-quotation">Request quote</option>
-              <option value="contract-request">Request contract discussion</option>
-              <option value="inspection-appointment">Request inspection</option>
-              <option value="delivery-information">Request delivery information</option>
-            </select>
-          </label>
-          <label className="block text-sm text-text-muted">
-            Timeline
-            <select className="field" name="timeline" required>
-              <option value="">Choose one</option>
-              <option value="immediate">Immediate</option>
-              <option value="1-2-weeks">1-2 weeks</option>
-              <option value="this-month">This month</option>
-              <option value="flexible">Flexible</option>
-            </select>
-          </label>
-          <label className="block text-sm text-text-muted">
-            Delivery preference
-            <select className="field" name="deliveryPreference">
-              <option value="">Choose one</option>
-              <option value="pickup">Pickup</option>
-              <option value="local-delivery">Local delivery</option>
-              <option value="export-shipping">Export shipping</option>
-              <option value="to-be-discussed">To be discussed</option>
-            </select>
-          </label>
-          <label className="block text-sm text-text-muted sm:col-span-2">
-            Message
-            <textarea
-              className="field min-h-[180px]"
-              name="message"
-              placeholder="Tell Rafin what you need, whether inspection is required, and any delivery, contract, or compatibility details that matter."
-              required
-            />
-          </label>
+        <div className="mt-8 space-y-8">
+          <fieldset className="grid gap-4 border-t border-border pt-6 sm:grid-cols-2">
+            <legend className="mb-1 text-lg font-semibold text-brand-navy">Buyer and company details</legend>
+            <label className="block text-sm text-text-muted">
+              <RequiredLabel>Full name</RequiredLabel>
+              <input className="field" name="fullName" required type="text" />
+            </label>
+            <label className="block text-sm text-text-muted">
+              <RequiredLabel>Company name</RequiredLabel>
+              <input className="field" name="companyName" required type="text" />
+            </label>
+            <label className="block text-sm text-text-muted">
+              Company role
+              <input className="field" name="companyRole" type="text" />
+            </label>
+            <label className="block text-sm text-text-muted">
+              NIPT / VAT number
+              <input className="field" name="vatNumber" type="text" />
+            </label>
+            <label className="block text-sm text-text-muted">
+              <RequiredLabel>Email</RequiredLabel>
+              <input className="field" name="email" required type="email" />
+            </label>
+            <label className="block text-sm text-text-muted">
+              <RequiredLabel>Phone</RequiredLabel>
+              <input className="field" name="phone" required type="tel" />
+            </label>
+            <label className="block text-sm text-text-muted sm:col-span-2">
+              <RequiredLabel>Country / city</RequiredLabel>
+              <input className="field" name="location" required type="text" />
+            </label>
+          </fieldset>
+
+          <fieldset className="grid gap-4 border-t border-border pt-6 sm:grid-cols-2">
+            <legend className="mb-1 text-lg font-semibold text-brand-navy">Inquiry intent and timing</legend>
+            <label className="block text-sm text-text-muted">
+              <RequiredLabel>Inquiry type</RequiredLabel>
+              <select className="field" name="inquiryType" required>
+                <option value="">Choose one</option>
+                <option value="product-information">Request information</option>
+                <option value="price-quotation">Request quote</option>
+                <option value="contract-request">Request contract discussion</option>
+                <option value="inspection-appointment">Request inspection</option>
+                <option value="delivery-information">Request delivery information</option>
+              </select>
+            </label>
+            <label className="block text-sm text-text-muted">
+              <RequiredLabel>Preferred contact method</RequiredLabel>
+              <select className="field" name="contactMethod" required>
+                <option value="">Choose one</option>
+                <option value="email">Email</option>
+                <option value="phone">Phone</option>
+                <option value="whatsapp">WhatsApp</option>
+              </select>
+            </label>
+            <label className="block text-sm text-text-muted">
+              <RequiredLabel>Timeline</RequiredLabel>
+              <select className="field" name="timeline" required>
+                <option value="">Choose one</option>
+                <option value="immediate">Immediate</option>
+                <option value="1-2-weeks">1-2 weeks</option>
+                <option value="this-month">This month</option>
+                <option value="flexible">Flexible</option>
+              </select>
+            </label>
+            <label className="block text-sm text-text-muted">
+              Delivery preference
+              <select className="field" name="deliveryPreference">
+                <option value="">Choose one</option>
+                <option value="pickup">Pickup</option>
+                <option value="local-delivery">Local delivery</option>
+                <option value="export-shipping">Export shipping</option>
+                <option value="to-be-discussed">To be discussed</option>
+              </select>
+            </label>
+          </fieldset>
+
+          <fieldset className="border-t border-border pt-6">
+            <legend className="mb-1 text-lg font-semibold text-brand-navy">Request message</legend>
+            <label className="block text-sm text-text-muted">
+              <RequiredLabel>Message</RequiredLabel>
+              <textarea
+                className="field min-h-[180px]"
+                name="message"
+                placeholder="Tell Rafin what you need, whether inspection is required, and any delivery, contract, compatibility, or documentation details that matter."
+                required
+              />
+            </label>
+          </fieldset>
         </div>
 
-        <label className="mt-6 flex items-start gap-3 rounded-2xl border border-border bg-surface-subtle p-4 text-sm text-text-muted">
+        <label className="mt-6 flex items-start gap-3 rounded-xl border border-border bg-surface-subtle p-4 text-sm text-text-muted">
           <input className="mt-1 h-4 w-4 accent-[rgb(var(--brand-gold))]" name="consent" required type="checkbox" />
           <span>
-            I understand this request starts a direct company-to-company discussion. Final price, inspection scope, and contract terms are handled directly with Rafin.
+            I understand this request starts an offline company-to-company process. Rafin will
+            follow up about product details, pricing, inspection, negotiation, and contract next
+            steps directly.
           </span>
         </label>
 
         <div className="mt-6 flex flex-wrap gap-3">
-          <Button type="submit">Submit B2B Request</Button>
+          <Button type="submit">Submit Request</Button>
           <Button to="/equipment" variant="secondary">Continue Browsing</Button>
         </div>
         {submitted ? (
           <p aria-live="polite" className="mt-4 text-sm text-brand-navy" role="status">
-            Your request has been recorded in this frontend build. Rafin will contact your company to continue with product details, inspection planning, negotiation, and contract discussion. No online purchase has been placed.
+            Your request has been prepared. Rafin will contact you to continue with product
+            details, inspection, negotiation, and contract process.
           </p>
         ) : null}
       </div>
 
-      <aside className="space-y-6">
+      <aside className="space-y-6 xl:sticky xl:top-28 xl:self-start">
         <div className="surface-panel p-6">
-          <p className="eyebrow">Inquiry summary</p>
-          <h3 className="mt-3 text-2xl text-brand-navy">Products in this request</h3>
+          <p className="kicker">Selected products</p>
+          <h3 className="mt-3 text-[2rem] text-brand-navy">Products in this request</h3>
           <div className="mt-4 space-y-3">
             {products.length === 0 ? (
               <p className="text-sm text-text-muted">
-                No products are currently in the Inquiry List. You can still submit a general request.
+                No products are currently in the Inquiry List. You can still submit a general
+                machinery request.
               </p>
             ) : (
               products.map((product) => {
                 const item = inquiryItems.find((entry) => entry.productId === product.id);
 
                 return (
-                  <div className="rounded-2xl border border-border bg-surface-subtle px-4 py-3" key={product.id}>
-                    <p className="font-semibold text-brand-navy">{product.title}</p>
+                  <div className="rounded-xl border border-border bg-surface-subtle px-4 py-3" key={product.id}>
+                    <p className="line-label">{product.brand} / {product.model}</p>
+                    <p className="mt-1 font-semibold text-brand-navy">{product.title}</p>
                     <p className="mt-1 text-sm text-text-muted">
                       Qty {item?.quantity ?? 1} | {formatProductPrice(product)}
                     </p>
                     <p className="mt-1 text-xs text-text-muted">{getProductAvailabilityLabel(product.availability)}</p>
-                    {item?.notes ? (
-                      <p className="mt-2 text-sm text-text-muted">Notes: {item.notes}</p>
-                    ) : null}
+                    {item?.notes ? <p className="mt-2 text-sm text-text-muted">Notes: {item.notes}</p> : null}
                   </div>
                 );
               })
@@ -161,24 +188,24 @@ export function RequestQuoteForm({ inquiryItems }: RequestQuoteFormProps) {
           <div className="flex items-start gap-3">
             <Building2 className="mt-1 h-5 w-5 text-brand-gold" />
             <div>
-              <h3 className="text-xl text-brand-navy">Company-to-company process</h3>
+              <h3 className="text-xl text-brand-navy">What happens next</h3>
               <p className="mt-2 text-sm text-text-muted">
-                This catalog supports buyer research and initial inquiry only. Contract negotiation happens offline.
+                This form helps Rafin route your request quickly without turning the website into a self-serve transaction flow.
               </p>
             </div>
           </div>
           <div className="mt-4 grid gap-3">
-            <div className="flex items-start gap-3 rounded-2xl border border-border bg-surface-subtle p-4">
+            <div className="flex items-start gap-3 rounded-xl border border-border bg-surface-subtle p-4">
               <ClipboardList className="mt-0.5 h-4 w-4 text-brand-gold" />
-              <p className="text-sm text-text-muted">Submit one request for multiple machines, parts, or site equipment items.</p>
+              <p className="text-sm text-text-muted">Rafin reviews the selected products, quantities, notes, and the type of support you need.</p>
             </div>
-            <div className="flex items-start gap-3 rounded-2xl border border-border bg-surface-subtle p-4">
+            <div className="flex items-start gap-3 rounded-xl border border-border bg-surface-subtle p-4">
               <FileText className="mt-0.5 h-4 w-4 text-brand-gold" />
-              <p className="text-sm text-text-muted">Inspection notes, documentation, delivery scope, and contract terms can be clarified after contact.</p>
+              <p className="text-sm text-text-muted">Inspection notes, documentation, delivery scope, and contract details can then be clarified directly.</p>
             </div>
-            <div className="flex items-start gap-3 rounded-2xl border border-border bg-surface-subtle p-4">
+            <div className="flex items-start gap-3 rounded-xl border border-border bg-surface-subtle p-4">
               <ShieldCheck className="mt-0.5 h-4 w-4 text-brand-gold" />
-              <p className="text-sm text-text-muted">This frontend build supports direct inquiry only, with no automatic transaction or instant order flow.</p>
+              <p className="text-sm text-text-muted">No online payment or automatic agreement happens on this website.</p>
             </div>
           </div>
         </div>

@@ -22,10 +22,10 @@ export function HowItWorksPage() {
       </section>
 
       <section className="section-shell pb-20">
-        <div className="grid gap-5 lg:grid-cols-4">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {howItWorksSteps.map((step) => (
-            <article className="rounded-3xl border border-border bg-surface-card p-5 shadow-card" key={step.step}>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-gold">
+            <article className="toolbar-panel p-5 shadow-card" key={step.step}>
+              <p className="text-sm font-semibold uppercase tracking-[0.12em] text-brand-gold">
                 {step.step}
               </p>
               <h2 className="mt-4 text-2xl text-brand-navy">{step.title}</h2>
@@ -36,14 +36,17 @@ export function HowItWorksPage() {
       </section>
 
       <section className="section-shell pb-24">
-        <div className="rounded-3xl bg-brand-navy p-7 text-white shadow-card">
+        <div className="hero-band rounded-2xl p-7 text-white shadow-card">
           <h2 className="text-3xl text-white">What happens after you send an inquiry</h2>
-          <div className="mt-5 grid gap-4 sm:grid-cols-2">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-white/75">
+          <div className="mt-5 grid gap-4 sm:grid-cols-3">
+            <div className="rounded-xl border border-white/10 bg-white/5 p-5 text-white/75">
               Rafin reviews the products in your Inquiry List and replies with technical details, availability context, and the next commercial step.
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-white/75">
-              Contract terms, inspection planning, documentation, delivery scope, and commercial discussion are handled directly with Rafin.
+            <div className="rounded-xl border border-white/10 bg-white/5 p-5 text-white/75">
+              Inspection planning, documentation review, and negotiation continue directly with the sales team.
+            </div>
+            <div className="rounded-xl border border-white/10 bg-white/5 p-5 text-white/75">
+              Contract terms, payment terms, and delivery scope are handled offline between companies rather than through the website.
             </div>
           </div>
           <div className="mt-6">

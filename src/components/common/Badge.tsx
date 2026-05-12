@@ -7,7 +7,7 @@ interface BadgeProps {
 
 export function Badge({ children, tone = 'slate' }: BadgeProps) {
   const tones = {
-    gold: 'border-brand-gold/25 bg-brand-gold/10 text-brand-navy',
+    gold: 'border-brand-gold/30 bg-brand-gold/10 text-brand-ink',
     green: 'border-status-available/15 bg-status-available-bg text-status-available',
     slate: 'border-border bg-surface-subtle text-text-muted',
     red: 'border-status-sold/15 bg-status-sold-bg text-status-sold',
@@ -18,7 +18,7 @@ export function Badge({ children, tone = 'slate' }: BadgeProps) {
   return (
     <span
       className={[
-        'inline-flex items-center rounded-full border px-2.5 py-1 text-[0.7rem] font-semibold',
+        'inline-flex items-center rounded-[4px] border px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.08em]',
         tones[tone],
       ].join(' ')}
     >

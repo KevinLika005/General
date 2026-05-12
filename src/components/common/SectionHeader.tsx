@@ -17,9 +17,9 @@ export function SectionHeader({
 
   return (
     <div className={align === 'center' ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl'}>
-      {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
-      <TitleTag className="mt-2 text-[2rem] text-brand-navy sm:text-[3rem]">{title}</TitleTag>
-      {description ? <p className="mt-3 max-w-2xl text-sm text-text-muted sm:text-base">{description}</p> : null}
+      {eyebrow ? <p className="kicker">{eyebrow}</p> : null}
+      <TitleTag className="mt-2 text-[2.15rem] text-brand-navy sm:text-[2.7rem]">{title}</TitleTag>
+      {description ? <p className="mt-3 max-w-2xl text-sm text-text-muted sm:text-[0.98rem]">{description}</p> : null}
     </div>
   );
 }

@@ -33,22 +33,22 @@ function isLinkProps(props: ButtonProps): props is LinkProps {
 
 function getClasses(variant: ButtonVariant, size: ButtonSize, className?: string) {
   const base =
-    'inline-flex items-center justify-center gap-2 rounded-xl border font-semibold transition duration-200 disabled:cursor-not-allowed disabled:opacity-60';
+    'inline-flex items-center justify-center gap-2 rounded-[6px] border font-semibold uppercase tracking-[0.08em] transition duration-200 disabled:cursor-not-allowed disabled:opacity-60';
   const variants: Record<ButtonVariant, string> = {
     primary:
-      'border-brand-gold bg-brand-gold text-brand-navy hover:border-brand-gold hover:bg-brand-gold-soft',
+      'border-brand-gold bg-brand-gold text-brand-ink hover:border-brand-gold hover:bg-brand-gold-soft',
     secondary:
       'border-border bg-surface-card text-brand-navy hover:border-brand-navy hover:bg-surface-subtle',
     ghost:
-      'border-transparent bg-transparent text-text-muted hover:text-brand-navy',
+      'border-transparent bg-transparent text-brand-navy hover:border-border hover:bg-surface-subtle',
     dark:
       'border-brand-navy bg-brand-navy text-white hover:bg-brand-ink',
   };
   const sizes: Record<ButtonSize, string> = {
-    sm: 'min-h-10 px-4 text-sm',
-    md: 'min-h-11 px-5 text-sm',
-    lg: 'min-h-12 px-6 text-base',
-    xl: 'min-h-14 px-7 text-base',
+    sm: 'min-h-9 px-3.5 text-[0.72rem]',
+    md: 'min-h-11 px-4.5 text-[0.76rem]',
+    lg: 'min-h-12 px-5.5 text-[0.8rem]',
+    xl: 'min-h-14 px-6.5 text-[0.82rem]',
   };
 
   return [base, variants[variant], sizes[size], className].filter(Boolean).join(' ');

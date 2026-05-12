@@ -17,6 +17,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
 import { RequestQuotePage } from './pages/RequestQuotePage';
+import { TechnicalLibraryPage } from './pages/TechnicalLibraryPage';
 import { TermsPage } from './pages/TermsPage';
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path="/equipment/:categorySlug/:productSlug" element={<ProductDetailPage />} />
             <Route path="/brands" element={<BrandsPage />} />
             <Route path="/deals" element={<DealsPage />} />
+            <Route path="/technical-library" element={<TechnicalLibraryPage />} />
             <Route path="/inquiry-list" element={<InquiryListPage />} />
             <Route path="/request-quote" element={<RequestQuotePage />} />
             <Route path="/how-it-works" element={<HowItWorksPage />} />

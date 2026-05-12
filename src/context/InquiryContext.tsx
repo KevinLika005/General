@@ -97,11 +97,13 @@ export function InquiryProvider({ children }: { children: ReactNode }) {
         );
       },
       updateQuantity: (productId: string, quantity: number) => {
+        const safeQuantity = Number.isFinite(quantity) && quantity > 0 ? quantity : 1;
+
         setItems((currentItems) =>
           currentItems
             .map((item) =>
               item.productId === productId
-                ? { ...item, quantity: Math.max(1, quantity) }
+                ? { ...item, quantity: safeQuantity }
                 : item,
             )
             .filter((item) => item.quantity > 0),

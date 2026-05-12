@@ -13,14 +13,16 @@ export function ContactForm() {
   return (
     <form className="surface-panel p-6 sm:p-8" onSubmit={handleSubmit}>
       <div>
-        <p className="eyebrow">Contact sales</p>
-        <h2 className="mt-3 text-3xl text-brand-navy">Start a direct equipment conversation</h2>
+        <p className="kicker">Contact sales</p>
+        <h2 className="mt-3 text-[2.35rem] text-brand-navy">Start a direct equipment conversation</h2>
         <p className="mt-3 text-text-muted">
-          Use this form for product details, company quote requests, inspection planning, delivery coordination, or contract discussion. This is an inquiry-only workflow and not an online purchase.
+          Use this form for product details, company quote requests, inspection planning, delivery
+          coordination, or contract discussion. Fields marked with required browser validation are
+          needed for follow-up.
         </p>
       </div>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+      <div className="mt-6 grid gap-4 border-t border-border pt-6 sm:grid-cols-2">
         <label className="block text-sm text-text-muted">
           Full name
           <input className="field" name="fullName" required type="text" />
@@ -82,9 +84,9 @@ export function ContactForm() {
         </label>
       </div>
 
-      <label className="mt-6 flex items-start gap-3 rounded-2xl border border-border bg-surface-subtle p-4 text-sm text-text-muted">
+      <label className="mt-6 flex items-start gap-3 rounded-xl border border-border bg-surface-subtle p-4 text-sm text-text-muted">
         <input className="mt-1 h-4 w-4 accent-[rgb(var(--brand-gold))]" name="consent" required type="checkbox" />
-        <span>I understand this message starts a direct company-to-company inquiry. No online purchase or order confirmation happens on this website.</span>
+        <span>I understand this message starts a direct company-to-company inquiry. No online payment or automatic agreement happens on this website.</span>
       </label>
 
       <Button className="mt-6" type="submit">
@@ -92,7 +94,8 @@ export function ContactForm() {
       </Button>
       {submitted ? (
         <p aria-live="polite" className="mt-4 text-sm text-brand-navy" role="status">
-          Your inquiry has been recorded in this frontend build. Rafin will follow up to continue with product details, inspection, negotiation, delivery planning, or contract discussion.
+          Your inquiry has been recorded in this frontend build. Rafin will follow up to continue
+          with product details, inspection, negotiation, delivery planning, or contract discussion.
         </p>
       ) : null}
     </form>
