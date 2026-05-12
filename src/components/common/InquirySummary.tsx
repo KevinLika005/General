@@ -1,4 +1,5 @@
 import { ArrowRight, ClipboardList, Trash2, X } from 'lucide-react';
+import { useEffect, useRef } from 'react';
 import { useInquiryList } from '../../hooks/useInquiryList';
 import { getProductAvailabilityLabel, getProductsByIds } from '../../utils/catalog';
 import { formatProductPrice } from '../../utils/formatPrice';
@@ -14,6 +15,26 @@ interface InquirySummaryProps {
 export function InquirySummary({ onClose, open }: InquirySummaryProps) {
   const { clearItems, itemCount, items, removeItem } = useInquiryList();
   const products = getProductsByIds(items.map((item) => item.productId));
+  const panelRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    const panel = panelRef.current;
+    const focusable = panel?.querySelector<HTMLElement>('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    focusable?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose, open]);
 
   if (!open) {
     return null;
@@ -23,15 +44,21 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
     <>
       <button
         aria-label="Close inquiry summary"
-        className="fixed inset-0 z-40 bg-black/60"
+        className="fixed inset-0 z-40 bg-surface-blue/45"
         onClick={onClose}
         type="button"
       />
-      <aside aria-label="Inquiry summary" aria-modal="true" className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col border-l border-border bg-surface-page shadow-dropdown" role="dialog">
-        <div className="flex items-center justify-between border-b border-border px-6 py-5">
+      <aside
+        aria-label="Inquiry summary"
+        aria-modal="true"
+        className="fixed bottom-0 right-0 z-50 flex h-[90vh] w-full max-w-[28rem] flex-col border-l border-border bg-surface-page shadow-dropdown xl:top-0 xl:h-full"
+        ref={panelRef}
+        role="dialog"
+      >
+        <div className="flex items-center justify-between border-b border-border px-5 py-4">
           <div>
             <p className="kicker">Inquiry List</p>
-            <h2 className="mt-2 text-[2rem] text-brand-navy">{itemCount} requested item(s)</h2>
+            <h2 className="mt-2 text-[1.5rem] text-navy xl:text-[1.8rem]">{itemCount} requested item(s)</h2>
             <p className="mt-2 text-sm text-text-muted">
               This is not a checkout. Rafin uses this list to prepare pricing, product details,
               inspection options, and contract next steps.
@@ -39,7 +66,7 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
           </div>
           <button
             aria-label="Close inquiry summary"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-[6px] border border-border text-text"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-none border border-border text-text"
             onClick={onClose}
             type="button"
           >
@@ -47,9 +74,9 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
           </button>
         </div>
 
-        <div className="flex-1 space-y-4 overflow-y-auto px-6 py-5">
+        <div className="flex-1 space-y-3 overflow-y-auto px-5 py-4">
           {products.length === 0 ? (
-            <div className="rounded-xl border border-dashed border-border bg-surface-card p-6 text-sm text-text-muted">
+            <div className="border border-dashed border-border bg-surface-card p-5 text-sm text-text-muted">
               No products in the Inquiry List yet. Add equipment, parts, or tools before requesting
               information, pricing, or contract follow-up.
             </div>
@@ -59,7 +86,7 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
 
               return (
                 <article
-                  className="rounded-xl border border-border bg-surface-card p-4 shadow-card"
+                  className="border border-border bg-surface-card p-4 shadow-card"
                   key={product.id}
                 >
                   <div className="flex items-start gap-4">
@@ -74,7 +101,7 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
                       <p className="line-label">
                         {product.brand} / {product.model}
                       </p>
-                      <h3 className="mt-2 text-base text-brand-navy">{product.title}</h3>
+                      <h3 className="mt-2 text-base text-navy">{product.title}</h3>
                       <p className="mt-2 text-sm text-text-muted">
                         Qty {item?.quantity ?? 1} | {formatProductPrice(product)}
                       </p>
@@ -84,7 +111,7 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
                     </div>
                     <button
                       aria-label={`Remove ${product.title}`}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-[6px] border border-border text-text-muted transition hover:border-brand-gold hover:text-brand-navy"
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-none border border-border text-text-muted transition hover:border-brand-gold hover:text-navy"
                       onClick={() => removeItem(product.id)}
                       type="button"
                     >
@@ -97,10 +124,10 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
           )}
         </div>
 
-        <div className="border-t border-border px-6 py-5">
-          <div className="rounded-xl border border-border bg-surface-card p-4">
+        <div className="border-t border-border px-5 py-4">
+          <div className="border border-border bg-surface-card p-4">
             <div className="flex items-start gap-3">
-              <ClipboardList className="mt-0.5 h-4 w-4 text-brand-gold" />
+              <ClipboardList className="mt-0.5 h-4 w-4 text-primary" />
               <p className="text-sm text-text-muted">
                 Continue when your team is ready for pricing, technical clarification, inspection,
                 or contract discussion.

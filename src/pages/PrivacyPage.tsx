@@ -15,7 +15,7 @@ export function PrivacyPage() {
         titleAs="h1"
         description="This frontend build currently keeps form interactions in the browser. Before production launch, Rafin should publish a full privacy notice covering inquiry records, contact data, retention, and follow-up handling."
       />
-      <div className="mt-8 rounded-3xl border border-border bg-surface-card p-7 text-text-muted shadow-card">
+      <div className="mt-8 border border-border bg-surface-card p-6 text-sm text-text-muted shadow-card">
         Rafin should confirm how inquiry data is stored, who can access it, how long it is retained, and which business systems receive it after a buyer submits a request.
       </div>
     </section>

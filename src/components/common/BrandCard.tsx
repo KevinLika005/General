@@ -5,13 +5,13 @@ import { Button } from './Button';
 
 export function BrandCard({ brand }: { brand: Brand }) {
   return (
-    <article className="toolbar-panel p-5 transition duration-200 hover:-translate-y-0.5 hover:shadow-hover">
-      <div className="inline-flex h-11 w-11 items-center justify-center rounded-[6px] border border-brand-gold/35 bg-brand-gold/10 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-brand-navy">
+    <article className="toolbar-panel p-4 transition duration-150 hover:border-primary hover:shadow-hover">
+      <div className="inline-flex h-10 w-10 items-center justify-center border border-primary/25 bg-surface-subtle text-[0.68rem] font-bold uppercase tracking-[0.14em] text-navy">
         {brand.logoText}
       </div>
-      <h3 className="mt-4 text-[1.65rem] text-brand-navy">{brand.name}</h3>
+      <h3 className="mt-4 text-[1.2rem] text-navy">{brand.name}</h3>
       <p className="mt-2 text-sm text-text-muted">{brand.description}</p>
-      <div className="mt-4 flex items-center justify-between gap-4 border-t border-border pt-4">
+      <div className="mt-4 flex items-center justify-between gap-4 border-t border-border pt-3">
         <span className="line-label">
           {brand.productCount} listings
         </span>

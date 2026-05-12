@@ -2,12 +2,12 @@ import type { ReactNode } from 'react';
 
 interface BadgeProps {
   children: ReactNode;
-  tone?: 'gold' | 'green' | 'slate' | 'red' | 'blue' | 'amber';
+  tone?: 'primary' | 'green' | 'slate' | 'red' | 'blue' | 'amber';
 }
 
 export function Badge({ children, tone = 'slate' }: BadgeProps) {
   const tones = {
-    gold: 'border-brand-gold/30 bg-brand-gold/10 text-brand-ink',
+    primary: 'border-primary/20 bg-surface-subtle text-primary-dark',
     green: 'border-status-available/15 bg-status-available-bg text-status-available',
     slate: 'border-border bg-surface-subtle text-text-muted',
     red: 'border-status-sold/15 bg-status-sold-bg text-status-sold',
@@ -18,7 +18,7 @@ export function Badge({ children, tone = 'slate' }: BadgeProps) {
   return (
     <span
       className={[
-        'inline-flex items-center rounded-[4px] border px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.08em]',
+        'inline-flex items-center rounded-none border px-2 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.06em]',
         tones[tone],
       ].join(' ')}
     >

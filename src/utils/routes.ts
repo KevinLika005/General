@@ -20,4 +20,6 @@ export const routes = {
   equipmentWithBrand: (brand: string) =>
     `/equipment?brand=${encodeURIComponent(brand)}`,
   equipmentSearch: (query: string) => `/equipment?q=${encodeURIComponent(query)}`,
+  equipmentWithSubcategory: (categorySlug: string, subcategory: string) =>
+    `/equipment/${categorySlug}?subcategory=${encodeURIComponent(subcategory)}`,
 };

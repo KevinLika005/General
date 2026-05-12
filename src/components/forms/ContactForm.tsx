@@ -11,18 +11,16 @@ export function ContactForm() {
   };
 
   return (
-    <form className="surface-panel p-6 sm:p-8" onSubmit={handleSubmit}>
-      <div>
+    <form className="surface-panel p-5 sm:p-6" onSubmit={handleSubmit}>
+      <div className="border-b border-border pb-5">
         <p className="kicker">Contact sales</p>
-        <h2 className="mt-3 text-[2.35rem] text-brand-navy">Start a direct equipment conversation</h2>
-        <p className="mt-3 text-text-muted">
-          Use this form for product details, company quote requests, inspection planning, delivery
-          coordination, or contract discussion. Fields marked with required browser validation are
-          needed for follow-up.
+        <h2 className="mt-2 text-[1.75rem] text-navy xl:text-[1.9rem]">Start a direct equipment conversation</h2>
+        <p className="mt-3 text-sm text-text-muted">
+          Use this form for product details, quote requests, inspection planning, delivery coordination, or contract discussion.
         </p>
       </div>
 
-      <div className="mt-6 grid gap-4 border-t border-border pt-6 sm:grid-cols-2">
+      <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <label className="block text-sm text-text-muted">
           Full name
           <input className="field" name="fullName" required type="text" />
@@ -44,14 +42,14 @@ export function ContactForm() {
           <input className="field" name="location" required type="text" />
         </label>
         <label className="block text-sm text-text-muted">
-          Inquiry type
+          Request type
           <select className="field" name="inquiryType" required>
             <option value="">Choose one</option>
             <option value="product-information">Request information</option>
             <option value="price-quotation">Request quote</option>
             <option value="contract-request">Request contract discussion</option>
+            <option value="document-request">Request documents</option>
             <option value="delivery-inspection">Delivery or inspection</option>
-            <option value="general-sales">General sales support</option>
           </select>
         </label>
         <label className="block text-sm text-text-muted">
@@ -84,8 +82,8 @@ export function ContactForm() {
         </label>
       </div>
 
-      <label className="mt-6 flex items-start gap-3 rounded-xl border border-border bg-surface-subtle p-4 text-sm text-text-muted">
-        <input className="mt-1 h-4 w-4 accent-[rgb(var(--brand-gold))]" name="consent" required type="checkbox" />
+      <label className="mt-6 flex items-start gap-3 border border-border bg-surface-subtle p-4 text-sm text-text-muted">
+        <input className="mt-1 h-4 w-4 accent-[rgb(var(--primary))]" name="consent" required type="checkbox" />
         <span>I understand this message starts a direct company-to-company inquiry. No online payment or automatic agreement happens on this website.</span>
       </label>
 
@@ -93,9 +91,8 @@ export function ContactForm() {
         Send Request
       </Button>
       {submitted ? (
-        <p aria-live="polite" className="mt-4 text-sm text-brand-navy" role="status">
-          Your inquiry has been recorded in this frontend build. Rafin will follow up to continue
-          with product details, inspection, negotiation, delivery planning, or contract discussion.
+        <p aria-live="polite" className="mt-4 text-sm text-navy" role="status">
+          Your inquiry has been recorded in this frontend build. Rafin will follow up directly to continue the commercial conversation.
         </p>
       ) : null}
     </form>

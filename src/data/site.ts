@@ -2,10 +2,10 @@ import type { CompanyProfile, SiteMetadata, TrustFeature } from './types';
 
 export const siteMetadata: SiteMetadata = {
   siteName: 'Rafin Machinery',
-  title: 'Rafin Machinery | B2B Machinery Catalog and Quote Requests',
-  description: 'Browse construction machinery, spare parts, attachments, transport equipment, and site support units. Request product details, inspection, pricing, and contract discussion directly with Rafin.',
+  title: 'Rafin Machinery | Technical Equipment Catalog and B2B Inquiry Requests',
+  description: 'Browse construction machinery, support equipment, attachments, and parts through a technical B2B catalog built for inquiry, quote, inspection, and contract follow-up.',
   ogType: 'website',
-  themeColor: '#111D4A',
+  themeColor: '#0928A4',
 };
 
 export const companyProfile: CompanyProfile = {

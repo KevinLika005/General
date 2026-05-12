@@ -15,7 +15,7 @@ export function TermsPage() {
         titleAs="h1"
         description="Product information in this frontend build is illustrative catalog content for an inquiry-based sales process. Final commercial terms are confirmed directly with Rafin."
       />
-      <div className="mt-8 rounded-3xl border border-border bg-surface-card p-7 text-text-muted shadow-card">
+      <div className="mt-8 border border-border bg-surface-card p-6 text-sm text-text-muted shadow-card">
         Final availability, pricing, specifications, documentation, delivery, inspection, and contract terms must be confirmed directly with Rafin during the offline company-to-company process.
       </div>
     </section>

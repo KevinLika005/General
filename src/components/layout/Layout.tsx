@@ -11,6 +11,18 @@ export function Layout({ children }: { children: ReactNode }) {
   const location = useLocation();
 
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+
+    if (summaryOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [summaryOpen]);
+
+  useEffect(() => {
     setSummaryOpen(false);
   }, [location.pathname, location.search, location.hash]);
 

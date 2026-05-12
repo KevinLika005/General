@@ -30,24 +30,22 @@ export function DeliveryInspectionPage() {
       </section>
 
       <section className="section-shell pb-24">
-        <div className="grid gap-5 lg:grid-cols-2">
+        <div className="grid gap-4 lg:grid-cols-2">
           {points.map((point) => (
-            <article className="toolbar-panel p-5 text-text-muted shadow-card" key={point}>
+            <article className="toolbar-panel p-4 text-sm text-text-muted shadow-card" key={point}>
               {point}
             </article>
           ))}
         </div>
 
-        <div className="mt-8 surface-panel p-6 shadow-card">
-          <h2 className="text-2xl text-brand-navy">What this page does and does not promise</h2>
-          <p className="mt-3 text-text-muted">
-            The website helps buyers understand that inspection and logistics can be discussed. Final
-            schedules, delivery cost, export scope, and handover details are confirmed directly with
-            Rafin after inquiry.
+        <div className="mt-8 surface-panel p-5 shadow-card">
+          <h2 className="text-[1.3rem] text-navy">What this page does and does not promise</h2>
+          <p className="mt-3 text-sm text-text-muted">
+            The website helps buyers understand that inspection and logistics can be discussed. Final schedules, delivery cost, export scope, and handover details are confirmed directly with Rafin after inquiry.
           </p>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-8">
           <Button to={routes.contact}>Contact Sales</Button>
         </div>
       </section>

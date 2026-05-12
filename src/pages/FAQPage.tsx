@@ -24,9 +24,9 @@ export function FAQPage() {
       <section className="section-shell pb-24">
         <div className="grid gap-4 lg:grid-cols-2">
           {mainFaqs.map((faq) => (
-            <article className="toolbar-panel p-5 shadow-card" key={faq.question}>
-              <h2 className="text-2xl text-brand-navy">{faq.question}</h2>
-              <p className="mt-3 text-text-muted">{faq.answer}</p>
+            <article className="toolbar-panel p-4 shadow-card" key={faq.question}>
+              <h2 className="text-[1.1rem] text-navy">{faq.question}</h2>
+              <p className="mt-2 text-sm text-text-muted">{faq.answer}</p>
             </article>
           ))}
         </div>

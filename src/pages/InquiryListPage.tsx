@@ -20,14 +20,13 @@ export function InquiryListPage() {
   return (
     <>
       <section className="page-shell">
-        <div className="surface-panel p-6 sm:p-8">
+        <div className="surface-panel p-5 sm:p-6">
           <p className="kicker">Inquiry List</p>
-          <h1 className="mt-3 text-[2.45rem] text-brand-navy sm:text-[3.2rem]">
+          <h1 className="mt-2 text-[1.9rem] text-navy sm:text-[2.3rem] xl:text-[2.7rem]">
             Build one useful request around the products your team needs
           </h1>
-          <p className="mt-4 max-w-3xl text-base text-text-muted sm:text-lg">
-            This is not a checkout. Your Inquiry List helps Rafin prepare product details, pricing,
-            inspection options, delivery discussion, and contract next steps.
+          <p className="mt-3 max-w-3xl text-sm text-text-muted sm:text-base">
+            This is not a checkout. Your Inquiry List helps Rafin prepare product details, pricing, inspection options, document support, delivery discussion, and contract next steps.
           </p>
         </div>
       </section>
@@ -43,14 +42,14 @@ export function InquiryListPage() {
             title="Your Inquiry List is empty"
           />
         ) : (
-          <div className="grid gap-6 xl:grid-cols-[1fr_360px]">
-            <div className="space-y-5">
+          <div className="grid gap-6 xl:grid-cols-[1fr_340px]">
+            <div className="space-y-4">
               {products.map((product) => {
                 const item = items.find((entry) => entry.productId === product.id);
 
                 return (
                   <article
-                    className="grid gap-5 rounded-xl border border-border bg-surface-card p-5 shadow-card sm:grid-cols-[220px_1fr]"
+                    className="grid gap-5 border border-border bg-surface-card p-4 shadow-card sm:grid-cols-[180px_1fr]"
                     key={product.id}
                   >
                     <ImageWithFallback alt={product.title} aspectRatio="video" className="h-full" src={product.images[0]?.src} />
@@ -60,12 +59,12 @@ export function InquiryListPage() {
                           <p className="line-label">
                             {product.brand} / {product.model} / {product.sku}
                           </p>
-                          <h2 className="mt-2 text-[1.9rem] text-brand-navy">{product.title}</h2>
-                          <p className="mt-3 text-sm text-text-muted">{product.excerpt}</p>
+                          <h2 className="mt-2 text-[1.35rem] text-navy">{product.title}</h2>
+                          <p className="mt-2 text-sm text-text-muted">{product.excerpt}</p>
                         </div>
                         <button
                           aria-label={`Remove ${product.title}`}
-                          className="inline-flex h-10 w-10 items-center justify-center rounded-[6px] border border-border text-text-muted transition hover:border-brand-gold hover:text-brand-navy"
+                          className="inline-flex h-10 w-10 items-center justify-center border border-border text-text-muted transition hover:border-primary hover:text-navy"
                           onClick={() => removeItem(product.id)}
                           type="button"
                         >
@@ -73,13 +72,13 @@ export function InquiryListPage() {
                         </button>
                       </div>
 
-                      <div className="mt-5 grid gap-4 sm:grid-cols-3">
-                        <div className="rounded-xl border border-border bg-surface-subtle p-4">
+                      <div className="mt-4 grid gap-px border border-border bg-border sm:grid-cols-3">
+                        <div className="bg-surface-subtle p-4">
                           <p className="line-label">Price mode</p>
-                          <p className="mt-2 text-lg font-semibold text-brand-navy">{formatProductPrice(product)}</p>
-                          <p className="mt-2 text-sm text-text-muted">{getProductAvailabilityLabel(product.availability)}</p>
+                          <p className="mt-1 text-sm font-semibold text-navy">{formatProductPrice(product)}</p>
+                          <p className="mt-1 text-xs text-text-muted">{getProductAvailabilityLabel(product.availability)}</p>
                         </div>
-                        <label className="rounded-xl border border-border bg-surface-subtle p-4 text-sm text-text-muted">
+                        <label className="bg-surface-subtle p-4 text-sm text-text-muted">
                           Quantity
                           <input
                             className="field mt-3"
@@ -89,16 +88,16 @@ export function InquiryListPage() {
                             value={item?.quantity ?? 1}
                           />
                         </label>
-                        <div className="rounded-xl border border-border bg-surface-subtle p-4">
+                        <div className="bg-surface-subtle p-4">
                           <p className="line-label">Location</p>
-                          <p className="mt-2 text-lg font-semibold text-brand-navy">{product.location}</p>
+                          <p className="mt-1 text-sm font-semibold text-navy">{product.location}</p>
                         </div>
                       </div>
 
                       <label className="mt-4 block text-sm text-text-muted">
                         Product notes for Rafin
                         <textarea
-                          className="field mt-3 min-h-[120px]"
+                          className="field mt-3 min-h-[110px]"
                           onChange={(event) => updateNotes(product.id, event.target.value)}
                           placeholder="Example: request inspection timing, serial confirmation, compatibility checks, spare parts, or delivery discussion."
                           value={item?.notes ?? ''}
@@ -110,13 +109,12 @@ export function InquiryListPage() {
               })}
             </div>
 
-            <aside className="space-y-5 xl:sticky xl:top-28 xl:self-start">
-              <div className="surface-panel p-6">
+            <aside className="space-y-5 xl:sticky xl:top-[8.65rem] xl:self-start">
+              <div className="surface-panel p-5">
                 <p className="kicker">Request summary</p>
-                <h2 className="mt-3 text-3xl text-brand-navy">{items.length} product line(s)</h2>
-                <p className="mt-3 text-text-muted">
-                  Continue to the request form when your list reflects the machines, tools, or
-                  parts your company wants to discuss.
+                <h2 className="mt-2 text-[1.5rem] text-navy xl:text-[1.7rem]">{items.length} product line(s)</h2>
+                <p className="mt-3 text-sm text-text-muted">
+                  Continue to the request form when your list reflects the machines, tools, or parts your company wants to discuss.
                 </p>
                 <div className="mt-5 grid gap-3">
                   <Button to={routes.requestQuote}>Request Quote</Button>
@@ -129,11 +127,11 @@ export function InquiryListPage() {
                 </div>
               </div>
 
-              <div className="surface-panel p-6">
+              <div className="surface-panel p-5">
                 <div className="flex items-start gap-3">
-                  <ClipboardList className="mt-0.5 h-5 w-5 text-brand-gold" />
+                  <ClipboardList className="mt-0.5 h-5 w-5 text-primary" />
                   <div>
-                    <h2 className="text-xl text-brand-navy">What Rafin prepares from this list</h2>
+                    <h2 className="text-xl text-navy">What Rafin prepares from this list</h2>
                     <div className="mt-4 grid gap-3">
                       {[
                         'Pricing mode and commercial clarification for each selected product',
@@ -141,7 +139,7 @@ export function InquiryListPage() {
                         'Bundled parts or accessory discussion where relevant',
                         'Contract, delivery, and next-step coordination after buyer contact',
                       ].map((point) => (
-                        <div className="rounded-xl border border-border bg-surface-subtle p-4 text-sm text-text-muted" key={point}>
+                        <div className="border border-border bg-surface-subtle p-4 text-sm text-text-muted" key={point}>
                           {point}
                         </div>
                       ))}

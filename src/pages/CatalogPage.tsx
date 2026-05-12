@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { EmptyState } from '../components/common/EmptyState';
 import { FilterSidebar } from '../components/common/FilterSidebar';
+import { MobileFilterDrawer } from '../components/common/MobileFilterDrawer';
 import { ProductCard } from '../components/common/ProductCard';
 import { SearchBar } from '../components/common/SearchBar';
 import { categories, products, sortOptions } from '../data/catalog';
@@ -25,6 +26,7 @@ export function CatalogPage() {
   const locationParam = searchParams.get('location') ?? '';
   const tagParam = searchParams.get('tag') ?? '';
   const sortParam = searchParams.get('sort') ?? '';
+  const viewParam = searchParams.get('view') ?? '';
   const {
     appliedFilters,
     clearAllFilters,
@@ -42,7 +44,7 @@ export function CatalogPage() {
 
   usePageMetadata({
     title: 'Catalog | Rafin Machinery',
-    description: 'Search the Rafin Machinery catalog by brand, category, SKU, model, availability, and price mode. All listings are handled through B2B inquiry, inspection, and contract discussion.',
+    description: 'Search the Rafin Machinery catalog by product, brand, category, SKU, availability, and price mode through a compact B2B inquiry-focused interface.',
   });
 
   useEffect(() => {
@@ -83,6 +85,7 @@ export function CatalogPage() {
         sortParam === 'hours-asc'
           ? sortParam
           : 'featured',
+      viewMode: viewParam === 'list' ? 'list' : 'grid',
     }));
   }, [
     availabilityParam,
@@ -97,6 +100,7 @@ export function CatalogPage() {
     sortParam,
     subcategoryParam,
     tagParam,
+    viewParam,
     yearMaxParam,
     yearMinParam,
   ]);
@@ -117,31 +121,36 @@ export function CatalogPage() {
     if (filters.location !== 'all') nextParams.set('location', filters.location);
     if (filters.tag !== 'all') nextParams.set('tag', filters.tag);
     if (filters.sort !== 'featured') nextParams.set('sort', filters.sort);
+    if (filters.viewMode !== 'grid') nextParams.set('view', filters.viewMode);
 
     if (nextParams.toString() !== searchParams.toString()) {
       setSearchParams(nextParams, { replace: true });
     }
   }, [filters, searchParams, setSearchParams]);
 
+  const gridClass =
+    filters.viewMode === 'list'
+      ? 'grid-cols-1'
+      : 'md:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4';
+
   return (
     <>
       <section className="page-shell">
-        <div className="surface-panel p-6 sm:p-8">
+        <div className="surface-panel p-4 sm:p-5 xl:p-6">
           <p className="kicker">Products</p>
-          <h1 className="mt-3 text-[2.45rem] text-brand-navy sm:text-[3.2rem]">
-            Browse machinery, parts, attachments, trucks, and site equipment
+          <h1 className="mt-2 text-[1.8rem] leading-[1.08] text-navy sm:text-[2.2rem] xl:text-[2.8rem]">
+            Browse machinery, parts, attachments, trucks, and support equipment
           </h1>
-          <p className="mt-4 max-w-3xl text-base text-text-muted sm:text-lg">
-            Search inventory, narrow by brand or stock status, and add products to your Inquiry
-            List before requesting information, pricing, inspection, or contract follow-up.
+          <p className="mt-3 max-w-3xl text-sm text-text-muted sm:text-base">
+            Search inventory, narrow by brand or stock status, and add products to your Inquiry List before requesting pricing, inspection, information, or contract follow-up.
           </p>
 
-          <div className="mt-6 grid gap-4 xl:grid-cols-[1fr_auto] xl:items-center">
+          <div className="mt-4 grid gap-3 xl:grid-cols-[1fr_18rem] xl:items-center">
             <SearchBar
               buttonLabel="Search Catalog"
               onChange={(value) => setFilters((current) => ({ ...current, search: value }))}
               onSubmit={() => undefined}
-              placeholder="Search by machine, brand, model, SKU, category, location, or technical keyword"
+              placeholder="Search by product, machine, brand, model, SKU, location, or technical keyword"
               value={filters.search}
             />
             <div className="subtle-panel px-4 py-3 text-sm text-text-muted">
@@ -149,10 +158,10 @@ export function CatalogPage() {
             </div>
           </div>
 
-          <div className="mt-6 flex flex-wrap gap-2">
+          <div className="mt-4 flex gap-2 overflow-x-auto pb-1">
             {categories.map((category) => (
               <Link
-                className="rounded-[4px] border border-border bg-surface-subtle px-3 py-2 text-sm text-text-muted transition hover:border-brand-gold hover:text-brand-navy"
+                className="chip whitespace-nowrap"
                 key={category.slug}
                 to={routes.category(category.slug)}
               >
@@ -164,8 +173,8 @@ export function CatalogPage() {
       </section>
 
       <section className="section-shell pb-24">
-        <div className="grid gap-6 xl:grid-cols-[300px_1fr]">
-          <div className="hidden xl:block">
+        <div className="grid gap-6 xl:grid-cols-[18.5rem_minmax(0,1fr)]">
+          <div className="hidden xl:block xl:sticky xl:top-[9rem] xl:self-start">
             <FilterSidebar
               clearAllFilters={clearAllFilters}
               filters={filters}
@@ -175,20 +184,20 @@ export function CatalogPage() {
           </div>
 
           <div>
-            <div className="toolbar-panel px-5 py-4 shadow-card">
+            <div className="toolbar-panel sticky top-[7rem] z-20 px-4 py-4 shadow-card xl:top-[8.65rem]">
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <SlidersHorizontal className="h-5 w-5 text-brand-gold" />
+                  <SlidersHorizontal className="h-5 w-5 text-primary" />
                   <div>
-                    <p className="text-sm font-semibold text-brand-navy">{filteredProducts.length} results</p>
+                    <p className="text-sm font-semibold text-navy">{filteredProducts.length} results</p>
                     <p className="text-xs text-text-muted">
-                      Ready for direct inquiry, quote preparation, inspection review, or contract discussion
+                      Product-first listing view with technical metadata and direct inquiry actions
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <button
-                    className="inline-flex items-center gap-2 rounded-xl border border-border bg-surface-subtle px-4 py-3 text-sm font-semibold text-brand-navy xl:hidden"
+                    className="inline-flex items-center gap-2 border border-border bg-surface-subtle px-4 py-3 text-sm font-semibold text-navy xl:hidden"
                     onClick={() => setMobileFiltersOpen(true)}
                     type="button"
                   >
@@ -198,7 +207,7 @@ export function CatalogPage() {
                   <label className="text-sm text-text-muted">
                     Sort
                     <select
-                      className="ml-3 h-10 rounded-[6px] border border-border bg-surface-card px-3 py-2 text-sm text-text"
+                      className="ml-3 h-10 border border-border bg-surface-card px-3 py-2 text-sm text-text"
                       onChange={(event) =>
                         setFilters((current) => ({
                           ...current,
@@ -221,7 +230,7 @@ export function CatalogPage() {
                 <div className="mt-4 flex flex-wrap items-center gap-3">
                   {appliedFilters.map((filter) => (
                     <button
-                      className="rounded-[4px] border border-border bg-surface-subtle px-4 py-2 text-sm text-text-muted transition hover:border-brand-gold hover:text-brand-navy"
+                      className="chip min-h-0 whitespace-nowrap px-3 py-1.5 text-sm"
                       key={`${filter.key}-${filter.label}`}
                       onClick={() => clearFilter(filter.key)}
                       type="button"
@@ -230,7 +239,7 @@ export function CatalogPage() {
                     </button>
                   ))}
                   <button
-                    className="text-sm font-semibold text-brand-navy underline decoration-brand-gold underline-offset-4"
+                    className="text-sm font-semibold text-primary underline decoration-primary underline-offset-4"
                     onClick={clearAllFilters}
                     type="button"
                   >
@@ -252,7 +261,7 @@ export function CatalogPage() {
                 />
               </div>
             ) : (
-              <div className="mt-8 grid gap-4 md:grid-cols-2 2xl:grid-cols-3">
+              <div className={`mt-6 grid gap-4 ${gridClass}`}>
                 {filteredProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
@@ -262,24 +271,15 @@ export function CatalogPage() {
         </div>
       </section>
 
-      {mobileFiltersOpen ? (
-        <div
-          aria-label="Catalog filters"
-          aria-modal="true"
-          className="fixed inset-0 z-50 bg-brand-navy/45 px-4 py-6 xl:hidden"
-          role="dialog"
-        >
-          <div className="mx-auto max-w-lg">
-            <FilterSidebar
-              clearAllFilters={clearAllFilters}
-              filters={filters}
-              onClose={() => setMobileFiltersOpen(false)}
-              optionSets={optionSets}
-              setFilters={setFilters}
-            />
-          </div>
-        </div>
-      ) : null}
+      <MobileFilterDrawer label="Catalog filters" onClose={() => setMobileFiltersOpen(false)} open={mobileFiltersOpen}>
+        <FilterSidebar
+          clearAllFilters={clearAllFilters}
+          filters={filters}
+          onClose={() => setMobileFiltersOpen(false)}
+          optionSets={optionSets}
+          setFilters={setFilters}
+        />
+      </MobileFilterDrawer>
     </>
   );
 }

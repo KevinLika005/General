@@ -22,6 +22,37 @@ export function getCategoryBySlug(categorySlug: string) {
   return categories.find((category) => category.slug === categorySlug);
 }
 
+export function getSubcategoryTitle(categorySlug: string, subcategoryValue: string) {
+  const category = getCategoryBySlug(categorySlug);
+
+  if (!category) {
+    return subcategoryValue;
+  }
+
+  const normalized = subcategoryValue.trim().toLowerCase();
+  const match = category.subcategories.find(
+    (subcategory) =>
+      subcategory.slug.toLowerCase() === normalized ||
+      subcategory.title.toLowerCase() === normalized,
+  );
+
+  return match?.title ?? subcategoryValue;
+}
+
+export function getSubcategoryParam(categorySlug: string, subcategoryTitle: string) {
+  const category = getCategoryBySlug(categorySlug);
+
+  if (!category) {
+    return subcategoryTitle;
+  }
+
+  const match = category.subcategories.find(
+    (subcategory) => subcategory.title.toLowerCase() === subcategoryTitle.toLowerCase(),
+  );
+
+  return match?.slug ?? subcategoryTitle;
+}
+
 export function getProductsByCategory(categorySlug: string) {
   return products.filter((product) => product.categorySlug === categorySlug);
 }

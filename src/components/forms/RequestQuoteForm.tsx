@@ -12,7 +12,7 @@ interface RequestQuoteFormProps {
 function RequiredLabel({ children }: { children: string }) {
   return (
     <span>
-      {children} <span aria-hidden="true" className="text-brand-gold">*</span>
+      {children} <span aria-hidden="true" className="text-primary">*</span>
     </span>
   );
 }
@@ -31,20 +31,19 @@ export function RequestQuoteForm({ inquiryItems }: RequestQuoteFormProps) {
   };
 
   return (
-    <form className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]" onSubmit={handleSubmit}>
-      <div className="surface-panel p-6 sm:p-8">
-        <div>
+    <form className="grid gap-6 xl:grid-cols-[1.12fr_0.88fr]" onSubmit={handleSubmit}>
+      <div className="surface-panel p-5 sm:p-6">
+        <div className="border-b border-border pb-5">
           <p className="kicker">Request quote or contract</p>
-          <h2 className="mt-3 text-[2.35rem] text-brand-navy">Prepare one commercial request for your selected products</h2>
-          <p className="mt-3 text-text-muted">
-            Use this form for product information, quotation, inspection planning, delivery
-            discussion, or contract follow-up. Fields marked with * are required.
+          <h2 className="mt-2 text-[1.75rem] text-navy xl:text-[1.9rem]">Prepare one commercial request for your selected products</h2>
+          <p className="mt-3 text-sm text-text-muted">
+            Use one form for product information, quote requests, contract discussion, inspection planning, delivery questions, or document requests.
           </p>
         </div>
 
-        <div className="mt-8 space-y-8">
-          <fieldset className="grid gap-4 border-t border-border pt-6 sm:grid-cols-2">
-            <legend className="mb-1 text-lg font-semibold text-brand-navy">Buyer and company details</legend>
+        <div className="mt-6 space-y-7">
+          <fieldset className="grid gap-4 sm:grid-cols-2">
+            <legend className="mb-1 text-base font-semibold text-navy">Buyer and company details</legend>
             <label className="block text-sm text-text-muted">
               <RequiredLabel>Full name</RequiredLabel>
               <input className="field" name="fullName" required type="text" />
@@ -76,16 +75,16 @@ export function RequestQuoteForm({ inquiryItems }: RequestQuoteFormProps) {
           </fieldset>
 
           <fieldset className="grid gap-4 border-t border-border pt-6 sm:grid-cols-2">
-            <legend className="mb-1 text-lg font-semibold text-brand-navy">Inquiry intent and timing</legend>
+            <legend className="mb-1 text-base font-semibold text-navy">Request intent and timing</legend>
             <label className="block text-sm text-text-muted">
-              <RequiredLabel>Inquiry type</RequiredLabel>
+              <RequiredLabel>Request type</RequiredLabel>
               <select className="field" name="inquiryType" required>
                 <option value="">Choose one</option>
-                <option value="product-information">Request information</option>
-                <option value="price-quotation">Request quote</option>
-                <option value="contract-request">Request contract discussion</option>
-                <option value="inspection-appointment">Request inspection</option>
-                <option value="delivery-information">Request delivery information</option>
+                <option value="request-info">Request information</option>
+                <option value="request-quote">Request quote</option>
+                <option value="request-contract">Request contract discussion</option>
+                <option value="request-documents">Request documents</option>
+                <option value="request-inspection">Request inspection</option>
               </select>
             </label>
             <label className="block text-sm text-text-muted">
@@ -120,7 +119,7 @@ export function RequestQuoteForm({ inquiryItems }: RequestQuoteFormProps) {
           </fieldset>
 
           <fieldset className="border-t border-border pt-6">
-            <legend className="mb-1 text-lg font-semibold text-brand-navy">Request message</legend>
+            <legend className="mb-1 text-base font-semibold text-navy">Request message</legend>
             <label className="block text-sm text-text-muted">
               <RequiredLabel>Message</RequiredLabel>
               <textarea
@@ -133,12 +132,10 @@ export function RequestQuoteForm({ inquiryItems }: RequestQuoteFormProps) {
           </fieldset>
         </div>
 
-        <label className="mt-6 flex items-start gap-3 rounded-xl border border-border bg-surface-subtle p-4 text-sm text-text-muted">
-          <input className="mt-1 h-4 w-4 accent-[rgb(var(--brand-gold))]" name="consent" required type="checkbox" />
+        <label className="mt-6 flex items-start gap-3 border border-border bg-surface-subtle p-4 text-sm text-text-muted">
+          <input className="mt-1 h-4 w-4 accent-[rgb(var(--primary))]" name="consent" required type="checkbox" />
           <span>
-            I understand this request starts an offline company-to-company process. Rafin will
-            follow up about product details, pricing, inspection, negotiation, and contract next
-            steps directly.
+            I understand this request starts an offline company-to-company process. No checkout, automatic order, or online payment happens on this website.
           </span>
         </label>
 
@@ -147,31 +144,29 @@ export function RequestQuoteForm({ inquiryItems }: RequestQuoteFormProps) {
           <Button to="/equipment" variant="secondary">Continue Browsing</Button>
         </div>
         {submitted ? (
-          <p aria-live="polite" className="mt-4 text-sm text-brand-navy" role="status">
-            Your request has been prepared. Rafin will contact you to continue with product
-            details, inspection, negotiation, and contract process.
+          <p aria-live="polite" className="mt-4 text-sm text-navy" role="status">
+            Your request has been prepared in this frontend build. Rafin will follow up directly about pricing, inspection, documents, delivery, or contract discussion.
           </p>
         ) : null}
       </div>
 
-      <aside className="space-y-6 xl:sticky xl:top-28 xl:self-start">
-        <div className="surface-panel p-6">
+      <aside className="space-y-6 xl:sticky xl:top-[8.65rem] xl:self-start">
+        <div className="surface-panel p-5">
           <p className="kicker">Selected products</p>
-          <h3 className="mt-3 text-[2rem] text-brand-navy">Products in this request</h3>
+          <h3 className="mt-2 text-[1.45rem] text-navy xl:text-[1.6rem]">Products in this request</h3>
           <div className="mt-4 space-y-3">
             {products.length === 0 ? (
               <p className="text-sm text-text-muted">
-                No products are currently in the Inquiry List. You can still submit a general
-                machinery request.
+                No products are currently in the Inquiry List. You can still submit a general equipment request.
               </p>
             ) : (
               products.map((product) => {
                 const item = inquiryItems.find((entry) => entry.productId === product.id);
 
                 return (
-                  <div className="rounded-xl border border-border bg-surface-subtle px-4 py-3" key={product.id}>
+                  <div className="border border-border bg-surface-subtle px-4 py-3" key={product.id}>
                     <p className="line-label">{product.brand} / {product.model}</p>
-                    <p className="mt-1 font-semibold text-brand-navy">{product.title}</p>
+                    <p className="mt-1 font-semibold text-navy">{product.title}</p>
                     <p className="mt-1 text-sm text-text-muted">
                       Qty {item?.quantity ?? 1} | {formatProductPrice(product)}
                     </p>
@@ -184,27 +179,27 @@ export function RequestQuoteForm({ inquiryItems }: RequestQuoteFormProps) {
           </div>
         </div>
 
-        <div className="surface-panel p-6">
+        <div className="surface-panel p-5">
           <div className="flex items-start gap-3">
-            <Building2 className="mt-1 h-5 w-5 text-brand-gold" />
+            <Building2 className="mt-1 h-5 w-5 text-primary" />
             <div>
-              <h3 className="text-xl text-brand-navy">What happens next</h3>
+              <h3 className="text-xl text-navy">What happens next</h3>
               <p className="mt-2 text-sm text-text-muted">
-                This form helps Rafin route your request quickly without turning the website into a self-serve transaction flow.
+                This form routes the request into an offline B2B follow-up path without implying checkout or order placement.
               </p>
             </div>
           </div>
           <div className="mt-4 grid gap-3">
-            <div className="flex items-start gap-3 rounded-xl border border-border bg-surface-subtle p-4">
-              <ClipboardList className="mt-0.5 h-4 w-4 text-brand-gold" />
+            <div className="flex items-start gap-3 border border-border bg-surface-subtle p-4">
+              <ClipboardList className="mt-0.5 h-4 w-4 text-primary" />
               <p className="text-sm text-text-muted">Rafin reviews the selected products, quantities, notes, and the type of support you need.</p>
             </div>
-            <div className="flex items-start gap-3 rounded-xl border border-border bg-surface-subtle p-4">
-              <FileText className="mt-0.5 h-4 w-4 text-brand-gold" />
+            <div className="flex items-start gap-3 border border-border bg-surface-subtle p-4">
+              <FileText className="mt-0.5 h-4 w-4 text-primary" />
               <p className="text-sm text-text-muted">Inspection notes, documentation, delivery scope, and contract details can then be clarified directly.</p>
             </div>
-            <div className="flex items-start gap-3 rounded-xl border border-border bg-surface-subtle p-4">
-              <ShieldCheck className="mt-0.5 h-4 w-4 text-brand-gold" />
+            <div className="flex items-start gap-3 border border-border bg-surface-subtle p-4">
+              <ShieldCheck className="mt-0.5 h-4 w-4 text-primary" />
               <p className="text-sm text-text-muted">No online payment or automatic agreement happens on this website.</p>
             </div>
           </div>

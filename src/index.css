@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,18 +7,24 @@
 @layer base {
   :root {
     color-scheme: light;
-    --brand-navy: 17 29 74;
-    --brand-ink: 19 27 48;
-    --brand-gold: 196 149 40;
-    --brand-gold-soft: 223 189 110;
-    --surface-page: 246 247 249;
+    --primary: 65 102 245;
+    --primary-hover: 32 76 243;
+    --primary-active: 12 57 229;
+    --primary-dark: 10 49 196;
+    --navy: 3 16 65;
+    --brand-gold: 65 102 245;
+    --brand-gold-soft: 238 243 255;
+    --surface-dark: 5 24 98;
+    --surface-blue: 7 32 131;
+    --border-blue: 9 40 164;
+    --highlight: 65 102 245;
+    --text-on-dark: 247 250 255;
+    --text-primary: 3 16 65;
+    --text-muted: 71 84 103;
+    --surface-page: 246 248 252;
     --surface-card: 255 255 255;
-    --surface-subtle: 241 243 246;
-    --surface-strong: 231 234 239;
-    --surface-alt: 248 249 251;
-    --text-default: 24 31 48;
-    --text-muted: 92 103 121;
-    --border-default: 214 219 227;
+    --surface-subtle: 238 243 255;
+    --border-default: 215 224 248;
     --status-available: 18 128 92;
     --status-available-bg: 236 253 243;
     --status-incoming: 181 71 8;
@@ -29,6 +35,7 @@
     --status-sold-bg: 254 243 242;
     --status-info: 23 92 211;
     --status-info-bg: 239 248 255;
+    --status-neutral: 102 112 133;
   }
 
   html {
@@ -58,7 +65,7 @@
   input:focus-visible,
   select:focus-visible,
   textarea:focus-visible {
-    @apply ring-2 ring-brand-gold ring-offset-2 ring-offset-surface-page;
+    @apply ring-2 ring-primary ring-offset-2 ring-offset-surface-page;
   }
 
   h1,
@@ -67,9 +74,9 @@
   h4,
   h5,
   h6 {
-    @apply font-display text-brand-navy;
-    line-height: 0.98;
-    letter-spacing: -0.015em;
+    @apply font-sans text-navy;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
   }
 
   p {
@@ -82,22 +89,22 @@
   }
 
   ::selection {
-    background-color: rgba(209, 162, 31, 0.24);
-    color: rgb(var(--text-default));
+    background-color: rgba(65, 102, 245, 0.2);
+    color: rgb(var(--text-primary));
   }
 }
 
 @layer components {
   .section-shell {
-    @apply mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-[1600px] px-4 sm:px-4 md:px-5 lg:px-6 xl:px-7 2xl:px-8;
   }
 
   .page-shell {
-    @apply section-shell py-6 sm:py-8 lg:py-10;
+    @apply section-shell py-4 sm:py-5 md:py-6 xl:py-7;
   }
 
   .kicker {
-    @apply text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-brand-gold;
+    @apply text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-primary;
   }
 
   .eyebrow {
@@ -105,30 +112,42 @@
   }
 
   .line-label {
-    @apply text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-text-muted;
+    @apply text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-text-muted;
   }
 
   .field {
-    @apply mt-2 min-h-11 w-full rounded-[6px] border border-border bg-surface-card px-3 py-2.5 text-sm text-text shadow-card placeholder:text-text-muted/70 focus:border-brand-gold;
+    @apply mt-2 min-h-11 w-full rounded-none border border-border bg-surface-card px-3 py-2.5 text-sm text-text shadow-none placeholder:text-text-muted/70 focus:border-primary;
   }
 
   .surface-panel {
-    @apply rounded-2xl border border-border bg-surface-card shadow-card;
+    @apply border border-border bg-surface-card shadow-card;
   }
 
   .subtle-panel {
-    @apply rounded-xl border border-border bg-surface-subtle;
+    @apply border border-border bg-surface-subtle;
   }
 
   .toolbar-panel {
-    @apply rounded-xl border border-border bg-surface-card;
+    @apply border border-border bg-surface-card;
+  }
+
+  .drawer-panel {
+    @apply border border-border bg-surface-card shadow-dropdown;
+  }
+
+  .chip {
+    @apply inline-flex min-h-10 items-center border border-border bg-surface-subtle px-3 py-2 text-[0.76rem] font-medium text-navy transition hover:border-primary hover:text-primary-dark;
+  }
+
+  .sticky-bar {
+    @apply border-t border-border bg-surface-card/95 backdrop-blur;
   }
 
   .technical-grid {
     background-image:
-      linear-gradient(rgba(17, 29, 74, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(17, 29, 74, 0.05) 1px, transparent 1px);
-    background-size: 20px 20px;
+      linear-gradient(rgba(3, 16, 65, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(3, 16, 65, 0.04) 1px, transparent 1px);
+    background-size: 18px 18px;
   }
 
   .industrial-grid {
@@ -137,19 +156,27 @@
 
   .spec-table th,
   .spec-table td {
-    @apply border-b border-border px-4 py-3 text-sm;
+    @apply border-b border-border px-3 py-3 text-sm;
   }
 
   .spec-table th {
-    @apply bg-surface-subtle text-left font-semibold text-brand-navy;
+    @apply bg-surface-subtle text-left font-semibold text-navy;
   }
 
   .hero-band {
-    background-image: linear-gradient(135deg, rgba(17, 29, 74, 0.98), rgba(19, 27, 48, 0.98));
+    background-image: linear-gradient(135deg, rgba(3, 16, 65, 0.98), rgba(7, 32, 131, 0.98));
   }
 
   .section-divider {
     @apply border-t border-border;
+  }
+
+  .data-grid-card {
+    @apply border border-border bg-surface-card px-4 py-4;
+  }
+
+  .nav-shell {
+    @apply border-b border-border bg-surface-card;
   }
 }
 

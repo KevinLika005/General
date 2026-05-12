@@ -21,7 +21,7 @@ export function ProductGallery({ images, title }: ProductGalleryProps) {
       <ImageWithFallback
         alt={activeImage?.alt ?? title}
         aspectRatio="wide"
-        className="min-h-[320px] rounded-2xl"
+        className="min-h-[320px] rounded-none"
         loading="eager"
         src={activeImage?.src}
       />
@@ -30,7 +30,7 @@ export function ProductGallery({ images, title }: ProductGalleryProps) {
           <button
             aria-label={`View product image ${index + 1} of ${images.length}`}
             className={[
-              'overflow-hidden rounded-xl border transition',
+              'overflow-hidden rounded-none border transition',
               index === activeImageIndex ? 'border-brand-gold shadow-card' : 'border-border',
             ].join(' ')}
             key={image.src}

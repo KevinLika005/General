@@ -7,18 +7,17 @@ export function RequestQuotePage() {
 
   usePageMetadata({
     title: 'Request Quote | Rafin Machinery',
-    description: 'Send a B2B request for machinery, parts, inspection, delivery planning, or contract discussion. The website supports inquiry and offline agreement only.',
+    description: 'Send a B2B request for machinery, parts, inspection, delivery planning, documents, or contract discussion. The website supports inquiry and offline agreement only.',
   });
 
   return (
     <>
       <section className="page-shell">
-        <div className="surface-panel p-6 sm:p-8">
+        <div className="surface-panel p-5 sm:p-6">
           <p className="kicker">Request quote</p>
-          <h1 className="mt-3 text-[2.45rem] text-brand-navy sm:text-[3.2rem]">Send a commercial request to Rafin Machinery</h1>
-          <p className="mt-4 max-w-3xl text-base text-text-muted sm:text-lg">
-            Use one form for product information, quotations, inspection appointments, delivery
-            discussion, or contract follow-up. This is an inquiry-only process, not a checkout.
+          <h1 className="mt-2 text-[1.9rem] text-navy sm:text-[2.3rem] xl:text-[2.7rem]">Send a commercial request to Rafin Machinery</h1>
+          <p className="mt-3 max-w-3xl text-sm text-text-muted sm:text-base">
+            Use one form for product information, quotations, inspection appointments, delivery discussion, document requests, or contract follow-up. This is an inquiry-only process, not a checkout.
           </p>
         </div>
       </section>

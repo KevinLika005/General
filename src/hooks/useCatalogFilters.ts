@@ -7,6 +7,8 @@ import type {
 } from '../data/catalog';
 import { getComparablePrice, matchesPriceBand, matchesSearch, type PriceBand } from '../utils/filters';
 
+export type CatalogViewMode = 'grid' | 'list';
+
 export interface CatalogFilterState {
   search: string;
   category: string;
@@ -21,6 +23,7 @@ export interface CatalogFilterState {
   location: string;
   tag: string;
   sort: CatalogSort;
+  viewMode: CatalogViewMode;
 }
 
 interface UseCatalogFiltersOptions {
@@ -49,6 +52,7 @@ export function useCatalogFilters(
     location: 'all',
     tag: 'all',
     sort: 'featured',
+    viewMode: 'grid',
   });
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
@@ -199,6 +203,8 @@ export function useCatalogFilters(
           ? 'all'
           : key === 'sort'
             ? 'featured'
+            : key === 'viewMode'
+              ? 'grid'
             : key === 'priceBand'
               ? 'all'
               : key === 'category'
@@ -226,6 +232,7 @@ export function useCatalogFilters(
       location: 'all',
       tag: 'all',
       sort: 'featured',
+      viewMode: 'grid',
     });
   };
 

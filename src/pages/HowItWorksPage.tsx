@@ -22,30 +22,30 @@ export function HowItWorksPage() {
       </section>
 
       <section className="section-shell pb-20">
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {howItWorksSteps.map((step) => (
-            <article className="toolbar-panel p-5 shadow-card" key={step.step}>
-              <p className="text-sm font-semibold uppercase tracking-[0.12em] text-brand-gold">
+            <article className="toolbar-panel p-4 shadow-card" key={step.step}>
+              <p className="text-sm font-semibold uppercase tracking-[0.1em] text-brand-gold">
                 {step.step}
               </p>
-              <h2 className="mt-4 text-2xl text-brand-navy">{step.title}</h2>
-              <p className="mt-3 text-text-muted">{step.description}</p>
+              <h2 className="mt-3 text-[1.15rem] text-navy">{step.title}</h2>
+              <p className="mt-2 text-sm text-text-muted">{step.description}</p>
             </article>
           ))}
         </div>
       </section>
 
       <section className="section-shell pb-24">
-        <div className="hero-band rounded-2xl p-7 text-white shadow-card">
-          <h2 className="text-3xl text-white">What happens after you send an inquiry</h2>
+        <div className="hero-band border border-surface-dark p-6 text-white shadow-card">
+          <h2 className="text-[1.7rem] text-white">What happens after you send an inquiry</h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-3">
-            <div className="rounded-xl border border-white/10 bg-white/5 p-5 text-white/75">
+            <div className="border border-white/10 bg-white/5 p-5 text-sm text-white/75">
               Rafin reviews the products in your Inquiry List and replies with technical details, availability context, and the next commercial step.
             </div>
-            <div className="rounded-xl border border-white/10 bg-white/5 p-5 text-white/75">
+            <div className="border border-white/10 bg-white/5 p-5 text-sm text-white/75">
               Inspection planning, documentation review, and negotiation continue directly with the sales team.
             </div>
-            <div className="rounded-xl border border-white/10 bg-white/5 p-5 text-white/75">
+            <div className="border border-white/10 bg-white/5 p-5 text-sm text-white/75">
               Contract terms, payment terms, and delivery scope are handled offline between companies rather than through the website.
             </div>
           </div>

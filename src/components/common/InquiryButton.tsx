@@ -41,9 +41,9 @@ export function InquiryButton({
         : compact
           ? added
             ? 'In Inquiry'
-            : 'Add Inquiry'
+            : 'Add'
           : added
-            ? 'In Inquiry List'
+            ? 'In Inquiry'
             : 'Add to Inquiry'}
     </Button>
   );

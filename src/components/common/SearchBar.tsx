@@ -28,16 +28,16 @@ export function SearchBar({
       <div
         className={[
           'flex gap-2',
-          compact ? 'items-center' : 'flex-col items-stretch sm:flex-row sm:items-stretch',
+          compact ? 'items-center' : 'flex-col items-stretch md:flex-row md:items-stretch',
         ].join(' ')}
       >
         <label className="relative block w-full">
           <span className="sr-only">Search catalog</span>
-          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" />
+          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" />
           <input
             className={[
-              'w-full rounded-[6px] border border-border bg-surface-card pl-11 text-text shadow-card placeholder:text-text-muted/70 focus:border-brand-gold',
-              compact ? 'h-11 pr-4 text-sm' : 'h-14 min-h-[3.5rem] pr-5 text-sm sm:text-base',
+              'w-full rounded-none border border-border bg-surface-card pl-10 text-text shadow-none placeholder:text-text-muted/70 focus:border-primary',
+              compact ? 'h-11 pr-4 text-sm' : 'h-12 min-h-[3rem] pr-4 text-sm md:text-[0.95rem]',
             ].join(' ')}
             onChange={(event) => onChange(event.target.value)}
             placeholder={placeholder}
@@ -48,8 +48,8 @@ export function SearchBar({
         {onSubmit ? (
           <button
             className={[
-              'shrink-0 rounded-[6px] border border-brand-navy bg-brand-navy px-5 text-[0.76rem] font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-brand-ink',
-              compact ? 'h-11' : 'min-h-[3.5rem] sm:min-w-[10rem]',
+              'shrink-0 rounded-none border border-primary bg-primary px-4 text-[0.8rem] font-semibold text-text-on-dark transition hover:border-primary-hover hover:bg-primary-hover',
+              compact ? 'h-11' : 'min-h-[3rem] md:min-w-[9rem]',
             ].join(' ')}
             type="submit"
           >

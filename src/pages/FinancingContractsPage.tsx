@@ -21,7 +21,7 @@ export function FinancingContractsPage() {
       </section>
 
       <section className="section-shell pb-24">
-        <div className="grid gap-5 lg:grid-cols-3">
+        <div className="grid gap-4 lg:grid-cols-3">
           {[
             'Contract-based sales only',
             'Company-to-company negotiation',
@@ -30,13 +30,13 @@ export function FinancingContractsPage() {
             'Inspection and logistics support can be part of the same discussion',
             'Payment terms and financing are discussed directly only when available',
           ].map((item) => (
-            <article className="toolbar-panel p-5 text-text-muted shadow-card" key={item}>
+            <article className="toolbar-panel p-4 text-sm text-text-muted shadow-card" key={item}>
               {item}
             </article>
           ))}
         </div>
 
-        <div className="mt-10">
+        <div className="mt-8">
           <Button to={routes.requestQuote}>Request Contract Discussion</Button>
         </div>
       </section>

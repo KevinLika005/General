@@ -1,7 +1,7 @@
 import { SlidersHorizontal, X } from 'lucide-react';
 import type { Dispatch, SetStateAction } from 'react';
 import { categories } from '../../data/catalog';
-import type { CatalogFilterState } from '../../hooks/useCatalogFilters';
+import type { CatalogFilterState, CatalogViewMode } from '../../hooks/useCatalogFilters';
 import type { PriceBand } from '../../utils/filters';
 import { budgetBands, sortOptions } from '../../data/catalog';
 import { Button } from './Button';
@@ -21,7 +21,27 @@ interface FilterSidebarProps {
 }
 
 function inputClasses() {
-  return 'mt-2 h-11 w-full rounded-[6px] border border-border bg-surface-card px-3 py-2 text-sm text-text placeholder:text-text-muted/70 shadow-card';
+  return 'mt-2 h-10 w-full rounded-none border border-border bg-surface-card px-3 py-2 text-sm text-text placeholder:text-text-muted/70 shadow-none';
+}
+
+function filterChip(active: boolean) {
+  return [
+    'border px-3 py-2 text-left text-[0.78rem] font-medium transition',
+    active
+      ? 'border-primary bg-surface-subtle text-primary-dark'
+      : 'border-border bg-surface-card text-text-muted hover:border-primary',
+  ].join(' ');
+}
+
+function setModeValue(
+  setFilters: Dispatch<SetStateAction<CatalogFilterState>>,
+  key: 'availability' | 'condition' | 'viewMode',
+  value: string,
+) {
+  setFilters((current) => ({
+    ...current,
+    [key]: value,
+  }));
 }
 
 export function FilterSidebar({
@@ -32,24 +52,24 @@ export function FilterSidebar({
   setFilters,
 }: FilterSidebarProps) {
   return (
-    <div className="rounded-xl border border-border bg-surface-card shadow-card">
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2 px-5 pt-5">
-          <SlidersHorizontal className="h-5 w-5 text-brand-gold" />
-          <h2 className="text-lg font-semibold text-brand-navy">Filter Results</h2>
+    <div className="border border-border bg-surface-card shadow-card">
+      <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-4">
+        <div className="flex items-center gap-2">
+          <SlidersHorizontal className="h-5 w-5 text-primary" />
+          <h2 className="text-base font-semibold text-navy">Filter results</h2>
         </div>
-        <div className="flex items-center gap-2 px-5 pt-5">
+        <div className="flex items-center gap-2">
           <button
-            className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-gold"
+            className="text-xs font-semibold uppercase tracking-[0.12em] text-primary"
             onClick={clearAllFilters}
             type="button"
           >
-            Clear All
+            Clear all
           </button>
           {onClose ? (
             <button
               aria-label="Close filters"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-[6px] border border-border text-text lg:hidden"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-none border border-border text-text lg:hidden"
               onClick={onClose}
               type="button"
             >
@@ -59,7 +79,66 @@ export function FilterSidebar({
         </div>
       </div>
 
-      <div className="mt-5 space-y-5 px-5 pb-5">
+      <div className="space-y-5 px-4 py-4">
+        <div>
+          <p className="line-label">View</p>
+          <div className="mt-2 grid grid-cols-2 gap-2">
+            {(['grid', 'list'] as CatalogViewMode[]).map((mode) => (
+              <button
+                className={filterChip(filters.viewMode === mode)}
+                key={mode}
+                onClick={() => setModeValue(setFilters, 'viewMode', mode)}
+                type="button"
+              >
+                {mode === 'grid' ? 'Grid view' : 'List view'}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p className="line-label">Availability</p>
+          <div className="mt-2 grid gap-2">
+            {[
+              ['all', 'All status'],
+              ['available', 'Available'],
+              ['incoming', 'Incoming'],
+              ['reserved', 'Reserved'],
+              ['sold', 'Sold'],
+            ].map(([value, label]) => (
+              <button
+                className={filterChip(filters.availability === value)}
+                key={value}
+                onClick={() => setModeValue(setFilters, 'availability', value)}
+                type="button"
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p className="line-label">Condition</p>
+          <div className="mt-2 grid gap-2">
+            {[
+              ['all', 'All conditions'],
+              ['new', 'New'],
+              ['used', 'Used'],
+              ['refurbished', 'Refurbished'],
+            ].map(([value, label]) => (
+              <button
+                className={filterChip(filters.condition === value)}
+                key={value}
+                onClick={() => setModeValue(setFilters, 'condition', value)}
+                type="button"
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+
         <label className="block text-sm text-text-muted">
           Category
           <select
@@ -115,45 +194,6 @@ export function FilterSidebar({
                 {brand}
               </option>
             ))}
-          </select>
-        </label>
-
-        <label className="block text-sm text-text-muted">
-          Condition
-          <select
-            className={inputClasses()}
-            onChange={(event) =>
-              setFilters((current) => ({
-                ...current,
-                condition: event.target.value as CatalogFilterState['condition'],
-              }))
-            }
-            value={filters.condition}
-          >
-            <option value="all">All conditions</option>
-            <option value="new">New</option>
-            <option value="used">Used</option>
-            <option value="refurbished">Refurbished</option>
-          </select>
-        </label>
-
-        <label className="block text-sm text-text-muted">
-          Availability
-          <select
-            className={inputClasses()}
-            onChange={(event) =>
-              setFilters((current) => ({
-                ...current,
-                availability: event.target.value as CatalogFilterState['availability'],
-              }))
-            }
-            value={filters.availability}
-          >
-            <option value="all">All status</option>
-            <option value="available">Available</option>
-            <option value="incoming">Incoming</option>
-            <option value="reserved">Reserved</option>
-            <option value="sold">Sold</option>
           </select>
         </label>
 
@@ -276,13 +316,13 @@ export function FilterSidebar({
       </div>
 
       {onClose ? (
-        <div className="sticky bottom-0 border-t border-border bg-surface-card px-5 py-4 lg:hidden">
+        <div className="sticky bottom-0 border-t border-border bg-surface-card px-4 py-4 lg:hidden">
           <div className="grid gap-3 sm:grid-cols-2">
             <Button onClick={clearAllFilters} variant="secondary">
-              Clear All
+              Clear all
             </Button>
             <Button className="w-full" onClick={onClose} variant="primary">
-              Apply Filters
+              Apply filters
             </Button>
           </div>
         </div>
