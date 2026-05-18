@@ -1,14 +1,29 @@
 import { brandDefinitions } from './brands';
-import { categories } from './categories';
-import { salesContacts } from './contact';
-import { faqItems } from './faq';
+import { getCategories as getLocalizedCategories, legacyCategoryAliases, legacyFilterAliases } from './categories';
+import { getSalesContacts as getLocalizedSalesContacts } from './contact';
+import { getFaqItems as getLocalizedFaqItems } from './faq';
+import { imageAttributions } from './imageAttributions';
 import { productTemplate } from './productTemplate';
-import { products } from './products';
-import { budgetBands, companyProfile, homeStats, howItWorksSteps, siteMetadata, trustFeatures } from './site';
+import { getProducts as getLocalizedProducts } from './products';
+import {
+  getBudgetBands as getLocalizedBudgetBands,
+  getCompanyProfile as getLocalizedCompanyProfile,
+  getHomeStats as getLocalizedHomeStats,
+  getHowItWorksSteps as getLocalizedHowItWorksSteps,
+  siteMetadata,
+  getTrustFeatures as getLocalizedTrustFeatures,
+} from './site';
 import type { Brand, Product } from './types';
 
 export * from './types';
-export { brandDefinitions, budgetBands, categories, companyProfile, faqItems, homeStats, howItWorksSteps, productTemplate, products, salesContacts, siteMetadata, trustFeatures };
+export {
+  brandDefinitions,
+  imageAttributions,
+  legacyCategoryAliases,
+  legacyFilterAliases,
+  productTemplate,
+  siteMetadata,
+};
 
 export const sortOptions = [
   { value: 'featured', label: 'Featured' },
@@ -17,29 +32,85 @@ export const sortOptions = [
   { value: 'price-desc', label: 'Price high to low' },
   { value: 'year-desc', label: 'Year newest' },
   { value: 'hours-asc', label: 'Hours low to high' },
+  { value: 'mileage-asc', label: 'Mileage low to high' },
 ] as const;
 
-export type CatalogSort = (typeof sortOptions)[number]['value'];
+export type CatalogSort =
+  | 'featured'
+  | 'newest'
+  | 'price-asc'
+  | 'price-desc'
+  | 'year-desc'
+  | 'hours-asc'
+  | 'mileage-asc';
 
-export const brands: Brand[] = brandDefinitions
-  .map((definition) => ({
-    ...definition,
-    productCount: products.filter((product) => product.brand === definition.name).length,
-  }))
-  .filter((brand) => brand.productCount > 0);
+export function getCategories() {
+  return getLocalizedCategories();
+}
 
-export const availableNowProducts = products.filter(
-  (product) => product.availability === 'available' || product.availability === 'incoming',
-);
+export function getCompanyProfile() {
+  return getLocalizedCompanyProfile();
+}
 
-export const featuredProducts = products.filter(
-  (product) => product.featured && product.availability !== 'sold',
-);
+export function getFaqItems() {
+  return getLocalizedFaqItems();
+}
 
-export const dealProducts = products.filter(
-  (product) => product.deal && product.availability !== 'sold',
-);
+export function getSalesContacts() {
+  return getLocalizedSalesContacts();
+}
 
-export const newestProducts: Product[] = [...products].sort((first, second) =>
-  second.createdAt.localeCompare(first.createdAt),
-);
+export function getTrustFeatures() {
+  return getLocalizedTrustFeatures();
+}
+
+export function getHomeStats() {
+  return getLocalizedHomeStats();
+}
+
+export function getBudgetBands() {
+  return getLocalizedBudgetBands();
+}
+
+export function getHowItWorksSteps() {
+  return getLocalizedHowItWorksSteps();
+}
+
+export function getProducts() {
+  return getLocalizedProducts();
+}
+
+export function getBrands(): Brand[] {
+  const products = getProducts();
+
+  return brandDefinitions
+    .map((definition) => ({
+      ...definition,
+      productCount: products.filter((product) => product.brand === definition.name).length,
+    }))
+    .filter((brand) => brand.productCount > 0);
+}
+
+export function getAvailableNowProducts() {
+  return getProducts().filter(
+    (product) => product.availability === 'available' || product.availability === 'incoming',
+  );
+}
+
+export function getFeaturedProducts() {
+  return getProducts().filter(
+    (product) => product.featured && product.availability !== 'sold',
+  );
+}
+
+export function getDealProducts() {
+  return getProducts().filter(
+    (product) => product.deal && product.availability !== 'sold',
+  );
+}
+
+export function getNewestProducts(): Product[] {
+  return [...getProducts()].sort((first, second) =>
+    second.createdAt.localeCompare(first.createdAt),
+  );
+}

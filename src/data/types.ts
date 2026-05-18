@@ -2,13 +2,20 @@ export type ProductCondition = 'new' | 'used' | 'refurbished';
 export type ProductAvailability = 'available' | 'reserved' | 'incoming' | 'sold';
 export type ProductPriceMode = 'visible' | 'starting-from' | 'price-on-request';
 
-export interface EquipmentSubcategory {
+export interface CatalogProductType {
   slug: string;
   title: string;
   description: string;
 }
 
-export interface EquipmentCategory {
+export interface CatalogSubcategory {
+  slug: string;
+  title: string;
+  description: string;
+  productTypes: CatalogProductType[];
+}
+
+export interface CatalogCategory {
   slug: string;
   title: string;
   shortDescription: string;
@@ -16,7 +23,13 @@ export interface EquipmentCategory {
   heroImage: string;
   accent: string;
   seoIntro: string;
-  subcategories: EquipmentSubcategory[];
+  subcategories: CatalogSubcategory[];
+}
+
+export interface LegacyTaxonomyAlias {
+  categorySlug: string;
+  subcategorySlug?: string;
+  productTypeSlug?: string;
 }
 
 export interface ProductImage {
@@ -32,7 +45,13 @@ export interface ProductSpec {
 export interface ProductDocument {
   title: string;
   href: string;
-  kind?: 'brochure' | 'inspection-report' | 'service-record' | 'serial-verification' | 'certificate' | 'video';
+  kind?:
+    | 'brochure'
+    | 'inspection-report'
+    | 'service-record'
+    | 'serial-verification'
+    | 'certificate'
+    | 'video';
 }
 
 export interface Product {
@@ -41,7 +60,8 @@ export interface Product {
   sku: string;
   title: string;
   categorySlug: string;
-  subcategory: string;
+  subcategorySlug: string;
+  productTypeSlug: string;
   brand: string;
   model: string;
   year: number;
@@ -53,6 +73,7 @@ export interface Product {
   location: string;
   operatingHours?: number;
   mileageKm?: number;
+  unitOfMeasure?: string;
   fuelType?: string;
   enginePower?: string;
   weight?: string;
@@ -70,6 +91,17 @@ export interface Product {
   featured?: boolean;
   deal?: boolean;
   createdAt: string;
+}
+
+export interface ImageAttribution {
+  productSlug: string;
+  localPath: string;
+  sourceUrl: string | null;
+  sourceName: string;
+  author: string | null;
+  license: string;
+  attributionRequired: boolean;
+  notes: string;
 }
 
 export interface BrandDefinition {
@@ -141,4 +173,3 @@ export interface SiteMetadata {
   ogType: 'website';
   themeColor: string;
 }
-

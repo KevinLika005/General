@@ -1,4 +1,5 @@
 import { Check, ClipboardPlus } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useInquiryList } from '../../hooks/useInquiryList';
 import { Button } from './Button';
 
@@ -17,6 +18,7 @@ export function InquiryButton({
   fullWidth = false,
   productId,
 }: InquiryButtonProps) {
+  const { t } = useTranslation();
   const { addItem, isInInquiryList } = useInquiryList();
   const added = isInInquiryList(productId);
 
@@ -36,15 +38,15 @@ export function InquiryButton({
       {added ? <Check className="h-4 w-4" /> : <ClipboardPlus className="h-4 w-4" />}
       {disabled
         ? compact
-          ? 'Sold'
-          : 'Sold Reference'
+          ? t('common.status.sold')
+          : t('common.status.soldReference')
         : compact
           ? added
-            ? 'In Inquiry'
-            : 'Add'
+            ? t('layout.header.inquiryList')
+            : t('common.actions.browse', 'Add')
           : added
-            ? 'In Inquiry'
-            : 'Add to Inquiry'}
+            ? t('layout.header.inquiryList')
+            : t('common.actions.requestInfo', 'Add to Inquiry')}
     </Button>
   );
 }

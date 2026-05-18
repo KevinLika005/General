@@ -12,6 +12,7 @@ import { FAQPage } from './pages/FAQPage';
 import { FinancingContractsPage } from './pages/FinancingContractsPage';
 import { HomePage } from './pages/HomePage';
 import { HowItWorksPage } from './pages/HowItWorksPage';
+import { InstitutionsCleaningPage } from './pages/InstitutionsCleaningPage';
 import { InquiryListPage } from './pages/InquiryListPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { PrivacyPage } from './pages/PrivacyPage';
@@ -38,6 +39,7 @@ function App() {
             <Route path="/how-it-works" element={<HowItWorksPage />} />
             <Route path="/financing-contracts" element={<FinancingContractsPage />} />
             <Route path="/delivery-inspection" element={<DeliveryInspectionPage />} />
+            <Route path="/services/institutions-cleaning" element={<InstitutionsCleaningPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/contact" element={<ContactPage />} />

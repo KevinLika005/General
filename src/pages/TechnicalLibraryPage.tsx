@@ -1,8 +1,9 @@
 import { ChevronDown, FileSearch, FolderOpen, HardHat, ShieldCheck } from 'lucide-react';
 import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '../components/common/Button';
 import { SectionHeader } from '../components/common/SectionHeader';
-import { technicalLibraryGroups } from '../data/technicalLibrary';
+import { getTechnicalLibraryGroups } from '../data/technicalLibrary';
 import { usePageMetadata } from '../hooks/usePageMetadata';
 import { routes } from '../utils/routes';
 
@@ -15,12 +16,14 @@ const iconMap = {
 } as const;
 
 export function TechnicalLibraryPage() {
+  const { t } = useTranslation();
+  const technicalLibraryGroups = getTechnicalLibraryGroups();
   const [search, setSearch] = useState('');
   const [expanded, setExpanded] = useState<string | null>(technicalLibraryGroups[0]?.key ?? null);
 
   usePageMetadata({
-    title: 'Technical Library | Rafin Machinery',
-    description: 'Browse technical-library categories for manuals, inspection references, specification sheets, delivery documents, and support request paths.',
+    title: t('metadata.technicalLibrary.title'),
+    description: t('metadata.technicalLibrary.description'),
   });
 
   const filteredGroups = useMemo(() => {
@@ -36,36 +39,36 @@ export function TechnicalLibraryPage() {
         .toLowerCase()
         .includes(query),
     );
-  }, [search]);
+  }, [search, technicalLibraryGroups]);
 
   return (
     <>
       <section className="page-shell">
         <div className="surface-panel p-5 sm:p-6">
           <SectionHeader
-            eyebrow="Technical library"
-            title="Find technical references, inspection records, and support documents"
+            eyebrow={t('pages.technicalLibrary.eyebrow')}
+            title={t('pages.technicalLibrary.title')}
             titleAs="h1"
-            description="This page is structured as a support-first document surface for product manuals, specification sheets, inspection references, delivery records, and request-document workflows."
+            description={t('pages.technicalLibrary.description')}
           />
           <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1fr)_260px]">
             <label className="block text-sm text-text-muted">
-              Search document groups
+              {t('common.labels.searchDocumentGroups')}
               <input
                 className="field"
                 onChange={(event) => setSearch(event.target.value)}
-                placeholder="Search manuals, inspection documents, or specification sheets"
+                placeholder={t('pages.technicalLibrary.searchPlaceholder')}
                 type="search"
                 value={search}
               />
             </label>
             <div className="subtle-panel p-4">
-              <p className="line-label">Document request</p>
+              <p className="line-label">{t('common.labels.documentRequest')}</p>
               <p className="mt-2 text-sm text-text-muted">
-                If the exact file is not listed yet, use the request form and mention the product, model, or SKU.
+                {t('pages.technicalLibrary.requestNote')}
               </p>
               <Button className="mt-4 w-full" to={routes.requestQuote}>
-                Request Documents
+                {t('common.actions.requestDocuments')}
               </Button>
             </div>
           </div>
@@ -82,7 +85,7 @@ export function TechnicalLibraryPage() {
               <article className="surface-panel p-5" key={group.key}>
                 <div className="hidden items-start justify-between gap-4 xl:flex">
                   <div>
-                    <p className="line-label">Placeholder group</p>
+                    <p className="line-label">{t('common.status.placeholderGroup')}</p>
                     <h2 className="mt-2 max-w-[18ch] text-[clamp(1.25rem,1rem+0.7vw,1.55rem)] text-navy">{group.title}</h2>
                   </div>
                   <span className="inline-flex h-11 w-11 items-center justify-center border border-border bg-surface-subtle text-navy">
@@ -97,7 +100,7 @@ export function TechnicalLibraryPage() {
                   type="button"
                 >
                   <div className="text-left">
-                    <p className="line-label">Placeholder group</p>
+                    <p className="line-label">{t('common.status.placeholderGroup')}</p>
                     <h2 className="mt-2 text-[1.25rem] text-navy">{group.title}</h2>
                   </div>
                   <span className="flex items-center gap-3">
@@ -123,14 +126,14 @@ export function TechnicalLibraryPage() {
         <div className="mt-8 surface-panel p-5 sm:p-6">
           <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-center">
             <div>
-              <p className="kicker">Need product-specific support?</p>
-              <h2 className="mt-2 max-w-[20ch] text-[clamp(1.4rem,1rem+0.8vw,1.9rem)] text-navy">Ask Rafin for a document pack tied to a specific listing</h2>
+              <p className="kicker">{t('pages.technicalLibrary.cta.eyebrow')}</p>
+              <h2 className="mt-2 max-w-[20ch] text-[clamp(1.4rem,1rem+0.8vw,1.9rem)] text-navy">{t('pages.technicalLibrary.cta.title')}</h2>
               <p className="text-measure mt-3 text-sm text-text-muted">
-                Mention the category, model, SKU, or product page in your message and Rafin can prepare the relevant manual, inspection record, specification sheet, or delivery reference.
+                {t('pages.technicalLibrary.cta.description')}
               </p>
             </div>
             <Button className="w-full" to={routes.contact} variant="dark">
-              Contact Support
+              {t('common.actions.contactSupport')}
             </Button>
           </div>
         </div>

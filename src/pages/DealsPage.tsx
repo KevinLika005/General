@@ -1,18 +1,25 @@
+import { useTranslation } from 'react-i18next';
 import { Filter, SlidersHorizontal } from 'lucide-react';
 import { EmptyState } from '../components/common/EmptyState';
 import { FilterSidebar } from '../components/common/FilterSidebar';
 import { MobileFilterDrawer } from '../components/common/MobileFilterDrawer';
 import { ProductCard } from '../components/common/ProductCard';
 import { SearchBar } from '../components/common/SearchBar';
-import { products, sortOptions } from '../data/catalog';
+import { getProducts } from '../data/catalog';
 import { usePageMetadata } from '../hooks/usePageMetadata';
 import { useCatalogFilters } from '../hooks/useCatalogFilters';
 import { routes } from '../utils/routes';
 
 export function DealsPage() {
+  const { t } = useTranslation();
+  const sortOptions = t('catalog.sortOptions', { returnObjects: true }) as Array<{
+    value: string;
+    label: string;
+  }>;
+  const products = getProducts();
   usePageMetadata({
-    title: 'Available Stock and Deals | Rafin Machinery',
-    description: 'Review fast-moving available stock, incoming units, and deal-tagged machinery or parts through a compact inquiry-focused listing view.',
+    title: t('metadata.deals.title'),
+    description: t('metadata.deals.description'),
   });
 
   const availableOrDealProducts = products.filter(
@@ -36,23 +43,23 @@ export function DealsPage() {
     <>
       <section className="page-shell">
         <div className="surface-panel p-4 sm:p-5 xl:p-6">
-          <p className="kicker">Available now</p>
+          <p className="kicker">{t('pages.deals.eyebrow')}</p>
           <h1 className="mt-2 max-w-[20ch] text-[clamp(1.8rem,1.2rem+1.5vw,3rem)] leading-[1.02] text-navy">
-            Fast-moving stock, incoming units, and deal-tagged listings
+            {t('pages.deals.title')}
           </h1>
           <p className="text-measure mt-3 text-sm text-text-muted sm:text-base">
-            Focus on products suited to shorter procurement cycles. These listings still move through direct inquiry, inspection review, and offline company-to-company agreement.
+            {t('pages.deals.description')}
           </p>
           <div className="mt-4 grid gap-3 3xl:grid-cols-[minmax(0,1fr)_18rem] 3xl:items-center">
             <SearchBar
-              buttonLabel="Search Available Stock"
+              buttonLabel={t('common.actions.searchAvailableStock')}
               onChange={(value) => setFilters((current) => ({ ...current, search: value }))}
               onSubmit={() => undefined}
-              placeholder="Search current stock by product, machine, brand, model, SKU, or technical keyword"
+              placeholder={t('pages.deals.searchPlaceholder')}
               value={filters.search}
             />
             <div className="subtle-panel px-4 py-3 text-sm text-text-muted">
-              Use this view when your team needs stock visibility before requesting pricing or inspection.
+              {t('pages.deals.note')}
             </div>
           </div>
         </div>
@@ -74,8 +81,8 @@ export function DealsPage() {
                 <div className="flex items-center gap-3">
                   <SlidersHorizontal className="h-5 w-5 text-primary" />
                   <div>
-                    <p className="text-sm font-semibold text-navy">{filteredProducts.length} matching items</p>
-                    <p className="text-xs text-text-muted">Available, incoming, or deal-tagged inventory ready for direct inquiry</p>
+                    <p className="text-sm font-semibold text-navy">{t('common.status.matchingItems', { count: filteredProducts.length })}</p>
+                    <p className="text-xs text-text-muted">{t('pages.deals.toolbarDescription')}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -85,10 +92,10 @@ export function DealsPage() {
                     type="button"
                   >
                     <Filter className="h-4 w-4" />
-                    Filters
+                    {t('common.labels.filters')}
                   </button>
                   <label className="text-sm text-text-muted">
-                    Sort
+                    {t('common.labels.sort')}
                     <select
                       className="ml-3 h-10 border border-border bg-surface-card px-3 py-2 text-sm text-text"
                       onChange={(event) =>
@@ -126,7 +133,7 @@ export function DealsPage() {
                     onClick={clearAllFilters}
                     type="button"
                   >
-                    Clear filters
+                    {t('common.actions.clearFilters')}
                   </button>
                 </div>
               ) : null}
@@ -135,12 +142,12 @@ export function DealsPage() {
             <div className="mt-6">
               {filteredProducts.length === 0 ? (
                 <EmptyState
-                  actionLabel="Clear Filters"
-                  description="Try a broader stock status, price band, or brand to surface more current inventory."
+                  actionLabel={t('common.actions.clearFilters')}
+                  description={t('pages.deals.noResults.description')}
                   onAction={clearAllFilters}
-                  secondaryActionLabel="Browse Equipment"
+                  secondaryActionLabel={t('common.actions.browseEquipment')}
                   secondaryActionTo={routes.equipment}
-                  title="No matching available stock"
+                  title={t('pages.deals.noResults.title')}
                 />
               ) : (
                 <div className={filters.viewMode === 'list' ? 'grid gap-4' : 'catalog-product-grid'}>
@@ -152,17 +159,17 @@ export function DealsPage() {
             </div>
 
             <div className="mt-10 hero-band border border-surface-dark p-6 text-white shadow-card">
-              <p className="kicker text-white/80">Need confirmation?</p>
-              <h2 className="mt-2 max-w-[22ch] text-[clamp(1.35rem,1rem+0.8vw,1.8rem)] text-white">Current stock still follows the same offline inquiry process</h2>
+              <p className="kicker text-white/80">{t('pages.deals.cta.eyebrow')}</p>
+              <h2 className="mt-2 max-w-[22ch] text-[clamp(1.35rem,1rem+0.8vw,1.8rem)] text-white">{t('pages.deals.cta.title')}</h2>
               <p className="text-measure mt-3 text-sm text-white/72">
-                If a listing looks close but not exact, use the Inquiry List or request sourcing support directly from the sales team.
+                {t('pages.deals.cta.description')}
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <MobileFilterDrawer label="Available stock filters" onClose={() => setMobileFiltersOpen(false)} open={mobileFiltersOpen}>
+      <MobileFilterDrawer label={t('pages.deals.mobileFiltersLabel')} onClose={() => setMobileFiltersOpen(false)} open={mobileFiltersOpen}>
         <FilterSidebar
           clearAllFilters={clearAllFilters}
           filters={filters}

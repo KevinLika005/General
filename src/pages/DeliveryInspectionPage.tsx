@@ -1,30 +1,25 @@
+import { useTranslation } from 'react-i18next';
 import { Button } from '../components/common/Button';
 import { SectionHeader } from '../components/common/SectionHeader';
 import { usePageMetadata } from '../hooks/usePageMetadata';
 import { routes } from '../utils/routes';
 
 export function DeliveryInspectionPage() {
+  const { t } = useTranslation();
   usePageMetadata({
-    title: 'Delivery and Inspection | Rafin Machinery',
-    description: 'See how Rafin supports machine inspection, delivery planning, export coordination, and commercial handover after a buyer inquiry.',
+    title: t('metadata.deliveryInspection.title'),
+    description: t('metadata.deliveryInspection.description'),
   });
 
-  const points = [
-    'Inspection appointment coordination',
-    'Machine condition review and commercial clarifications',
-    'Transport planning for local or export delivery',
-    'Required documentation and invoice support',
-    'Local delivery or export planning support',
-    'Direct contact with sales before final contract handling',
-  ];
+  const points = t('pages.deliveryInspection.points', { returnObjects: true }) as string[];
 
   return (
     <>
       <section className="page-shell">
         <SectionHeader
-          description="Rafin can coordinate practical next steps after a buyer identifies the right product. This includes inspection discussion, transport planning, and commercial document preparation."
-          eyebrow="Delivery & inspection"
-          title="Support around inspection, logistics, and handover"
+          description={t('pages.deliveryInspection.description')}
+          eyebrow={t('pages.deliveryInspection.eyebrow')}
+          title={t('pages.deliveryInspection.title')}
           titleAs="h1"
         />
       </section>
@@ -39,14 +34,14 @@ export function DeliveryInspectionPage() {
         </div>
 
         <div className="mt-8 surface-panel p-5 shadow-card">
-          <h2 className="text-[1.3rem] text-navy">What this page does and does not promise</h2>
+          <h2 className="text-[1.3rem] text-navy">{t('pages.deliveryInspection.promiseTitle')}</h2>
           <p className="mt-3 text-sm text-text-muted">
-            The website helps buyers understand that inspection and logistics can be discussed. Final schedules, delivery cost, export scope, and handover details are confirmed directly with Rafin after inquiry.
+            {t('pages.deliveryInspection.promiseDescription')}
           </p>
         </div>
 
         <div className="mt-8">
-          <Button to={routes.contact}>Contact Sales</Button>
+          <Button to={routes.contact}>{t('common.actions.contactSales')}</Button>
         </div>
       </section>
     </>

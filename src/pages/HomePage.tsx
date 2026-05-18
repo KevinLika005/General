@@ -1,5 +1,6 @@
 import { ArrowRight, ClipboardList, FileText, SearchCheck, ShieldCheck, Truck } from 'lucide-react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { BrandCard } from '../components/common/BrandCard';
 import { Button } from '../components/common/Button';
@@ -8,65 +9,60 @@ import { ProductCard } from '../components/common/ProductCard';
 import { SearchBar } from '../components/common/SearchBar';
 import { SectionHeader } from '../components/common/SectionHeader';
 import {
-  availableNowProducts,
-  brands,
-  categories,
-  featuredProducts,
+  getAvailableNowProducts,
+  getBrands,
+  getCategories,
+  getFeaturedProducts,
 } from '../data/catalog';
 import { usePageMetadata } from '../hooks/usePageMetadata';
 import { routes } from '../utils/routes';
 
-const quickSearches = [
-  'Excavators',
-  'Generators',
-  'Hydraulic Breakers',
-  'Telehandlers',
-  'Dump Trucks',
-  'Surveying Equipment',
-];
-
-const quickLinks = [
-  { label: 'All Equipment', to: routes.equipment },
-  { label: 'Brands', to: routes.brands },
-  { label: 'Available Now', to: routes.deals },
-  { label: 'Technical Library', to: routes.technicalLibrary },
-] as const;
-
-const supportTiles = [
-  {
-    icon: SearchCheck,
-    title: 'Stronger product search',
-    description: 'Search by product, SKU, model, brand, or technical keyword from the first screen.',
-  },
-  {
-    icon: ClipboardList,
-    title: 'Inquiry-first workflow',
-    description: 'Collect multiple products into one request before asking for quote, info, documents, or contract follow-up.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Technical evaluation',
-    description: 'Review specifications, condition notes, availability, and inspection references before commercial alignment.',
-  },
-  {
-    icon: Truck,
-    title: 'Support-driven process',
-    description: 'Delivery, inspection, logistics, and documentation continue directly with the sales team after inquiry.',
-  },
-  {
-    icon: FileText,
-    title: 'Technical library path',
-    description: 'Use the support structure for manuals, specification sheets, inspection documents, and request-document workflows.',
-  },
-] as const;
-
 export function HomePage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
+  const quickSearches = t('pages.home.quickSearches', { returnObjects: true }) as string[];
+  const quickLinks = [
+    { label: t('pages.home.quickLinks.links.0'), to: routes.equipment },
+    { label: t('pages.home.quickLinks.links.1'), to: routes.brands },
+    { label: t('pages.home.quickLinks.links.2'), to: routes.deals },
+    { label: t('pages.home.quickLinks.links.3'), to: routes.technicalLibrary },
+  ] as const;
+  const supportTiles = [
+    {
+      icon: SearchCheck,
+      title: t('pages.home.support.tiles.0.title'),
+      description: t('pages.home.support.tiles.0.description'),
+    },
+    {
+      icon: ClipboardList,
+      title: t('pages.home.support.tiles.1.title'),
+      description: t('pages.home.support.tiles.1.description'),
+    },
+    {
+      icon: ShieldCheck,
+      title: t('pages.home.support.tiles.2.title'),
+      description: t('pages.home.support.tiles.2.description'),
+    },
+    {
+      icon: Truck,
+      title: t('pages.home.support.tiles.3.title'),
+      description: t('pages.home.support.tiles.3.description'),
+    },
+    {
+      icon: FileText,
+      title: t('pages.home.support.tiles.4.title'),
+      description: t('pages.home.support.tiles.4.description'),
+    },
+  ] as const;
+  const availableNowProducts = getAvailableNowProducts();
+  const brands = getBrands();
+  const categories = getCategories();
+  const featuredProducts = getFeaturedProducts();
 
   usePageMetadata({
-    title: 'Rafin Machinery | Technical Equipment Catalog and B2B Inquiry Requests',
-    description: 'Browse machinery, trucks, spare parts, attachments, and site support inventory in a technical B2B catalog built for inquiry, quote, inspection, and contract follow-up.',
+    title: t('metadata.home.title'),
+    description: t('metadata.home.description'),
   });
 
   return (
@@ -76,20 +72,20 @@ export function HomePage() {
           <div className="grid gap-5 3xl:grid-cols-[minmax(0,1.16fr)_minmax(20rem,0.84fr)]">
             <div className="space-y-4">
               <div>
-                <p className="kicker">Rafin Machinery</p>
+                <p className="kicker">{t('pages.home.hero.eyebrow')}</p>
                 <h1 className="mt-2 max-w-[18ch] text-[clamp(2.15rem,1.4rem+2.5vw,4.2rem)] leading-[0.98] text-navy">
-                  Technical product discovery for serious construction and equipment buyers
+                  {t('pages.home.hero.title')}
                 </h1>
                 <p className="text-measure mt-3 text-sm text-text-muted sm:text-[0.97rem]">
-                  Browse construction machinery, attachments, spare parts, tools, trucks, and support equipment. Build an Inquiry List, request technical information, and continue with pricing, inspection, delivery, or contract discussion directly with Rafin.
+                  {t('pages.home.hero.description')}
                 </p>
               </div>
 
               <SearchBar
-                buttonLabel="Search Catalog"
+                buttonLabel={t('common.actions.searchCatalog')}
                 onChange={setSearch}
                 onSubmit={() => navigate(search.trim() ? routes.equipmentSearch(search) : routes.equipment)}
-                placeholder="Search by product, SKU, model, brand, or technical keyword"
+                placeholder={t('pages.home.hero.searchPlaceholder')}
                 value={search}
               />
 
@@ -108,21 +104,21 @@ export function HomePage() {
 
               <div className="grid gap-3 sm:flex sm:flex-wrap">
                 <Button size="lg" to={routes.equipment}>
-                  Browse Catalog
+                  {t('common.actions.browseCatalog')}
                 </Button>
                 <Button size="lg" to={routes.inquiryList} variant="secondary">
-                  Inquiry List
+                  {t('layout.header.inquiryList')}
                 </Button>
                 <Button size="lg" to={routes.requestQuote} variant="secondary">
-                  Request Quote
+                  {t('common.actions.requestQuote')}
                 </Button>
               </div>
             </div>
 
             <div className="grid gap-4 md:grid-cols-2 3xl:grid-cols-1">
               <div className="surface-panel p-5">
-                <p className="kicker">Catalog structure</p>
-                <h2 className="mt-2 max-w-[18ch] text-[clamp(1.25rem,1rem+0.7vw,1.55rem)] text-navy">Search first, then move into products, support, and document paths</h2>
+                <p className="kicker">{t('pages.home.quickLinks.eyebrow')}</p>
+                <h2 className="mt-2 max-w-[18ch] text-[clamp(1.25rem,1rem+0.7vw,1.55rem)] text-navy">{t('pages.home.quickLinks.title')}</h2>
                 <div className="mt-4 grid gap-px border border-border bg-border">
                   {quickLinks.map((link) => (
                     <Button className="justify-between border-0 bg-surface-card hover:bg-surface-subtle" key={link.to} to={link.to} variant="ghost">
@@ -134,9 +130,9 @@ export function HomePage() {
               </div>
 
               <div className="surface-panel p-5">
-                <p className="kicker">Process note</p>
+                <p className="kicker">{t('pages.home.processNote.eyebrow')}</p>
                 <p className="mt-2 text-sm text-text-muted">
-                  Inquiry-commerce only. No checkout, no online payment, no cart wording, and no order placement. The website supports quote, inspection, documentation, and contract follow-up only.
+                  {t('pages.home.processNote.body')}
                 </p>
               </div>
             </div>
@@ -146,9 +142,9 @@ export function HomePage() {
 
       <section className="wide-shell py-[clamp(2rem,3vw,3rem)]">
         <SectionHeader
-          description="Start with the main inventory groups, then move into compact product listings, sharper filters, and technical product pages."
-          eyebrow="Browse categories"
-          title="Product groups built for fast buyer orientation"
+          description={t('pages.home.categories.description')}
+          eyebrow={t('pages.home.categories.eyebrow')}
+          title={t('pages.home.categories.title')}
         />
         <div className="category-grid mt-6">
           {categories.map((category) => (
@@ -159,9 +155,9 @@ export function HomePage() {
 
       <section className="wide-shell py-[clamp(2rem,3vw,3rem)]">
         <SectionHeader
-          description="Compact support blocks that stay close to product discovery instead of sitting behind a separate corporate layer."
-          eyebrow="Support structure"
-          title="A utilitarian B2B interface with stronger support paths"
+          description={t('pages.home.support.description')}
+          eyebrow={t('pages.home.support.eyebrow')}
+          title={t('pages.home.support.title')}
         />
         <div className="support-grid mt-6">
           {supportTiles.map((tile) => {
@@ -181,12 +177,12 @@ export function HomePage() {
       <section className="wide-shell py-[clamp(2rem,3vw,3rem)]">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeader
-            description="Priority listings with clear availability, price mode, and direct next actions."
-            eyebrow="Featured equipment"
-            title="Listings ready for serious evaluation"
+            description={t('pages.home.featured.description')}
+            eyebrow={t('pages.home.featured.eyebrow')}
+            title={t('pages.home.featured.title')}
           />
           <Button to={routes.equipment} variant="secondary">
-            Browse Equipment
+            {t('common.actions.browseEquipment')}
             <ArrowRight className="h-4 w-4" />
           </Button>
         </div>
@@ -200,12 +196,12 @@ export function HomePage() {
       <section className="wide-shell py-[clamp(2rem,3vw,3rem)]">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeader
-            description="Current stock and inbound units for buyers who need shorter procurement cycles."
-            eyebrow="Available now"
-            title="Current stock and inbound units"
+            description={t('pages.home.availableNow.description')}
+            eyebrow={t('pages.home.availableNow.eyebrow')}
+            title={t('pages.home.availableNow.title')}
           />
           <Button to={routes.deals} variant="secondary">
-            View Available Now
+            {t('common.actions.viewAvailableNow')}
           </Button>
         </div>
         <div className="product-grid mt-6">
@@ -217,9 +213,9 @@ export function HomePage() {
 
       <section className="wide-shell py-[clamp(2rem,3vw,3rem)]">
         <SectionHeader
-          eyebrow="Brands in stock"
-          title="Browse current manufacturers in the catalog"
-          description="Use brand preference as a direct path into filtered inventory."
+          eyebrow={t('pages.home.brands.eyebrow')}
+          title={t('pages.home.brands.title')}
+          description={t('pages.home.brands.description')}
         />
         <div className="brand-grid mt-6">
           {brands.map((brand) => (
@@ -232,18 +228,18 @@ export function HomePage() {
         <div className="band-shell">
           <div className="hero-band border border-surface-dark px-5 py-6 text-white lg:flex lg:items-center lg:justify-between">
           <div>
-            <p className="kicker text-white/80">Technical library and sourcing</p>
-            <h2 className="mt-2 max-w-[20ch] text-[clamp(1.45rem,1.1rem+0.9vw,1.95rem)] text-white">Need a document pack or a specific unit that is not listed?</h2>
+            <p className="kicker text-white/80">{t('pages.home.cta.eyebrow')}</p>
+            <h2 className="mt-2 max-w-[20ch] text-[clamp(1.45rem,1.1rem+0.9vw,1.95rem)] text-white">{t('pages.home.cta.title')}</h2>
             <p className="text-measure mt-3 text-sm text-white/72">
-              Use the Technical Library for support materials, or submit a request for quote, information, inspection, or contract discussion tied to a specific model or requirement.
+              {t('pages.home.cta.description')}
             </p>
           </div>
           <div className="mt-5 flex flex-wrap gap-3 lg:mt-0">
             <Button size="lg" to={routes.technicalLibrary}>
-              Technical Library
+              {t('common.labels.technicalLibrary')}
             </Button>
             <Button size="lg" to={routes.requestQuote} variant="secondary">
-              Request Quote
+              {t('common.actions.requestQuote')}
             </Button>
           </div>
         </div>

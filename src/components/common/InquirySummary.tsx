@@ -1,5 +1,6 @@
 import { ArrowRight, ClipboardList, Trash2, X } from 'lucide-react';
 import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useInquiryList } from '../../hooks/useInquiryList';
 import { getProductAvailabilityLabel, getProductsByIds } from '../../utils/catalog';
 import { formatProductPrice } from '../../utils/formatPrice';
@@ -13,6 +14,7 @@ interface InquirySummaryProps {
 }
 
 export function InquirySummary({ onClose, open }: InquirySummaryProps) {
+  const { t } = useTranslation();
   const { clearItems, itemCount, items, removeItem } = useInquiryList();
   const products = getProductsByIds(items.map((item) => item.productId));
   const panelRef = useRef<HTMLElement | null>(null);
@@ -43,13 +45,13 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
   return (
     <>
       <button
-        aria-label="Close inquiry summary"
-        className="fixed inset-0 z-40 bg-surface-blue/45"
+        aria-label={t('common.accessibility.closeInquirySummary')}
+        className="fixed inset-0 z-40 bg-overlay/52"
         onClick={onClose}
         type="button"
       />
       <aside
-        aria-label="Inquiry summary"
+        aria-label={t('common.accessibility.inquirySummary')}
         aria-modal="true"
         className="fixed bottom-0 right-0 z-50 flex h-[90vh] w-full max-w-[28rem] flex-col border-l border-border bg-surface-page shadow-dropdown xl:top-0 xl:h-full"
         ref={panelRef}
@@ -57,15 +59,14 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
       >
         <div className="flex items-center justify-between border-b border-border px-5 py-4">
           <div>
-            <p className="kicker">Inquiry List</p>
-            <h2 className="mt-2 text-[1.5rem] text-navy xl:text-[1.8rem]">{itemCount} requested item(s)</h2>
+            <p className="kicker">{t('layout.header.inquiryList')}</p>
+            <h2 className="mt-2 text-[1.5rem] text-navy xl:text-[1.8rem]">{t('common.status.requestedItems', { count: itemCount })}</h2>
             <p className="mt-2 text-sm text-text-muted">
-              This is not a checkout. Rafin uses this list to prepare pricing, product details,
-              inspection options, and contract next steps.
+              {t('pages.inquiryList.description')}
             </p>
           </div>
           <button
-            aria-label="Close inquiry summary"
+            aria-label={t('common.accessibility.closeInquirySummary')}
             className="inline-flex h-10 w-10 items-center justify-center rounded-none border border-border text-text"
             onClick={onClose}
             type="button"
@@ -77,8 +78,7 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
         <div className="flex-1 space-y-3 overflow-y-auto px-5 py-4">
           {products.length === 0 ? (
             <div className="border border-dashed border-border bg-surface-card p-5 text-sm text-text-muted">
-              No products in the Inquiry List yet. Add equipment, parts, or tools before requesting
-              information, pricing, or contract follow-up.
+              {t('pages.inquiryList.empty.description')}
             </div>
           ) : (
             products.map((product) => {
@@ -103,15 +103,15 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
                       </p>
                       <h3 className="mt-2 text-base text-navy">{product.title}</h3>
                       <p className="mt-2 text-sm text-text-muted">
-                        Qty {item?.quantity ?? 1} | {formatProductPrice(product)}
+                        {t('common.status.qtyPrice', { quantity: item?.quantity ?? 1, price: formatProductPrice(product) })}
                       </p>
                       <p className="mt-1 text-xs text-text-muted">
                         {getProductAvailabilityLabel(product.availability)} | {product.location}
                       </p>
                     </div>
                     <button
-                      aria-label={`Remove ${product.title}`}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-none border border-border text-text-muted transition hover:border-brand-gold hover:text-navy"
+                      aria-label={t('common.accessibility.removeProduct', { product: product.title })}
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-none border border-border text-text-muted transition hover:border-primary hover:text-primary-dark"
                       onClick={() => removeItem(product.id)}
                       type="button"
                     >
@@ -129,21 +129,20 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
             <div className="flex items-start gap-3">
               <ClipboardList className="mt-0.5 h-4 w-4 text-primary" />
               <p className="text-sm text-text-muted">
-                Continue when your team is ready for pricing, technical clarification, inspection,
-                or contract discussion.
+                {t('pages.inquiryList.summary.description')}
               </p>
             </div>
           </div>
           <div className="mt-4 grid gap-3">
             <Button to={routes.inquiryList} variant="secondary">
-              Review Inquiry List
+              {t('common.actions.reviewInquiryList')}
             </Button>
             <Button to={routes.requestQuote}>
-              Request Quote
+              {t('common.actions.requestQuote')}
               <ArrowRight className="h-4 w-4" />
             </Button>
             <Button onClick={clearItems} variant="ghost">
-              Clear Inquiry List
+              {t('common.actions.clearInquiryList')}
             </Button>
           </div>
         </div>

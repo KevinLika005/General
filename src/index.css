@@ -12,24 +12,30 @@
     --shell-wide-max: 96rem;
     --shell-catalog-max: 108rem;
     --measure-readable: 68ch;
-    --primary: 65 102 245;
-    --primary-hover: 32 76 243;
-    --primary-active: 12 57 229;
-    --primary-dark: 10 49 196;
-    --navy: 3 16 65;
-    --brand-gold: 65 102 245;
-    --brand-gold-soft: 238 243 255;
-    --surface-dark: 5 24 98;
-    --surface-blue: 7 32 131;
-    --border-blue: 9 40 164;
-    --highlight: 65 102 245;
-    --text-on-dark: 247 250 255;
-    --text-primary: 3 16 65;
-    --text-muted: 71 84 103;
-    --surface-page: 246 248 252;
+    /* Brand colors live here first. Update this token set for future palette changes. */
+    --primary: 191 136 36;
+    --primary-hover: 168 118 28;
+    --primary-active: 140 97 20;
+    --primary-dark: 112 75 15;
+    --secondary: 107 115 126;
+    --accent: 233 201 133;
+    --neutral: 124 121 116;
+    --navy: 39 37 33;
+    --brand-gold: 191 136 36;
+    --brand-gold-soft: 246 238 223;
+    --surface-dark: 43 40 36;
+    --surface-blue: 87 83 77;
+    --border-blue: 122 109 85;
+    --highlight: 233 201 133;
+    --focus-ring: 214 170 83;
+    --overlay: 39 37 33;
+    --text-on-dark: 249 246 239;
+    --text-primary: 39 37 33;
+    --text-muted: 101 97 90;
+    --surface-page: 244 240 233;
     --surface-card: 255 255 255;
-    --surface-subtle: 238 243 255;
-    --border-default: 215 224 248;
+    --surface-subtle: 237 231 219;
+    --border-default: 211 201 186;
     --status-available: 18 128 92;
     --status-available-bg: 236 253 243;
     --status-incoming: 181 71 8;
@@ -71,7 +77,9 @@
   input:focus-visible,
   select:focus-visible,
   textarea:focus-visible {
-    @apply ring-2 ring-primary ring-offset-2 ring-offset-surface-page;
+    box-shadow:
+      0 0 0 2px rgb(var(--focus-ring)),
+      0 0 0 4px rgb(var(--surface-page));
   }
 
   h1,
@@ -91,11 +99,11 @@
 
   option {
     background-color: rgb(var(--surface-card));
-    color: rgb(var(--text-default));
+    color: rgb(var(--text-primary));
   }
 
   ::selection {
-    background-color: rgba(65, 102, 245, 0.2);
+    background-color: rgba(191, 136, 36, 0.24);
     color: rgb(var(--text-primary));
   }
 }
@@ -182,6 +190,7 @@
 
   .field {
     @apply mt-2 min-h-11 w-full rounded-none border border-border bg-surface-card px-3 py-2.5 text-sm text-text shadow-none placeholder:text-text-muted/70 focus:border-primary;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
   }
 
   .surface-panel {
@@ -210,8 +219,8 @@
 
   .technical-grid {
     background-image:
-      linear-gradient(rgba(3, 16, 65, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(3, 16, 65, 0.04) 1px, transparent 1px);
+      linear-gradient(rgba(39, 37, 33, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(39, 37, 33, 0.055) 1px, transparent 1px);
     background-size: 18px 18px;
   }
 
@@ -229,7 +238,7 @@
   }
 
   .hero-band {
-    background-image: linear-gradient(135deg, rgba(3, 16, 65, 0.98), rgba(7, 32, 131, 0.98));
+    background-image: linear-gradient(135deg, rgba(43, 40, 36, 0.98), rgba(87, 83, 77, 0.98));
   }
 
   .section-divider {

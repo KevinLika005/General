@@ -1,6 +1,12 @@
-import { categories, type Product } from '../data/catalog';
+import type { Product } from '../data/catalog';
+import { getTaxonomyLabelsForProduct } from './catalog';
 
-export type PriceBand = 'all' | 'under-5000' | 'under-25000' | 'under-100000' | 'price-on-request';
+export type PriceBand =
+  | 'all'
+  | 'under-5000'
+  | 'under-25000'
+  | 'under-100000'
+  | 'price-on-request';
 
 export function normalizeText(value: string) {
   return value
@@ -17,21 +23,29 @@ export function matchesSearch(product: Product, search: string) {
     return true;
   }
 
-  const categoryTitle =
-    categories.find((category) => category.slug === product.categorySlug)?.title ?? '';
+  const taxonomy = getTaxonomyLabelsForProduct(product);
 
   const haystack = [
     product.title,
     product.brand,
     product.model,
     product.categorySlug,
-    categoryTitle,
-    product.subcategory,
+    product.subcategorySlug,
+    product.productTypeSlug,
+    taxonomy.categoryTitle,
+    taxonomy.subcategoryTitle,
+    taxonomy.productTypeTitle,
     product.sku,
     product.serialNumber ?? '',
     product.excerpt,
     product.description,
     product.location,
+    product.unitOfMeasure ?? '',
+    product.fuelType ?? '',
+    product.enginePower ?? '',
+    product.weight ?? '',
+    product.capacity ?? '',
+    product.transmission ?? '',
     ...product.tags,
     ...product.specs.flatMap((spec) => [spec.label, spec.value]),
   ]

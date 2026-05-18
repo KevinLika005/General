@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Filter, SlidersHorizontal } from 'lucide-react';
 import { useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -6,16 +7,25 @@ import { FilterSidebar } from '../components/common/FilterSidebar';
 import { MobileFilterDrawer } from '../components/common/MobileFilterDrawer';
 import { ProductCard } from '../components/common/ProductCard';
 import { SearchBar } from '../components/common/SearchBar';
-import { categories, products, sortOptions } from '../data/catalog';
+import { getCategories, getProducts } from '../data/catalog';
 import { usePageMetadata } from '../hooks/usePageMetadata';
 import { useCatalogFilters } from '../hooks/useCatalogFilters';
+import { resolveTaxonomySelection } from '../utils/catalog';
 import { routes } from '../utils/routes';
 
 export function CatalogPage() {
+  const { t } = useTranslation();
+  const sortOptions = t('catalog.sortOptions', { returnObjects: true }) as Array<{
+    value: string;
+    label: string;
+  }>;
+  const categories = getCategories();
+  const products = getProducts();
   const [searchParams, setSearchParams] = useSearchParams();
   const brandParam = searchParams.get('brand') ?? '';
   const categoryParam = searchParams.get('category') ?? '';
   const subcategoryParam = searchParams.get('subcategory') ?? '';
+  const productTypeParam = searchParams.get('type') ?? '';
   const conditionParam = searchParams.get('condition') ?? '';
   const availabilityParam = searchParams.get('availability') ?? '';
   const queryParam = searchParams.get('q') ?? '';
@@ -23,10 +33,18 @@ export function CatalogPage() {
   const yearMinParam = searchParams.get('yearMin') ?? '';
   const yearMaxParam = searchParams.get('yearMax') ?? '';
   const hoursMaxParam = searchParams.get('hoursMax') ?? '';
+  const mileageMaxParam = searchParams.get('mileageMax') ?? '';
   const locationParam = searchParams.get('location') ?? '';
   const tagParam = searchParams.get('tag') ?? '';
   const sortParam = searchParams.get('sort') ?? '';
   const viewParam = searchParams.get('view') ?? '';
+
+  const taxonomy = resolveTaxonomySelection({
+    categorySlug: categoryParam || undefined,
+    subcategorySlug: subcategoryParam || undefined,
+    productTypeSlug: productTypeParam || undefined,
+  });
+
   const {
     appliedFilters,
     clearAllFilters,
@@ -43,16 +61,17 @@ export function CatalogPage() {
   });
 
   usePageMetadata({
-    title: 'Catalog | Rafin Machinery',
-    description: 'Search the Rafin Machinery catalog by product, brand, category, SKU, availability, and price mode through a compact B2B inquiry-focused interface.',
+    title: t('metadata.catalog.title'),
+    description: t('metadata.catalog.description'),
   });
 
   useEffect(() => {
     setFilters((current) => ({
       ...current,
       brand: brandParam || 'all',
-      category: categoryParam || 'all',
-      subcategory: subcategoryParam || 'all',
+      category: taxonomy.categorySlug ?? 'all',
+      subcategory: taxonomy.subcategorySlug ?? 'all',
+      productType: taxonomy.productTypeSlug ?? 'all',
       condition:
         conditionParam === 'new' || conditionParam === 'used' || conditionParam === 'refurbished'
           ? conditionParam
@@ -75,6 +94,7 @@ export function CatalogPage() {
       yearMin: yearMinParam,
       yearMax: yearMaxParam,
       hoursMax: hoursMaxParam,
+      mileageMax: mileageMaxParam,
       location: locationParam || 'all',
       tag: tagParam || 'all',
       sort:
@@ -82,7 +102,8 @@ export function CatalogPage() {
         sortParam === 'price-asc' ||
         sortParam === 'price-desc' ||
         sortParam === 'year-desc' ||
-        sortParam === 'hours-asc'
+        sortParam === 'hours-asc' ||
+        sortParam === 'mileage-asc'
           ? sortParam
           : 'featured',
       viewMode: viewParam === 'list' ? 'list' : 'grid',
@@ -90,16 +111,18 @@ export function CatalogPage() {
   }, [
     availabilityParam,
     brandParam,
-    categoryParam,
     conditionParam,
     hoursMaxParam,
     locationParam,
+    mileageMaxParam,
     priceBandParam,
     queryParam,
     setFilters,
     sortParam,
-    subcategoryParam,
     tagParam,
+    taxonomy.categorySlug,
+    taxonomy.productTypeSlug,
+    taxonomy.subcategorySlug,
     viewParam,
     yearMaxParam,
     yearMinParam,
@@ -112,12 +135,14 @@ export function CatalogPage() {
     if (filters.brand !== 'all') nextParams.set('brand', filters.brand);
     if (filters.category !== 'all') nextParams.set('category', filters.category);
     if (filters.subcategory !== 'all') nextParams.set('subcategory', filters.subcategory);
+    if (filters.productType !== 'all') nextParams.set('type', filters.productType);
     if (filters.condition !== 'all') nextParams.set('condition', filters.condition);
     if (filters.availability !== 'all') nextParams.set('availability', filters.availability);
     if (filters.priceBand !== 'all') nextParams.set('priceBand', filters.priceBand);
     if (filters.yearMin) nextParams.set('yearMin', filters.yearMin);
     if (filters.yearMax) nextParams.set('yearMax', filters.yearMax);
     if (filters.hoursMax) nextParams.set('hoursMax', filters.hoursMax);
+    if (filters.mileageMax) nextParams.set('mileageMax', filters.mileageMax);
     if (filters.location !== 'all') nextParams.set('location', filters.location);
     if (filters.tag !== 'all') nextParams.set('tag', filters.tag);
     if (filters.sort !== 'featured') nextParams.set('sort', filters.sort);
@@ -132,34 +157,30 @@ export function CatalogPage() {
     <>
       <section className="page-shell">
         <div className="surface-panel p-4 sm:p-5 xl:p-6">
-          <p className="kicker">Products</p>
+          <p className="kicker">{t('pages.catalog.eyebrow')}</p>
           <h1 className="mt-2 max-w-[20ch] text-[clamp(1.8rem,1.2rem+1.5vw,3rem)] leading-[1.02] text-navy">
-            Browse machinery, parts, attachments, trucks, and support equipment
+            {t('pages.catalog.title')}
           </h1>
           <p className="text-measure mt-3 text-sm text-text-muted sm:text-base">
-            Search inventory, narrow by brand or stock status, and add products to your Inquiry List before requesting pricing, inspection, information, or contract follow-up.
+            {t('pages.catalog.description')}
           </p>
 
           <div className="mt-4 grid gap-3 3xl:grid-cols-[minmax(0,1fr)_18rem] 3xl:items-center">
             <SearchBar
-              buttonLabel="Search Catalog"
+              buttonLabel={t('common.actions.searchCatalog')}
               onChange={(value) => setFilters((current) => ({ ...current, search: value }))}
               onSubmit={() => undefined}
-              placeholder="Search by product, machine, brand, model, SKU, location, or technical keyword"
+              placeholder={t('pages.catalog.searchPlaceholder')}
               value={filters.search}
             />
             <div className="subtle-panel px-4 py-3 text-sm text-text-muted">
-              Inquiry-only workflow. Final pricing, inspection, delivery, and contract handling stay offline.
+              {t('pages.catalog.workflowNote')}
             </div>
           </div>
 
           <div className="mt-4 flex gap-2 overflow-x-auto pb-1">
             {categories.map((category) => (
-              <Link
-                className="chip whitespace-nowrap"
-                key={category.slug}
-                to={routes.category(category.slug)}
-              >
+              <Link className="chip whitespace-nowrap" key={category.slug} to={routes.category(category.slug)}>
                 {category.title}
               </Link>
             ))}
@@ -184,9 +205,9 @@ export function CatalogPage() {
                 <div className="flex items-center gap-3">
                   <SlidersHorizontal className="h-5 w-5 text-primary" />
                   <div>
-                    <p className="text-sm font-semibold text-navy">{filteredProducts.length} results</p>
+                    <p className="text-sm font-semibold text-navy">{t('common.status.results', { count: filteredProducts.length })}</p>
                     <p className="text-xs text-text-muted">
-                      Product-first listing view with technical metadata and direct inquiry actions
+                      {t('pages.catalog.toolbarDescription')}
                     </p>
                   </div>
                 </div>
@@ -197,10 +218,10 @@ export function CatalogPage() {
                     type="button"
                   >
                     <Filter className="h-4 w-4" />
-                    Filters
+                    {t('common.labels.filters')}
                   </button>
                   <label className="text-sm text-text-muted">
-                    Sort
+                    {t('common.labels.sort')}
                     <select
                       className="ml-3 h-10 border border-border bg-surface-card px-3 py-2 text-sm text-text"
                       onChange={(event) =>
@@ -238,7 +259,7 @@ export function CatalogPage() {
                     onClick={clearAllFilters}
                     type="button"
                   >
-                    Clear all filters
+                    {t('common.actions.clearAll')}
                   </button>
                 </div>
               ) : null}
@@ -247,12 +268,12 @@ export function CatalogPage() {
             {filteredProducts.length === 0 ? (
               <div className="mt-8">
                 <EmptyState
-                  actionLabel="Clear Filters"
-                  description="No products match the current search and filter combination. Reset the filters or return to the broader catalog view."
+                  actionLabel={t('common.actions.clearFilters')}
+                  description={t('pages.catalog.noResults.description')}
                   onAction={clearAllFilters}
-                  secondaryActionLabel="Browse Equipment"
+                  secondaryActionLabel={t('common.actions.browseEquipment')}
                   secondaryActionTo={routes.equipment}
-                  title="No matching products"
+                  title={t('pages.catalog.noResults.title')}
                 />
               </div>
             ) : (
@@ -266,7 +287,11 @@ export function CatalogPage() {
         </div>
       </section>
 
-      <MobileFilterDrawer label="Catalog filters" onClose={() => setMobileFiltersOpen(false)} open={mobileFiltersOpen}>
+      <MobileFilterDrawer
+        label={t('pages.catalog.mobileFiltersLabel')}
+        onClose={() => setMobileFiltersOpen(false)}
+        open={mobileFiltersOpen}
+      >
         <FilterSidebar
           clearAllFilters={clearAllFilters}
           filters={filters}

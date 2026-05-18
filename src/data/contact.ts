@@ -1,4 +1,5 @@
 import type { SalesContact } from './types';
+import { localizeCatalogValue } from '../i18n/catalogLocale';
 
 /*
   Contact maintenance notes
@@ -7,7 +8,7 @@ import type { SalesContact } from './types';
   - Keep phone and email in a plain business format for easy reuse later in a CMS.
 */
 
-export const salesContacts: SalesContact[] = [
+const baseSalesContacts: SalesContact[] = [
   {
     name: 'Arben Kola',
     title: 'Machinery Sales Manager',
@@ -36,3 +37,12 @@ export const salesContacts: SalesContact[] = [
     note: 'Handles commercial handover, delivery planning, and contract document follow-up after buyer approval.',
   },
 ];
+
+export function getSalesContacts(): SalesContact[] {
+  return baseSalesContacts.map((contact, index) => ({
+    ...contact,
+    title: localizeCatalogValue(`salesContacts.${index}.title`, contact.title),
+    markets: localizeCatalogValue(`salesContacts.${index}.markets`, contact.markets),
+    note: localizeCatalogValue(`salesContacts.${index}.note`, contact.note),
+  }));
+}

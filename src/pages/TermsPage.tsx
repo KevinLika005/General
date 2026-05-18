@@ -1,22 +1,24 @@
+import { useTranslation } from 'react-i18next';
 import { SectionHeader } from '../components/common/SectionHeader';
 import { usePageMetadata } from '../hooks/usePageMetadata';
 
 export function TermsPage() {
+  const { t } = useTranslation();
   usePageMetadata({
-    title: 'Terms | Rafin Machinery',
-    description: 'Terms guidance for catalog information, indicative pricing, availability, and offline company-to-company contract handling.',
+    title: t('metadata.terms.title'),
+    description: t('metadata.terms.description'),
   });
 
   return (
     <section className="page-shell">
       <SectionHeader
-        eyebrow="Terms"
-        title="Terms of use guidance"
+        eyebrow={t('pages.terms.eyebrow')}
+        title={t('pages.terms.title')}
         titleAs="h1"
-        description="Product information in this frontend build is illustrative catalog content for an inquiry-based sales process. Final commercial terms are confirmed directly with Rafin."
+        description={t('pages.terms.description')}
       />
       <div className="mt-8 border border-border bg-surface-card p-6 text-sm text-text-muted shadow-card">
-        Final availability, pricing, specifications, documentation, delivery, inspection, and contract terms must be confirmed directly with Rafin during the offline company-to-company process.
+        {t('pages.terms.body')}
       </div>
     </section>
   );

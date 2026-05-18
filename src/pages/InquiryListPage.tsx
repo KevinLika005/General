@@ -1,4 +1,5 @@
 import { ClipboardList, Trash2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '../components/common/Button';
 import { EmptyState } from '../components/common/EmptyState';
 import { ImageWithFallback } from '../components/common/ImageWithFallback';
@@ -9,24 +10,25 @@ import { formatProductPrice } from '../utils/formatPrice';
 import { routes } from '../utils/routes';
 
 export function InquiryListPage() {
+  const { t } = useTranslation();
   const { clearItems, items, removeItem, updateNotes, updateQuantity } = useInquiryList();
   const products = getProductsByIds(items.map((item) => item.productId));
 
   usePageMetadata({
-    title: 'Inquiry List | Rafin Machinery',
-    description: 'Review selected machinery, parts, and tools before sending one consolidated B2B quote or contract request to Rafin.',
+    title: t('metadata.inquiryList.title'),
+    description: t('metadata.inquiryList.description'),
   });
 
   return (
     <>
       <section className="page-shell">
         <div className="surface-panel p-5 sm:p-6">
-          <p className="kicker">Inquiry List</p>
+          <p className="kicker">{t('pages.inquiryList.eyebrow')}</p>
           <h1 className="mt-2 max-w-[20ch] text-[clamp(1.9rem,1.35rem+1.3vw,2.9rem)] leading-[1.02] text-navy">
-            Build one useful request around the products your team needs
+            {t('pages.inquiryList.title')}
           </h1>
           <p className="text-measure mt-3 text-sm text-text-muted sm:text-base">
-            This is not a checkout. Your Inquiry List helps Rafin prepare product details, pricing, inspection options, document support, delivery discussion, and contract next steps.
+            {t('pages.inquiryList.description')}
           </p>
         </div>
       </section>
@@ -34,12 +36,12 @@ export function InquiryListPage() {
       <section className="catalog-shell pb-24">
         {products.length === 0 ? (
           <EmptyState
-            actionLabel="Browse Equipment"
+            actionLabel={t('common.actions.browseEquipment')}
             actionTo={routes.equipment}
-            description="Add products from the catalog to start a company inquiry, or contact the sales team directly for a general machinery request."
-            secondaryActionLabel="Contact Sales"
+            description={t('pages.inquiryList.empty.description')}
+            secondaryActionLabel={t('common.actions.contactSales')}
             secondaryActionTo={routes.contact}
-            title="Your Inquiry List is empty"
+            title={t('pages.inquiryList.empty.title')}
           />
         ) : (
           <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_clamp(19rem,22vw,22rem)]">
@@ -63,7 +65,7 @@ export function InquiryListPage() {
                           <p className="text-measure mt-2 text-sm text-text-muted">{product.excerpt}</p>
                         </div>
                         <button
-                          aria-label={`Remove ${product.title}`}
+                          aria-label={t('common.accessibility.removeProduct', { product: product.title })}
                           className="inline-flex h-10 w-10 items-center justify-center border border-border text-text-muted transition hover:border-primary hover:text-navy"
                           onClick={() => removeItem(product.id)}
                           type="button"
@@ -74,12 +76,12 @@ export function InquiryListPage() {
 
                       <div className="mt-4 grid gap-px border border-border bg-border sm:grid-cols-3">
                         <div className="bg-surface-subtle p-4">
-                          <p className="line-label">Price mode</p>
+                          <p className="line-label">{t('common.labels.priceMode')}</p>
                           <p className="mt-1 text-sm font-semibold text-navy">{formatProductPrice(product)}</p>
                           <p className="mt-1 text-xs text-text-muted">{getProductAvailabilityLabel(product.availability)}</p>
                         </div>
                         <label className="bg-surface-subtle p-4 text-sm text-text-muted">
-                          Quantity
+                          {t('common.labels.quantity')}
                           <input
                             className="field mt-3"
                             min="1"
@@ -89,17 +91,17 @@ export function InquiryListPage() {
                           />
                         </label>
                         <div className="bg-surface-subtle p-4">
-                          <p className="line-label">Location</p>
+                          <p className="line-label">{t('common.labels.location')}</p>
                           <p className="mt-1 text-sm font-semibold text-navy">{product.location}</p>
                         </div>
                       </div>
 
                       <label className="mt-4 block text-sm text-text-muted">
-                        Product notes for Rafin
+                        {t('common.labels.productNotesForRafin')}
                         <textarea
                           className="field mt-3 min-h-[110px]"
                           onChange={(event) => updateNotes(product.id, event.target.value)}
-                          placeholder="Example: request inspection timing, serial confirmation, compatibility checks, spare parts, or delivery discussion."
+                          placeholder={t('pages.inquiryList.notesPlaceholder')}
                           value={item?.notes ?? ''}
                         />
                       </label>
@@ -111,18 +113,18 @@ export function InquiryListPage() {
 
             <aside className="space-y-5 xl:sticky xl:top-[8.65rem] xl:self-start">
               <div className="surface-panel p-5">
-                <p className="kicker">Request summary</p>
-                <h2 className="mt-2 text-[1.5rem] text-navy xl:text-[1.7rem]">{items.length} product line(s)</h2>
+                <p className="kicker">{t('pages.inquiryList.summary.eyebrow')}</p>
+                <h2 className="mt-2 text-[1.5rem] text-navy xl:text-[1.7rem]">{t('common.status.productLines', { count: items.length })}</h2>
                 <p className="mt-3 text-sm text-text-muted">
-                  Continue to the request form when your list reflects the machines, tools, or parts your company wants to discuss.
+                  {t('pages.inquiryList.summary.description')}
                 </p>
                 <div className="mt-5 grid gap-3">
-                  <Button to={routes.requestQuote}>Request Quote</Button>
+                  <Button to={routes.requestQuote}>{t('common.actions.requestQuote')}</Button>
                   <Button onClick={clearItems} variant="secondary">
-                    Clear Inquiry List
+                    {t('common.actions.clearInquiryList')}
                   </Button>
                   <Button to={routes.equipment} variant="ghost">
-                    Continue Browsing
+                    {t('common.actions.continueBrowsing')}
                   </Button>
                 </div>
               </div>
@@ -131,14 +133,9 @@ export function InquiryListPage() {
                 <div className="flex items-start gap-3">
                   <ClipboardList className="mt-0.5 h-5 w-5 text-primary" />
                   <div>
-                    <h2 className="text-xl text-navy">What Rafin prepares from this list</h2>
+                    <h2 className="text-xl text-navy">{t('pages.inquiryList.preparedTitle')}</h2>
                     <div className="mt-4 grid gap-3">
-                      {[
-                        'Pricing mode and commercial clarification for each selected product',
-                        'Inspection options, condition review, and documentation follow-up',
-                        'Bundled parts or accessory discussion where relevant',
-                        'Contract, delivery, and next-step coordination after buyer contact',
-                      ].map((point) => (
+                      {(t('pages.inquiryList.preparedPoints', { returnObjects: true }) as string[]).map((point) => (
                         <div className="border border-border bg-surface-subtle p-4 text-sm text-text-muted" key={point}>
                           {point}
                         </div>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0928A4" />
-    <link rel="icon" type="image/png" href="/src/assets/rafin-logo.png" />
+    <link rel="icon" type="image/png" href="/src/assets/general-logo-tab.png" />
     <title>Rafin Machinery | Technical Equipment Catalog and B2B Inquiry Requests</title>
     <meta
       name="description"
@@ -26,6 +26,32 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      (function () {
+        var language = window.localStorage.getItem('rafin-language') === 'sq' ? 'sq' : 'en';
+        if (language !== 'sq') return;
+
+        var localized = {
+          title: 'Rafin Machinery | Katalog teknik pajisjesh dhe kërkesa B2B',
+          description:
+            'Shfletoni makineri ndërtimi, pajisje mbështetëse, aksesorë dhe pjesë përmes një katalogu teknik B2B të ndërtuar për kërkesa, oferta, inspektime dhe ndjekje kontratash.',
+        };
+
+        document.title = localized.title;
+        var mappings = [
+          ['meta[name="description"]', 'content', localized.description],
+          ['meta[property="og:title"]', 'content', localized.title],
+          ['meta[property="og:description"]', 'content', localized.description],
+          ['meta[name="twitter:title"]', 'content', localized.title],
+          ['meta[name="twitter:description"]', 'content', localized.description],
+        ];
+
+        mappings.forEach(function (entry) {
+          var element = document.querySelector(entry[0]);
+          if (element) element.setAttribute(entry[1], entry[2]);
+        });
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

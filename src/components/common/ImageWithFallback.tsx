@@ -1,5 +1,6 @@
 import { ImageOff } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface ImageWithFallbackProps {
   src?: string;
@@ -18,6 +19,7 @@ export function ImageWithFallback({
   loading = 'lazy',
   src,
 }: ImageWithFallbackProps) {
+  const { t } = useTranslation();
   const [failed, setFailed] = useState(!src);
 
   useEffect(() => {
@@ -47,7 +49,7 @@ export function ImageWithFallback({
         />
       ) : (
         <div className="technical-grid flex h-full min-h-[220px] w-full items-end bg-surface-subtle p-5">
-          <div className="border border-border bg-white/95 px-4 py-4 text-text shadow-card">
+          <div className="border border-border bg-surface-card/95 px-4 py-4 text-text shadow-card">
             <div className="flex items-center gap-3">
               <ImageOff className="h-5 w-5 text-brand-gold" />
               <span className="text-sm font-semibold text-navy">
@@ -55,7 +57,7 @@ export function ImageWithFallback({
               </span>
             </div>
             <p className="mt-3 max-w-xs text-sm leading-6 text-text-muted">
-              Industrial product media will appear here. This branded fallback prevents broken catalog cards.
+              {t('pages.technicalLibrary.requestNote', 'Industrial product media will appear here. This branded fallback prevents broken catalog cards.')}
             </p>
           </div>
         </div>

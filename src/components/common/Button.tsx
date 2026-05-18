@@ -42,7 +42,7 @@ function getClasses(variant: ButtonVariant, size: ButtonSize, className?: string
     ghost:
       'border-transparent bg-transparent text-navy hover:border-border hover:bg-surface-subtle',
     dark:
-      'border-surface-blue bg-surface-blue text-text-on-dark hover:border-surface-dark hover:bg-surface-dark',
+      'border-border-blue bg-surface-dark text-text-on-dark hover:border-surface-blue hover:bg-surface-blue',
   };
   const sizes: Record<ButtonSize, string> = {
     xs: 'min-h-8 px-3 text-[0.74rem]',

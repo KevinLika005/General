@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { ProductImage } from '../../data/catalog';
 import { ImageWithFallback } from './ImageWithFallback';
 
@@ -8,6 +9,7 @@ interface ProductGalleryProps {
 }
 
 export function ProductGallery({ images, title }: ProductGalleryProps) {
+  const { t } = useTranslation();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   useEffect(() => {
@@ -28,7 +30,7 @@ export function ProductGallery({ images, title }: ProductGalleryProps) {
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
         {images.map((image, index) => (
           <button
-            aria-label={`View product image ${index + 1} of ${images.length}`}
+            aria-label={t('common.accessibility.viewProductImage', { index: index + 1, count: images.length })}
             className={[
               'overflow-hidden rounded-none border transition',
               index === activeImageIndex ? 'border-brand-gold shadow-card' : 'border-border',

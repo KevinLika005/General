@@ -1,22 +1,24 @@
+import { useTranslation } from 'react-i18next';
 import { SectionHeader } from '../components/common/SectionHeader';
 import { usePageMetadata } from '../hooks/usePageMetadata';
 
 export function PrivacyPage() {
+  const { t } = useTranslation();
   usePageMetadata({
-    title: 'Privacy | Rafin Machinery',
-    description: 'Privacy guidance for website inquiries, contact information, and future production handling for the Rafin Machinery catalog.',
+    title: t('metadata.privacy.title'),
+    description: t('metadata.privacy.description'),
   });
 
   return (
     <section className="page-shell">
       <SectionHeader
-        eyebrow="Privacy"
-        title="Privacy notice guidance"
+        eyebrow={t('pages.privacy.eyebrow')}
+        title={t('pages.privacy.title')}
         titleAs="h1"
-        description="This frontend build currently keeps form interactions in the browser. Before production launch, Rafin should publish a full privacy notice covering inquiry records, contact data, retention, and follow-up handling."
+        description={t('pages.privacy.description')}
       />
       <div className="mt-8 border border-border bg-surface-card p-6 text-sm text-text-muted shadow-card">
-        Rafin should confirm how inquiry data is stored, who can access it, how long it is retained, and which business systems receive it after a buyer submits a request.
+        {t('pages.privacy.body')}
       </div>
     </section>
   );

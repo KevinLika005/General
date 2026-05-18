@@ -1,20 +1,24 @@
+import { useTranslation } from 'react-i18next';
 import { SectionHeader } from '../components/common/SectionHeader';
-import { companyProfile, trustFeatures } from '../data/catalog';
+import { getCompanyProfile, getTrustFeatures } from '../data/catalog';
 import { usePageMetadata } from '../hooks/usePageMetadata';
 
 export function AboutPage() {
+  const { t } = useTranslation();
+  const companyProfile = getCompanyProfile();
+  const trustFeatures = getTrustFeatures();
   usePageMetadata({
-    title: 'About | Rafin Machinery',
-    description: 'Learn how Rafin Machinery presents construction equipment, attachments, and support inventory for professional company buyers.',
+    title: t('metadata.about.title'),
+    description: t('metadata.about.description'),
   });
 
   return (
     <>
       <section className="page-shell">
         <SectionHeader
-          description="Rafin Machinery is a commercial equipment catalog powered by Rafin Company. The focus is trustworthy listing detail, machinery knowledge, and a clear company-to-company sales process."
-          eyebrow="About"
-          title="Rafin Machinery, built for professional equipment buying"
+          description={t('pages.about.description')}
+          eyebrow={t('pages.about.eyebrow')}
+          title={t('pages.about.title')}
           titleAs="h1"
         />
       </section>
@@ -22,22 +26,18 @@ export function AboutPage() {
       <section className="section-shell pb-20">
         <div className="grid gap-5 lg:grid-cols-[1fr_1fr]">
           <article className="toolbar-panel p-5 shadow-card">
-            <h2 className="text-[1.4rem] text-navy">What this business does</h2>
+            <h2 className="text-[1.4rem] text-navy">{t('pages.about.business.title')}</h2>
             <p className="mt-3 text-sm text-text-muted">
-              {companyProfile.parentName} uses this catalog to present machinery, transport assets,
-              attachments, spare parts, and site-support equipment in a way that helps company buyers evaluate inventory before making direct contact.
+              {t('pages.about.business.paragraphs.0').replace('Rafin Company', companyProfile.parentName)}
             </p>
             <p className="mt-3 text-sm text-text-muted">
-              It is intentionally not a corporate portfolio rebuild. The sales process remains
-              offline, negotiated, inspection-aware, and document-driven.
+              {t('pages.about.business.paragraphs.1')}
             </p>
           </article>
           <article className="toolbar-panel p-5 shadow-card">
-            <h2 className="text-[1.4rem] text-navy">Why buyers use it</h2>
+            <h2 className="text-[1.4rem] text-navy">{t('pages.about.why.title')}</h2>
             <p className="mt-3 text-sm text-text-muted">
-              Buyers can review specs, condition, availability, inspection notes, and pricing
-              style, then collect multiple products into one Inquiry List before requesting a quote
-              or contract discussion.
+              {t('pages.about.why.description')}
             </p>
           </article>
         </div>

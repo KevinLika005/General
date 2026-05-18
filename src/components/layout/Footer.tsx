@@ -1,9 +1,10 @@
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import { useState, type ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import rafinLogo from '../../assets/rafin-logo.png';
-import { categories, companyProfile } from '../../data/catalog';
-import { footerCompanyLinks } from '../../data/navigation';
+import companyLogo from '../../assets/general-logo.png';
+import { getCategories, getCompanyProfile } from '../../data/catalog';
+import { getFooterCompanyLinks } from '../../data/navigation';
 import { routes } from '../../utils/routes';
 import { NewsletterForm } from '../forms/NewsletterForm';
 
@@ -41,28 +42,32 @@ function FooterGroup({
 }
 
 export function Footer() {
+  const { t } = useTranslation();
+  const categories = getCategories();
+  const companyProfile = getCompanyProfile();
+  const footerCompanyLinks = getFooterCompanyLinks();
+
   return (
-    <footer className="mt-16 border-t border-surface-blue bg-surface-blue text-white">
+    <footer className="mt-16 border-t border-border-blue bg-surface-dark text-white">
       <div className="wide-shell py-8 xl:py-12">
         <div className="mb-8 border border-white/10 bg-white/5 px-5 py-5 lg:flex lg:items-center lg:justify-between">
           <div>
-            <p className="kicker text-white/80">Buyer support</p>
-            <h2 className="mt-2 max-w-[26ch] text-[clamp(1.4rem,1rem+0.9vw,1.85rem)] leading-[1.08] text-white">Build an Inquiry List, then request a quote, document pack, or contract discussion</h2>
+            <p className="kicker text-white/80">{t('layout.footer.cta.eyebrow')}</p>
+            <h2 className="mt-2 max-w-[26ch] text-[clamp(1.4rem,1rem+0.9vw,1.85rem)] leading-[1.08] text-white">{t('layout.footer.cta.title')}</h2>
             <p className="text-measure mt-3 text-sm text-white/70">
-              This website is a procurement-oriented catalog. Final negotiation, inspection,
-              documentation, delivery, and contract handling stay direct between companies.
+              {t('layout.footer.cta.description')}
             </p>
           </div>
           <div className="mt-4 lg:mt-0">
-            <Link className="inline-flex min-h-12 items-center justify-center border border-brand-gold bg-brand-gold-soft px-6 text-[0.82rem] font-semibold text-navy transition hover:bg-brand-gold" to={routes.requestQuote}>
-              Request Quote
+            <Link className="inline-flex min-h-12 items-center justify-center border border-primary bg-brand-gold-soft px-6 text-[0.82rem] font-semibold text-primary-dark transition hover:border-primary-hover hover:bg-primary hover:text-text-on-dark" to={routes.requestQuote}>
+              {t('common.actions.requestQuote')}
             </Link>
           </div>
         </div>
 
         <div className="grid gap-6 xl:grid-cols-[1.1fr_0.85fr_0.8fr_1fr]">
           <div>
-            <img alt="Rafin Company" className="h-14 w-auto object-contain" src={rafinLogo} />
+            <img alt={t('layout.header.logoAlt')} className="h-20 w-auto object-contain" src={companyLogo} />
             <p className="mt-4 max-w-md text-sm text-white/72">{companyProfile.shortDescription}</p>
             <div className="mt-5 space-y-2 text-sm text-white/72">
               <p className="inline-flex items-start gap-3">
@@ -98,7 +103,7 @@ export function Footer() {
             </div>
           </div>
 
-          <FooterGroup title="Products">
+          <FooterGroup title={t('layout.footer.products')}>
               {categories.map((category) => (
                 <Link className="transition hover:text-white" key={category.slug} to={routes.category(category.slug)}>
                   {category.title}
@@ -106,28 +111,29 @@ export function Footer() {
               ))}
           </FooterGroup>
 
-          <FooterGroup title="Services & Support">
-              <Link to={routes.inquiryList}>Inquiry List</Link>
-              <Link to={routes.requestQuote}>Request Quote</Link>
-              <Link to={routes.howItWorks}>How It Works</Link>
-              <Link to={routes.financingContracts}>Financing & Contracts</Link>
-              <Link to={routes.deliveryInspection}>Delivery & Inspection</Link>
-              <Link to={routes.technicalLibrary}>Technical Library</Link>
-              <Link to={routes.faq}>FAQ</Link>
-              <Link to={routes.contact}>Contact</Link>
+          <FooterGroup title={t('layout.footer.servicesSupport')}>
+              <Link to={routes.inquiryList}>{t('layout.header.inquiryList')}</Link>
+              <Link to={routes.requestQuote}>{t('common.actions.requestQuote')}</Link>
+              <Link to={routes.howItWorks}>{t('pages.howItWorks.eyebrow')}</Link>
+              <Link to={routes.financingContracts}>{t('pages.financingContracts.eyebrow')}</Link>
+              <Link to={routes.deliveryInspection}>{t('pages.deliveryInspection.eyebrow')}</Link>
+              <Link to={routes.institutionsCleaning}>{t('pages.institutionsCleaning.shortLabel')}</Link>
+              <Link to={routes.technicalLibrary}>{t('common.labels.technicalLibrary')}</Link>
+              <Link to={routes.faq}>{t('pages.faq.eyebrow')}</Link>
+              <Link to={routes.contact}>{t('pages.contact.eyebrow')}</Link>
           </FooterGroup>
 
           <div className="border-t border-white/10 pt-4 xl:border-0 xl:pt-0">
-            <h3 className="text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-white">Technical and stock updates</h3>
+            <h3 className="text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-white">{t('layout.footer.updatesTitle')}</h3>
             <p className="mt-3 text-sm text-white/70">
-              Request stock alerts for available-now machinery, parts, and technical-document support updates.
+              {t('layout.footer.updatesDescription')}
             </p>
             <NewsletterForm />
           </div>
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-6 text-sm text-white/55">
-          <p>Inquiry-first catalog. Quotes, contracts, inspection, and commercial terms are handled directly with Rafin.</p>
+          <p>{t('layout.footer.bottomNote')}</p>
           <div className="flex flex-wrap items-center gap-4">
             {footerCompanyLinks.map((link) => (
               <Link key={link.to} to={link.to}>

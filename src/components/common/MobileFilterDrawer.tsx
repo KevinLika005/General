@@ -1,5 +1,6 @@
 import { X } from 'lucide-react';
 import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export function MobileFilterDrawer({
   children,
@@ -12,6 +13,7 @@ export function MobileFilterDrawer({
   onClose: () => void;
   open: boolean;
 }) {
+  const { t } = useTranslation();
   const panelRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -45,15 +47,15 @@ export function MobileFilterDrawer({
 
   return (
     <div aria-label={label} aria-modal="true" className="fixed inset-0 z-50 xl:hidden" role="dialog">
-      <button className="absolute inset-0 bg-surface-blue/45" onClick={onClose} type="button" />
+      <button className="absolute inset-0 bg-overlay/52" onClick={onClose} type="button" />
       <div className="absolute inset-x-0 bottom-0 max-h-[88vh] overflow-y-auto rounded-none border-t border-border bg-surface-page shadow-dropdown" ref={panelRef}>
         <div className="sticky top-0 z-10 flex items-center justify-between border-b border-border bg-surface-page px-4 py-3">
           <div>
-            <p className="line-label">Filters</p>
+            <p className="line-label">{t('common.labels.filters')}</p>
             <p className="mt-1 text-sm font-semibold text-navy">{label}</p>
           </div>
           <button
-            aria-label="Close filters"
+            aria-label={t('common.accessibility.closeFilters')}
             className="inline-flex h-10 w-10 items-center justify-center border border-border bg-surface-card text-navy"
             onClick={onClose}
             type="button"

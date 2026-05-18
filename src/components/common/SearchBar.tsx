@@ -1,5 +1,6 @@
 import { Search } from 'lucide-react';
 import type { FormEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface SearchBarProps {
   value: string;
@@ -18,6 +19,7 @@ export function SearchBar({
   placeholder,
   value,
 }: SearchBarProps) {
+  const { t } = useTranslation();
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onSubmit?.();
@@ -32,7 +34,7 @@ export function SearchBar({
         ].join(' ')}
       >
         <label className="relative block w-full">
-          <span className="sr-only">Search catalog</span>
+          <span className="sr-only">{t('common.accessibility.searchCatalog')}</span>
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" />
           <input
             className={[
@@ -53,7 +55,7 @@ export function SearchBar({
             ].join(' ')}
             type="submit"
           >
-            {buttonLabel ?? 'Search'}
+            {buttonLabel ?? t('common.actions.search')}
           </button>
         ) : null}
       </div>

@@ -1,22 +1,19 @@
 import { SlidersHorizontal, X } from 'lucide-react';
 import type { Dispatch, SetStateAction } from 'react';
-import { categories } from '../../data/catalog';
-import type { CatalogFilterState, CatalogViewMode } from '../../hooks/useCatalogFilters';
+import { useTranslation } from 'react-i18next';
+import type {
+  CatalogFilterOptionSets,
+  CatalogFilterState,
+  CatalogViewMode,
+} from '../../hooks/useCatalogFilters';
 import type { PriceBand } from '../../utils/filters';
-import { budgetBands, sortOptions } from '../../data/catalog';
 import { Button } from './Button';
 
 interface FilterSidebarProps {
   filters: CatalogFilterState;
   setFilters: Dispatch<SetStateAction<CatalogFilterState>>;
   clearAllFilters: () => void;
-  optionSets: {
-    categories: string[];
-    subcategories: string[];
-    brands: string[];
-    locations: string[];
-    tags: string[];
-  };
+  optionSets: CatalogFilterOptionSets;
   onClose?: () => void;
 }
 
@@ -51,12 +48,21 @@ export function FilterSidebar({
   optionSets,
   setFilters,
 }: FilterSidebarProps) {
+  const { t } = useTranslation();
+  const budgetBands = t('catalog.budgetBands', { returnObjects: true }) as Array<{
+    slug: PriceBand;
+    label: string;
+  }>;
+  const sortOptions = t('catalog.sortOptions', { returnObjects: true }) as Array<{
+    value: CatalogFilterState['sort'];
+    label: string;
+  }>;
   return (
     <div className="border border-border bg-surface-card shadow-card">
       <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-4">
         <div className="flex items-center gap-2">
           <SlidersHorizontal className="h-5 w-5 text-primary" />
-          <h2 className="text-base font-semibold text-navy">Filter results</h2>
+          <h2 className="text-base font-semibold text-navy">{t('common.labels.filterResults')}</h2>
         </div>
         <div className="flex items-center gap-2">
           <button
@@ -64,11 +70,11 @@ export function FilterSidebar({
             onClick={clearAllFilters}
             type="button"
           >
-            Clear all
+            {t('common.actions.clearAll')}
           </button>
           {onClose ? (
             <button
-              aria-label="Close filters"
+              aria-label={t('common.accessibility.closeFilters')}
               className="inline-flex h-10 w-10 items-center justify-center rounded-none border border-border text-text lg:hidden"
               onClick={onClose}
               type="button"
@@ -81,7 +87,7 @@ export function FilterSidebar({
 
       <div className="space-y-5 px-4 py-4">
         <div>
-          <p className="line-label">View</p>
+          <p className="line-label">{t('common.labels.view')}</p>
           <div className="mt-2 grid grid-cols-2 gap-2">
             {(['grid', 'list'] as CatalogViewMode[]).map((mode) => (
               <button
@@ -90,21 +96,21 @@ export function FilterSidebar({
                 onClick={() => setModeValue(setFilters, 'viewMode', mode)}
                 type="button"
               >
-                {mode === 'grid' ? 'Grid view' : 'List view'}
+                {mode === 'grid' ? t('common.status.gridView') : t('common.status.listView')}
               </button>
             ))}
           </div>
         </div>
 
         <div>
-          <p className="line-label">Availability</p>
+          <p className="line-label">{t('common.labels.availability')}</p>
           <div className="mt-2 grid gap-2">
             {[
-              ['all', 'All status'],
-              ['available', 'Available'],
-              ['incoming', 'Incoming'],
-              ['reserved', 'Reserved'],
-              ['sold', 'Sold'],
+              ['all', t('common.status.allStatus')],
+              ['available', t('common.status.available')],
+              ['incoming', t('common.status.incoming')],
+              ['reserved', t('common.status.reserved')],
+              ['sold', t('common.status.sold')],
             ].map(([value, label]) => (
               <button
                 className={filterChip(filters.availability === value)}
@@ -119,13 +125,13 @@ export function FilterSidebar({
         </div>
 
         <div>
-          <p className="line-label">Condition</p>
+          <p className="line-label">{t('common.labels.condition')}</p>
           <div className="mt-2 grid gap-2">
             {[
-              ['all', 'All conditions'],
-              ['new', 'New'],
-              ['used', 'Used'],
-              ['refurbished', 'Refurbished'],
+              ['all', t('common.status.allConditions')],
+              ['new', t('common.status.new')],
+              ['used', t('common.status.used')],
+              ['refurbished', t('common.status.refurbished')],
             ].map(([value, label]) => (
               <button
                 className={filterChip(filters.condition === value)}
@@ -140,7 +146,7 @@ export function FilterSidebar({
         </div>
 
         <label className="block text-sm text-text-muted">
-          Category
+          {t('common.labels.category')}
           <select
             className={inputClasses()}
             onChange={(event) =>
@@ -148,12 +154,13 @@ export function FilterSidebar({
                 ...current,
                 category: event.target.value,
                 subcategory: 'all',
+                productType: 'all',
               }))
             }
             value={filters.category}
           >
-            <option value="all">All categories</option>
-            {categories.map((category) => (
+            <option value="all">{t('common.status.allCategories')}</option>
+            {optionSets.categories.map((category) => (
               <option key={category.slug} value={category.slug}>
                 {category.title}
               </option>
@@ -162,25 +169,47 @@ export function FilterSidebar({
         </label>
 
         <label className="block text-sm text-text-muted">
-          Subcategory
+          {t('common.labels.subcategory')}
           <select
             className={inputClasses()}
             onChange={(event) =>
-              setFilters((current) => ({ ...current, subcategory: event.target.value }))
+              setFilters((current) => ({
+                ...current,
+                subcategory: event.target.value,
+                productType: 'all',
+              }))
             }
             value={filters.subcategory}
           >
-            <option value="all">All subcategories</option>
+            <option value="all">{t('common.status.allSubcategories')}</option>
             {optionSets.subcategories.map((subcategory) => (
-              <option key={subcategory} value={subcategory}>
-                {subcategory}
+              <option key={subcategory.slug} value={subcategory.slug}>
+                {subcategory.title}
               </option>
             ))}
           </select>
         </label>
 
         <label className="block text-sm text-text-muted">
-          Brand
+          {t('common.labels.productType')}
+          <select
+            className={inputClasses()}
+            onChange={(event) =>
+              setFilters((current) => ({ ...current, productType: event.target.value }))
+            }
+            value={filters.productType}
+          >
+            <option value="all">{t('common.status.allProductTypes')}</option>
+            {optionSets.productTypes.map((productType) => (
+              <option key={productType.slug} value={productType.slug}>
+                {productType.title}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="block text-sm text-text-muted">
+          {t('common.labels.brand')}
           <select
             className={inputClasses()}
             onChange={(event) =>
@@ -188,7 +217,7 @@ export function FilterSidebar({
             }
             value={filters.brand}
           >
-            <option value="all">All brands</option>
+            <option value="all">{t('common.status.allBrands')}</option>
             {optionSets.brands.map((brand) => (
               <option key={brand} value={brand}>
                 {brand}
@@ -198,7 +227,7 @@ export function FilterSidebar({
         </label>
 
         <label className="block text-sm text-text-muted">
-          Price range
+          {t('common.labels.priceRange')}
           <select
             className={inputClasses()}
             onChange={(event) =>
@@ -209,7 +238,7 @@ export function FilterSidebar({
             }
             value={filters.priceBand}
           >
-            <option value="all">All price bands</option>
+            <option value="all">{t('common.status.allPriceBands')}</option>
             {budgetBands.map((band) => (
               <option key={band.slug} value={band.slug}>
                 {band.label}
@@ -220,7 +249,7 @@ export function FilterSidebar({
 
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="block text-sm text-text-muted">
-            Year from
+            {t('common.labels.yearFrom')}
             <input
               className={inputClasses()}
               inputMode="numeric"
@@ -232,7 +261,7 @@ export function FilterSidebar({
             />
           </label>
           <label className="block text-sm text-text-muted">
-            Year to
+            {t('common.labels.yearTo')}
             <input
               className={inputClasses()}
               inputMode="numeric"
@@ -246,7 +275,7 @@ export function FilterSidebar({
         </div>
 
         <label className="block text-sm text-text-muted">
-          Operating hours under
+          {t('common.labels.operatingHoursUnder')}
           <input
             className={inputClasses()}
             inputMode="numeric"
@@ -259,7 +288,20 @@ export function FilterSidebar({
         </label>
 
         <label className="block text-sm text-text-muted">
-          Location
+          {t('common.labels.mileageUnder')}
+          <input
+            className={inputClasses()}
+            inputMode="numeric"
+            onChange={(event) =>
+              setFilters((current) => ({ ...current, mileageMax: event.target.value }))
+            }
+            placeholder="200000"
+            value={filters.mileageMax}
+          />
+        </label>
+
+        <label className="block text-sm text-text-muted">
+          {t('common.labels.location')}
           <select
             className={inputClasses()}
             onChange={(event) =>
@@ -267,7 +309,7 @@ export function FilterSidebar({
             }
             value={filters.location}
           >
-            <option value="all">All locations</option>
+            <option value="all">{t('common.status.allLocations')}</option>
             {optionSets.locations.map((location) => (
               <option key={location} value={location}>
                 {location}
@@ -277,7 +319,7 @@ export function FilterSidebar({
         </label>
 
         <label className="block text-sm text-text-muted">
-          Tags
+          {t('common.labels.tags')}
           <select
             className={inputClasses()}
             onChange={(event) =>
@@ -285,7 +327,7 @@ export function FilterSidebar({
             }
             value={filters.tag}
           >
-            <option value="all">All tags</option>
+            <option value="all">{t('common.status.allTags')}</option>
             {optionSets.tags.map((tag) => (
               <option key={tag} value={tag}>
                 {tag}
@@ -295,13 +337,13 @@ export function FilterSidebar({
         </label>
 
         <label className="block text-sm text-text-muted">
-          Sort
+          {t('common.labels.sort')}
           <select
             className={inputClasses()}
             onChange={(event) =>
               setFilters((current) => ({
                 ...current,
-                sort: event.target.value as CatalogFilterState['sort'],
+              sort: event.target.value as CatalogFilterState['sort'],
               }))
             }
             value={filters.sort}
@@ -319,10 +361,10 @@ export function FilterSidebar({
         <div className="sticky bottom-0 border-t border-border bg-surface-card px-4 py-4 lg:hidden">
           <div className="grid gap-3 sm:grid-cols-2">
             <Button onClick={clearAllFilters} variant="secondary">
-              Clear all
+              {t('common.actions.clearAll')}
             </Button>
             <Button className="w-full" onClick={onClose} variant="primary">
-              Apply filters
+              {t('common.actions.applyFilters')}
             </Button>
           </div>
         </div>

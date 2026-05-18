@@ -1,13 +1,16 @@
+import { useTranslation } from 'react-i18next';
 import { SectionHeader } from '../components/common/SectionHeader';
-import { faqItems } from '../data/catalog';
+import { getFaqItems } from '../data/catalog';
 import { usePageMetadata } from '../hooks/usePageMetadata';
 
 export function FAQPage() {
+  const { t } = useTranslation();
+  const faqItems = getFaqItems();
   const mainFaqs = faqItems.filter((item) => !item.categorySlug);
 
   usePageMetadata({
-    title: 'FAQ | Rafin Machinery',
-    description: 'Common questions about the Rafin Machinery inquiry workflow, pricing modes, inspections, documents, delivery support, and contract handling.',
+    title: t('metadata.faq.title'),
+    description: t('metadata.faq.description'),
   });
 
   return (

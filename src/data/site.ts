@@ -1,14 +1,15 @@
 import type { CompanyProfile, SiteMetadata, TrustFeature } from './types';
+import { localizeCatalogValue } from '../i18n/catalogLocale';
 
 export const siteMetadata: SiteMetadata = {
   siteName: 'Rafin Machinery',
   title: 'Rafin Machinery | Technical Equipment Catalog and B2B Inquiry Requests',
   description: 'Browse construction machinery, support equipment, attachments, and parts through a technical B2B catalog built for inquiry, quote, inspection, and contract follow-up.',
   ogType: 'website',
-  themeColor: '#0928A4',
+  themeColor: '#2B2824',
 };
 
-export const companyProfile: CompanyProfile = {
+const baseCompanyProfile: CompanyProfile = {
   name: 'Rafin Machinery',
   parentName: 'Rafin Company',
   shortDescription: 'Industrial equipment catalog for construction machinery, transport assets, parts, and site support handled through direct B2B inquiry.',
@@ -29,7 +30,7 @@ export const companyProfile: CompanyProfile = {
   ],
 };
 
-export const trustFeatures: TrustFeature[] = [
+const baseTrustFeatures: TrustFeature[] = [
   {
     title: 'Commercially useful listing detail',
     description: 'Listings prioritize specification highlights, condition notes, and availability context for technical buyers.',
@@ -62,21 +63,21 @@ export const trustFeatures: TrustFeature[] = [
   },
 ];
 
-export const homeStats = [
+const baseHomeStats = [
   { label: 'Inventory records', value: '33' },
   { label: 'Product groups', value: '7' },
   { label: 'Active brands', value: '29' },
   { label: 'Sales model', value: 'B2B only' },
 ];
 
-export const budgetBands = [
+const baseBudgetBands = [
   { slug: 'under-5000', label: 'Under EUR 5,000' },
   { slug: 'under-25000', label: 'Under EUR 25,000' },
   { slug: 'under-100000', label: 'Under EUR 100,000' },
   { slug: 'price-on-request', label: 'Price on request' },
 ] as const;
 
-export const howItWorksSteps = [
+const baseHowItWorksSteps = [
   {
     step: '01',
     title: 'Browse the catalog',
@@ -113,3 +114,74 @@ export const howItWorksSteps = [
     description: 'Pickup, local delivery, export planning, and handover details are discussed once the commercial basis is agreed.',
   },
 ];
+
+export function getCompanyProfile(): CompanyProfile {
+  return {
+    ...baseCompanyProfile,
+    shortDescription: localizeCatalogValue('site.shortDescription', baseCompanyProfile.shortDescription),
+    tagline: localizeCatalogValue('site.tagline', baseCompanyProfile.tagline),
+    locationLabel: localizeCatalogValue('site.locationLabel', baseCompanyProfile.locationLabel),
+    hours: localizeCatalogValue('site.hours', baseCompanyProfile.hours),
+    heroHeadline: localizeCatalogValue('site.heroHeadline', baseCompanyProfile.heroHeadline),
+    heroSubheadline: localizeCatalogValue('site.heroSubheadline', baseCompanyProfile.heroSubheadline),
+    topUtilityNote: localizeCatalogValue('site.topUtilityNote', baseCompanyProfile.topUtilityNote),
+  };
+}
+
+export function getTrustFeatures(): TrustFeature[] {
+  const keys = [
+    'commerciallyUsefulListingDetail',
+    'companyToCompanyRequestHandling',
+    'inspectionSupport',
+    'deliveryAndLogisticsSupport',
+    'documentationSupport',
+    'noOnlinePaymentFlow',
+  ] as const;
+
+  return baseTrustFeatures.map((feature, index) => ({
+    ...feature,
+    title: localizeCatalogValue(`site.trustFeatures.${keys[index]}.title`, feature.title),
+    description: localizeCatalogValue(
+      `site.trustFeatures.${keys[index]}.description`,
+      feature.description,
+    ),
+  }));
+}
+
+export function getHomeStats() {
+  const localeKeys = ['inventoryRecords', 'productGroups', 'activeBrands', 'salesModel'] as const;
+
+  return baseHomeStats.map((stat, index) => ({
+    ...stat,
+    label: localizeCatalogValue(`site.homeStats.${localeKeys[index]}`, stat.label),
+    value:
+      stat.value === 'B2B only'
+        ? localizeCatalogValue('site.homeStats.b2bOnly', stat.value)
+        : stat.value,
+  }));
+}
+
+export function getBudgetBands() {
+  return [...baseBudgetBands];
+}
+
+export function getHowItWorksSteps() {
+  const localeKeys = [
+    'browseCatalog',
+    'buildInquiryList',
+    'sendCommercialRequest',
+    'rafinReviewsRequest',
+    'inspectionAndClarificationFollow',
+    'contractTermsOffline',
+    'deliveryAndLogisticsCoordinated',
+  ] as const;
+
+  return baseHowItWorksSteps.map((step, index) => ({
+    ...step,
+    title: localizeCatalogValue(`site.howItWorksSteps.${localeKeys[index]}.title`, step.title),
+    description: localizeCatalogValue(
+      `site.howItWorksSteps.${localeKeys[index]}.description`,
+      step.description,
+    ),
+  }));
+}

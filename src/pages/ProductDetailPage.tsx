@@ -1,5 +1,6 @@
 import { ArrowLeft, ArrowRight, FileText, MapPin, ShieldCheck, Wrench } from 'lucide-react';
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { Badge } from '../components/common/Badge';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
@@ -15,6 +16,7 @@ import {
   getProductAvailabilityLabel,
   getProductBySlugs,
   getSimilarProducts,
+  getTaxonomyLabelsForProduct,
 } from '../utils/catalog';
 import { formatProductPrice } from '../utils/formatPrice';
 import { routes } from '../utils/routes';
@@ -32,55 +34,70 @@ function conditionTone(value: string) {
 }
 
 export function ProductDetailPage() {
+  const { t } = useTranslation();
   const { categorySlug, productSlug } = useParams();
   const product = categorySlug && productSlug ? getProductBySlugs(categorySlug, productSlug) : undefined;
   const relatedProducts = useMemo(() => (product ? getSimilarProducts(product) : []), [product]);
+  const taxonomy = product ? getTaxonomyLabelsForProduct(product) : undefined;
   const { next, previous } =
     categorySlug && product
       ? getAdjacentProductsInCategory(categorySlug, product.id)
       : { next: undefined, previous: undefined };
 
   usePageMetadata({
-    title: product ? `${product.title} | Rafin Machinery` : 'Product Detail | Rafin Machinery',
+    title: product ? `${product.title} | Rafin Machinery` : t('metadata.productDetail.fallbackTitle'),
     description:
       product?.excerpt ??
-      'Review product specifications, availability, documents, and inquiry options in the Rafin Machinery catalog.',
+      t('metadata.productDetail.fallbackDescription'),
     ogType: 'product',
   });
 
-  if (!categorySlug || !productSlug || !product) {
+  if (!categorySlug || !productSlug || !product || !taxonomy) {
     return <NotFoundPage />;
   }
 
+  const usageFact =
+    product.operatingHours !== undefined
+      ? `${product.operatingHours} h`
+      : product.mileageKm !== undefined
+        ? `${product.mileageKm} km`
+        : product.unitOfMeasure
+          ? product.unitOfMeasure
+          : t('common.status.availableDuringInquiryReview');
+
   const keyFacts = [
-    { label: 'Brand / Model', value: `${product.brand} ${product.model}` },
-    { label: 'Year', value: String(product.year) },
-    { label: 'Condition', value: product.condition },
-    { label: 'Availability', value: getProductAvailabilityLabel(product.availability) },
+    { label: t('pages.productDetail.keyFacts.brandModel'), value: `${product.brand} ${product.model}` },
+    { label: t('common.labels.year'), value: String(product.year) },
+    { label: t('pages.productDetail.keyFacts.condition'), value: t(`common.status.${product.condition}`) },
+    { label: t('pages.productDetail.keyFacts.availability'), value: getProductAvailabilityLabel(product.availability) },
     {
-      label: 'Hours / Mileage',
-      value: product.operatingHours
-        ? `${product.operatingHours} h`
-        : product.mileageKm
-          ? `${product.mileageKm} km`
-          : 'Available during inquiry review',
+      label:
+        product.operatingHours !== undefined
+          ? t('pages.productDetail.keyFacts.operatingHours')
+          : product.mileageKm !== undefined
+            ? t('pages.productDetail.keyFacts.mileage')
+            : product.unitOfMeasure
+              ? t('pages.productDetail.keyFacts.unitOfMeasure')
+              : t('pages.productDetail.keyFacts.usageUnit'),
+      value: usageFact,
     },
-    { label: 'Location', value: product.location },
-    { label: 'Serial / Stock', value: product.serialNumber ?? 'Confirmed during inquiry' },
-    { label: 'Category', value: product.subcategory },
+    { label: t('common.labels.location'), value: product.location },
+    { label: t('pages.productDetail.keyFacts.serialStock'), value: product.serialNumber ?? t('common.status.confirmedDuringInquiry') },
+    { label: t('common.labels.category'), value: `${taxonomy.subcategoryTitle} / ${taxonomy.productTypeTitle}` },
   ];
 
   const technicalSpecs = [
-    ...(product.enginePower ? [{ label: 'Engine Power', value: product.enginePower }] : []),
-    ...(product.weight ? [{ label: 'Operating Weight', value: product.weight }] : []),
-    ...(product.capacity ? [{ label: 'Capacity', value: product.capacity }] : []),
-    ...(product.fuelType ? [{ label: 'Fuel Type', value: product.fuelType }] : []),
-    ...(product.transmission ? [{ label: 'Transmission', value: product.transmission }] : []),
+    ...(product.enginePower ? [{ label: t('pages.productDetail.specs.enginePower'), value: product.enginePower }] : []),
+    ...(product.weight ? [{ label: t('pages.productDetail.specs.operatingWeight'), value: product.weight }] : []),
+    ...(product.capacity ? [{ label: t('pages.productDetail.specs.capacity'), value: product.capacity }] : []),
+    ...(product.fuelType ? [{ label: t('pages.productDetail.specs.fuelType'), value: product.fuelType }] : []),
+    ...(product.transmission ? [{ label: t('pages.productDetail.specs.transmission'), value: product.transmission }] : []),
+    ...(product.unitOfMeasure ? [{ label: t('pages.productDetail.specs.unitOfMeasure'), value: product.unitOfMeasure }] : []),
     ...product.specs,
   ];
 
   const inspectionNotes =
-    product.inspectionNotes ?? ['Inspection notes can be shared directly during the inquiry review.'];
+    product.inspectionNotes ?? [t('pages.productDetail.inspectionNotesFallback')];
   const documents = product.documents ?? [];
 
   return (
@@ -88,9 +105,9 @@ export function ProductDetailPage() {
       <section className="page-shell">
         <Breadcrumbs
           items={[
-            { label: 'Home', to: routes.home },
-            { label: 'Equipment', to: routes.equipment },
-            { label: categorySlug.replace(/-/g, ' '), to: routes.category(categorySlug) },
+            { label: t('common.labels.home'), to: routes.home },
+            { label: t('common.labels.equipment'), to: routes.equipment },
+            { label: taxonomy.categoryTitle, to: routes.category(taxonomy.categorySlug) },
             { label: product.title },
           ]}
         />
@@ -108,12 +125,15 @@ export function ProductDetailPage() {
                 <Badge tone={availabilityTone(product.availability)}>
                   {getProductAvailabilityLabel(product.availability)}
                 </Badge>
-                <Badge tone={conditionTone(product.condition)}>{product.condition}</Badge>
+                <Badge tone={conditionTone(product.condition)}>{t(`common.status.${product.condition}`)}</Badge>
+                <Badge>{taxonomy.productTypeTitle}</Badge>
               </div>
               <p className="mt-4 line-label">
                 {product.brand} / {product.model} / {product.year} / {product.sku}
               </p>
-              <h1 className="mt-2 max-w-[18ch] text-[clamp(1.85rem,1.35rem+1.3vw,2.85rem)] leading-[1.02] text-navy">{product.title}</h1>
+              <h1 className="mt-2 max-w-[18ch] text-[clamp(1.85rem,1.35rem+1.3vw,2.85rem)] leading-[1.02] text-navy">
+                {product.title}
+              </h1>
               <p className="text-measure mt-3 text-sm text-text-muted">{product.excerpt}</p>
               <p className="text-measure mt-3 text-sm text-text-muted">{product.description}</p>
 
@@ -128,8 +148,10 @@ export function ProductDetailPage() {
             </div>
 
             <div className="surface-panel p-5">
-              <p className="kicker">Inspection highlights</p>
-              <h2 className="mt-2 text-[clamp(1.3rem,1rem+0.7vw,1.6rem)] text-navy">Why buyers ask about this listing</h2>
+              <p className="kicker">{t('pages.productDetail.inspectionHighlightsEyebrow')}</p>
+              <h2 className="mt-2 text-[clamp(1.3rem,1rem+0.7vw,1.6rem)] text-navy">
+                {t('pages.productDetail.inspectionHighlightsTitle')}
+              </h2>
               <div className="mt-4 grid gap-3">
                 {product.keyFeatures.map((feature) => (
                   <div className="flex items-start gap-3 border border-border bg-surface-subtle p-4" key={feature}>
@@ -143,38 +165,38 @@ export function ProductDetailPage() {
 
           <aside className="xl:order-last xl:col-span-2 xl:sticky xl:top-[8.65rem] xl:self-start 3xl:col-span-1 3xl:order-none">
             <div className="surface-panel p-5">
-              <p className="kicker">Inquiry actions</p>
+              <p className="kicker">{t('pages.productDetail.inquiryActionsEyebrow')}</p>
               <p className="mt-2 text-2xl font-bold text-navy">{formatProductPrice(product)}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Badge tone={availabilityTone(product.availability)}>
                   {getProductAvailabilityLabel(product.availability)}
                 </Badge>
-                <Badge>{product.subcategory}</Badge>
+                <Badge>{taxonomy.productTypeTitle}</Badge>
               </div>
 
               <div className="mt-5 border border-border bg-surface-subtle p-4 text-sm text-text-muted">
-                Evaluate the unit here first. Final pricing, inspection scope, documentation, negotiation, and contract terms are handled directly after inquiry.
+                {t('pages.productDetail.inquiryActionsNote')}
               </div>
 
               <div className="mt-5 grid gap-3">
                 <InquiryButton disabled={product.availability === 'sold'} fullWidth productId={product.id} />
                 <Button className="w-full" to={routes.requestQuote} variant="secondary">
-                  Request Quote
+                  {t('common.actions.requestQuote')}
                 </Button>
               </div>
 
               <div className="mt-5 space-y-3 border-t border-border pt-5">
                 <div className="flex items-start gap-3 text-sm text-text-muted">
                   <MapPin className="mt-0.5 h-4 w-4 text-primary" />
-                  <span>Inspection and pickup or delivery arrangements can be discussed for {product.location}.</span>
+                  <span>{t('pages.productDetail.sideNotes.location', { location: product.location })}</span>
                 </div>
                 <div className="flex items-start gap-3 text-sm text-text-muted">
                   <Wrench className="mt-0.5 h-4 w-4 text-primary" />
-                  <span>Add this item to the Inquiry List if you want one request covering several machines, parts, or attachments.</span>
+                  <span>{t('pages.productDetail.sideNotes.inquiryList')}</span>
                 </div>
                 <div className="flex items-start gap-3 text-sm text-text-muted">
                   <FileText className="mt-0.5 h-4 w-4 text-primary" />
-                  <span>Need manuals or reference documents? Use the Technical Library or request them through the quote form.</span>
+                  <span>{t('pages.productDetail.sideNotes.documents')}</span>
                 </div>
               </div>
             </div>
@@ -188,7 +210,7 @@ export function ProductDetailPage() {
 
           <div className="space-y-6">
             <div className="surface-panel p-5">
-              <h2 className="text-[1.3rem] text-navy">Inspection notes</h2>
+              <h2 className="text-[1.3rem] text-navy">{t('pages.productDetail.inspectionNotesTitle')}</h2>
               <div className="mt-4 grid gap-3">
                 {inspectionNotes.map((note) => (
                   <div className="border border-border bg-surface-subtle p-4 text-sm text-text-muted" key={note}>
@@ -199,7 +221,7 @@ export function ProductDetailPage() {
             </div>
 
             <div className="surface-panel p-5">
-              <h2 className="text-[1.3rem] text-navy">Documents and support references</h2>
+              <h2 className="text-[1.3rem] text-navy">{t('pages.productDetail.documentsTitle')}</h2>
               <div className="mt-4 grid gap-3">
                 {documents.length > 0 ? (
                   documents.map((document) => (
@@ -211,29 +233,31 @@ export function ProductDetailPage() {
                       target="_blank"
                     >
                       <p className="font-semibold text-navy">{document.title}</p>
-                      <p className="mt-1 text-text-muted">{document.kind ? document.kind.replace(/-/g, ' ') : 'Document'}</p>
-                      <p className="mt-1 text-xs text-text-muted">Open document reference</p>
+                      <p className="mt-1 text-text-muted">
+                        {document.kind ? t(`pages.productDetail.documentKinds.${document.kind}`) : t('common.status.document')}
+                      </p>
+                      <p className="mt-1 text-xs text-text-muted">{t('common.status.openDocumentReference')}</p>
                     </a>
                   ))
                 ) : (
                   <div className="border border-border bg-surface-subtle p-4 text-sm text-text-muted">
-                    Specific documents can be confirmed during the inquiry review, together with serial verification, service references, and commercial paperwork.
+                    {t('pages.productDetail.documentsFallback')}
                   </div>
                 )}
               </div>
             </div>
 
             <div className="surface-panel p-5">
-              <h2 className="text-[1.3rem] text-navy">Delivery and contract path</h2>
+              <h2 className="text-[1.3rem] text-navy">{t('pages.productDetail.deliveryContractTitle')}</h2>
               <div className="mt-4 grid gap-3">
                 <div className="border border-border bg-surface-subtle p-4 text-sm text-text-muted">
-                  Ask about inspection appointments, operating video, or site review before agreement.
+                  {t('pages.productDetail.deliveryContractPoints.0')}
                 </div>
                 <div className="border border-border bg-surface-subtle p-4 text-sm text-text-muted">
-                  Final price, contract terms, bundled accessories, and delivery planning are handled company-to-company after inquiry.
+                  {t('pages.productDetail.deliveryContractPoints.1')}
                 </div>
                 <Button className="justify-center" to={routes.technicalLibrary} variant="secondary">
-                  Request Documents
+                  {t('common.actions.requestDocuments')}
                 </Button>
               </div>
             </div>
@@ -246,29 +270,29 @@ export function ProductDetailPage() {
           {previous ? (
             <Button to={routes.product(previous.categorySlug, previous.slug)} variant="secondary">
               <ArrowLeft className="h-4 w-4" />
-              Previous Product
+              {t('pages.productDetail.previousProduct')}
             </Button>
           ) : (
-            <Button to={routes.category(categorySlug)} variant="secondary">
+            <Button to={routes.category(taxonomy.categorySlug)} variant="secondary">
               <ArrowLeft className="h-4 w-4" />
-              Back to Category
+              {t('pages.productDetail.backToCategory')}
             </Button>
           )}
           {next ? (
             <Button to={routes.product(next.categorySlug, next.slug)} variant="secondary">
-              Next Product
+              {t('pages.productDetail.nextProduct')}
               <ArrowRight className="h-4 w-4" />
             </Button>
           ) : (
             <Button to={routes.equipment} variant="secondary">
-              Continue Browsing
+              {t('common.actions.continueBrowsing')}
             </Button>
           )}
         </div>
       </section>
 
       <section className="catalog-shell pb-24">
-        <h2 className="text-[clamp(1.6rem,1.2rem+0.9vw,2rem)] text-navy">Similar products</h2>
+        <h2 className="text-[clamp(1.6rem,1.2rem+0.9vw,2rem)] text-navy">{t('pages.productDetail.similarProductsTitle')}</h2>
         {relatedProducts.length > 0 ? (
           <div className="product-grid mt-6">
             {relatedProducts.map((relatedProduct) => (
@@ -278,12 +302,12 @@ export function ProductDetailPage() {
         ) : (
           <div className="mt-8">
             <EmptyState
-              actionLabel="Browse Equipment"
+              actionLabel={t('common.actions.browseEquipment')}
               actionTo={routes.equipment}
-              description="No similar products are currently listed for this unit. Continue browsing the full catalog or request sourcing support."
-              secondaryActionLabel="Request Quote"
+              description={t('pages.productDetail.noSimilarProducts.description')}
+              secondaryActionLabel={t('common.actions.requestQuote')}
               secondaryActionTo={routes.requestQuote}
-              title="No similar products available right now"
+              title={t('pages.productDetail.noSimilarProducts.title')}
             />
           </div>
         )}
@@ -293,12 +317,12 @@ export function ProductDetailPage() {
       <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-surface-page/95 px-4 py-3 backdrop-blur xl:hidden">
         <div className="wide-shell flex items-center gap-3">
           <div className="min-w-0 flex-1">
-            <p className="text-xs uppercase tracking-[0.12em] text-text-muted">Inquiry action</p>
+            <p className="text-xs uppercase tracking-[0.12em] text-text-muted">{t('common.labels.inquiryAction')}</p>
             <p className="truncate text-base font-semibold text-navy">{formatProductPrice(product)}</p>
           </div>
           <InquiryButton compact disabled={product.availability === 'sold'} productId={product.id} />
           <Button size="sm" to={routes.requestQuote}>
-            Request Quote
+            {t('common.actions.requestQuote')}
           </Button>
         </div>
       </div>
