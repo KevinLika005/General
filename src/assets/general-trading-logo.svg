@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 210 1200 770" role="img" aria-labelledby="title desc">
+  <title id="title">General Trading logo</title>
+  <desc id="desc">Metallic gold and silver General Trading logo with monogram emblem.</desc>
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9c6207"/>
+      <stop offset="32%" stop-color="#d8a43b"/>
+      <stop offset="50%" stop-color="#ffe8a0"/>
+      <stop offset="68%" stop-color="#d39a2d"/>
+      <stop offset="100%" stop-color="#8f5d08"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9fa3aa"/>
+      <stop offset="32%" stop-color="#d4d7dc"/>
+      <stop offset="50%" stop-color="#f6f6f7"/>
+      <stop offset="72%" stop-color="#c4c8cf"/>
+      <stop offset="100%" stop-color="#8c9199"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000000" flood-opacity=".12"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#softShadow)">
+    <path d="M435 244h163l-109 110h-51v191l161-162 98-98h160L435 707V244z" fill="url(#gold)"/>
+    <path d="M435 244h67v335l-67 69V244z" fill="url(#gold)"/>
+    <path d="M629 418h66l-156 157v-95l90-62z" fill="url(#gold)"/>
+
+    <path d="M756 352h74l-250 251h-74l250-251z" fill="url(#silver)"/>
+    <path d="M812 451h74L699 639l132 132h-86L626 653l186-202z" fill="url(#silver)"/>
+    <path d="M783 640h49l48 131h-123l26-27h49l-24-64-25 25h-59l59-65z" fill="url(#silver)"/>
+    <path d="M782 372h48v237l-48-53V372z" fill="url(#silver)"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="640" y="875" font-family="Arial, Helvetica, sans-serif" font-size="135" font-weight="700" letter-spacing="8" fill="url(#gold)">GENERAL</text>
+    <line x1="70" y1="930" x2="345" y2="930" stroke="url(#silver)" stroke-width="7" stroke-linecap="square"/>
+    <text x="640" y="950" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="400" letter-spacing="24" fill="url(#silver)">TRADING</text>
+    <line x1="935" y1="930" x2="1210" y2="930" stroke="url(#silver)" stroke-width="7" stroke-linecap="square"/>
+  </g>
+</svg>

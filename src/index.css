@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --shell-gutter: clamp(1rem, 0.65rem + 1vw, 2rem);
+    --shell-page-max: 80rem;
+    --shell-wide-max: 96rem;
+    --shell-catalog-max: 108rem;
+    --measure-readable: 68ch;
+    /* Brand colors live here first. Update this token set for future palette changes. */
+    --primary: 191 136 36;
+    --primary-hover: 168 118 28;
+    --primary-active: 140 97 20;
+    --primary-dark: 112 75 15;
+    --secondary: 107 115 126;
+    --accent: 233 201 133;
+    --neutral: 124 121 116;
+    --navy: 39 37 33;
+    --brand-gold: 191 136 36;
+    --brand-gold-soft: 246 238 223;
+    --surface-dark: 43 40 36;
+    --surface-blue: 87 83 77;
+    --border-blue: 122 109 85;
+    --highlight: 233 201 133;
+    --focus-ring: 214 170 83;
+    --overlay: 39 37 33;
+    --text-on-dark: 249 246 239;
+    --text-primary: 39 37 33;
+    --text-muted: 101 97 90;
+    --surface-page: 244 240 233;
+    --surface-card: 255 255 255;
+    --surface-subtle: 237 231 219;
+    --border-default: 211 201 186;
+    --status-available: 18 128 92;
+    --status-available-bg: 236 253 243;
+    --status-incoming: 181 71 8;
+    --status-incoming-bg: 255 247 230;
+    --status-reserved: 107 114 128;
+    --status-reserved-bg: 243 244 246;
+    --status-sold: 180 35 24;
+    --status-sold-bg: 254 243 242;
+    --status-info: 23 92 211;
+    --status-info-bg: 239 248 255;
+    --status-neutral: 102 112 133;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface-page font-sans text-text antialiased;
+    min-height: 100vh;
+    background-color: rgb(var(--surface-page));
+    overflow-x: clip;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  a,
+  button,
+  input,
+  select,
+  textarea {
+    @apply outline-none;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    box-shadow:
+      0 0 0 2px rgb(var(--focus-ring)),
+      0 0 0 4px rgb(var(--surface-page));
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sans text-navy;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    line-height: 1.55;
+  }
+
+  option {
+    background-color: rgb(var(--surface-card));
+    color: rgb(var(--text-primary));
+  }
+
+  ::selection {
+    background-color: rgba(191, 136, 36, 0.24);
+    color: rgb(var(--text-primary));
+  }
+}
+
+@layer components {
+  .page-shell,
+  .section-shell,
+  .wide-shell,
+  .catalog-shell,
+  .band-shell {
+    margin-inline: auto;
+    width: min(calc(100% - (var(--shell-gutter) * 2)), var(--shell-max-width));
+  }
+
+  .page-shell {
+    --shell-max-width: var(--shell-page-max);
+    padding-block: clamp(1rem, 0.7rem + 1vw, 1.75rem);
+  }
+
+  .section-shell,
+  .wide-shell,
+  .band-shell {
+    --shell-max-width: var(--shell-wide-max);
+  }
+
+  .catalog-shell {
+    --shell-max-width: var(--shell-catalog-max);
+  }
+
+  .text-measure {
+    max-width: var(--measure-readable);
+  }
+
+  .section-band {
+    width: 100%;
+  }
+
+  .product-grid {
+    display: grid;
+    gap: clamp(0.875rem, 0.7rem + 0.4vw, 1.25rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16.75rem), 1fr));
+    justify-items: center;
+  }
+
+  .catalog-product-grid {
+    display: grid;
+    gap: clamp(0.875rem, 0.7rem + 0.4vw, 1.25rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15.25rem), 1fr));
+    align-items: start;
+    justify-items: center;
+  }
+
+  .category-grid {
+    display: grid;
+    gap: clamp(0.875rem, 0.7rem + 0.4vw, 1.25rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    justify-items: center;
+  }
+
+  .brand-grid {
+    display: grid;
+    gap: clamp(0.875rem, 0.7rem + 0.4vw, 1.25rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+    justify-items: center;
+  }
+
+  .support-grid {
+    display: grid;
+    gap: clamp(0.875rem, 0.7rem + 0.45vw, 1.25rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  }
+
+  .kicker {
+    @apply text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-primary;
+  }
+
+  .eyebrow {
+    @apply kicker;
+  }
+
+  .line-label {
+    @apply text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-text-muted;
+  }
+
+  .field {
+    @apply mt-2 min-h-11 w-full rounded-none border border-border bg-surface-card px-3 py-2.5 text-sm text-text shadow-none placeholder:text-text-muted/70 focus:border-primary;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  }
+
+  .surface-panel {
+    @apply border border-border bg-surface-card shadow-card;
+  }
+
+  .subtle-panel {
+    @apply border border-border bg-surface-subtle;
+  }
+
+  .toolbar-panel {
+    @apply border border-border bg-surface-card;
+  }
+
+  .drawer-panel {
+    @apply border border-border bg-surface-card shadow-dropdown;
+  }
+
+  .chip {
+    @apply inline-flex min-h-10 items-center border border-border bg-surface-subtle px-3 py-2 text-[0.76rem] font-medium text-navy transition hover:border-primary hover:text-primary-dark;
+  }
+
+  .sticky-bar {
+    @apply border-t border-border bg-surface-card/95 backdrop-blur;
+  }
+
+  .technical-grid {
+    background-image:
+      linear-gradient(rgba(39, 37, 33, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(39, 37, 33, 0.055) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+
+  .industrial-grid {
+    @apply technical-grid;
+  }
+
+  .spec-table th,
+  .spec-table td {
+    @apply border-b border-border px-3 py-3 text-sm;
+  }
+
+  .spec-table th {
+    @apply bg-surface-subtle text-left font-semibold text-navy;
+  }
+
+  .hero-band {
+    background-image: linear-gradient(135deg, rgba(43, 40, 36, 0.98), rgba(87, 83, 77, 0.98));
+  }
+
+  .section-divider {
+    @apply border-t border-border;
+  }
+
+  .data-grid-card {
+    @apply border border-border bg-surface-card px-4 py-4;
+  }
+
+  .nav-shell {
+    @apply border-b border-border bg-surface-card;
+  }
+}
+
+@media (min-width: 1680px) {
+  @layer components {
+    .catalog-product-grid {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 14.5rem), 1fr));
+    }
+
+    .product-grid {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    }
+
+    .brand-grid {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 12.5rem), 1fr));
+    }
+  }
+}
+
+@media (min-width: 2048px) {
+  @layer components {
+    .catalog-product-grid {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.75rem), 1fr));
+    }
+
+    .product-grid {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 15.5rem), 1fr));
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
