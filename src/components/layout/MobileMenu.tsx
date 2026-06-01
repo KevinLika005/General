@@ -1,4 +1,4 @@
-import { ChevronDown, Search, X } from 'lucide-react';
+import { ChevronDown, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink } from 'react-router-dom';
@@ -7,13 +7,14 @@ import { getCategories } from '../../data/catalog';
 import { getFooterCompanyLinks, getPrimaryNavigation, getSupportLinks } from '../../data/navigation';
 import { routes } from '../../utils/routes';
 import { Button } from '../common/Button';
+import { SiteSearch } from '../search/SiteSearch';
 
 interface MobileMenuProps {
   open: boolean;
   onClose: () => void;
   search: string;
   onSearchChange: (value: string) => void;
-  onSearchSubmit: () => void;
+  onSearchSubmit: (query: string) => void;
   inquiryCount: number;
 }
 
@@ -82,31 +83,16 @@ export function MobileMenu({
         </div>
 
         <div className="overflow-y-auto px-5 py-5">
-          <form
-            className="relative"
-            onSubmit={(event) => {
-              event.preventDefault();
-              onSearchSubmit();
-              onClose();
-            }}
-          >
-            <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" />
-            <input
-              aria-label={t('common.accessibility.searchSite')}
-              className="h-11 w-full rounded-none border border-border bg-surface-card pl-11 pr-14 text-text placeholder:text-text-muted/70"
-              onChange={(event) => onSearchChange(event.target.value)}
-              placeholder={t('layout.mobileMenu.searchPlaceholder')}
-              type="search"
-              value={search}
-            />
-            <button
-              aria-label={t('common.actions.search')}
-              className="absolute right-1 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center border border-border bg-surface-subtle text-navy transition hover:border-primary"
-              type="submit"
-            >
-              <Search className="h-4 w-4" />
-            </button>
-          </form>
+          <SiteSearch
+            buttonLabel={t('common.actions.search')}
+            compact
+            maxSuggestions={6}
+            onChange={onSearchChange}
+            onNavigate={onClose}
+            onSubmitQuery={onSearchSubmit}
+            placeholder={t('layout.mobileMenu.searchPlaceholder')}
+            value={search}
+          />
 
           <div className="mt-5 grid gap-2">
             {mainLinks.map((link) => (

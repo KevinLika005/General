@@ -85,7 +85,7 @@ export function TechnicalLibraryPage() {
               <article className="surface-panel p-5" key={group.key}>
                 <div className="hidden items-start justify-between gap-4 xl:flex">
                   <div>
-                    <p className="line-label">{t('common.status.placeholderGroup')}</p>
+                    <p className="line-label">{t('common.status.referenceGroup')}</p>
                     <h2 className="mt-2 max-w-[18ch] text-[clamp(1.25rem,1rem+0.7vw,1.55rem)] text-navy">{group.title}</h2>
                   </div>
                   <span className="inline-flex h-11 w-11 items-center justify-center border border-border bg-surface-subtle text-navy">
@@ -100,7 +100,7 @@ export function TechnicalLibraryPage() {
                   type="button"
                 >
                   <div className="text-left">
-                    <p className="line-label">{t('common.status.placeholderGroup')}</p>
+                    <p className="line-label">{t('common.status.referenceGroup')}</p>
                     <h2 className="mt-2 text-[1.25rem] text-navy">{group.title}</h2>
                   </div>
                   <span className="flex items-center gap-3">

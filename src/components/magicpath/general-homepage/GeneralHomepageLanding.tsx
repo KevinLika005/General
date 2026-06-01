@@ -6,12 +6,12 @@ import { routes } from '../../../utils/routes';
 import { Button } from '../../common/Button';
 import { SectionHeader } from '../../common/SectionHeader';
 import { HomepageCategoryPreviewCard } from './HomepageCategoryPreviewCard';
+import { GeneralHomepageHero } from './GeneralHomepageHero';
 import { HomepageSection } from './HomepageSection';
 import { HomepageStockPreviewCard } from './HomepageStockPreviewCard';
 import { HomepageSupportLinkCard } from './HomepageSupportLinkCard';
-import { RafinHomepageHero } from './RafinHomepageHero';
 
-interface RafinHomepageLandingProps {
+interface GeneralHomepageLandingProps {
   categoryPreviews: HomepageCategoryPreview[];
   previewProducts: Product[];
   quickSearches: string[];
@@ -21,7 +21,7 @@ interface RafinHomepageLandingProps {
   onSearchSubmit: () => void;
 }
 
-export function RafinHomepageLanding({
+export function GeneralHomepageLanding({
   categoryPreviews,
   previewProducts,
   quickSearches,
@@ -29,7 +29,7 @@ export function RafinHomepageLanding({
   onQuickSearch,
   onSearchChange,
   onSearchSubmit,
-}: RafinHomepageLandingProps) {
+}: GeneralHomepageLandingProps) {
   const { t } = useTranslation();
   const supportLinks = [
     {
@@ -59,7 +59,7 @@ export function RafinHomepageLanding({
         shellClassName="py-[clamp(2.75rem,5vw,5.5rem)]"
         shellVariant="band"
       >
-        <RafinHomepageHero
+        <GeneralHomepageHero
           categoryPreviews={categoryPreviews}
           onQuickSearch={onQuickSearch}
           onSearchChange={onSearchChange}

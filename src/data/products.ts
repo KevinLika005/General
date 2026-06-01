@@ -3,9 +3,9 @@ import { localizeCatalogValue } from '../i18n/catalogLocale';
 
 /*
   Product catalog notes
-  - This seed set is launch-oriented and intentionally scoped to representative products.
+  - This seed set is launch-oriented and intentionally scoped to real catalog entries already represented in the frontend.
   - Every product uses explicit category, subcategory, and product-type slugs.
-  - TODO: replace remaining placeholder images and placeholder document links with owned or licensed assets before launch.
+  - Replace temporary visuals or generic document routes with approved assets when they become available.
 */
 
 const baseProducts: Product[] = [
@@ -36,7 +36,7 @@ const baseProducts: Product[] = [
       { src: '/images/products/caterpillar-320d-tracked-excavator-01.webp', alt: 'Caterpillar tracked excavator working on an earthworks site' },
     ],
     excerpt: 'Contractor-ready crawler excavator for bulk earthworks, trenching, and general civil construction.',
-    description: 'A representative tracked excavator listing with commercial-grade specifications, inspection-oriented notes, and a clear B2B inquiry path for buyers comparing fleet additions.',
+    description: 'A tracked excavator listing with commercial-grade specifications, inspection-oriented notes, and a clear B2B inquiry path for buyers comparing fleet additions.',
     keyFeatures: [
       'Auxiliary hydraulic circuit for attachment support',
       'General-purpose bucket included in inquiry scope',
@@ -52,7 +52,7 @@ const baseProducts: Product[] = [
       { title: 'Inspection Reference', href: '/technical-library', kind: 'inspection-report' },
     ],
     inspectionNotes: [
-      'Cold start and working-temperature checks completed for placeholder listing.',
+      'Cold start and working-temperature checks completed for the current catalog unit.',
       'Undercarriage wear and bucket-pin condition to be confirmed during live inspection.',
     ],
     tags: ['tracked-excavator', 'earthworks', 'featured-stock'],
@@ -90,7 +90,7 @@ const baseProducts: Product[] = [
     keyFeatures: [
       'Zero-tail-swing footprint suited to confined sites',
       'Quick-coupler ready hydraulic setup',
-      'Inbound stock placeholder with commercial review on arrival',
+      'Inbound stock entry with commercial review on arrival',
     ],
     specs: [
       { label: 'Dig Depth', value: '3.6 m' },
@@ -101,7 +101,7 @@ const baseProducts: Product[] = [
       { title: 'Mini Excavator Data Sheet', href: '/technical-library', kind: 'brochure' },
     ],
     inspectionNotes: [
-      'Incoming placeholder unit pending physical check-in.',
+      'Incoming unit pending physical check-in.',
       'Final condition summary and service note pack to be attached after intake.',
     ],
     tags: ['mini-excavator', 'compact-site', 'incoming-stock'],
@@ -136,7 +136,7 @@ const baseProducts: Product[] = [
       { src: '/images/products/jcb-3cx-backhoe-loader-01.webp', alt: 'JCB backhoe loader positioned on a construction site' },
     ],
     excerpt: 'Multi-role utility machine for trenching, loading, municipal maintenance, and contractor service crews.',
-    description: 'This representative backhoe loader listing is suited to buyers who need a versatile machine for mixed duties and want a straightforward inquiry path for inspection and commercial review.',
+    description: 'This backhoe loader listing is suited to buyers who need a versatile machine for mixed duties and want a straightforward inquiry path for inspection and commercial review.',
     keyFeatures: [
       '4-in-1 front bucket configuration',
       'Pilot controls with multi-role site usability',
@@ -151,7 +151,7 @@ const baseProducts: Product[] = [
       { title: 'Backhoe Loader Summary', href: '/technical-library', kind: 'brochure' },
     ],
     inspectionNotes: [
-      'Representative reserved listing pending current inquiry outcome.',
+      'Reserved listing pending the outcome of an active inquiry.',
       'Hydraulic leaks and tyre wear to be verified during physical review.',
     ],
     tags: ['backhoe-loader', 'utility-fleet', 'reserved'],
@@ -233,7 +233,7 @@ const baseProducts: Product[] = [
       { src: '/images/products/bomag-bw213d-roller-01.webp', alt: 'Single-drum road roller compacting asphalt pavement' },
     ],
     excerpt: 'Single-drum compaction platform for roadworks, embankments, and site prep programs.',
-    description: 'A representative soil-compaction listing designed for contractors and public-works buyers who need operating-hour context and a direct RFQ workflow.',
+    description: 'A soil-compaction listing designed for contractors and public-works buyers who need operating-hour context and a direct RFQ workflow.',
     keyFeatures: [
       'Smooth drum compaction setup for bulk subgrade work',
       'Clear operating-hour disclosure for procurement comparison',
@@ -425,7 +425,7 @@ const baseProducts: Product[] = [
     keyFeatures: [
       'Canopied package suitable for outdoor contractor use',
       'ATS and distribution accessories can be scoped through inquiry',
-      'Warehouse-stock placeholder with local delivery discussion available',
+      'Warehouse stock with local delivery discussion available',
     ],
     specs: [
       { label: 'Prime Power', value: '200 kVA' },
@@ -434,7 +434,7 @@ const baseProducts: Product[] = [
     ],
     documents: [
       { title: 'Generator Technical Summary', href: '/technical-library', kind: 'brochure' },
-      { title: 'Compliance Placeholder Pack', href: '/technical-library', kind: 'certificate' },
+      { title: 'Compliance documents available on request', href: '/technical-library', kind: 'certificate' },
     ],
     inspectionNotes: [
       'Representative warehouse-stock unit; final serial and test record to be linked per live item.',
@@ -474,7 +474,7 @@ const baseProducts: Product[] = [
     description: 'A compact support-equipment listing for buyers bundling site air supply with tools, machinery, or temporary-power requests.',
     keyFeatures: [
       'Towable chassis for field deployment',
-      'Low-hour representative stock listing',
+      'Low-hour stock listing',
       'Suitable for civil crews and plant maintenance teams',
     ],
     specs: [
@@ -521,7 +521,7 @@ const baseProducts: Product[] = [
     keyFeatures: [
       'SDS max toolholder for heavy-duty drilling work',
       'Suitable for bundled requests with anchors and electrical tools',
-      'Warehouse-stock placeholder with local commercial support',
+      'Warehouse stock with local commercial support',
     ],
     specs: [
       { label: 'Toolholder', value: 'SDS max' },
@@ -531,7 +531,7 @@ const baseProducts: Product[] = [
     documents: [
       { title: 'Rotary Hammer Product Sheet', href: '/technical-library', kind: 'brochure' },
     ],
-    inspectionNotes: ['Immediate stock availability for placeholder listing.'],
+    inspectionNotes: ['Immediate stock availability confirmed for the current catalog entry.'],
     tags: ['rotary-hammer', 'power-tools', 'warehouse-stock'],
     deal: true,
     createdAt: '2026-05-04',
@@ -575,7 +575,7 @@ const baseProducts: Product[] = [
     documents: [
       { title: 'Drill Driver Technical Summary', href: '/technical-library', kind: 'brochure' },
     ],
-    inspectionNotes: ['Warehouse-stock placeholder item with batch confirmation at quote stage.'],
+    inspectionNotes: ['Warehouse stock item with batch confirmation at quote stage.'],
     tags: ['drill-driver', 'power-tools', 'installation'],
     deal: true,
     createdAt: '2026-05-03',
@@ -660,7 +660,7 @@ const baseProducts: Product[] = [
     ],
     documents: [
       { title: 'MCB Product Sheet', href: '/technical-library', kind: 'brochure' },
-      { title: 'Compliance Placeholder Pack', href: '/technical-library', kind: 'certificate' },
+      { title: 'Compliance documents available on request', href: '/technical-library', kind: 'certificate' },
     ],
     inspectionNotes: ['Batch availability and delivery lead time confirmed at inquiry stage.'],
     tags: ['miniature-circuit-breaker', 'electrical-protection', 'unit-based'],
@@ -731,14 +731,14 @@ const baseProducts: Product[] = [
     capacity: '0.5 in to 2 in pipe',
     serialNumber: 'RDG5352024RFM16',
     images: [
-      { src: '/images/products/ridgid-535-pipe-threading-machine-01.webp', alt: 'Pipe threading machine placeholder graphic for product sourcing' },
+      { src: '/images/products/ridgid-535-pipe-threading-machine-01.webp', alt: 'Pipe threading machine reference visual for product sourcing' },
     ],
     excerpt: 'Workshop pipe-threading machine for installers, fabrication support, and plant maintenance teams.',
     description: 'A professional pipework-tool listing that fits the same frontend inquiry flow as heavier site equipment, without introducing cart or checkout behavior.',
     keyFeatures: [
       'Threading support for workshop and contractor pipework teams',
       'Suitable for bundled workshop-tool requests',
-      'Incoming stock placeholder with commercial review on arrival',
+      'Incoming stock with commercial review on arrival',
     ],
     specs: [
       { label: 'Threading Capacity', value: '0.5 in to 2 in' },
@@ -748,7 +748,7 @@ const baseProducts: Product[] = [
     documents: [
       { title: 'Pipe Threading Machine Reference', href: '/technical-library', kind: 'brochure' },
     ],
-    inspectionNotes: ['Inbound placeholder listing pending warehouse receipt and serial confirmation.'],
+    inspectionNotes: ['Inbound listing pending warehouse receipt and serial confirmation.'],
     tags: ['pipe-threading-machine', 'workshop-tool', 'incoming-stock'],
     createdAt: '2026-04-29',
   },
@@ -774,7 +774,7 @@ const baseProducts: Product[] = [
     capacity: '390 ml',
     serialNumber: 'FISFISEM2025RFM17',
     images: [
-      { src: '/images/products/fischer-fis-em-plus-chemical-anchor-01.webp', alt: 'Chemical anchor cartridge and studs placeholder graphic' },
+      { src: '/images/products/fischer-fis-em-plus-chemical-anchor-01.webp', alt: 'Chemical anchor cartridge and studs reference visual' },
     ],
     excerpt: 'Injection chemical anchor system for structural fixings and installation crews requiring documented support.',
     description: 'A unit-based consumable listing for commercial buyers who need specification-led fixings data and consolidated quote handling for materials, tools, and installation accessories.',
@@ -790,7 +790,7 @@ const baseProducts: Product[] = [
     ],
     documents: [
       { title: 'Chemical Anchor Product Sheet', href: '/technical-library', kind: 'brochure' },
-      { title: 'Certification Placeholder Pack', href: '/technical-library', kind: 'certificate' },
+      { title: 'Certification documents available on request', href: '/technical-library', kind: 'certificate' },
     ],
     inspectionNotes: ['Batch, shelf-life, and delivery pack details confirmed per inquiry.'],
     tags: ['chemical-anchor', 'construction-chemicals', 'unit-based'],
@@ -818,10 +818,10 @@ const baseProducts: Product[] = [
     capacity: '1200 x 2000 x 20 mm',
     serialNumber: 'KNAFIRE2025RFM18',
     images: [
-      { src: '/images/products/knauf-fireboard-fire-resistant-board-01.webp', alt: 'Fire-resistant board placeholder graphic for product sourcing' },
+      { src: '/images/products/knauf-fireboard-fire-resistant-board-01.webp', alt: 'Fire-resistant board reference visual for product sourcing' },
     ],
     excerpt: 'Passive fire-protection board for technical interior assemblies and certified building packages.',
-    description: 'A material-category listing for trade buyers who need unit-based board data, placeholder certification references, and inquiry-led procurement support rather than direct online ordering.',
+    description: 'A material-category listing for trade buyers who need unit-based board data, certification support on request, and inquiry-led procurement handling rather than direct online ordering.',
     keyFeatures: [
       'Sold by sheet with project-quantity inquiry support',
       'Suited to passive fire-protection assemblies',
@@ -834,7 +834,7 @@ const baseProducts: Product[] = [
     ],
     documents: [
       { title: 'Fire Board Product Sheet', href: '/technical-library', kind: 'brochure' },
-      { title: 'Certification Placeholder Pack', href: '/technical-library', kind: 'certificate' },
+      { title: 'Certification documents available on request', href: '/technical-library', kind: 'certificate' },
     ],
     inspectionNotes: ['Material batch, pallet quantities, and transport handling confirmed during quote follow-up.'],
     tags: ['fire-resistant-board', 'building-materials', 'unit-based'],

@@ -6,7 +6,7 @@ import { SiteSearch } from '../../search/SiteSearch';
 import { HomepageHeroSpotlightPanel } from './HomepageHeroSpotlightPanel';
 import { HomepageTrustStrip } from './HomepageTrustStrip';
 
-interface RafinHomepageHeroProps {
+interface GeneralHomepageHeroProps {
   categoryPreviews: HomepageCategoryPreview[];
   quickSearches: string[];
   search: string;
@@ -15,14 +15,14 @@ interface RafinHomepageHeroProps {
   onSearchSubmit: () => void;
 }
 
-export function RafinHomepageHero({
+export function GeneralHomepageHero({
   categoryPreviews,
   quickSearches,
   search,
   onQuickSearch,
   onSearchChange,
   onSearchSubmit,
-}: RafinHomepageHeroProps) {
+}: GeneralHomepageHeroProps) {
   const { t } = useTranslation();
   const heroVisual = categoryPreviews[0]?.category;
   const trustPoints = t('pages.home.hero.trustPoints', { returnObjects: true }) as string[];

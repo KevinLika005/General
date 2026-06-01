@@ -15,6 +15,7 @@ interface SiteSearchProps {
   compact?: boolean;
   maxSuggestions?: number;
   onSubmitQuery?: (query: string) => void;
+  onNavigate?: () => void;
 }
 
 function normalizeQueryForUrl(query: string) {
@@ -26,6 +27,7 @@ export function SiteSearch({
   compact = false,
   maxSuggestions = 6,
   onChange,
+  onNavigate,
   onSubmitQuery,
   placeholder,
   value,
@@ -71,10 +73,12 @@ export function SiteSearch({
 
     if (onSubmitQuery) {
       onSubmitQuery(nextQuery);
+      onNavigate?.();
       return;
     }
 
     navigate(nextQuery ? routes.siteSearch(nextQuery) : routes.search);
+    onNavigate?.();
   };
 
   return (
@@ -142,6 +146,13 @@ export function SiteSearch({
             navigate(activeResult.href);
             setOpen(false);
             setActiveIndex(-1);
+            onNavigate?.();
+            return;
+          }
+
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            submitQuery(value);
           }
         }}
         onSubmit={() => submitQuery(value)}
@@ -175,6 +186,7 @@ export function SiteSearch({
               onResultClick={() => {
                 setOpen(false);
                 setActiveIndex(-1);
+                onNavigate?.();
               }}
               results={results}
               variant="dropdown"

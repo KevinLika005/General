@@ -6,9 +6,9 @@ const baseTechnicalLibraryGroups = [
     title: 'Product manuals',
     description: 'Operating manuals, startup guidance, maintenance references, and user instructions tied to seeded product families.',
     items: [
-      'Tracked excavator operating manual placeholder',
-      'Portable air compressor operation guide placeholder',
-      'Pipe threading machine user instruction placeholder',
+      'Tracked excavator operating manual',
+      'Portable air compressor operation guide',
+      'Pipe threading machine user instruction guide',
     ],
   },
   {
@@ -16,9 +16,9 @@ const baseTechnicalLibraryGroups = [
     title: 'Specification sheets',
     description: 'Product data sheets, model summaries, compatibility references, and core technical overviews mapped to current product families.',
     items: [
-      'Telehandler model summary placeholder',
-      'Hydraulic breaker compatibility reference placeholder',
-      'Fire-resistant board technical overview placeholder',
+      'Telehandler model summary',
+      'Hydraulic breaker compatibility reference',
+      'Fire-resistant board technical overview',
     ],
   },
   {
@@ -26,9 +26,9 @@ const baseTechnicalLibraryGroups = [
     title: 'Inspection documents',
     description: 'Condition summaries, inspection notes, checklists, and pre-delivery review records for equipment and transport listings.',
     items: [
-      'Tracked excavator inspection checklist placeholder',
-      'Dump truck condition summary placeholder',
-      'Wheel loader visual review record placeholder',
+      'Tracked excavator inspection checklist',
+      'Dump truck condition summary',
+      'Wheel loader visual review record',
     ],
   },
   {
@@ -36,9 +36,9 @@ const baseTechnicalLibraryGroups = [
     title: 'Delivery and contract documents',
     description: 'Delivery scope references, handover preparation, and contract-support document requests across equipment, tools, and materials.',
     items: [
-      'Lowbed trailer delivery scope placeholder',
-      'Generator handover checklist placeholder',
-      'Material and consumable commercial request placeholder',
+      'Lowbed trailer delivery scope reference',
+      'Generator handover checklist',
+      'Material and consumable commercial request outline',
     ],
   },
   {
@@ -46,9 +46,9 @@ const baseTechnicalLibraryGroups = [
     title: 'Safety and usage documents',
     description: 'Safety notes, handling guidance, site-usage precautions, and operator awareness material aligned with active product families.',
     items: [
-      'Rotary hammer usage precautions placeholder',
-      'Chemical anchor handling notice placeholder',
-      'Surface water pump site-safety guidance placeholder',
+      'Rotary hammer usage precautions',
+      'Chemical anchor handling notice',
+      'Surface water pump site-safety guidance',
     ],
   },
 ] as const;

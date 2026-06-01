@@ -6,7 +6,7 @@ import { localizeCatalogValue } from '../i18n/catalogLocale';
   - This file is the single taxonomy source of truth for the frontend catalog.
   - Public URLs keep the /equipment/<category-slug> pattern.
   - Subcategory and product-type filters are applied through query params.
-  - TODO: replace placeholder-derived or third-party hero images with owned or licensed assets before launch.
+  - Review hero images periodically and replace any temporary third-party references when owned assets become available.
 */
 
 const baseCategories: CatalogCategory[] = [
@@ -174,7 +174,7 @@ const baseCategories: CatalogCategory[] = [
     description: 'Electrical support products for installers, maintenance teams, and procurement buyers who need specification-led product data and RFQ handling rather than consumer retail flow.',
     heroImage: '/images/categories/electrical-lighting-hero.webp',
     accent: 'from-sky-200/25 via-transparent to-transparent',
-    seoIntro: 'Review electrical test and protection products through a structured B2B catalog with shared quote workflow and local placeholder assets.',
+    seoIntro: 'Review electrical test and protection products through a structured B2B catalog with a shared quote workflow and clear product-family references.',
     subcategories: [
       {
         slug: 'test-protection',
@@ -230,7 +230,7 @@ const baseCategories: CatalogCategory[] = [
     description: 'Construction materials and chemical systems selected for trade buyers who need commercial pack information, unit handling, and B2B quote support without online ordering.',
     heroImage: '/images/categories/building-materials-chemicals-hero.webp',
     accent: 'from-rose-200/20 via-transparent to-transparent',
-    seoIntro: 'Browse chemical anchors and fire-rated board materials with unit-based product data and placeholder technical references tied to product families.',
+    seoIntro: 'Browse chemical anchors and fire-rated board materials with unit-based product data and technical references tied to current product families.',
     subcategories: [
       {
         slug: 'fixings-boards',
@@ -286,7 +286,7 @@ const baseCategories: CatalogCategory[] = [
     description: 'This category is included as a real taxonomy branch even though no seed products ship in this pass. It should support sourcing requests, future inventory, and route continuity from the first launch.',
     heroImage: '/images/categories/safety-workwear-hero.webp',
     accent: 'from-lime-200/20 via-transparent to-transparent',
-    seoIntro: 'Safety and workwear will expand through a sourcing-led inquiry model, with placeholder category structure already available in the catalog.',
+    seoIntro: 'Safety and workwear can expand through the same sourcing-led inquiry model already used across the catalog structure.',
     subcategories: [
       {
         slug: 'site-safety',

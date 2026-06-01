@@ -179,8 +179,8 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
     return () => window.removeEventListener('resize', updateMenuPosition);
   }, [openDesktopMenu]);
 
-  const submitSearch = () => {
-    const nextQuery = search.trim();
+  const submitSearch = (query = search) => {
+    const nextQuery = query.trim();
     navigate(nextQuery ? routes.siteSearch(nextQuery) : routes.search);
   };
 
@@ -223,16 +223,20 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
         <div className="hidden border-b border-border-blue bg-surface-dark text-text-on-dark xl:block">
           <div className="wide-shell flex flex-wrap items-center justify-between gap-3 py-2 text-[0.72rem]">
             <div className="flex flex-wrap items-center gap-4">
-              <a className="transition hover:text-brand-gold-soft" href={`tel:${companyProfile.phone}`}>
-                {companyProfile.phone}
-              </a>
-              <a className="transition hover:text-brand-gold-soft" href={`mailto:${companyProfile.email}`}>
-                {companyProfile.email}
-              </a>
-              <span>{companyProfile.locationLabel}</span>
+              {companyProfile.phone ? (
+                <a className="transition hover:text-brand-gold-soft" href={`tel:${companyProfile.phone}`}>
+                  {companyProfile.phone}
+                </a>
+              ) : null}
+              {companyProfile.email ? (
+                <a className="transition hover:text-brand-gold-soft" href={`mailto:${companyProfile.email}`}>
+                  {companyProfile.email}
+                </a>
+              ) : null}
+              {companyProfile.locationLabel ? <span>{companyProfile.locationLabel}</span> : null}
             </div>
             <div className="flex items-center gap-3">
-              <span className="hidden lg:inline">{companyProfile.topUtilityNote}</span>
+              {companyProfile.topUtilityNote ? <span className="hidden lg:inline">{companyProfile.topUtilityNote}</span> : null}
               <button
                 aria-label={t('common.language.switcher')}
                 className="border border-primary/25 bg-white/5 px-2 py-1 text-brand-gold-soft transition hover:border-primary/45 hover:text-text-on-dark"
@@ -295,7 +299,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
             <button
               aria-label={t('common.accessibility.searchSite')}
               className="hidden h-10 w-10 items-center justify-center border border-border text-navy md:inline-flex xl:hidden"
-              onClick={submitSearch}
+              onClick={() => submitSearch()}
               type="button"
             >
               <Search className="h-4 w-4" />
@@ -500,14 +504,14 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
         </div>
       </header>
 
-      <MobileMenu
-        inquiryCount={inquiryCount}
-        onClose={() => setMobileOpen(false)}
-        onSearchChange={setSearch}
-        onSearchSubmit={submitSearch}
-        open={mobileOpen}
-        search={search}
-      />
+        <MobileMenu
+          inquiryCount={inquiryCount}
+          onClose={() => setMobileOpen(false)}
+          onSearchChange={setSearch}
+          onSearchSubmit={submitSearch}
+          open={mobileOpen}
+          search={search}
+        />
     </>
   );
 }

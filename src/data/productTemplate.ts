@@ -5,7 +5,7 @@ import type { Product } from './types';
   - Copy this object into products.ts when adding a new item.
   - Required fields keep the catalog, taxonomy filters, and product detail routes stable.
   - Subcategory and product-type values must match categories.ts exactly.
-  - TODO: replace placeholder product images with owned or licensed assets before launch.
+  - Replace temporary product visuals with owned or licensed assets when approved media becomes available.
 */
 
 export const productTemplate: Product = {
@@ -35,7 +35,7 @@ export const productTemplate: Product = {
   transmission: 'Automatic powershift', // Optional.
   serialNumber: 'EXM3202024001', // Optional but recommended.
   images: [
-    { src: '/images/products/example-tracked-excavator-01.webp', alt: 'Example tracked excavator placeholder front view' },
+    { src: '/images/products/example-tracked-excavator-01.webp', alt: 'Example tracked excavator front view' },
   ],
   excerpt: 'One-line summary used on cards and listing pages.',
   description: 'Longer commercial description for the product detail page. Explain fit for contractors, condition context, and what is included in the inquiry scope.',

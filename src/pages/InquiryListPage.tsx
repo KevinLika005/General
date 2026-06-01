@@ -97,7 +97,7 @@ export function InquiryListPage() {
                       </div>
 
                       <label className="mt-4 block text-sm text-text-muted">
-                        {t('common.labels.productNotesForRafin')}
+                        {t('common.labels.productNotesForInquiry')}
                         <textarea
                           className="field mt-3 min-h-[110px]"
                           onChange={(event) => updateNotes(product.id, event.target.value)}

@@ -70,20 +70,26 @@ export function Footer() {
             <img alt={t('layout.header.logoAlt')} className="h-20 w-auto object-contain" src={companyLogo} />
             <p className="mt-4 max-w-md text-sm text-white/72">{companyProfile.shortDescription}</p>
             <div className="mt-5 space-y-2 text-sm text-white/72">
-              <p className="inline-flex items-start gap-3">
-                <MapPin className="mt-1 h-4 w-4 text-primary" />
-                <span>{companyProfile.address}</span>
-              </p>
-              <p className="inline-flex items-center gap-3">
-                <Phone className="h-4 w-4 text-primary" />
-                <a href={`tel:${companyProfile.phone}`}>{companyProfile.phone}</a>
-              </p>
-              <p className="inline-flex items-center gap-3">
-                <Mail className="h-4 w-4 text-primary" />
-                <a href={`mailto:${companyProfile.email}`}>{companyProfile.email}</a>
-              </p>
+              {companyProfile.address ? (
+                <p className="inline-flex items-start gap-3">
+                  <MapPin className="mt-1 h-4 w-4 text-primary" />
+                  <span>{companyProfile.address}</span>
+                </p>
+              ) : null}
+              {companyProfile.phone ? (
+                <p className="inline-flex items-center gap-3">
+                  <Phone className="h-4 w-4 text-primary" />
+                  <a href={`tel:${companyProfile.phone}`}>{companyProfile.phone}</a>
+                </p>
+              ) : null}
+              {companyProfile.email ? (
+                <p className="inline-flex items-center gap-3">
+                  <Mail className="h-4 w-4 text-primary" />
+                  <a href={`mailto:${companyProfile.email}`}>{companyProfile.email}</a>
+                </p>
+              ) : null}
             </div>
-            <div className="mt-5 flex gap-2">
+            <div className="mt-5 flex gap-2 empty:hidden">
               {companyProfile.socialLinks.map((social) => {
                 const Icon = socialIcons[social.label as keyof typeof socialIcons];
 

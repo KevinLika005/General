@@ -4,7 +4,7 @@ import { localizeCatalogValue } from '../i18n/catalogLocale';
 const baseFaqItems: FAQItem[] = [
   {
     question: 'Can I send a request directly through the website?',
-    answer: 'Yes. This website is for inquiry, quote, and contract requests only. Rafin handles the next step directly with company buyers after contact.',
+    answer: 'Yes. This website is for inquiry, quote, and contract requests only. The sales team handles the next step directly with company buyers after contact.',
   },
   {
     question: 'Are prices final?',
@@ -20,7 +20,7 @@ const baseFaqItems: FAQItem[] = [
   },
   {
     question: 'Do you deliver?',
-    answer: 'Delivery, transport planning, and export handling can be discussed directly with Rafin once the required equipment is identified.',
+    answer: 'Delivery, transport planning, and export handling can be discussed directly with the sales team once the required equipment is identified.',
   },
   {
     question: 'Are products new or used?',
@@ -28,11 +28,11 @@ const baseFaqItems: FAQItem[] = [
   },
   {
     question: 'What documents are provided?',
-    answer: 'Depending on the item, Rafin can provide inspection notes, serial verification, service summaries, invoices, and other relevant commercial documents.',
+    answer: 'Depending on the item, the sales team can provide inspection notes, serial verification, service summaries, invoices, and other relevant commercial documents.',
   },
   {
-    question: 'How fast will Rafin respond?',
-    answer: 'For active stock, Rafin should normally respond quickly during business hours. Complex contract or logistics requests may require a fuller internal review.',
+    question: 'How fast will the sales team respond?',
+    answer: 'For active stock, the sales team should normally respond quickly during business hours. Complex contract or logistics requests may require a fuller internal review.',
   },
   {
     question: 'Can I request spare parts together with a machine?',
@@ -45,7 +45,7 @@ const baseFaqItems: FAQItem[] = [
   {
     categorySlug: 'heavy-equipment',
     question: 'Do you support bucket and hammer matching for excavators?',
-    answer: 'Yes. Rafin can discuss attachment fitment, pin dimensions, and compatible auxiliary hydraulic requirements during the inquiry process.',
+    answer: 'Yes. The sales team can discuss attachment fitment, pin dimensions, and compatible auxiliary hydraulic requirements during the inquiry process.',
   },
   {
     categorySlug: 'trucks-transport',
@@ -90,7 +90,7 @@ const baseFaqItems: FAQItem[] = [
   {
     categorySlug: 'safety-workwear',
     question: 'What happens if a safety category has no listed products yet?',
-    answer: 'The category remains live for sourcing and future expansion. Buyers can still request support or ask Rafin to source relevant items directly.',
+    answer: 'The category remains live for sourcing and future expansion. Buyers can still request support or ask the sales team to source relevant items directly.',
   },
 ];
 

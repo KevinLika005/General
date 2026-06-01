@@ -45,7 +45,7 @@ export function ProductDetailPage() {
       : { next: undefined, previous: undefined };
 
   usePageMetadata({
-    title: product ? `${product.title} | Rafin Machinery` : t('metadata.productDetail.fallbackTitle'),
+    title: product ? `${product.title} | GENERAL TRADING` : t('metadata.productDetail.fallbackTitle'),
     description:
       product?.excerpt ??
       t('metadata.productDetail.fallbackDescription'),

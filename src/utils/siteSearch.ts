@@ -313,6 +313,21 @@ function buildSearchIndex() {
   return [...buildProductDocuments(), ...buildCategoryDocuments(), ...buildPageDocuments()];
 }
 
+function dedupeResults(results: SiteSearchResult[]) {
+  const seen = new Set<string>();
+
+  return results.filter((result) => {
+    const key = `${result.type}:${result.href}`;
+
+    if (seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
+}
+
 export function getSiteSearchIndex() {
   const language = getCurrentLanguage();
 
@@ -404,7 +419,9 @@ export function searchSite(query: string, limit?: number): SiteSearchResult[] {
       image: document.image,
     }));
 
-  return typeof limit === 'number' ? ranked.slice(0, limit) : ranked;
+  const deduped = dedupeResults(ranked);
+
+  return typeof limit === 'number' ? deduped.slice(0, limit) : deduped;
 }
 
 export function getSearchTypeCounts(results: SiteSearchResult[]) {

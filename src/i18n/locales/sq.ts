@@ -1,9 +1,5 @@
-import { en } from './en';
-
 export const sq = {
-  ...en,
   common: {
-    ...en.common,
     language: {
       en: 'EN',
       sq: 'SQ',
@@ -12,7 +8,6 @@ export const sq = {
       toggle: 'Ndrysho gjuhën',
     },
     actions: {
-      ...en.common.actions,
       search: 'Kërko',
       searchCatalog: 'Kërko në katalog',
       searchCategory: 'Kërko në kategori',
@@ -46,7 +41,6 @@ export const sq = {
       requestInfo: 'Kërko informacion',
     },
     labels: {
-      ...en.common.labels,
       home: 'Kreu',
       equipment: 'Pajisje',
       breadcrumb: 'Gjurmë navigimi',
@@ -94,7 +88,7 @@ export const sq = {
       salesPhone: 'Telefoni i shitjeve',
       selectedProducts: 'Produktet e zgjedhura',
       technicalData: 'Të dhëna teknike',
-      productNotesForRafin: 'Shënime për produktin për Rafin',
+      productNotesForInquiry: 'Shënime për këtë kërkesë',
       documentRequest: 'Kërkesë dokumentesh',
       searchDocumentGroups: 'Kërko grupet e dokumenteve',
       technicalSpecifications: 'Specifikime teknike',
@@ -102,7 +96,6 @@ export const sq = {
       inquiryAction: 'Veprimi i kërkesës',
     },
     status: {
-      ...en.common.status,
       availableNow: 'I disponueshëm tani',
       reservedPendingContract: 'I rezervuar në pritje të kontratës',
       incomingStock: 'Stok në ardhje',
@@ -161,10 +154,9 @@ export const sq = {
       mileageUnderValue: 'Kilometrazh nën {{value}}',
       unit: 'Njësia {{value}}',
       year: 'Viti {{value}}',
-      placeholderGroup: 'Grup ilustrues',
+      referenceGroup: 'Grup reference',
     },
     accessibility: {
-      ...en.common.accessibility,
       skipToMain: 'Kalo te përmbajtja kryesore',
       openInquirySummary: 'Hap përmbledhjen e listës së kërkesave',
       closeInquirySummary: 'Mbyll përmbledhjen e listës së kërkesave',
@@ -183,7 +175,6 @@ export const sq = {
       emailAddress: 'Adresa e emailit',
     },
     forms: {
-      ...en.common.forms,
       chooseOne: 'Zgjidh një',
       immediate: 'Menjëherë',
       thisWeek: 'Këtë javë',
@@ -206,56 +197,55 @@ export const sq = {
     },
   },
   metadata: {
-    ...en.metadata,
     home: {
-      title: 'Rafin Machinery | Katalog teknik pajisjesh dhe kërkesa B2B',
+      title: 'GENERAL TRADING | Katalog teknik pajisjesh dhe kërkesa B2B',
       description:
         'Shfletoni makineri ndërtimi, mjete transporti dhe produkte mbështetëse përmes një homepage më të pastër B2B të fokusuar te zbulimi i kategorive, inventari aktiv dhe ndjekja direkte e ofertave.',
     },
     catalog: {
-      title: 'Katalogu | Rafin Machinery',
+      title: 'Katalogu | GENERAL TRADING',
       description:
-        'Kërkoni në katalogun Rafin Machinery sipas kategorisë, nënkategorisë, llojit të produktit, markës, SKU-së, disponueshmërisë dhe mënyrës së çmimit në një ndërfaqe kompakte të fokusuar te kërkesat B2B.',
+        'Kërkoni në katalogun GENERAL TRADING sipas kategorisë, nënkategorisë, llojit të produktit, markës, SKU-së, disponueshmërisë dhe mënyrës së çmimit në një ndërfaqe kompakte të fokusuar te kërkesat B2B.',
     },
     brands: {
-      title: 'Markat | Rafin Machinery',
+      title: 'Markat | GENERAL TRADING',
       description:
-        'Shfletoni prodhuesit e përfaqësuar në inventarin aktual të Rafin Machinery dhe kaloni drejtpërdrejt te rezultatet e filtruara sipas markës.',
+        'Shfletoni prodhuesit e përfaqësuar në inventarin aktual të GENERAL TRADING dhe kaloni drejtpërdrejt te rezultatet e filtruara sipas markës.',
     },
     deals: {
-      title: 'Stoku i gatshëm dhe ofertat | Rafin Machinery',
+      title: 'Stoku i gatshëm dhe ofertat | GENERAL TRADING',
       description:
         'Shikoni stokun e gatshëm me qarkullim të shpejtë, njësitë në ardhje dhe makineritë ose pjesët me etiketë oferte në një pamje kompakte të fokusuar te kërkesat.',
     },
     technicalLibrary: {
-      title: 'Biblioteka teknike | Rafin Machinery',
+      title: 'Biblioteka teknike | GENERAL TRADING',
       description:
         'Shfletoni kategoritë e bibliotekës teknike për manuale, referenca inspektimi, fletë specifikimesh, dokumente dorëzimi dhe rrugë kërkese për mbështetje.',
     },
     inquiryList: {
-      title: 'Lista e kërkesave | Rafin Machinery',
+      title: 'Lista e kërkesave | GENERAL TRADING',
       description:
-        'Rishikoni makineritë, pjesët dhe mjetet e zgjedhura përpara se të dërgoni një kërkesë të përmbledhur B2B për ofertë ose kontratë te Rafin.',
+        'Rishikoni makineritë, pjesët dhe mjetet e zgjedhura përpara se të dërgoni një kërkesë të përmbledhur B2B për ofertë ose kontratë te ekipi i shitjeve.',
     },
     requestQuote: {
-      title: 'Kërko ofertë | Rafin Machinery',
+      title: 'Kërko ofertë | GENERAL TRADING',
       description:
         'Dërgoni një kërkesë B2B për makineri, pjesë, inspektim, planifikim dorëzimi, dokumente ose diskutim kontrate. Faqja mbështet vetëm kërkesa dhe marrëveshje offline.',
     },
     howItWorks: {
-      title: 'Si funksionon | Rafin Machinery',
+      title: 'Si funksionon | GENERAL TRADING',
       description:
-        'Kuptoni si Rafin Machinery menaxhon kërkesat, ndjekjen e ofertave, inspektimet, negociatat dhe marrëveshjet offline kompani me kompani.',
+        'Kuptoni si GENERAL TRADING menaxhon kërkesat, ndjekjen e ofertave, inspektimet, negociatat dhe marrëveshjet offline kompani me kompani.',
     },
     financingContracts: {
-      title: 'Financimi dhe kontratat | Rafin Machinery',
+      title: 'Financimi dhe kontratat | GENERAL TRADING',
       description:
-        'Shikoni si trajtohen drejtpërdrejt me Rafin kushtet komerciale, kontratat, faturat dhe miratimet nga ana e blerësit pas kërkesës.',
+        'Shikoni si trajtohen drejtpërdrejt me ekipin e shitjeve kushtet komerciale, kontratat, faturat dhe miratimet nga ana e blerësit pas kërkesës.',
     },
     deliveryInspection: {
-      title: 'Dorëzimi dhe inspektimi | Rafin Machinery',
+      title: 'Dorëzimi dhe inspektimi | GENERAL TRADING',
       description:
-        'Shikoni si Rafin mbështet inspektimin e makinerive, planifikimin e dorëzimit, koordinimin e eksportit dhe dorëzimin komercial pas një kërkese blerësi.',
+        'Shikoni si ekipi i shitjeve mbështet inspektimin e makinerive, planifikimin e dorëzimit, koordinimin e eksportit dhe dorëzimin komercial pas një kërkese blerësi.',
     },
     institutionsCleaning: {
       title: 'Shërbime Pastrimi për Institucione | GENERAL TRADING',
@@ -263,47 +253,46 @@ export const sq = {
         'Shërbime profesionale pastrimi për zyra, shkolla, ndërtesa administrative dhe institucione publike ose private.',
     },
     about: {
-      title: 'Rreth nesh | Rafin Machinery',
+      title: 'Rreth nesh | GENERAL TRADING',
       description:
-        'Mësoni si Rafin Machinery paraqet pajisje ndërtimi, aksesorë dhe inventar mbështetës për blerës profesionistë të kompanive.',
+        'Mësoni si GENERAL TRADING paraqet pajisje ndërtimi, aksesorë, mjete, materiale dhe inventar mbështetës për blerës profesionistë të kompanive.',
     },
     faq: {
-      title: 'Pyetje të shpeshta | Rafin Machinery',
+      title: 'Pyetje të shpeshta | GENERAL TRADING',
       description:
-        'Pyetje të zakonshme rreth procesit të kërkesave në Rafin Machinery, mënyrave të çmimit, inspektimeve, dokumenteve, mbështetjes së dorëzimit dhe trajtimit të kontratave.',
+        'Pyetje të zakonshme rreth procesit të kërkesave në GENERAL TRADING, mënyrave të çmimit, inspektimeve, dokumenteve, mbështetjes së dorëzimit dhe trajtimit të kontratave.',
     },
     contact: {
-      title: 'Kontakt | Rafin Machinery',
+      title: 'Kontakt | GENERAL TRADING',
       description:
-        'Kontaktoni ekipin e shitjeve të Rafin Machinery për detaje produktesh, planifikim inspektimi, organizim dorëzimi, pjesë këmbimi dhe diskutim kontrate.',
+        'Përdorni formularët e kontaktit dhe ofertës për detaje produktesh, planifikim inspektimi, organizim dorëzimi, pjesë këmbimi dhe diskutim kontrate.',
     },
     privacy: {
-      title: 'Privatësia | Rafin Machinery',
+      title: 'Privatësia | GENERAL TRADING',
       description:
-        'Udhëzime privatësie për kërkesat në faqe, informacionin e kontaktit dhe trajtimin e ardhshëm në prodhim për katalogun Rafin Machinery.',
+        'Udhëzime privatësie për kërkesat në faqe, informacionin e kontaktit dhe trajtimin e ardhshëm në prodhim për katalogun GENERAL TRADING.',
     },
     terms: {
-      title: 'Kushtet | Rafin Machinery',
+      title: 'Kushtet | GENERAL TRADING',
       description:
         'Udhëzime për kushtet e informacionit të katalogut, çmimet orientuese, disponueshmërinë dhe trajtimin offline të kontratave kompani me kompani.',
     },
     notFound: {
-      title: 'Faqja nuk u gjet | Rafin Machinery',
+      title: 'Faqja nuk u gjet | GENERAL TRADING',
       description:
         'Faqja e kërkuar e katalogut nuk u gjet. Kthehuni në faqen kryesore ose vazhdoni shfletimin e inventarit aktiv të makinerive.',
     },
     productDetail: {
-      fallbackTitle: 'Detajet e produktit | Rafin Machinery',
+      fallbackTitle: 'Detajet e produktit | GENERAL TRADING',
       fallbackDescription:
-        'Shikoni specifikimet e produktit, disponueshmërinë, dokumentet dhe opsionet e kërkesës në katalogun Rafin Machinery.',
+        'Shikoni specifikimet e produktit, disponueshmërinë, dokumentet dhe opsionet e kërkesës në katalogun GENERAL TRADING.',
     },
     category: {
-      fallbackTitle: 'Kategoria | Rafin Machinery',
-      fallbackDescription: 'Shfletoni inventarin e makinerive sipas kategorisë në katalogun Rafin Machinery.',
+      fallbackTitle: 'Kategoria | GENERAL TRADING',
+      fallbackDescription: 'Shfletoni inventarin e makinerive sipas kategorisë në katalogun GENERAL TRADING.',
     },
   },
   pages: {
-    ...en.pages,
     institutionsCleaning: {
       shortLabel: 'Pastrim për Institucione',
       hero: {
@@ -486,10 +475,10 @@ export const sq = {
       emptyDescription:
         'Kërkoni produktet ekzistuese, kategoritë, faqet e shërbimeve, faqet e zgjidhjeve dhe faqet e rëndësishme të sajtit duke përdorur shiritin e kërkimit më sipër.',
       suggestionsLabel: 'Sugjerime që përputhen',
-      metadataTitle: 'Kërko | Rafin Machinery',
-      metadataTitleWithQuery: 'Kërko “{{query}}” | Rafin Machinery',
+      metadataTitle: 'Kërko | GENERAL TRADING',
+      metadataTitleWithQuery: 'Kërko “{{query}}” | GENERAL TRADING',
       metadataDescription:
-        'Kërkoni në faqen e Rafin Machinery te produktet, kategoritë, shërbimet, zgjidhjet dhe faqet e rëndësishme.',
+        'Kërkoni në faqen e GENERAL TRADING te produktet, kategoritë, shërbimet, zgjidhjet dhe faqet e rëndësishme.',
       types: {
         product: 'Produkt',
         category: 'Kategori',
@@ -513,7 +502,7 @@ export const sq = {
         'Çekiçë hidraulikë',
       ],
       hero: {
-        eyebrow: 'Rafin Machinery',
+        eyebrow: 'GENERAL TRADING',
         title: 'Furnizim makinerish për kontraktorë, flota dhe ekipe prokurimi',
         description:
           'Përdorni faqen hyrëse për të hyrë në kategorinë e duhur, për të parë stokun aktual dhe për të kaluar shpejt te oferta, inspektimi ose dokumentacioni.',
@@ -524,7 +513,7 @@ export const sq = {
           'Filloni të shkruani për të kaluar drejtpërdrejt te produktet, kategoritë, faqet e shërbimeve, zgjidhjet ose faqet kryesore të sajtit që përputhen.',
         trustPoints: [
           'Rrjedhë komerciale e bazuar në kërkesë, pa checkout ose blerje automatike.',
-          'Inspektimi, dorëzimi dhe mbështetja dokumentare trajtohen drejtpërdrejt me Rafin.',
+          'Inspektimi, dorëzimi dhe mbështetja dokumentare trajtohen drejtpërdrejt me ekipin e shitjeve.',
           'Navigim i fokusuar për makineri, transport dhe furnizim për kantier.',
         ],
         panelEyebrow: 'Rrugë prioritare produktesh',
@@ -591,13 +580,13 @@ export const sq = {
     },
     about: {
       eyebrow: 'Rreth nesh',
-      title: 'Rafin Machinery, i ndërtuar për blerje profesionale pajisjesh',
+      title: 'GENERAL TRADING, i ndërtuar për blerje profesionale pajisjesh',
       description:
-        'Rafin Machinery është një katalog komercial pajisjesh i mbështetur nga Rafin Company. Fokusi është te detajet e besueshme të listimeve, njohuria për makineritë dhe një proces i qartë shitjeje kompani me kompani.',
+        'GENERAL TRADING është një katalog komercial pajisjesh me fokus te detajet e besueshme të listimeve, njohuria për makineritë dhe një proces i qartë shitjeje kompani me kompani.',
       business: {
         title: 'Çfarë bën ky biznes',
         paragraphs: [
-          'Rafin Company përdor këtë katalog për të paraqitur makineri, mjete transporti, aksesorë, pjesë këmbimi dhe pajisje mbështetëse kantieri në një mënyrë që ndihmon blerësit e kompanive të vlerësojnë inventarin para kontaktit të drejtpërdrejtë.',
+          'GENERAL përdor këtë katalog për të paraqitur makineri, mjete transporti, aksesorë, pjesë këmbimi, materiale dhe pajisje mbështetëse kantieri në një mënyrë që ndihmon blerësit e kompanive të vlerësojnë inventarin para kontaktit të drejtpërdrejtë.',
           'Ai nuk është qëllimisht një rindërtim i portofolit korporativ. Procesi i shitjes mbetet offline, i negociuar, i ndërgjegjshëm ndaj inspektimit dhe i drejtuar nga dokumentacioni.',
         ],
       },
@@ -636,7 +625,7 @@ export const sq = {
       faq: {
         eyebrow: 'Pyetje të shpeshta të kategorisë',
         title: 'Pyetjet që bëjnë blerësit për {{category}}',
-        description: 'Përgjigje të fokusuara në këtë grup produktesh dhe mënyrën se si Rafin trajton inspektimin, disponueshmërinë, dokumentacionin dhe diskutimin e kontratës.',
+        description: 'Përgjigje të fokusuara në këtë grup produktesh dhe mënyrën se si ekipi i shitjeve trajton inspektimin, disponueshmërinë, dokumentacionin dhe diskutimin e kontratës.',
       },
       support: {
         eyebrow: 'Mbështetje për këtë kategori',
@@ -673,14 +662,14 @@ export const sq = {
       requestNote: 'Nëse skedari i saktë nuk është ende i listuar, përdorni formularin e kërkesës dhe përmendni produktin, modelin ose SKU-në.',
       cta: {
         eyebrow: 'Ju duhet mbështetje specifike për produktin?',
-        title: 'Kërkoni Rafin një paketë dokumentesh të lidhur me një listim specifik',
+        title: 'Kërkoni një paketë dokumentesh të lidhur me një listim specifik',
         description:
-          'Përmendni kategorinë, modelin, SKU-në ose faqen e produktit në mesazhin tuaj dhe Rafin mund të përgatisë manualin, regjistrin e inspektimit, fletën e specifikimeve ose referencën e dorëzimit që ju nevojitet.',
+          'Përmendni kategorinë, modelin, SKU-në ose faqen e produktit në mesazhin tuaj dhe ekipi i shitjeve mund të përgatisë manualin, regjistrin e inspektimit, fletën e specifikimeve ose referencën e dorëzimit që ju nevojitet.',
       },
     },
     requestQuote: {
       eyebrow: 'Kërko ofertë',
-      title: 'Dërgoni një kërkesë komerciale te Rafin Machinery',
+      title: 'Dërgoni një kërkesë komerciale te GENERAL TRADING',
       description:
         'Përdorni një formular të vetëm për informacion produkti, oferta, takime inspektimi, diskutim dorëzimi, kërkesa dokumentesh ose ndjekje kontrate. Ky është proces vetëm me kërkesë, jo checkout.',
     },
@@ -688,23 +677,23 @@ export const sq = {
       eyebrow: 'Si funksionon',
       title: 'Një proces i qartë B2B për kërkesat e makinerive',
       description:
-        'Kjo faqe është një katalog dhe mjet kërkesash. Blerësit shfletojnë produktet, ndërtojnë një Listë Kërkesash dhe vazhdojnë procesin komercial drejtpërdrejt me Rafin.',
+        'Kjo faqe është një katalog dhe mjet kërkesash. Blerësit shfletojnë produktet, ndërtojnë një Listë Kërkesash dhe vazhdojnë procesin komercial drejtpërdrejt me ekipin e shitjeve.',
       afterInquiryTitle: 'Çfarë ndodh pasi të dërgoni një kërkesë',
       afterInquiryPoints: [
-        'Rafin rishikon produktet në Listën tuaj të Kërkesave dhe përgjigjet me detaje teknike, kontekst disponueshmërie dhe hapin tjetër komercial.',
+        'Ekipi i shitjeve rishikon produktet në Listën tuaj të Kërkesave dhe përgjigjet me detaje teknike, kontekst disponueshmërie dhe hapin tjetër komercial.',
         'Planifikimi i inspektimit, rishikimi i dokumentacionit dhe negociatat vazhdojnë drejtpërdrejt me ekipin e shitjeve.',
         'Kushtet e kontratës, kushtet e pagesës dhe fushëveprimi i dorëzimit trajtohen offline mes kompanive dhe jo përmes faqes së internetit.',
       ],
     },
     financingContracts: {
       eyebrow: 'Financimi & kontratat',
-      title: 'Kushtet komerciale diskutohen drejtpërdrejt me Rafin',
+      title: 'Kushtet komerciale diskutohen drejtpërdrejt me ekipin e shitjeve',
       description:
         'Katalogu mbështet shitje me bazë kontrate dhe negociata të drejtpërdrejta kompani me kompani në vend të trajtimit të transaksioneve online.',
       points: [
         'Vetëm shitje me kontratë',
         'Negociata kompani me kompani',
-        'Kushtet komerciale diskutohen drejtpërdrejt me Rafin',
+        'Kushtet komerciale diskutohen drejtpërdrejt me ekipin e shitjeve',
         'Faturat, dokumentacioni dhe kushtet e dorëzimit trajtohen pas kërkesës',
         'Mbështetja për inspektim dhe logjistikë mund të jetë pjesë e të njëjtit diskutim',
         'Kushtet e pagesës dhe financimi diskutohen drejtpërdrejt vetëm kur janë të disponueshme',
@@ -714,7 +703,7 @@ export const sq = {
       eyebrow: 'Dorëzim & inspektim',
       title: 'Mbështetje për inspektimin, logjistikën dhe dorëzimin',
       description:
-        'Rafin mund të koordinojë hapat praktikë të radhës pasi një blerës identifikon produktin e duhur. Kjo përfshin diskutimin e inspektimit, planifikimin e transportit dhe përgatitjen e dokumenteve komerciale.',
+        'Ekipi i shitjeve mund të koordinojë hapat praktikë të radhës pasi një blerës identifikon produktin e duhur. Kjo përfshin diskutimin e inspektimit, planifikimin e transportit dhe përgatitjen e dokumenteve komerciale.',
       points: [
         'Koordinim i takimeve të inspektimit',
         'Rishikim i gjendjes së makinerisë dhe sqarime komerciale',
@@ -725,35 +714,35 @@ export const sq = {
       ],
       promiseTitle: 'Çfarë premton dhe çfarë nuk premton kjo faqe',
       promiseDescription:
-        'Faqja i ndihmon blerësit të kuptojnë se inspektimi dhe logjistika mund të diskutohen. Afatet përfundimtare, kostoja e dorëzimit, fushëveprimi i eksportit dhe detajet e dorëzimit konfirmohen drejtpërdrejt me Rafin pas kërkesës.',
+        'Faqja i ndihmon blerësit të kuptojnë se inspektimi dhe logjistika mund të diskutohen. Afatet përfundimtare, kostoja e dorëzimit, fushëveprimi i eksportit dhe detajet e dorëzimit konfirmohen drejtpërdrejt me ekipin e shitjeve pas kërkesës.',
     },
     faq: {
       eyebrow: 'Pyetje të shpeshta',
-      title: 'Pyetje të zakonshme për procesin e blerësit te Rafin',
+      title: 'Pyetje të zakonshme për procesin e blerësit',
       description: 'Përgjigje për blerës, kontraktorë dhe ekipe prokurimi që përdorin katalogun e makinerive të bazuar te kërkesa.',
     },
     contact: {
       eyebrow: 'Kontakt',
       title: 'Kontaktoni ekipin e shitjeve të makinerive',
       description:
-        'Flisni drejtpërdrejt me anën e shitjeve të Rafin Machinery për informacion produkti, koordinim inspektimi, diskutim dorëzimi ose trajtim kontrate.',
+        'Përdorni formularët e kësaj faqeje për informacion produkti, koordinim inspektimi, diskutim dorëzimi ose trajtim kontrate.',
       salesContacts: {
         eyebrow: 'Kontaktet e shitjeve',
         title: 'Kontaktet komerciale sipas fushës',
       },
       visit: {
         eyebrow: 'Vizitë dhe inspektim',
-        title: 'Pika e shitjeve dhe koordinimit në Tiranë',
+        title: 'Koordinim për shitje dhe inspektim',
         description:
-          'Përdorni adresën dhe kontaktet e shitjeve për të organizuar takime në zyrë, vizita në oborr, inspektim makinerie ose koordinim dorëzimi pas shqyrtimit të kërkesës.',
-        placeholder: 'Pikë koordinimi për takime në zyrë, planifikim inspektimi dhe dorëzim',
+          'Përdorni formularin e kontaktit për të kërkuar koordinim zyre, vizita në oborr, inspektim makinerie ose planifikim dorëzimi pas shqyrtimit të kërkesës.',
+        coordinationNote: 'Takimet në zyrë, planifikimi i inspektimit dhe dorëzimi koordinohen pas shqyrtimit të kërkesës.',
       },
     },
     inquiryList: {
       eyebrow: 'Lista e Kërkesave',
       title: 'Ndërtoni një kërkesë të dobishme rreth produkteve që i duhen ekipit tuaj',
       description:
-        'Kjo nuk është checkout. Lista juaj e Kërkesave e ndihmon Rafin të përgatisë detaje produkti, çmime, opsione inspektimi, mbështetje dokumentesh, diskutim dorëzimi dhe hapat e ardhshëm të kontratës.',
+        'Kjo nuk është checkout. Lista juaj e Kërkesave e ndihmon ekipin e shitjeve të përgatisë detaje produkti, çmime, opsione inspektimi, mbështetje dokumentesh, diskutim dorëzimi dhe hapat e ardhshëm të kontratës.',
       empty: {
         title: 'Lista juaj e Kërkesave është bosh',
         description:
@@ -765,7 +754,7 @@ export const sq = {
         description:
           'Vazhdoni te formulari i kërkesës kur lista juaj pasqyron makineritë, mjetet ose pjesët që kompania juaj dëshiron të diskutojë.',
       },
-      preparedTitle: 'Çfarë përgatit Rafin nga kjo listë',
+      preparedTitle: 'Çfarë përgatit ekipi i shitjeve nga kjo listë',
       preparedPoints: [
         'Mënyrën e çmimit dhe sqarimin komercial për secilin produkt të zgjedhur',
         'Opsionet e inspektimit, rishikimin e gjendjes dhe ndjekjen e dokumentacionit',
@@ -785,14 +774,14 @@ export const sq = {
       eyebrow: 'Kushtet',
       title: 'Udhëzim për kushtet e përdorimit',
       description:
-        'Informacioni i produktit në këtë build frontend është përmbajtje ilustrative katalogu për një proces shitjeje të bazuar në kërkesë. Kushtet përfundimtare komerciale konfirmohen drejtpërdrejt me Rafin.',
+        'Informacioni i produktit në këtë build frontend është përmbajtje ilustrative katalogu për një proces shitjeje të bazuar në kërkesë. Kushtet përfundimtare komerciale konfirmohen drejtpërdrejt me ekipin e shitjeve.',
       body:
-        'Disponueshmëria, çmimet, specifikimet, dokumentacioni, dorëzimi, inspektimi dhe kushtet e kontratës duhet të konfirmohen drejtpërdrejt me Rafin gjatë procesit offline kompani me kompani.',
+        'Disponueshmëria, çmimet, specifikimet, dokumentacioni, dorëzimi, inspektimi dhe kushtet e kontratës duhet të konfirmohen drejtpërdrejt me ekipin e shitjeve gjatë procesit offline kompani me kompani.',
     },
     notFound: {
       title: 'Kjo faqe e katalogut nuk ekziston',
       description:
-        'Kthehuni në faqen kryesore ose vazhdoni te katalogu i pajisjeve për të shfletuar build-in aktiv të Rafin Machinery.',
+        'Kthehuni në faqen kryesore ose vazhdoni te katalogu i pajisjeve për të shfletuar build-in aktiv të GENERAL TRADING.',
     },
     productDetail: {
       keyFacts: {
@@ -850,7 +839,6 @@ export const sq = {
     },
   },
   layout: {
-    ...en.layout,
     header: {
       logoAlt: 'General Trading',
       tagline: 'Katalog teknik pajisjesh',
@@ -873,7 +861,7 @@ export const sq = {
       servicesSupport: 'Shërbime & Mbështetje',
       updatesTitle: 'Përditësime teknike dhe stoku',
       updatesDescription: 'Kërkoni njoftime stoku për makineri, pjesë dhe përditësime të mbështetjes së dokumenteve teknike.',
-      bottomNote: 'Katalog i orientuar nga kërkesa. Ofertat, kontratat, inspektimi dhe kushtet komerciale trajtohen drejtpërdrejt me Rafin.',
+      bottomNote: 'Katalog i orientuar nga kërkesa. Ofertat, kontratat, inspektimi dhe kushtet komerciale trajtohen drejtpërdrejt me ekipin e shitjeve.',
     },
     mobileMenu: {
       searchPlaceholder: 'Kërko produkte, kategori, shërbime ose faqe...',
@@ -922,7 +910,7 @@ export const sq = {
       buyerDetails: 'Detajet e blerësit dhe kompanisë',
       requestIntent: 'Qëllimi dhe afati i kërkesës',
       requestMessage: 'Mesazhi i kërkesës',
-      messagePlaceholder: 'Tregojini Rafin çfarë ju nevojitet, nëse kërkohet inspektim dhe çdo detaj për dorëzim, kontratë, përputhshmëri ose dokumentacion që ka rëndësi.',
+      messagePlaceholder: 'Tregojini ekipit të shitjeve çfarë ju nevojitet, nëse kërkohet inspektim dhe çdo detaj për dorëzim, kontratë, përputhshmëri ose dokumentacion që ka rëndësi.',
       consent: 'E kuptoj që kjo kërkesë nis një proces offline kompani me kompani. Në këtë faqe nuk ndodh checkout, porosi automatike ose pagesë online.',
       success: 'Kërkesa juaj u dërgua me sukses.',
       selectedProductsTitle: 'Produktet në këtë kërkesë',
@@ -930,7 +918,7 @@ export const sq = {
       whatNextTitle: 'Çfarë ndodh më pas',
       whatNextDescription: 'Ky formular e drejton kërkesën në një rrugë ndjekjeje offline B2B pa nënkuptuar checkout ose vendosje porosie.',
       whatNextPoints: [
-        'Rafin shqyrton produktet e zgjedhura, sasitë, shënimet dhe llojin e mbështetjes që ju nevojitet.',
+        'Ekipi i shitjeve shqyrton produktet e zgjedhura, sasitë, shënimet dhe llojin e mbështetjes që ju nevojitet.',
         'Shënimet e inspektimit, dokumentacioni, fushëveprimi i dorëzimit dhe detajet e kontratës mund të sqarohen më pas drejtpërdrejt.',
         'Në këtë faqe nuk ndodh pagesë online ose marrëveshje automatike.',
       ],

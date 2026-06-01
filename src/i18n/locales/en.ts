@@ -88,7 +88,7 @@ export const en = {
       salesPhone: 'Sales Phone',
       selectedProducts: 'Selected products',
       technicalData: 'Technical data',
-      productNotesForRafin: 'Product notes for Rafin',
+      productNotesForInquiry: 'Product notes for this inquiry',
       documentRequest: 'Document request',
       searchDocumentGroups: 'Search document groups',
       technicalSpecifications: 'Technical specifications',
@@ -154,7 +154,7 @@ export const en = {
       mileageUnderValue: 'Mileage under {{value}}',
       unit: 'Unit {{value}}',
       year: 'Year {{value}}',
-      placeholderGroup: 'Placeholder group',
+      referenceGroup: 'Reference group',
     },
     accessibility: {
       skipToMain: 'Skip to main content',
@@ -198,54 +198,54 @@ export const en = {
   },
   metadata: {
     home: {
-      title: 'Rafin Machinery | Technical Equipment Catalog and B2B Inquiry Requests',
+      title: 'GENERAL TRADING | Technical Equipment Catalog and B2B Inquiry Requests',
       description:
         'Browse construction machinery, transport assets, and site-support products through a cleaner B2B homepage focused on category discovery, active inventory, and direct quote follow-up.',
     },
     catalog: {
-      title: 'Catalog | Rafin Machinery',
+      title: 'Catalog | GENERAL TRADING',
       description:
-        'Search the Rafin Machinery catalog by category, subcategory, product type, brand, SKU, availability, and price mode through a compact B2B inquiry-focused interface.',
+        'Search the GENERAL TRADING catalog by category, subcategory, product type, brand, SKU, availability, and price mode through a compact B2B inquiry-focused interface.',
     },
     brands: {
-      title: 'Brands | Rafin Machinery',
+      title: 'Brands | GENERAL TRADING',
       description:
-        'Browse manufacturers represented in the current Rafin Machinery inventory and jump straight into brand-filtered catalog results.',
+        'Browse manufacturers represented in the current GENERAL TRADING inventory and jump straight into brand-filtered catalog results.',
     },
     deals: {
-      title: 'Available Stock and Deals | Rafin Machinery',
+      title: 'Available Stock and Deals | GENERAL TRADING',
       description:
         'Review fast-moving available stock, incoming units, and deal-tagged machinery or parts through a compact inquiry-focused listing view.',
     },
     technicalLibrary: {
-      title: 'Technical Library | Rafin Machinery',
+      title: 'Technical Library | GENERAL TRADING',
       description:
         'Browse technical-library categories for manuals, inspection references, specification sheets, delivery documents, and support request paths.',
     },
     inquiryList: {
-      title: 'Inquiry List | Rafin Machinery',
+      title: 'Inquiry List | GENERAL TRADING',
       description:
-        'Review selected machinery, parts, and tools before sending one consolidated B2B quote or contract request to Rafin.',
+        'Review selected machinery, parts, and tools before sending one consolidated B2B quote or contract request to the sales team.',
     },
     requestQuote: {
-      title: 'Request Quote | Rafin Machinery',
+      title: 'Request Quote | GENERAL TRADING',
       description:
         'Send a B2B request for machinery, parts, inspection, delivery planning, documents, or contract discussion. The website supports inquiry and offline agreement only.',
     },
     howItWorks: {
-      title: 'How It Works | Rafin Machinery',
+      title: 'How It Works | GENERAL TRADING',
       description:
-        'Understand how Rafin Machinery handles inquiry, quote follow-up, inspection, negotiation, and offline company-to-company agreement.',
+        'Understand how GENERAL TRADING handles inquiry, quote follow-up, inspection, negotiation, and offline company-to-company agreement.',
     },
     financingContracts: {
-      title: 'Financing and Contracts | Rafin Machinery',
+      title: 'Financing and Contracts | GENERAL TRADING',
       description:
-        'Review how commercial terms, contracts, invoices, and buyer-side approvals are handled directly with Rafin after inquiry.',
+        'Review how commercial terms, contracts, invoices, and buyer-side approvals are handled directly with the sales team after inquiry.',
     },
     deliveryInspection: {
-      title: 'Delivery and Inspection | Rafin Machinery',
+      title: 'Delivery and Inspection | GENERAL TRADING',
       description:
-        'See how Rafin supports machine inspection, delivery planning, export coordination, and commercial handover after a buyer inquiry.',
+        'See how the sales team supports machine inspection, delivery planning, export coordination, and commercial handover after a buyer inquiry.',
     },
     institutionsCleaning: {
       title: 'Institution Cleaning Services | GENERAL TRADING',
@@ -253,50 +253,50 @@ export const en = {
         'Professional institution cleaning services for offices, schools, administrative buildings, and public or private facilities.',
     },
     about: {
-      title: 'About | Rafin Machinery',
+      title: 'About | GENERAL TRADING',
       description:
-        'Learn how Rafin Machinery presents construction equipment, attachments, and support inventory for professional company buyers.',
+        'Learn how GENERAL TRADING presents construction equipment, attachments, tools, materials, and support inventory for professional company buyers.',
     },
     faq: {
-      title: 'FAQ | Rafin Machinery',
+      title: 'FAQ | GENERAL TRADING',
       description:
-        'Common questions about the Rafin Machinery inquiry workflow, pricing modes, inspections, documents, delivery support, and contract handling.',
+        'Common questions about the GENERAL TRADING inquiry workflow, pricing modes, inspections, documents, delivery support, and contract handling.',
     },
     contact: {
-      title: 'Contact | Rafin Machinery',
+      title: 'Contact | GENERAL TRADING',
       description:
-        'Contact the Rafin Machinery sales team for product details, inspection scheduling, delivery planning, spare parts, and contract discussion.',
+        'Use the contact and quote forms to request product details, inspection scheduling, delivery planning, spare parts, and contract discussion.',
     },
     privacy: {
-      title: 'Privacy | Rafin Machinery',
+      title: 'Privacy | GENERAL TRADING',
       description:
-        'Privacy guidance for website inquiries, contact information, and future production handling for the Rafin Machinery catalog.',
+        'Privacy guidance for website inquiries, contact information, and future production handling for the GENERAL TRADING catalog.',
     },
     terms: {
-      title: 'Terms | Rafin Machinery',
+      title: 'Terms | GENERAL TRADING',
       description:
         'Terms guidance for catalog information, indicative pricing, availability, and offline company-to-company contract handling.',
     },
     notFound: {
-      title: 'Page Not Found | Rafin Machinery',
+      title: 'Page Not Found | GENERAL TRADING',
       description:
         'The requested catalog page could not be found. Return to the home page or continue browsing active machinery inventory.',
     },
     productDetail: {
-      fallbackTitle: 'Product Detail | Rafin Machinery',
+      fallbackTitle: 'Product Detail | GENERAL TRADING',
       fallbackDescription:
-        'Review product specifications, availability, documents, and inquiry options in the Rafin Machinery catalog.',
+        'Review product specifications, availability, documents, and inquiry options in the GENERAL TRADING catalog.',
     },
     category: {
-      fallbackTitle: 'Category | Rafin Machinery',
-      fallbackDescription: 'Browse machinery inventory by category in the Rafin Machinery catalog.',
+      fallbackTitle: 'Category | GENERAL TRADING',
+      fallbackDescription: 'Browse machinery inventory by category in the GENERAL TRADING catalog.',
     },
   },
   pages: {
     home: {
       quickSearches: ['Tracked Excavators', 'Diesel Generators', 'Telehandlers', 'Hydraulic Breakers'],
       hero: {
-        eyebrow: 'Rafin Machinery',
+        eyebrow: 'GENERAL TRADING',
         title: 'Machinery supply for contractors, fleets, and procurement teams',
         description:
           'Use the homepage to enter the right category, review current stock, and move quickly into quote, inspection, or document follow-up.',
@@ -306,7 +306,7 @@ export const en = {
           'Start typing to jump directly to matching products, categories, service pages, solutions, or important site pages.',
         trustPoints: [
           'Inquiry-first commercial flow with no checkout or auto-purchase language.',
-          'Inspection, delivery, and document support handled directly with Rafin.',
+          'Inspection, delivery, and document support handled directly with the sales team.',
           'Focused navigation for machinery, transport, and job-site supply.',
         ],
         panelEyebrow: 'Priority product paths',
@@ -373,13 +373,13 @@ export const en = {
     },
     about: {
       eyebrow: 'About',
-      title: 'Rafin Machinery, built for professional equipment buying',
+      title: 'GENERAL TRADING, built for professional equipment buying',
       description:
-        'Rafin Machinery is a commercial equipment catalog powered by Rafin Company. The focus is trustworthy listing detail, machinery knowledge, and a clear company-to-company sales process.',
+        'GENERAL TRADING is a commercial equipment catalog focused on trustworthy listing detail, equipment knowledge, and a clear company-to-company sales process.',
       business: {
         title: 'What this business does',
         paragraphs: [
-          'Rafin Company uses this catalog to present machinery, transport assets, attachments, spare parts, and site-support equipment in a way that helps company buyers evaluate inventory before making direct contact.',
+          'GENERAL uses this catalog to present machinery, transport assets, attachments, spare parts, materials, and site-support equipment in a way that helps company buyers evaluate inventory before making direct contact.',
           'It is intentionally not a corporate portfolio rebuild. The sales process remains offline, negotiated, inspection-aware, and document-driven.',
         ],
       },
@@ -425,10 +425,10 @@ export const en = {
       emptyDescription:
         'Search existing products, categories, service pages, solution pages, and important website pages using the live search bar above.',
       suggestionsLabel: 'Matching suggestions',
-      metadataTitle: 'Search | Rafin Machinery',
-      metadataTitleWithQuery: 'Search “{{query}}” | Rafin Machinery',
+      metadataTitle: 'Search | GENERAL TRADING',
+      metadataTitleWithQuery: 'Search “{{query}}” | GENERAL TRADING',
       metadataDescription:
-        'Search the Rafin Machinery website across products, categories, services, solutions, and important pages.',
+        'Search the GENERAL TRADING website across products, categories, services, solutions, and important pages.',
       types: {
         product: 'Product',
         category: 'Category',
@@ -463,7 +463,7 @@ export const en = {
         eyebrow: 'Category FAQ',
         title: 'Questions buyers ask about {{category}}',
         description:
-          'Answers focused on this product group and how Rafin handles inspection, availability, documentation, and contract discussion.',
+          'Answers focused on this product group and how the sales team handles inspection, availability, documentation, and contract discussion.',
       },
       support: {
         eyebrow: 'Support for this category',
@@ -506,14 +506,14 @@ export const en = {
         'If the exact file is not listed yet, use the request form and mention the product, model, or SKU.',
       cta: {
         eyebrow: 'Need product-specific support?',
-        title: 'Ask Rafin for a document pack tied to a specific listing',
+        title: 'Request a document pack tied to a specific listing',
         description:
-          'Mention the category, model, SKU, or product page in your message and Rafin can prepare the relevant manual, inspection record, specification sheet, or delivery reference.',
+          'Mention the category, model, SKU, or product page in your message and the sales team can prepare the relevant manual, inspection record, specification sheet, or delivery reference.',
       },
     },
     requestQuote: {
       eyebrow: 'Request quote',
-      title: 'Send a commercial request to Rafin Machinery',
+      title: 'Send a commercial request to GENERAL TRADING',
       description:
         'Use one form for product information, quotations, inspection appointments, delivery discussion, document requests, or contract follow-up. This is an inquiry-only process, not a checkout.',
     },
@@ -521,23 +521,23 @@ export const en = {
       eyebrow: 'How it works',
       title: 'A clear B2B machinery inquiry process',
       description:
-        'This website is a catalog and inquiry tool. Buyers browse products, build an Inquiry List, and continue the commercial process directly with Rafin.',
+        'This website is a catalog and inquiry tool. Buyers browse products, build an Inquiry List, and continue the commercial process directly with the sales team.',
       afterInquiryTitle: 'What happens after you send an inquiry',
       afterInquiryPoints: [
-        'Rafin reviews the products in your Inquiry List and replies with technical details, availability context, and the next commercial step.',
+        'The sales team reviews the products in your Inquiry List and replies with technical details, availability context, and the next commercial step.',
         'Inspection planning, documentation review, and negotiation continue directly with the sales team.',
         'Contract terms, payment terms, and delivery scope are handled offline between companies rather than through the website.',
       ],
     },
     financingContracts: {
       eyebrow: 'Financing & contracts',
-      title: 'Commercial terms are discussed directly with Rafin',
+      title: 'Commercial terms are discussed directly with the sales team',
       description:
         'The catalog supports contract-based sales and direct company-to-company negotiation rather than online transaction handling.',
       points: [
         'Contract-based sales only',
         'Company-to-company negotiation',
-        'Commercial terms discussed directly with Rafin',
+        'Commercial terms discussed directly with the sales team',
         'Invoices, documentation, and delivery terms handled after inquiry',
         'Inspection and logistics support can be part of the same discussion',
         'Payment terms and financing are discussed directly only when available',
@@ -547,7 +547,7 @@ export const en = {
       eyebrow: 'Delivery & inspection',
       title: 'Support around inspection, logistics, and handover',
       description:
-        'Rafin can coordinate practical next steps after a buyer identifies the right product. This includes inspection discussion, transport planning, and commercial document preparation.',
+        'The sales team can coordinate practical next steps after a buyer identifies the right product. This includes inspection discussion, transport planning, and commercial document preparation.',
       points: [
         'Inspection appointment coordination',
         'Machine condition review and commercial clarifications',
@@ -558,7 +558,7 @@ export const en = {
       ],
       promiseTitle: 'What this page does and does not promise',
       promiseDescription:
-        'The website helps buyers understand that inspection and logistics can be discussed. Final schedules, delivery cost, export scope, and handover details are confirmed directly with Rafin after inquiry.',
+        'The website helps buyers understand that inspection and logistics can be discussed. Final schedules, delivery cost, export scope, and handover details are confirmed directly with the sales team after inquiry.',
     },
     institutionsCleaning: {
       shortLabel: 'Institution Cleaning',
@@ -726,7 +726,7 @@ export const en = {
     },
     faq: {
       eyebrow: 'FAQ',
-      title: 'Common questions about the Rafin buyer process',
+      title: 'Common questions about the buyer process',
       description:
         'Answers for buyers, contractors, and procurement teams using the inquiry-commerce machinery catalog.',
     },
@@ -734,25 +734,25 @@ export const en = {
       eyebrow: 'Contact',
       title: 'Reach the machinery sales team',
       description:
-        'Talk directly to the sales side of Rafin Machinery for product information, inspection coordination, delivery discussion, or contract handling.',
+        'Use the forms on this page for product information, inspection coordination, delivery discussion, or contract handling.',
       salesContacts: {
         eyebrow: 'Sales contacts',
         title: 'Commercial contacts by scope',
       },
       visit: {
         eyebrow: 'Visit and inspection',
-        title: 'Tirane sales and coordination point',
+        title: 'Sales and inspection coordination',
         description:
-          'Use the address and sales contacts to arrange office meetings, yard visits, machine inspection, or delivery coordination after inquiry review.',
-        placeholder:
-          'Coordination point for office meetings, inspection scheduling, and delivery handover planning',
+          'Use the contact form to request office coordination, yard visits, machine inspection, or delivery planning after inquiry review.',
+        coordinationNote:
+          'Office meetings, inspection scheduling, and delivery handover planning are coordinated after inquiry review.',
       },
     },
     inquiryList: {
       eyebrow: 'Inquiry List',
       title: 'Build one useful request around the products your team needs',
       description:
-        'This is not a checkout. Your Inquiry List helps Rafin prepare product details, pricing, inspection options, document support, delivery discussion, and contract next steps.',
+        'This is not a checkout. Your Inquiry List helps the sales team prepare product details, pricing, inspection options, document support, delivery discussion, and contract next steps.',
       empty: {
         title: 'Your Inquiry List is empty',
         description:
@@ -765,7 +765,7 @@ export const en = {
         description:
           'Continue to the request form when your list reflects the machines, tools, or parts your company wants to discuss.',
       },
-      preparedTitle: 'What Rafin prepares from this list',
+      preparedTitle: 'What the sales team prepares from this list',
       preparedPoints: [
         'Pricing mode and commercial clarification for each selected product',
         'Inspection options, condition review, and documentation follow-up',
@@ -785,14 +785,14 @@ export const en = {
       eyebrow: 'Terms',
       title: 'Terms of use guidance',
       description:
-        'Product information in this frontend build is illustrative catalog content for an inquiry-based sales process. Final commercial terms are confirmed directly with Rafin.',
+        'Product information in this frontend build is illustrative catalog content for an inquiry-based sales process. Final commercial terms are confirmed directly with the sales team.',
       body:
-        'Final availability, pricing, specifications, documentation, delivery, inspection, and contract terms must be confirmed directly with Rafin during the offline company-to-company process.',
+        'Final availability, pricing, specifications, documentation, delivery, inspection, and contract terms must be confirmed directly with the sales team during the offline company-to-company process.',
     },
     notFound: {
       title: 'That catalog page does not exist',
       description:
-        'Return to the home page or continue into the equipment catalog to browse the active Rafin Machinery build.',
+        'Return to the home page or continue into the equipment catalog to browse the active GENERAL TRADING build.',
     },
     productDetail: {
       keyFacts: {
@@ -880,7 +880,7 @@ export const en = {
       updatesDescription:
         'Request stock alerts for available-now machinery, parts, and technical-document support updates.',
       bottomNote:
-        'Inquiry-first catalog. Quotes, contracts, inspection, and commercial terms are handled directly with Rafin.',
+        'Inquiry-first catalog. Quotes, contracts, inspection, and commercial terms are handled directly with the sales team.',
     },
     mobileMenu: {
       searchPlaceholder: 'Search products, categories, services, or pages...',
@@ -938,7 +938,7 @@ export const en = {
       requestIntent: 'Request intent and timing',
       requestMessage: 'Request message',
       messagePlaceholder:
-        'Tell Rafin what you need, whether inspection is required, and any delivery, contract, compatibility, or documentation details that matter.',
+        'Tell the sales team what you need, whether inspection is required, and any delivery, contract, compatibility, or documentation details that matter.',
       consent:
         'I understand this request starts an offline company-to-company process. No checkout, automatic order, or online payment happens on this website.',
       success:
@@ -950,7 +950,7 @@ export const en = {
       whatNextDescription:
         'This form routes the request into an offline B2B follow-up path without implying checkout or order placement.',
       whatNextPoints: [
-        'Rafin reviews the selected products, quantities, notes, and the type of support you need.',
+        'The sales team reviews the selected products, quantities, notes, and the type of support you need.',
         'Inspection notes, documentation, delivery scope, and contract details can then be clarified directly.',
         'No online payment or automatic agreement happens on this website.',
       ],
@@ -1033,26 +1033,26 @@ export const en = {
       ],
     },
     site: {
-      siteName: 'Rafin Machinery',
+      siteName: 'GENERAL TRADING',
       ogType: 'website',
       themeColor: '#2B2824',
       companyProfile: {
-        name: 'Rafin Machinery',
-        parentName: 'Rafin Company',
+        name: 'GENERAL TRADING',
+        parentName: 'GENERAL',
         shortDescription:
           'Industrial equipment catalog for construction machinery, transport assets, parts, and site support handled through direct B2B inquiry.',
         tagline:
           'Construction machinery, equipment, parts, and contract-driven supply for serious work.',
         phone: '+355 68 204 4447',
         secondaryPhone: '+355 68 311 1222',
-        email: 'info@rafincompany.com',
+        email: '',
         address:
           'Tirane, Rruga "Haxhi Kika", Njesia Administrative Nr. 5, Nr. Pasurie 6/538 H1, Ap. 4',
         locationLabel: 'Tirane, Albania',
         hours: 'Mon - Sat, 08:00 - 18:00',
         heroHeadline: 'Construction Machinery, Equipment & Parts for Serious Work',
         heroSubheadline:
-          'Browse available machinery, attachments, spare parts, and site equipment. Request product details, pricing, inspection, or contract discussion directly with Rafin.',
+          'Browse available machinery, attachments, spare parts, tools, materials, and site equipment. Request product details, pricing, inspection, or contract discussion directly with the sales team.',
         topUtilityNote:
           'Inquiry-commerce only. Quote, inspection, and contract follow-up handled directly.',
         socialLinks: [
@@ -1071,7 +1071,7 @@ export const en = {
         {
           title: 'Company-to-company request handling',
           description:
-            'Requests are reviewed directly with Rafin for procurement teams, contractors, and fleet operators.',
+            'Requests are reviewed directly with the sales team for procurement teams, contractors, and fleet operators.',
           icon: 'building',
         },
         {
@@ -1125,7 +1125,7 @@ export const en = {
         },
         {
           step: '04',
-          title: 'Rafin reviews your request',
+          title: 'The sales team reviews your request',
           description:
             'The sales team checks product availability, technical fit, documentation, and the right commercial follow-up path.',
         },
@@ -1133,7 +1133,7 @@ export const en = {
           step: '05',
           title: 'Inspection and clarification follow',
           description:
-            'Machine review, clarifications, bundled parts, and documentation discussion continue directly with Rafin.',
+            'Machine review, clarifications, bundled parts, and documentation discussion continue directly with the sales team.',
         },
         {
           step: '06',

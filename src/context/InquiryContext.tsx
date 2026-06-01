@@ -20,7 +20,7 @@ interface InquiryContextValue {
 
 export const InquiryContext = createContext<InquiryContextValue | undefined>(undefined);
 
-const STORAGE_KEY = 'rafin-machinery-inquiry-list';
+const STORAGE_KEY = 'general-trading-inquiry-list';
 
 function readStoredItems() {
   try {

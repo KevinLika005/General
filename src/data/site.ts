@@ -2,32 +2,28 @@ import type { CompanyProfile, SiteMetadata, TrustFeature } from './types';
 import { localizeCatalogValue } from '../i18n/catalogLocale';
 
 export const siteMetadata: SiteMetadata = {
-  siteName: 'Rafin Machinery',
-  title: 'Rafin Machinery | Technical Equipment Catalog and B2B Inquiry Requests',
-  description: 'Browse construction machinery, support equipment, attachments, and parts through a technical B2B catalog built for inquiry, quote, inspection, and contract follow-up.',
+  siteName: 'GENERAL TRADING',
+  title: 'GENERAL TRADING | Technical Equipment Catalog and B2B Inquiry Requests',
+  description: 'Browse construction machinery, tools, materials, transport assets, and site-support products through a technical B2B catalog built for inquiry, quote, inspection, and contract follow-up.',
   ogType: 'website',
   themeColor: '#2B2824',
 };
 
 const baseCompanyProfile: CompanyProfile = {
-  name: 'Rafin Machinery',
-  parentName: 'Rafin Company',
-  shortDescription: 'Industrial equipment catalog for construction machinery, transport assets, parts, and site support handled through direct B2B inquiry.',
-  tagline: 'Construction machinery, equipment, parts, and contract-driven supply for serious work.',
-  phone: '+355 68 204 4447',
-  secondaryPhone: '+355 68 311 1222',
-  email: 'info@rafincompany.com',
-  address: 'Tirane, Rruga "Haxhi Kika", Njesia Administrative Nr. 5, Nr. Pasurie 6/538 H1, Ap. 4',
-  locationLabel: 'Tirane, Albania',
-  hours: 'Mon - Sat, 08:00 - 18:00',
+  name: 'GENERAL TRADING',
+  parentName: 'GENERAL',
+  shortDescription: 'Technical equipment catalog for construction machinery, tools, materials, transport assets, and site support handled through direct B2B inquiry.',
+  tagline: 'Construction equipment, tools, materials, and contract-driven supply for serious work.',
+  phone: '',
+  secondaryPhone: '',
+  email: '',
+  address: '',
+  locationLabel: '',
+  hours: '',
   heroHeadline: 'Construction Machinery, Equipment & Parts for Serious Work',
-  heroSubheadline: 'Browse available machinery, attachments, spare parts, and site equipment. Request product details, pricing, inspection, or contract discussion directly with Rafin.',
+  heroSubheadline: 'Browse available machinery, attachments, spare parts, tools, materials, and site equipment. Request product details, pricing, inspection, or contract discussion directly with the sales team.',
   topUtilityNote: 'Inquiry-commerce only. Quote, inspection, and contract follow-up handled directly.',
-  socialLinks: [
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
-    { label: 'Instagram', href: 'https://www.instagram.com/' },
-    { label: 'Facebook', href: 'https://www.facebook.com/' },
-  ],
+  socialLinks: [],
 };
 
 const baseTrustFeatures: TrustFeature[] = [
@@ -38,7 +34,7 @@ const baseTrustFeatures: TrustFeature[] = [
   },
   {
     title: 'Company-to-company request handling',
-    description: 'Requests are reviewed directly with Rafin for procurement teams, contractors, and fleet operators.',
+    description: 'Requests are reviewed directly with the sales team for procurement teams, contractors, and fleet operators.',
     icon: 'building',
   },
   {
@@ -95,13 +91,13 @@ const baseHowItWorksSteps = [
   },
   {
     step: '04',
-    title: 'Rafin reviews your request',
+    title: 'The sales team reviews your request',
     description: 'The sales team checks product availability, technical fit, documentation, and the right commercial follow-up path.',
   },
   {
     step: '05',
     title: 'Inspection and clarification follow',
-    description: 'Machine review, clarifications, bundled parts, and documentation discussion continue directly with Rafin.',
+    description: 'Machine review, clarifications, bundled parts, and documentation discussion continue directly with the sales team.',
   },
   {
     step: '06',
@@ -170,7 +166,7 @@ export function getHowItWorksSteps() {
     'browseCatalog',
     'buildInquiryList',
     'sendCommercialRequest',
-    'rafinReviewsRequest',
+    'salesTeamReviewsRequest',
     'inspectionAndClarificationFollow',
     'contractTermsOffline',
     'deliveryAndLogisticsCoordinated',

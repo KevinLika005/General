@@ -66,7 +66,7 @@ export function CategoryPage() {
     : category?.subcategories.flatMap((subcategory) => subcategory.productTypes) ?? [];
 
   usePageMetadata({
-    title: category ? `${category.title} | Rafin Machinery` : t('metadata.category.fallbackTitle'),
+    title: category ? `${category.title} | GENERAL TRADING` : t('metadata.category.fallbackTitle'),
     description: category?.seoIntro ?? t('metadata.category.fallbackDescription'),
   });
 

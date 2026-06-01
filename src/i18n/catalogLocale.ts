@@ -76,11 +76,11 @@ export const sqCatalogLocale = {
       'Katalog pajisjesh industriale për makineri ndërtimi, mjete transporti, pjesë dhe mbështetje kantieri, i menaxhuar përmes kërkesave të drejtpërdrejta B2B.',
     tagline:
       'Makineri ndërtimi, pajisje, pjesë dhe furnizim me bazë kontrate për punë serioze.',
-    locationLabel: 'Tiranë, Shqipëri',
-    hours: 'Hën - Sht, 08:00 - 18:00',
+    locationLabel: '',
+    hours: '',
     heroHeadline: 'Makineri ndërtimi, pajisje dhe pjesë për punë serioze',
     heroSubheadline:
-      'Shfletoni makineri, aksesorë, pjesë këmbimi dhe pajisje kantieri. Kërkoni detaje produkti, çmime, inspektim ose diskutim kontrate drejtpërdrejt me Rafin.',
+      'Shfletoni makineri, aksesorë, pjesë këmbimi dhe pajisje kantieri. Kërkoni detaje produkti, çmime, inspektim ose diskutim kontrate drejtpërdrejt me ekipin e shitjeve.',
     topUtilityNote:
       'Vetëm për kërkesa komerciale. Oferta, inspektimi dhe ndjekja e kontratës trajtohen drejtpërdrejt.',
     trustFeatures: {
@@ -92,7 +92,7 @@ export const sqCatalogLocale = {
       companyToCompanyRequestHandling: {
         title: 'Trajtim i kërkesave kompani me kompani',
         description:
-          'Kërkesat shqyrtohen drejtpërdrejt me Rafin për ekipet e prokurimit, kontraktorët dhe operatorët e flotës.',
+          'Kërkesat shqyrtohen drejtpërdrejt me ekipin e shitjeve për ekipet e prokurimit, kontraktorët dhe operatorët e flotës.',
       },
       inspectionSupport: {
         title: 'Mbështetje për inspektim',
@@ -137,15 +137,15 @@ export const sqCatalogLocale = {
         description:
           'Kërkoni çmim, sqarim teknik, planifikim inspektimi, organizim dorëzimi ose diskutim kontrate.',
       },
-      rafinReviewsRequest: {
-        title: 'Rafin shqyrton kërkesën',
+      salesTeamReviewsRequest: {
+        title: 'Ekipi i shitjeve shqyrton kërkesën',
         description:
           'Ekipi i shitjeve kontrollon disponueshmërinë, përshtatjen teknike, dokumentacionin dhe rrugën e duhur të ndjekjes komerciale.',
       },
       inspectionAndClarificationFollow: {
         title: 'Vijojnë inspektimi dhe sqarimet',
         description:
-          'Rishikimi i makinerisë, sqarimet, pjesët e bashkëngjitura dhe diskutimi i dokumentacionit vazhdojnë drejtpërdrejt me Rafin.',
+          'Rishikimi i makinerisë, sqarimet, pjesët e bashkëngjitura dhe diskutimi i dokumentacionit vazhdojnë drejtpërdrejt me ekipin e shitjeve.',
       },
       contractTermsOffline: {
         title: 'Kushtet e kontratës trajtohen offline',
@@ -350,17 +350,17 @@ export const sqCatalogLocale = {
     },
   },
   faqItems: [
-    { question: 'A mund të dërgoj një kërkesë drejtpërdrejt nëpërmjet faqes?', answer: 'Po. Kjo faqe përdoret vetëm për kërkesa, oferta dhe kërkesa kontrate. Rafin merret drejtpërdrejt me blerësit e kompanive pas kontaktit.' },
+    { question: 'A mund të dërgoj një kërkesë drejtpërdrejt nëpërmjet faqes?', answer: 'Po. Kjo faqe përdoret vetëm për kërkesa, oferta dhe kërkesa kontrate. Ekipi i shitjeve merret drejtpërdrejt me blerësit e kompanive pas kontaktit.' },
     { question: 'A janë çmimet përfundimtare?', answer: 'Çmimet e shfaqura dhe çmimet fillestare janë referenca orientuese komerciale. Kushtet përfundimtare mund të varen nga shtrirja e inspektimit, aksesorët e përfshirë, transporti dhe kushtet e kontratës.' },
     { question: 'A mund të inspektoj makineritë para kontratës?', answer: 'Po. Mund të diskutohen takime inspektimi për makineritë e disponueshme, si dhe rishikim shtesë me video ose dokumente kur është e mundur.' },
     { question: 'A mund të kërkoj disa makina njëkohësisht?', answer: 'Po. Lista e kërkesave është krijuar për kërkesa me shumë produkte që ekipet e prokurimit të dërgojnë një kërkesë të vetme të përmbledhur.' },
-    { question: 'A bëni dorëzim?', answer: 'Dorëzimi, planifikimi i transportit dhe trajtimi i eksportit mund të diskutohen drejtpërdrejt me Rafin sapo të identifikohet pajisja e nevojshme.' },
+    { question: 'A bëni dorëzim?', answer: 'Dorëzimi, planifikimi i transportit dhe trajtimi i eksportit mund të diskutohen drejtpërdrejt me ekipin e shitjeve sapo të identifikohet pajisja e nevojshme.' },
     { question: 'Produktet janë të reja apo të përdorura?', answer: 'Të dyja. Listimet mund të jenë të reja, të përdorura ose të rikondicionuara, dhe çdo faqe produkti e tregon qartë gjendjen.' },
-    { question: 'Çfarë dokumentesh ofrohen?', answer: 'Në varësi të artikullit, Rafin mund të ofrojë shënime inspektimi, verifikim seriali, përmbledhje shërbimi, fatura dhe dokumente të tjera komerciale përkatëse.' },
-    { question: 'Sa shpejt përgjigjet Rafin?', answer: 'Për stok aktiv, Rafin zakonisht përgjigjet shpejt gjatë orarit të punës. Kërkesat komplekse për kontrata ose logjistikë mund të kërkojnë një shqyrtim më të plotë të brendshëm.' },
+    { question: 'Çfarë dokumentesh ofrohen?', answer: 'Në varësi të artikullit, ekipi i shitjeve mund të ofrojë shënime inspektimi, verifikim seriali, përmbledhje shërbimi, fatura dhe dokumente të tjera komerciale përkatëse.' },
+    { question: 'Sa shpejt përgjigjet ekipi i shitjeve?', answer: 'Për stok aktiv, ekipi i shitjeve zakonisht përgjigjet shpejt gjatë orarit të punës. Kërkesat komplekse për kontrata ose logjistikë mund të kërkojnë një shqyrtim më të plotë të brendshëm.' },
     { question: 'A mund të kërkoj pjesë këmbimi bashkë me një makineri?', answer: 'Po. Aksesorët, pjesët këmbimi dhe setet e shërbimit mund të shtohen në të njëjtën rrjedhë kërkese me makineritë.' },
     { question: 'A mund të rezervoj makineri?', answer: 'Produktet e zgjedhura mund të kalojnë në status të rezervuar ndërsa diskutimet komerciale janë aktive. Disponueshmëria e rezervimit varet nga produkti dhe kërkesa aktuale.' },
-    { question: 'A mbështesni përputhjen e kovës dhe çekiçit për eskavatorë?', answer: 'Po. Rafin mund të diskutojë përshtatjen e aksesorëve, dimensionet e kunjave dhe kërkesat e hidraulikës ndihmëse gjatë procesit të kërkesës.' },
+    { question: 'A mbështesni përputhjen e kovës dhe çekiçit për eskavatorë?', answer: 'Po. Ekipi i shitjeve mund të diskutojë përshtatjen e aksesorëve, dimensionet e kunjave dhe kërkesat e hidraulikës ndihmëse gjatë procesit të kërkesës.' },
     { question: 'A janë të disponueshme dokumentet e transportit dhe detajet e regjistrimit rrugor?', answer: 'Po. Dokumentet përkatëse të regjistrimit, flotës ose pronësisë mund të shqyrtohen gjatë diskutimit të kontratës, në varësi të mjetit.' },
     { question: 'A mund të kërkoj tabela ngritjeje ose informacion për aksesorët?', answer: 'Po. Tabelat e ngarkesës, informacioni i shtrirjes dhe aksesorët e përfshirë mund të sqarohen nga ekipi i shitjeve gjatë shqyrtimit të kërkesës.' },
     { question: 'A mund të ofrohen pajisjet mbështetëse si paketë?', answer: 'Po. Gjeneratorët, kompresorët, pompat dhe pajisjet e tjera mbështetëse mund të ofrohen si paketa të kombinuara kantieri sipas nevojës.' },
@@ -369,7 +369,7 @@ export const sqCatalogLocale = {
     { question: 'A mund të grupohen veglat elektrike dhe pajisjet mbrojtëse në një kërkesë?', answer: 'Po. Pajisjet e testimit, pajisjet mbrojtëse dhe produktet e lidhura mund të ofertohen së bashku në një kërkesë të përmbledhur.' },
     { question: 'A mund të kombinohen pompat dhe veglat e tubacioneve me kërkesat e mbështetjes së kantierit?', answer: 'Po. Pajisjet e pompimit, veglat e tubacioneve dhe produktet e tjera mbështetëse për kontraktorët mund të kombinohen në një dorëzim të vetëm kërkese.' },
     { question: 'A mbështesin listimet e materialeve sasi sipas njësisë dhe kërkesa dokumentacioni?', answer: 'Po. Materialet dhe kimikatet mund të përfshijnë oferta sipas njësisë, kërkesa certifikimi dhe diskutim dorëzimi në të njëjtën rrjedhë frontend.' },
-    { question: 'Çfarë ndodh nëse një kategori sigurie nuk ka ende produkte të listuara?', answer: 'Kategoria mbetet aktive për furnizim dhe zgjerim të ardhshëm. Blerësit mund të kërkojnë ende mbështetje ose t’i kërkojnë Rafin të gjejë artikujt përkatës drejtpërdrejt.' },
+    { question: 'Çfarë ndodh nëse një kategori sigurie nuk ka ende produkte të listuara?', answer: 'Kategoria mbetet aktive për furnizim dhe zgjerim të ardhshëm. Blerësit mund të kërkojnë ende mbështetje ose t’i kërkojnë ekipit të shitjeve të gjejë artikujt përkatës drejtpërdrejt.' },
   ],
   salesContacts: [
     { title: 'Menaxher i shitjeve të makinerive', markets: ['Gërmime', 'Pajisje rrugore', 'Transport'], note: 'Kontakti kryesor për makineri të rënda, planifikim inspektimi dhe negociim ofertash me kompani.' },

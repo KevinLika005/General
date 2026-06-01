@@ -28,7 +28,7 @@ export function AboutPage() {
           <article className="toolbar-panel p-5 shadow-card">
             <h2 className="text-[1.4rem] text-navy">{t('pages.about.business.title')}</h2>
             <p className="mt-3 text-sm text-text-muted">
-              {t('pages.about.business.paragraphs.0').replace('Rafin Company', companyProfile.parentName)}
+              {t('pages.about.business.paragraphs.0').replace('GENERAL', companyProfile.parentName)}
             </p>
             <p className="mt-3 text-sm text-text-muted">
               {t('pages.about.business.paragraphs.1')}

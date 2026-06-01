@@ -17,9 +17,9 @@ export function FAQPage() {
     <>
       <section className="page-shell">
         <SectionHeader
-          description="Answers for buyers, contractors, and procurement teams using the inquiry-commerce machinery catalog."
-          eyebrow="FAQ"
-          title="Common questions about the Rafin buyer process"
+          description={t('pages.faq.description')}
+          eyebrow={t('pages.faq.eyebrow')}
+          title={t('pages.faq.title')}
           titleAs="h1"
         />
       </section>

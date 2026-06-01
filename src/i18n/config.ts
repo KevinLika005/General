@@ -3,8 +3,8 @@ import { initReactI18next } from 'react-i18next';
 import { en } from './locales/en';
 import { sq } from './locales/sq';
 
-export const LANGUAGE_STORAGE_KEY = 'rafin-language';
-export const DEFAULT_LANGUAGE = 'en';
+export const LANGUAGE_STORAGE_KEY = 'general-trading-language';
+export const DEFAULT_LANGUAGE = 'sq';
 export const SUPPORTED_LANGUAGES = ['en', 'sq'] as const;
 
 export type AppLanguage = (typeof SUPPORTED_LANGUAGES)[number];
@@ -15,7 +15,7 @@ function getInitialLanguage(): AppLanguage {
   }
 
   const stored = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
-  return stored === 'sq' ? 'sq' : 'en';
+  return stored === 'en' ? 'en' : 'sq';
 }
 
 function persistLanguage(language: string) {
@@ -49,7 +49,7 @@ export function changeLanguage(language: AppLanguage) {
 }
 
 export function getCurrentLanguage(): AppLanguage {
-  return i18n.resolvedLanguage === 'sq' ? 'sq' : 'en';
+  return i18n.resolvedLanguage === 'en' ? 'en' : 'sq';
 }
 
 export function getLocalizedResource<T>(key: string) {

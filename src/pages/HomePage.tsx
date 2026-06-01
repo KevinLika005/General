@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { RafinHomepageLanding } from '../components/magicpath/rafin-homepage';
+import { GeneralHomepageLanding } from '../components/magicpath/general-homepage';
 import {
   getHomepageCategoryPreviews,
   getHomepageStockPreviewProducts,
@@ -23,7 +23,7 @@ export function HomePage() {
   });
 
   return (
-    <RafinHomepageLanding
+    <GeneralHomepageLanding
       categoryPreviews={categoryPreviews}
       onQuickSearch={(term) => navigate(routes.siteSearch(term))}
       onSearchChange={setSearch}
