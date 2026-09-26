@@ -45,7 +45,7 @@ function InstitutionCleaningVisual() {
   }) as string[];
 
   return (
-    <div className="surface-panel relative overflow-hidden p-6 shadow-card sm:p-8">
+    <div className="surface-panel relative overflow-hidden p-6 sm:p-8">
       <div
         aria-hidden="true"
         className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-brand-gold-soft"
@@ -56,7 +56,7 @@ function InstitutionCleaningVisual() {
       />
 
       <div className="relative">
-        <div className="mb-6 inline-flex items-center gap-2 border border-primary/20 bg-brand-gold-soft px-3 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-primary-dark">
+        <div className="mb-6 inline-flex items-center gap-2 border border-primary/20 bg-brand-gold-soft px-3 py-2 text-[0.8125rem] font-medium text-navy">
           <span className="h-2 w-2 rounded-full bg-primary" />
           {t('pages.institutionsCleaning.hero.visualBadge')}
         </div>
@@ -193,8 +193,7 @@ export function InstitutionsCleaningPage() {
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1.05fr)_minmax(19rem,0.95fr)] xl:items-center">
           <div>
             <div className="inline-flex flex-wrap items-center gap-2">
-              <span className="kicker">{t('pages.institutionsCleaning.hero.eyebrow')}</span>
-              <span className="border border-primary/20 bg-brand-gold-soft px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-primary-dark">
+              <span className="rounded-full border border-primary/20 bg-brand-gold-soft px-2.5 py-0.5 text-[0.8125rem] font-medium text-navy">
                 {t('pages.institutionsCleaning.hero.primaryBadge')}
               </span>
             </div>
@@ -241,7 +240,7 @@ export function InstitutionsCleaningPage() {
               description={t('pages.institutionsCleaning.intro.paragraphs.0')}
               title={t('pages.institutionsCleaning.intro.title')}
             />
-            <div className="surface-panel p-5 shadow-card">
+            <div className="surface-panel p-5">
               <p className="text-sm text-text-muted">
                 {t('pages.institutionsCleaning.intro.paragraphs.1')}
               </p>
@@ -269,7 +268,7 @@ export function InstitutionsCleaningPage() {
             const Icon = coverageIcons[index];
 
             return (
-              <article className="toolbar-panel h-full p-5 shadow-card" key={item.title}>
+              <article className="toolbar-panel h-full p-5" key={item.title}>
                 <Icon className="h-5 w-5 text-primary" />
                 <h2 className="mt-3 text-[1.1rem] text-navy">{item.title}</h2>
                 <p className="mt-2 text-sm text-text-muted">{item.description}</p>
@@ -289,7 +288,7 @@ export function InstitutionsCleaningPage() {
             const Icon = benefitIcons[index];
 
             return (
-              <article className="surface-panel h-full p-5 shadow-card" key={item.title}>
+              <article className="surface-panel h-full p-5" key={item.title}>
                 <Icon className="h-5 w-5 text-primary" />
                 <h2 className="mt-3 text-[1.08rem] text-navy">{item.title}</h2>
                 <p className="mt-2 text-sm text-text-muted">{item.description}</p>
@@ -300,17 +299,16 @@ export function InstitutionsCleaningPage() {
       </section>
 
       <section className="wide-shell py-[clamp(2rem,3vw,3rem)]">
-        <div className="hero-band border border-surface-dark p-6 text-text-on-dark shadow-card lg:p-7">
+        <div className="hero-band rounded-lg border border-surface-dark p-6 text-text-on-dark lg:p-7">
           <div className="mx-auto max-w-[min(100%,56rem)] text-center">
-            <p className="kicker text-text-on-dark/80">{t('pages.institutionsCleaning.process.eyebrow')}</p>
-            <h2 className="mt-2 text-[clamp(1.65rem,1.1rem+1.3vw,2.7rem)] leading-[1.04] text-text-on-dark">
+            <h2 className="text-[clamp(1.65rem,1.1rem+1.3vw,2.7rem)] leading-[1.04] text-text-on-dark">
               {t('pages.institutionsCleaning.process.title')}
             </h2>
           </div>
           <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {processSteps.map((step) => (
               <article className="inverse-soft-border inverse-soft-surface border p-4" key={step.step}>
-                <p className="text-sm font-semibold uppercase tracking-[0.1em] text-brand-gold-soft">
+                <p className="font-display text-[1.25rem] font-semibold tabular-nums text-brand-gold-soft">
                   {step.step}
                 </p>
                 <h2 className="mt-3 text-[1.05rem] text-text-on-dark">{step.title}</h2>
@@ -333,7 +331,7 @@ export function InstitutionsCleaningPage() {
                 const Icon = servedIcons[index];
 
                 return (
-                  <article className="toolbar-panel flex h-full items-start gap-3 p-4 shadow-card" key={item}>
+                  <article className="toolbar-panel flex h-full items-start gap-3 p-4" key={item}>
                     <Icon className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                     <p className="text-sm text-navy">{item}</p>
                   </article>
@@ -342,9 +340,8 @@ export function InstitutionsCleaningPage() {
             </div>
           </div>
 
-          <aside className="surface-panel p-5 shadow-card">
-            <p className="kicker">{t('pages.institutionsCleaning.hero.primaryBadge')}</p>
-            <h2 className="mt-2 text-[1.35rem] text-navy">
+          <aside className="surface-panel p-5">
+            <h2 className="text-[1.35rem] text-navy">
               {t('pages.institutionsCleaning.served.noteTitle')}
             </h2>
             <p className="mt-3 text-sm text-text-muted">
@@ -356,10 +353,9 @@ export function InstitutionsCleaningPage() {
 
       <section className="section-band py-[clamp(2rem,3vw,3.5rem)]">
         <div className="band-shell">
-          <div className="hero-band border border-surface-dark px-5 py-6 text-text-on-dark shadow-card lg:flex lg:items-center lg:justify-between">
+          <div className="hero-band rounded-lg border border-surface-dark px-5 py-6 text-text-on-dark lg:flex lg:items-center lg:justify-between">
             <div>
-              <p className="kicker text-text-on-dark/80">{t('pages.institutionsCleaning.cta.eyebrow')}</p>
-              <h2 className="mt-2 max-w-[20ch] text-[clamp(1.45rem,1.1rem+0.9vw,1.95rem)] text-text-on-dark">
+              <h2 className="max-w-[20ch] text-[clamp(1.45rem,1.1rem+0.9vw,1.95rem)] text-text-on-dark">
                 {t('pages.institutionsCleaning.cta.title')}
               </h2>
               <p className="text-measure mt-3 text-sm text-text-on-dark/72">

@@ -42,7 +42,7 @@ export function SearchResultsList({
             className={[
               'group border border-border bg-surface-card transition hover:border-primary hover:bg-surface-subtle focus-visible:border-primary',
               isActive ? 'border-primary bg-surface-subtle' : '',
-              isDropdown ? 'px-3 py-3' : 'overflow-hidden shadow-card',
+              isDropdown ? 'px-3 py-3' : 'overflow-hidden',
             ].join(' ')}
             id={listIdPrefix ? `${listIdPrefix}-${index}` : undefined}
             key={result.id}
@@ -90,7 +90,7 @@ export function SearchResultsList({
                     {result.description}
                   </p>
                   {!isDropdown ? (
-                    <p className="mt-3 text-xs font-medium uppercase tracking-[0.08em] text-text-muted">
+                    <p className="mt-3 truncate text-xs text-text-muted">
                       {result.href}
                     </p>
                   ) : null}

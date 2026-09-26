@@ -132,8 +132,7 @@ export function TechnicalLibraryPage() {
         <div className="mt-8 surface-panel p-5 sm:p-6">
           <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-center">
             <div>
-              <p className="kicker">{t('pages.technicalLibrary.cta.eyebrow')}</p>
-              <h2 className="mt-2 max-w-[20ch] text-[clamp(1.4rem,1rem+0.8vw,1.9rem)] text-navy">{t('pages.technicalLibrary.cta.title')}</h2>
+              <h2 className="max-w-[20ch] text-[clamp(1.4rem,1rem+0.8vw,1.9rem)] text-navy">{t('pages.technicalLibrary.cta.title')}</h2>
               <p className="text-measure mt-3 text-sm text-text-muted">
                 {t('pages.technicalLibrary.cta.description')}
               </p>

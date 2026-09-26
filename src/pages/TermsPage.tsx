@@ -16,7 +16,7 @@ export function TermsPage() {
         titleAs="h1"
         description={t('pages.terms.description')}
       />
-      <div className="mt-8 border border-border bg-surface-card p-6 text-sm text-text-muted shadow-card">
+      <div className="mt-8 rounded-lg border border-border bg-surface-card p-6 text-sm text-text-muted">
         {t('pages.terms.body')}
       </div>
     </section>

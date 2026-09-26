@@ -24,7 +24,7 @@ export function FinancingContractsPage() {
       <section className="section-shell pb-24">
         <div className="grid gap-4 lg:grid-cols-3">
           {(t('pages.financingContracts.points', { returnObjects: true }) as string[]).map((item) => (
-            <article className="toolbar-panel p-4 text-sm text-text-muted shadow-card" key={item}>
+            <article className="toolbar-panel p-4 text-sm text-text-muted" key={item}>
               {item}
             </article>
           ))}

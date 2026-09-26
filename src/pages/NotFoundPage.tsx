@@ -12,9 +12,9 @@ export function NotFoundPage() {
 
   return (
     <section className="page-shell text-center">
-      <div className="border border-border bg-surface-card px-6 py-12 shadow-card">
-        <p className="eyebrow">404</p>
-        <h1 className="mt-4 text-4xl text-navy sm:text-5xl">{t('pages.notFound.title')}</h1>
+      <div className="rounded-lg border border-border bg-surface-card px-6 py-12">
+        <p className="font-display text-[2rem] font-semibold tabular-nums text-primary-dark">404</p>
+        <h1 className="mt-2 text-4xl text-navy sm:text-5xl">{t('pages.notFound.title')}</h1>
         <p className="mx-auto mt-4 max-w-2xl text-base text-text-muted">
           {t('pages.notFound.description')}
         </p>

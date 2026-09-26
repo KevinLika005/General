@@ -26,13 +26,13 @@ export function DeliveryInspectionPage() {
       <section className="section-shell pb-24">
         <div className="grid gap-4 lg:grid-cols-2">
           {points.map((point) => (
-            <article className="toolbar-panel p-4 text-sm text-text-muted shadow-card" key={point}>
+            <article className="toolbar-panel p-4 text-sm text-text-muted" key={point}>
               {point}
             </article>
           ))}
         </div>
 
-        <div className="mt-8 surface-panel p-5 shadow-card">
+        <div className="mt-8 surface-panel p-5">
           <h2 className="text-[1.3rem] text-navy">{t('pages.deliveryInspection.promiseTitle')}</h2>
           <p className="mt-3 text-sm text-text-muted">
             {t('pages.deliveryInspection.promiseDescription')}

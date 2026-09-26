@@ -23,7 +23,7 @@ export function EmptyState({
   title,
 }: EmptyStateProps) {
   return (
-    <div className="border border-dashed border-border bg-surface-card px-5 py-7 text-center shadow-card sm:px-7 sm:py-8">
+    <div className="rounded-lg border border-dashed border-border bg-surface-card px-5 py-7 text-center md:px-7 md:py-8">
       <SearchX className="mx-auto h-8 w-8 text-primary" />
       <h3 className="mt-4 text-xl text-navy sm:text-2xl">{title}</h3>
       <p className="mx-auto mt-3 max-w-xl text-sm text-text-muted sm:text-base">{description}</p>

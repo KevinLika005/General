@@ -24,7 +24,7 @@ export function AboutPage() {
 
       <section className="section-shell pb-20">
         <div className="grid gap-5 lg:grid-cols-[1fr_1fr]">
-          <article className="toolbar-panel p-5 shadow-card">
+          <article className="toolbar-panel p-5">
             <h2 className="text-[1.4rem] text-navy">{t('pages.about.business.title')}</h2>
             <p className="mt-3 text-sm text-text-muted">
               {t('pages.about.business.paragraphs.0').replace('GENERAL', companyProfile.parentName)}
@@ -33,7 +33,7 @@ export function AboutPage() {
               {t('pages.about.business.paragraphs.1')}
             </p>
           </article>
-          <article className="toolbar-panel p-5 shadow-card">
+          <article className="toolbar-panel p-5">
             <h2 className="text-[1.4rem] text-navy">{t('pages.about.why.title')}</h2>
             <p className="mt-3 text-sm text-text-muted">
               {t('pages.about.why.description')}
@@ -45,7 +45,7 @@ export function AboutPage() {
       <section className="section-shell pb-24">
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {trustFeatures.map((feature) => (
-            <article className="toolbar-panel p-4 shadow-card" key={feature.title}>
+            <article className="toolbar-panel p-4" key={feature.title}>
               <h2 className="text-[1.1rem] text-navy">{feature.title}</h2>
               <p className="mt-2 text-sm text-text-muted">{feature.description}</p>
             </article>

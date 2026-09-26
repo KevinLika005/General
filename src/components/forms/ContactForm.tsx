@@ -84,8 +84,7 @@ export function ContactForm() {
         <input autoComplete="off" id="contact-company-website" name="company_website" tabIndex={-1} type="text" />
       </div>
       <div className="border-b border-border pb-5">
-        <p className="kicker">{t('forms.contact.eyebrow')}</p>
-        <h2 className="mt-2 max-w-[20ch] text-[clamp(1.55rem,1.2rem+0.8vw,1.95rem)] text-navy">{t('forms.contact.title')}</h2>
+        <h2 className="max-w-[20ch] text-[clamp(1.55rem,1.2rem+0.8vw,1.95rem)] text-navy">{t('forms.contact.title')}</h2>
         <p className="text-measure mt-3 text-sm text-text-muted">
           {t('forms.contact.description')}
         </p>

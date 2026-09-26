@@ -16,7 +16,7 @@ export function NewsletterForm() {
       <label className="block">
         <span className="sr-only">{t('common.accessibility.emailAddress')}</span>
         <input
-          className="inverse-field h-11 w-full rounded-none px-4 py-3 text-text-on-dark focus:border-primary"
+          className="inverse-field h-11 w-full rounded px-4 py-3 text-text-on-dark focus:border-primary"
           placeholder={t('forms.newsletter.emailPlaceholder')}
           required
           type="email"

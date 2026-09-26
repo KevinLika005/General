@@ -115,8 +115,7 @@ export function RequestQuoteForm({ inquiryItems }: RequestQuoteFormProps) {
       </div>
       <div className="surface-panel p-5 sm:p-6">
         <div className="border-b border-border pb-5">
-          <p className="kicker">{t('forms.quote.eyebrow')}</p>
-          <h2 className="mt-2 max-w-[22ch] text-[clamp(1.55rem,1.2rem+0.8vw,1.95rem)] text-navy">{t('forms.quote.title')}</h2>
+          <h2 className="max-w-[22ch] text-[clamp(1.55rem,1.2rem+0.8vw,1.95rem)] text-navy">{t('forms.quote.title')}</h2>
           <p className="text-measure mt-3 text-sm text-text-muted">
             {t('forms.quote.description')}
           </p>
@@ -238,10 +237,9 @@ export function RequestQuoteForm({ inquiryItems }: RequestQuoteFormProps) {
         ) : null}
       </div>
 
-      <aside className="space-y-6 xl:sticky xl:top-[8.65rem] xl:self-start">
+      <aside className="space-y-6 xl:sticky xl:top-[calc(var(--header-offset)+1rem)] xl:self-start">
         <div className="surface-panel p-5">
-          <p className="kicker">{t('common.labels.selectedProducts')}</p>
-          <h3 className="mt-2 text-[clamp(1.3rem,1rem+0.7vw,1.6rem)] text-navy">{t('forms.quote.selectedProductsTitle')}</h3>
+          <h3 className="text-[clamp(1.3rem,1rem+0.7vw,1.6rem)] text-navy">{t('forms.quote.selectedProductsTitle')}</h3>
           <div className="mt-4 space-y-3">
             {products.length === 0 ? (
               <p className="text-sm text-text-muted">

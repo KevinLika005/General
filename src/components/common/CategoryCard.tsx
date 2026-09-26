@@ -14,11 +14,11 @@ export function CategoryCard({ category }: { category: CatalogCategory }) {
     .slice(0, 4);
 
   return (
-    <article className="group mx-auto w-full max-w-[23rem] overflow-hidden border border-border bg-surface-card shadow-card transition duration-150 hover:border-primary hover:shadow-hover">
+    <article className="group mx-auto w-full max-w-[23rem] overflow-hidden rounded-md border border-border bg-surface-card transition duration-150 hover:border-primary hover:shadow-hover">
       <ImageWithFallback
         alt={category.title}
         aspectRatio="wide"
-        className="rounded-none border-x-0 border-t-0"
+        className="border-x-0 border-t-0"
         imageClassName="transition duration-300 group-hover:scale-[1.02]"
         src={category.heroImage}
       />

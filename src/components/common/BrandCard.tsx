@@ -8,7 +8,7 @@ export function BrandCard({ brand }: { brand: Brand }) {
   const { t } = useTranslation();
   return (
     <article className="toolbar-panel mx-auto h-full w-full max-w-[18rem] p-4 transition duration-150 hover:border-primary hover:shadow-hover">
-      <div className="inline-flex h-10 w-10 items-center justify-center border border-primary/25 bg-surface-subtle text-[0.68rem] font-bold uppercase tracking-[0.14em] text-navy">
+      <div className="inline-flex h-10 w-10 items-center justify-center rounded border border-primary/25 bg-surface-subtle font-display text-[0.875rem] font-semibold text-navy">
         {brand.logoText}
       </div>
       <h3 className="mt-4 text-[1.2rem] text-navy">{brand.name}</h3>

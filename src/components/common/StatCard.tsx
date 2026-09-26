@@ -6,9 +6,9 @@ interface StatCardProps {
 
 export function StatCard({ description, label, value }: StatCardProps) {
   return (
-    <div className="border border-border bg-surface-card px-4 py-4 shadow-card">
+    <div className="rounded-lg border border-border bg-surface-card px-4 py-4">
       <div className="text-3xl font-extrabold text-navy sm:text-[2.1rem]">{value}</div>
-      <p className="mt-2 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-brand-gold">
+      <p className="mt-2 text-[0.8125rem] font-medium text-text-muted">
         {label}
       </p>
       {description ? <p className="mt-2 text-xs text-text-muted">{description}</p> : null}

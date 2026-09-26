@@ -239,11 +239,6 @@
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
   }
 
-  .kicker,
-  .eyebrow {
-    @apply text-[0.8125rem] font-medium text-text-muted;
-  }
-
   .line-label {
     @apply text-[0.75rem] font-medium text-text-muted;
   }

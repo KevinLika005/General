@@ -16,8 +16,7 @@ export function BrandsPage() {
     <>
       <section className="page-shell">
         <div className="surface-panel p-5 sm:p-6">
-          <p className="kicker">{t('pages.brands.eyebrow')}</p>
-          <h1 className="mt-2 max-w-[18ch] text-[clamp(1.85rem,1.25rem+1.5vw,3rem)] leading-[1.02] text-navy">{t('pages.brands.title')}</h1>
+          <h1 className="max-w-[18ch] text-[clamp(1.85rem,1.25rem+1.5vw,3rem)] leading-[1.02] text-navy">{t('pages.brands.title')}</h1>
           <p className="text-measure mt-3 text-sm text-text-muted sm:text-base">
             {t('pages.brands.description')}
           </p>

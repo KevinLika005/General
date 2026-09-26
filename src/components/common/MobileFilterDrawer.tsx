@@ -31,7 +31,7 @@ export function MobileFilterDrawer({
   return (
     <div aria-labelledby={headingId} aria-modal="true" className="fixed inset-0 z-50 xl:hidden" role="dialog">
       <button aria-hidden="true" className="absolute inset-0 bg-overlay/52" onClick={onClose} tabIndex={-1} type="button" />
-      <div className="absolute inset-x-0 bottom-0 max-h-[88vh] overflow-y-auto rounded-none border-t border-border bg-surface-page shadow-dropdown" ref={panelRef} tabIndex={-1}>
+      <div className="absolute inset-x-0 bottom-0 max-h-[88vh] overflow-y-auto rounded-t-lg border-t border-border bg-surface-page shadow-dropdown" ref={panelRef} tabIndex={-1}>
         <div className="sticky top-0 z-10 flex items-center justify-between border-b border-border bg-surface-page px-4 py-3">
           <div>
             <p className="line-label">{t('common.labels.filters')}</p>

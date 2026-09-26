@@ -23,8 +23,7 @@ export function InquiryListPage() {
     <>
       <section className="page-shell">
         <div className="surface-panel p-5 sm:p-6">
-          <p className="kicker">{t('pages.inquiryList.eyebrow')}</p>
-          <h1 className="mt-2 max-w-[20ch] text-[clamp(1.9rem,1.35rem+1.3vw,2.9rem)] leading-[1.02] text-navy">
+          <h1 className="max-w-[20ch] text-[clamp(1.9rem,1.35rem+1.3vw,2.9rem)] leading-[1.02] text-navy">
             {t('pages.inquiryList.title')}
           </h1>
           <p className="text-measure mt-3 text-sm text-text-muted sm:text-base">
@@ -51,10 +50,10 @@ export function InquiryListPage() {
 
                 return (
                   <article
-                    className="grid gap-5 border border-border bg-surface-card p-4 shadow-card sm:grid-cols-[180px_minmax(0,1fr)]"
+                    className="grid gap-5 rounded-md border border-border bg-surface-card p-4 md:grid-cols-[180px_minmax(0,1fr)]"
                     key={product.id}
                   >
-                    <ImageWithFallback alt={product.title} aspectRatio="video" className="h-full" src={product.images[0]?.src} />
+                    <ImageWithFallback alt={product.title} aspectRatio="video" className="w-full self-start rounded" src={product.images[0]?.src} />
                     <div>
                       <div className="flex flex-wrap items-start justify-between gap-4">
                         <div className="min-w-0">
@@ -111,10 +110,9 @@ export function InquiryListPage() {
               })}
             </div>
 
-            <aside className="space-y-5 xl:sticky xl:top-[8.65rem] xl:self-start">
+            <aside className="space-y-5 xl:sticky xl:top-[calc(var(--header-offset)+1rem)] xl:self-start">
               <div className="surface-panel p-5">
-                <p className="kicker">{t('pages.inquiryList.summary.eyebrow')}</p>
-                <h2 className="mt-2 text-[1.5rem] text-navy xl:text-[1.7rem]">{t('common.status.productLines', { count: items.length })}</h2>
+                <h2 className="text-[1.5rem] text-navy xl:text-[1.7rem]">{t('common.status.productLines', { count: items.length })}</h2>
                 <p className="mt-3 text-sm text-text-muted">
                   {t('pages.inquiryList.summary.description')}
                 </p>

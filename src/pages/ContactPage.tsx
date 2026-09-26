@@ -42,7 +42,7 @@ export function ContactPage() {
               const Icon = item.icon;
 
               return (
-                <article className="toolbar-panel p-4 shadow-card" key={item.title}>
+                <article className="toolbar-panel p-4" key={item.title}>
                   <Icon className="h-5 w-5 text-primary" />
                   <h2 className="mt-3 text-[1.1rem] text-navy">{item.title}</h2>
                   <p className="mt-2 text-sm text-text-muted">{item.value}</p>
@@ -52,7 +52,7 @@ export function ContactPage() {
             })}
           </div>
         ) : (
-          <div className="toolbar-panel p-5 shadow-card">
+          <div className="toolbar-panel p-5">
             <h2 className="text-[1.25rem] text-navy">{t('pages.contact.salesContacts.title')}</h2>
             <p className="mt-3 text-sm text-text-muted">
               {t('pages.contact.description')}
@@ -69,8 +69,7 @@ export function ContactPage() {
           <ContactForm />
           <div className="space-y-5">
             <div className="surface-panel p-5">
-              <p className="kicker">{t('pages.contact.salesContacts.eyebrow')}</p>
-              <h2 className="mt-2 text-[1.45rem] text-navy xl:text-[1.6rem]">{t('pages.contact.salesContacts.title')}</h2>
+              <h2 className="text-[1.45rem] text-navy xl:text-[1.6rem]">{t('pages.contact.salesContacts.title')}</h2>
               {salesContacts.length > 0 ? (
                 <div className="mt-5 grid gap-4">
                   {salesContacts.map((contact) => (
@@ -80,7 +79,7 @@ export function ContactPage() {
                       <p className="mt-3 text-sm text-text-muted">{contact.note}</p>
                       <p className="mt-3 text-sm text-navy">{contact.phone}</p>
                       <p className="text-sm text-navy">{contact.email}</p>
-                      <p className="mt-2 text-xs uppercase tracking-[0.08em] text-text-muted">
+                      <p className="mt-2 text-[0.8125rem] text-text-muted">
                         {t('common.labels.preferred')}: {t(`common.forms.${contact.preferredMethod === 'email' ? 'contactByEmail' : contact.preferredMethod === 'phone' ? 'contactByPhone' : 'whatsapp'}`)} | {contact.markets.join(', ')}
                       </p>
                     </article>
@@ -94,8 +93,7 @@ export function ContactPage() {
             </div>
 
             <div className="surface-panel p-5">
-              <p className="kicker">{t('pages.contact.visit.eyebrow')}</p>
-              <h2 className="mt-2 text-[1.45rem] text-navy xl:text-[1.6rem]">{t('pages.contact.visit.title')}</h2>
+              <h2 className="text-[1.45rem] text-navy xl:text-[1.6rem]">{t('pages.contact.visit.title')}</h2>
               <p className="mt-3 text-sm text-text-muted">
                 {t('pages.contact.visit.description')}
               </p>

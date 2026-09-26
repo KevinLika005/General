@@ -26,8 +26,8 @@ export function HowItWorksPage() {
       <section className="section-shell pb-20">
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {howItWorksSteps.map((step) => (
-            <article className="toolbar-panel p-4 shadow-card" key={step.step}>
-              <p className="text-sm font-semibold uppercase tracking-[0.1em] text-brand-gold">
+            <article className="toolbar-panel p-4" key={step.step}>
+              <p className="font-display text-[1.25rem] font-semibold tabular-nums text-primary-dark">
                 {step.step}
               </p>
               <h2 className="mt-3 text-[1.15rem] text-navy">{step.title}</h2>
@@ -38,7 +38,7 @@ export function HowItWorksPage() {
       </section>
 
       <section className="section-shell pb-24">
-        <div className="hero-band border border-surface-dark p-6 text-text-on-dark shadow-card">
+        <div className="hero-band rounded-lg border border-surface-dark p-6 text-text-on-dark">
           <h2 className="text-[1.7rem] text-text-on-dark">{t('pages.howItWorks.afterInquiryTitle')}</h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-3">
             {(t('pages.howItWorks.afterInquiryPoints', { returnObjects: true }) as string[]).map((point) => (

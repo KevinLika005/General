@@ -66,7 +66,7 @@ export function SearchPage() {
 
       <section className="section-shell pb-24">
         {normalizedQuery ? (
-          <div className="mb-5 flex flex-wrap items-center justify-between gap-3 border border-border bg-surface-card px-4 py-4 shadow-card sm:px-5">
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-border bg-surface-card px-4 py-4 md:px-5">
             <div>
               <p className="line-label">{t('pages.search.queryLabel')}</p>
               <h2 className="mt-2 text-xl text-navy sm:text-2xl">{t('pages.search.queryValue', { query: queryFromUrl })}</h2>

@@ -51,8 +51,7 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
       >
         <div className="flex items-center justify-between border-b border-border px-5 py-4">
           <div>
-            <p className="kicker">{t('layout.header.inquiryList')}</p>
-            <h2 className="mt-2 text-[1.5rem] text-navy xl:text-[1.8rem]" id={titleId}>
+            <h2 className="text-[1.5rem] text-navy xl:text-[1.8rem]" id={titleId}>
               {t('common.status.requestedItems', { count: itemCount })}
             </h2>
             <p className="mt-2 text-sm text-text-muted">
@@ -61,7 +60,7 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
           </div>
           <button
             aria-label={t('common.accessibility.closeInquirySummary')}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-none border border-border text-text"
+            className="inline-flex h-10 w-10 items-center justify-center rounded border border-border text-text"
             onClick={onClose}
             type="button"
           >
@@ -80,7 +79,7 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
 
               return (
                 <article
-                  className="border border-border bg-surface-card p-4 shadow-card"
+                  className="rounded-md border border-border bg-surface-card p-4"
                   key={product.id}
                 >
                   <div className="flex items-start gap-4">
@@ -105,7 +104,7 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
                     </div>
                     <button
                       aria-label={t('common.accessibility.removeProduct', { product: product.title })}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-none border border-border text-text-muted transition hover:border-primary hover:text-primary-dark"
+                      className="inline-flex h-10 w-10 items-center justify-center rounded border border-border text-text-muted transition hover:border-primary hover:text-primary-dark"
                       onClick={() => removeItem(product.id)}
                       type="button"
                     >
@@ -119,7 +118,7 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
         </div>
 
         <div className="border-t border-border px-5 py-4">
-          <div className="border border-border bg-surface-card p-4">
+          <div className="rounded-md border border-border bg-surface-card p-4">
             <div className="flex items-start gap-3">
               <ClipboardList className="mt-0.5 h-4 w-4 text-primary" />
               <p className="text-sm text-text-muted">

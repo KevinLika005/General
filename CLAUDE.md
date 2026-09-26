@@ -20,6 +20,7 @@ Repo: ~/Documents/General
 
 ## Quality rules
 Before saying a task is done, run:
+- `npm test`
 - `npm run lint`
 - `npm run typecheck`
 - `npm run audit:i18n`
