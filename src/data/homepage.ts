@@ -15,27 +15,28 @@ export interface HomepageCategoryPreview {
   productTypeTitles: string[];
 }
 
-function sortCategoriesByHomepageOrder(categories: CatalogCategory[]) {
-  return [...categories].sort(
-    (first, second) =>
-      HOMEPAGE_CATEGORY_ORDER.indexOf(first.slug as (typeof HOMEPAGE_CATEGORY_ORDER)[number]) -
-      HOMEPAGE_CATEGORY_ORDER.indexOf(second.slug as (typeof HOMEPAGE_CATEGORY_ORDER)[number]),
-  );
+function homepageRank(slug: string) {
+  const index = HOMEPAGE_CATEGORY_ORDER.indexOf(slug as (typeof HOMEPAGE_CATEGORY_ORDER)[number]);
+  return index === -1 ? HOMEPAGE_CATEGORY_ORDER.length : index;
 }
 
 export function getHomepageCategoryPreviews(): HomepageCategoryPreview[] {
-  const categories = getCategories().filter((category) =>
-    HOMEPAGE_CATEGORY_ORDER.includes(category.slug as (typeof HOMEPAGE_CATEGORY_ORDER)[number]),
-  );
   const products = getProducts();
 
-  return sortCategoriesByHomepageOrder(categories).map((category) => ({
-    category,
-    productCount: products.filter((product) => product.categorySlug === category.slug).length,
-    productTypeTitles: category.subcategories
-      .flatMap((subcategory) => subcategory.productTypes.map((productType) => productType.title))
-      .slice(0, 3),
-  }));
+  return [...getCategories()]
+    .map((category, originalIndex) => ({ category, originalIndex }))
+    .sort(
+      (first, second) =>
+        homepageRank(first.category.slug) - homepageRank(second.category.slug) ||
+        first.originalIndex - second.originalIndex,
+    )
+    .map(({ category }) => ({
+      category,
+      productCount: products.filter((product) => product.categorySlug === category.slug).length,
+      productTypeTitles: category.subcategories
+        .flatMap((subcategory) => subcategory.productTypes.map((productType) => productType.title))
+        .slice(0, 3),
+    }));
 }
 
 export function getHomepageStockPreviewProducts(): Product[] {
@@ -55,5 +56,5 @@ export function getHomepageStockPreviewProducts(): Product[] {
 
       return second.createdAt.localeCompare(first.createdAt);
     })
-    .slice(0, 3);
+    .slice(0, 4);
 }

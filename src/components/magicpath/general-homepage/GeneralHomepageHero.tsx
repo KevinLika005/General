@@ -1,13 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import type { HomepageCategoryPreview } from '../../../data/homepage';
-import { routes } from '../../../utils/routes';
-import { Button } from '../../common/Button';
+import { getCompanyProfile, type ProductImage } from '../../../data/catalog';
 import { SiteSearch } from '../../search/SiteSearch';
-import { HomepageHeroSpotlightPanel } from './HomepageHeroSpotlightPanel';
-import { HomepageTrustStrip } from './HomepageTrustStrip';
 
 interface GeneralHomepageHeroProps {
-  categoryPreviews: HomepageCategoryPreview[];
+  heroImage?: ProductImage;
   quickSearches: string[];
   search: string;
   onQuickSearch: (term: string) => void;
@@ -16,7 +12,7 @@ interface GeneralHomepageHeroProps {
 }
 
 export function GeneralHomepageHero({
-  categoryPreviews,
+  heroImage,
   quickSearches,
   search,
   onQuickSearch,
@@ -24,23 +20,15 @@ export function GeneralHomepageHero({
   onSearchSubmit,
 }: GeneralHomepageHeroProps) {
   const { t } = useTranslation();
-  const heroVisual = categoryPreviews[0]?.category;
-  const trustPoints = t('pages.home.hero.trustPoints', { returnObjects: true }) as string[];
+  const companyProfile = getCompanyProfile();
 
   return (
-    <div className="grid gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(21rem,0.92fr)] xl:items-center">
-      <div className="max-w-[42rem]">
-        <p className="kicker">{t('pages.home.hero.eyebrow')}</p>
-        <h1 className="mt-3 max-w-[11ch] font-display text-[clamp(2.65rem,1.65rem+3vw,5.1rem)] leading-[0.93] text-navy">
-          {t('pages.home.hero.title')}
-        </h1>
-        <p className="text-measure mt-4 text-base text-text-muted">
-          {t('pages.home.hero.description')}
-        </p>
-
-        <div className="mt-7 surface-panel p-4 sm:p-6">
-          <p className="line-label">{t('pages.home.hero.searchLabel')}</p>
-          <div className="mt-3">
+    <section className="bg-surface-dark text-text-on-dark">
+      <div className="wide-shell grid gap-8 py-10 xl:grid-cols-[minmax(0,1fr)_26rem] xl:items-center xl:py-14">
+        <div className="max-w-[48rem]">
+          <h1 className="text-[clamp(2rem,1.3rem+2.2vw,3rem)] leading-[1.05] text-text-on-dark">{t('pages.home.hero.title')}</h1>
+          <p className="mt-3 max-w-[60ch] text-[0.9375rem] text-text-on-dark/75">{companyProfile.tagline}</p>
+          <div className="mt-6">
             <SiteSearch
               buttonLabel={t('common.actions.search')}
               onChange={onSearchChange}
@@ -49,10 +37,10 @@ export function GeneralHomepageHero({
               value={search}
             />
           </div>
-          <div className="mt-4 flex gap-2 overflow-x-auto pb-1 sm:flex-wrap">
-            {quickSearches.map((term) => (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {quickSearches.slice(0, 4).map((term) => (
               <button
-                className="chip min-h-0 whitespace-nowrap px-3 py-2 text-[0.74rem]"
+                className="inline-flex min-h-8 items-center rounded border border-text-on-dark/20 px-3 text-[0.8125rem] font-medium text-text-on-dark/85 transition-colors hover:border-accent hover:text-text-on-dark"
                 key={term}
                 onClick={() => onQuickSearch(term)}
                 type="button"
@@ -61,28 +49,11 @@ export function GeneralHomepageHero({
               </button>
             ))}
           </div>
-          <p className="mt-4 text-sm text-text-muted">{t('pages.home.hero.searchNote')}</p>
         </div>
-
-        <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-          <Button size="lg" to={routes.equipment}>
-            {t('common.actions.browseCatalog')}
-          </Button>
-          <Button size="lg" to={routes.requestQuote} variant="secondary">
-            {t('common.actions.requestQuote')}
-          </Button>
-        </div>
-
-        <div className="mt-6">
-          <HomepageTrustStrip items={trustPoints} />
-        </div>
+        {heroImage ? (
+          <img alt={heroImage.alt} className="hidden aspect-[4/3] w-full rounded-lg object-cover xl:block" src={heroImage.src} />
+        ) : null}
       </div>
-
-      <HomepageHeroSpotlightPanel
-        categoryPreviews={categoryPreviews.slice(0, 3)}
-        heroImageAlt={heroVisual?.title ?? t('pages.home.hero.panelTitle')}
-        heroImageSrc={heroVisual?.heroImage}
-      />
-    </div>
+    </section>
   );
 }

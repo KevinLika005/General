@@ -1,7 +1,7 @@
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import { useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import companyLogo from '../../assets/general-logo.png';
 import { getCategories, getCompanyProfile } from '../../data/catalog';
 import { getFooterCompanyLinks } from '../../data/navigation';
@@ -47,23 +47,27 @@ export function Footer() {
   const categories = getCategories();
   const companyProfile = getCompanyProfile();
   const footerCompanyLinks = getFooterCompanyLinks();
+  // The homepage ends with its own request-quote band; skip the duplicate here.
+  const showCta = useLocation().pathname !== routes.home;
 
   return (
     <footer className="mt-16 border-t border-border-blue bg-surface-dark text-text-on-dark">
       <div className="wide-shell py-8 xl:py-12">
-        <div className="mb-10 rounded-lg bg-text-on-dark/5 px-5 py-6 lg:flex lg:items-center lg:justify-between lg:px-8">
-          <div>
-            <h2 className="max-w-[26ch] text-[clamp(1.4rem,1rem+0.9vw,1.85rem)] leading-[1.08] text-text-on-dark">{t('layout.footer.cta.title')}</h2>
-            <p className="text-measure mt-3 text-sm text-text-on-dark/70">
-              {t('layout.footer.cta.description')}
-            </p>
+        {showCta ? (
+          <div className="mb-10 rounded-lg bg-text-on-dark/5 px-5 py-6 lg:flex lg:items-center lg:justify-between lg:px-8">
+            <div>
+              <h2 className="max-w-[26ch] text-[clamp(1.4rem,1rem+0.9vw,1.85rem)] leading-[1.08] text-text-on-dark">{t('layout.footer.cta.title')}</h2>
+              <p className="text-measure mt-3 text-sm text-text-on-dark/70">
+                {t('layout.footer.cta.description')}
+              </p>
+            </div>
+            <div className="mt-4 lg:mt-0">
+              <Button size="lg" to={routes.requestQuote}>
+                {t('common.actions.requestQuote')}
+              </Button>
+            </div>
           </div>
-          <div className="mt-4 lg:mt-0">
-            <Button size="lg" to={routes.requestQuote}>
-              {t('common.actions.requestQuote')}
-            </Button>
-          </div>
-        </div>
+        ) : null}
 
         <div className="grid gap-6 xl:grid-cols-[1.1fr_0.85fr_0.8fr_1fr]">
           <div>
