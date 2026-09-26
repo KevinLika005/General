@@ -253,7 +253,7 @@ export function ProductDetailPage() {
       <section className="catalog-shell pb-24">
         <h2 className="text-[clamp(1.5rem,1.1rem+1.1vw,2rem)]">{t('pages.productDetail.similarProductsTitle')}</h2>
         {relatedProducts.length > 0 ? (
-          <div className="product-grid mt-4">
+          <div className="mt-4 grid gap-4 md:grid-cols-2 2xl:grid-cols-4">
             {relatedProducts.slice(0, 4).map((relatedProduct) => (
               <ProductCard key={relatedProduct.id} product={relatedProduct} />
             ))}

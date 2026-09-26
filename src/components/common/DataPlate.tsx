@@ -2,6 +2,14 @@ import type { CSSProperties } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { DataPlateCell, DataPlateKey, DataPlateVariant } from '../../utils/dataPlate';
 
+// Detail plates are 2 columns on phones and 3 from md; the last cell spans the rest of its row.
+const MOBILE_LAST_SPAN = ['col-span-1', 'col-span-2'] as const;
+const MD_LAST_SPAN = ['md:col-span-1', 'md:col-span-3', 'md:col-span-2'] as const;
+
+function detailLastCellSpan(count: number) {
+  return `${MOBILE_LAST_SPAN[count % 2]} ${MD_LAST_SPAN[count % 3]}`;
+}
+
 const LABEL_KEYS: Record<DataPlateKey, string> = {
   year: 'common.labels.year',
   hours: 'pages.productDetail.keyFacts.operatingHours',
@@ -39,6 +47,7 @@ export function DataPlate({ cells, variant }: { cells: DataPlateCell[]; variant:
             'min-w-0 border-l border-t border-border bg-surface-subtle',
             variant === 'card' ? 'px-2 py-1.5' : 'px-3 py-2.5',
             variant === 'card' && index >= 2 ? 'hidden md:block' : '',
+            variant === 'detail' && index === cells.length - 1 ? detailLastCellSpan(cells.length) : '',
           ].join(' ')}
           key={cell.key}
         >

@@ -295,7 +295,8 @@ export function useCatalogFilters(
         : undefined;
 
     if (filters.search) chips.push({ key: 'search', label: `Search: ${filters.search}` });
-    if (filters.category !== 'all') {
+    // A category page's own category is not a user-applied filter.
+    if (filters.category !== 'all' && filters.category !== options.fixedCategory) {
       chips.push({ key: 'category', label: selectedCategory?.title ?? filters.category });
     }
     if (filters.subcategory !== 'all') {
@@ -330,7 +331,7 @@ export function useCatalogFilters(
     if (filters.tag !== 'all') chips.push({ key: 'tag', label: filters.tag });
 
     return chips;
-  }, [filters, t]);
+  }, [filters, options.fixedCategory, t]);
 
   const clearFilter = (key: keyof CatalogFilterState) => {
     setFilters((current) => {

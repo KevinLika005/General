@@ -1,5 +1,5 @@
 import { ChevronDown } from 'lucide-react';
-import { useId, type Dispatch, type ReactNode, type SetStateAction } from 'react';
+import { useEffect, useId, useState, type Dispatch, type ReactNode, type SetStateAction } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { CatalogFilterOptionSets, CatalogFilterState } from '../../hooks/useCatalogFilters';
 import type { PriceBand } from '../../utils/filters';
@@ -13,12 +13,27 @@ interface FilterSidebarProps {
   onClose?: () => void;
 }
 
+const labelClass = 'text-[0.8125rem] text-text-muted';
+
 const inputClass =
   'mt-1.5 h-10 w-full rounded border border-border bg-surface-card px-3 text-sm text-text placeholder:text-text-muted/70';
 
 function FilterGroup({ title, defaultOpen, children }: { title: string; defaultOpen: boolean; children: ReactNode }) {
+  const [open, setOpen] = useState(defaultOpen);
+
+  // Open when a value arrives (e.g. from the URL), but never snap shut while the user is editing.
+  useEffect(() => {
+    if (defaultOpen) {
+      setOpen(true);
+    }
+  }, [defaultOpen]);
+
   return (
-    <details className="group border-b border-border px-4 py-3 last:border-b-0" open={defaultOpen}>
+    <details
+      className="group border-b border-border px-4 py-3 last:border-b-0"
+      onToggle={(event) => setOpen(event.currentTarget.open)}
+      open={open}
+    >
       <summary className="flex cursor-pointer list-none items-center justify-between gap-2 text-sm font-semibold text-navy [&::-webkit-details-marker]:hidden">
         {title}
         <ChevronDown aria-hidden="true" className="h-4 w-4 text-text-muted transition-transform group-open:rotate-180" />
@@ -101,45 +116,51 @@ export function FilterSidebar({ clearAllFilters, filters, onClose, optionSets, s
       </FilterGroup>
 
       <FilterGroup defaultOpen title={t('common.labels.category')}>
-        <select
-          aria-label={t('common.labels.category')}
-          className={inputClass}
-          onChange={(event) => update({ category: event.target.value, subcategory: 'all', productType: 'all' })}
-          value={filters.category}
-        >
-          <option value="all">{t('common.status.allCategories')}</option>
-          {optionSets.categories.map((category) => (
-            <option key={category.slug} value={category.slug}>
-              {category.title}
-            </option>
-          ))}
-        </select>
-        <select
-          aria-label={t('common.labels.subcategory')}
-          className={inputClass}
-          onChange={(event) => update({ subcategory: event.target.value, productType: 'all' })}
-          value={filters.subcategory}
-        >
-          <option value="all">{t('common.status.allSubcategories')}</option>
-          {optionSets.subcategories.map((subcategory) => (
-            <option key={subcategory.slug} value={subcategory.slug}>
-              {subcategory.title}
-            </option>
-          ))}
-        </select>
-        <select
-          aria-label={t('common.labels.productType')}
-          className={inputClass}
-          onChange={(event) => update({ productType: event.target.value })}
-          value={filters.productType}
-        >
-          <option value="all">{t('common.status.allProductTypes')}</option>
-          {optionSets.productTypes.map((productType) => (
-            <option key={productType.slug} value={productType.slug}>
-              {productType.title}
-            </option>
-          ))}
-        </select>
+        <label className={labelClass}>
+          {t('common.labels.category')}
+          <select
+            className={inputClass}
+            onChange={(event) => update({ category: event.target.value, subcategory: 'all', productType: 'all' })}
+            value={filters.category}
+          >
+            <option value="all">{t('common.status.allCategories')}</option>
+            {optionSets.categories.map((category) => (
+              <option key={category.slug} value={category.slug}>
+                {category.title}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className={labelClass}>
+          {t('common.labels.subcategory')}
+          <select
+            className={inputClass}
+            onChange={(event) => update({ subcategory: event.target.value, productType: 'all' })}
+            value={filters.subcategory}
+          >
+            <option value="all">{t('common.status.allSubcategories')}</option>
+            {optionSets.subcategories.map((subcategory) => (
+              <option key={subcategory.slug} value={subcategory.slug}>
+                {subcategory.title}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className={labelClass}>
+          {t('common.labels.productType')}
+          <select
+            className={inputClass}
+            onChange={(event) => update({ productType: event.target.value })}
+            value={filters.productType}
+          >
+            <option value="all">{t('common.status.allProductTypes')}</option>
+            {optionSets.productTypes.map((productType) => (
+              <option key={productType.slug} value={productType.slug}>
+                {productType.title}
+              </option>
+            ))}
+          </select>
+        </label>
       </FilterGroup>
 
       <FilterGroup defaultOpen title={t('common.labels.brand')}>
@@ -176,18 +197,18 @@ export function FilterSidebar({ clearAllFilters, filters, onClose, optionSets, s
 
       <FilterGroup defaultOpen={Boolean(filters.yearMin || filters.yearMax)} title={t('common.labels.year')}>
         <div className="grid grid-cols-2 gap-2">
-          <label className="text-[0.8125rem] text-text-muted">
+          <label className={labelClass}>
             {t('common.labels.yearFrom')}
             <input className={inputClass} inputMode="numeric" onChange={(event) => update({ yearMin: event.target.value })} placeholder="2018" value={filters.yearMin} />
           </label>
-          <label className="text-[0.8125rem] text-text-muted">
+          <label className={labelClass}>
             {t('common.labels.yearTo')}
             <input className={inputClass} inputMode="numeric" onChange={(event) => update({ yearMax: event.target.value })} placeholder="2025" value={filters.yearMax} />
           </label>
         </div>
       </FilterGroup>
 
-      <FilterGroup defaultOpen={Boolean(filters.hoursMax || filters.mileageMax)} title={t('common.labels.operatingHoursUnder')}>
+      <FilterGroup defaultOpen={Boolean(filters.hoursMax)} title={t('common.labels.operatingHoursUnder')}>
         <input
           aria-label={t('common.labels.operatingHoursUnder')}
           className={inputClass}
@@ -196,13 +217,20 @@ export function FilterSidebar({ clearAllFilters, filters, onClose, optionSets, s
           placeholder="5000"
           value={filters.hoursMax}
         />
-        <label className="text-[0.8125rem] text-text-muted">
-          {t('common.labels.mileageUnder')}
-          <input className={inputClass} inputMode="numeric" onChange={(event) => update({ mileageMax: event.target.value })} placeholder="200000" value={filters.mileageMax} />
-        </label>
       </FilterGroup>
 
-      <FilterGroup defaultOpen={filters.location !== 'all' || filters.tag !== 'all'} title={t('common.labels.location')}>
+      <FilterGroup defaultOpen={Boolean(filters.mileageMax)} title={t('common.labels.mileageUnder')}>
+        <input
+          aria-label={t('common.labels.mileageUnder')}
+          className={inputClass}
+          inputMode="numeric"
+          onChange={(event) => update({ mileageMax: event.target.value })}
+          placeholder="200000"
+          value={filters.mileageMax}
+        />
+      </FilterGroup>
+
+      <FilterGroup defaultOpen={filters.location !== 'all'} title={t('common.labels.location')}>
         <select
           aria-label={t('common.labels.location')}
           className={inputClass}
@@ -216,6 +244,9 @@ export function FilterSidebar({ clearAllFilters, filters, onClose, optionSets, s
             </option>
           ))}
         </select>
+      </FilterGroup>
+
+      <FilterGroup defaultOpen={filters.tag !== 'all'} title={t('common.labels.tags')}>
         <select
           aria-label={t('common.labels.tags')}
           className={inputClass}

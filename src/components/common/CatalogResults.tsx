@@ -122,7 +122,7 @@ export function CatalogResults({ catalog, clearLabel, emptyState, footer, mobile
           {filteredProducts.length === 0 ? (
             <div className="mt-6">{emptyState}</div>
           ) : (
-            <div className={filters.viewMode === 'list' ? 'mt-4 grid gap-3' : 'catalog-product-grid mt-4'}>
+            <div className={filters.viewMode === 'list' ? 'mt-4 grid gap-3' : 'mt-4 grid gap-4 md:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4'}>
               {filteredProducts.map((product) => (
                 <ProductCard key={product.id} layout={filters.viewMode} product={product} />
               ))}

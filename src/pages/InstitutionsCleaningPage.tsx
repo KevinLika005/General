@@ -308,7 +308,7 @@ export function InstitutionsCleaningPage() {
           <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {processSteps.map((step) => (
               <article className="inverse-soft-border inverse-soft-surface border p-4" key={step.step}>
-                <p className="font-display text-[1.25rem] font-semibold tabular-nums text-brand-gold-soft">
+                <p className="font-display text-[1.25rem] font-semibold tabular-nums text-accent">
                   {step.step}
                 </p>
                 <h2 className="mt-3 text-[1.05rem] text-text-on-dark">{step.title}</h2>

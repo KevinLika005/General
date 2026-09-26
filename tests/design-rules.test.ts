@@ -31,6 +31,10 @@ describe('design rules', () => {
     expect(offenders(/className=["{`][^"}`]*\b(kicker|eyebrow)\b/)).toEqual([]);
   });
 
+  it('never uses the soft gold background token as a text color', () => {
+    expect(offenders(/\btext-brand-gold-soft\b/)).toEqual([]);
+  });
+
   it('does not force square corners', () => {
     expect(offenders(/\brounded-none\b/)).toEqual([]);
   });

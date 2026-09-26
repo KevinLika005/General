@@ -211,14 +211,6 @@
     width: 100%;
   }
 
-  .product-grid,
-  .catalog-product-grid {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
-    align-items: stretch;
-  }
-
   .category-grid {
     display: grid;
     gap: clamp(0.875rem, 0.7rem + 0.4vw, 1.25rem);

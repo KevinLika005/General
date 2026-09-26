@@ -41,7 +41,7 @@ export function ProductCard({
   return (
     <article
       className={[
-        'group relative flex h-full overflow-hidden rounded-md border border-border bg-surface-card transition-shadow duration-150 hover:shadow-hover focus-within:shadow-hover',
+        'group relative flex h-full overflow-hidden rounded-md border border-border bg-surface-card transition-shadow duration-150 hover:shadow-hover has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-focus',
         isList ? 'flex-row' : 'flex-row md:flex-col',
       ].join(' ')}
     >
@@ -66,7 +66,7 @@ export function ProductCard({
         </p>
         <h3 className="line-clamp-2 font-sans text-[0.9375rem] font-semibold leading-snug text-navy">
           <Link
-            className="after:absolute after:inset-0 after:content-['']"
+            className="after:absolute after:inset-0 after:content-[''] focus-visible:shadow-none"
             to={routes.product(product.categorySlug, product.slug)}
           >
             {product.title}

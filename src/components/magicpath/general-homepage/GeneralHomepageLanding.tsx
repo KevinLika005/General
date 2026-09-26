@@ -67,7 +67,7 @@ export function GeneralHomepageLanding({
             {t('common.actions.viewAvailableNow')}
           </Button>
         </div>
-        <div className="product-grid mt-6">
+        <div className="mt-6 grid gap-4 md:grid-cols-2 2xl:grid-cols-4">
           {previewProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

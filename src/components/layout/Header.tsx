@@ -251,11 +251,16 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
 
             <button
               aria-label={t('common.accessibility.openInquirySummary')}
-              className="inline-flex h-10 w-10 items-center justify-center rounded border border-border bg-surface-card text-navy transition hover:border-primary md:hidden"
+              className="relative inline-flex h-10 w-10 items-center justify-center rounded border border-border bg-surface-card text-navy transition hover:border-primary md:hidden"
               onClick={onOpenInquirySummary}
               type="button"
             >
               <ClipboardList className="h-4 w-4" />
+              {inquiryCount > 0 ? (
+                <span className="absolute -right-1.5 -top-1.5 min-w-5 rounded-full bg-primary px-1 text-center text-[0.6875rem] font-semibold leading-5 text-on-primary tabular-nums">
+                  {inquiryCount}
+                </span>
+              ) : null}
             </button>
 
             <button
