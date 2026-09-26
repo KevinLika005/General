@@ -1,6 +1,7 @@
 import { ArrowRight, ClipboardList, Trash2, X } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDialogSurface } from '../../hooks/useDialogSurface';
 import { useInquiryList } from '../../hooks/useInquiryList';
 import { getProductAvailabilityLabel, getProductsByIds } from '../../utils/catalog';
 import { formatProductPrice } from '../../utils/formatPrice';
@@ -18,25 +19,14 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
   const { clearItems, itemCount, items, removeItem } = useInquiryList();
   const products = getProductsByIds(items.map((item) => item.productId));
   const panelRef = useRef<HTMLElement | null>(null);
+  const titleId = 'inquiry-summary-title';
 
-  useEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    const panel = panelRef.current;
-    const focusable = panel?.querySelector<HTMLElement>('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])');
-    focusable?.focus();
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        onClose();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose, open]);
+  useDialogSurface({
+    lockScroll: false,
+    onClose,
+    open,
+    panelRef,
+  });
 
   if (!open) {
     return null;
@@ -48,19 +38,23 @@ export function InquirySummary({ onClose, open }: InquirySummaryProps) {
         aria-label={t('common.accessibility.closeInquirySummary')}
         className="fixed inset-0 z-40 bg-overlay/52"
         onClick={onClose}
+        tabIndex={-1}
         type="button"
       />
       <aside
-        aria-label={t('common.accessibility.inquirySummary')}
+        aria-labelledby={titleId}
         aria-modal="true"
         className="fixed bottom-0 right-0 z-50 flex h-[90vh] w-full max-w-[28rem] flex-col border-l border-border bg-surface-page shadow-dropdown xl:top-0 xl:h-full"
         ref={panelRef}
         role="dialog"
+        tabIndex={-1}
       >
         <div className="flex items-center justify-between border-b border-border px-5 py-4">
           <div>
             <p className="kicker">{t('layout.header.inquiryList')}</p>
-            <h2 className="mt-2 text-[1.5rem] text-navy xl:text-[1.8rem]">{t('common.status.requestedItems', { count: itemCount })}</h2>
+            <h2 className="mt-2 text-[1.5rem] text-navy xl:text-[1.8rem]" id={titleId}>
+              {t('common.status.requestedItems', { count: itemCount })}
+            </h2>
             <p className="mt-2 text-sm text-text-muted">
               {t('pages.inquiryList.description')}
             </p>

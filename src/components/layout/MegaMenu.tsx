@@ -72,9 +72,9 @@ export const MegaMenu = forwardRef<HTMLDivElement, MegaMenuProps>(function MegaM
 
         <aside className="space-y-3 wide:max-w-[18rem]">
           <div className="border border-border-blue bg-surface-dark p-4 text-text-on-dark">
-            <p className="kicker text-white/80">{t('layout.megaMenu.featuredEyebrow')}</p>
-            <h3 className="mt-2 text-[1.4rem] text-white">{t('layout.megaMenu.featuredTitle')}</h3>
-            <p className="mt-2 text-sm text-white/72">
+            <p className="kicker text-text-on-dark/80">{t('layout.megaMenu.featuredEyebrow')}</p>
+            <h3 className="mt-2 text-[1.4rem] text-text-on-dark">{t('layout.megaMenu.featuredTitle')}</h3>
+            <p className="mt-2 text-sm text-text-on-dark/72">
               {t('layout.megaMenu.featuredDescription')}
             </p>
             <Link className="mt-4 inline-flex min-h-11 w-full items-center justify-center border border-primary/30 bg-brand-gold-soft px-4 text-[0.82rem] font-semibold text-primary-dark transition hover:border-primary/45 hover:bg-surface-card" to={routes.deals}>

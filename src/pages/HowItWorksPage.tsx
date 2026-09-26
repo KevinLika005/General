@@ -39,11 +39,11 @@ export function HowItWorksPage() {
       </section>
 
       <section className="section-shell pb-24">
-        <div className="hero-band border border-surface-dark p-6 text-white shadow-card">
-          <h2 className="text-[1.7rem] text-white">{t('pages.howItWorks.afterInquiryTitle')}</h2>
+        <div className="hero-band border border-surface-dark p-6 text-text-on-dark shadow-card">
+          <h2 className="text-[1.7rem] text-text-on-dark">{t('pages.howItWorks.afterInquiryTitle')}</h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-3">
             {(t('pages.howItWorks.afterInquiryPoints', { returnObjects: true }) as string[]).map((point) => (
-              <div className="border border-white/10 bg-white/5 p-5 text-sm text-white/75" key={point}>
+              <div className="inverse-soft-border inverse-soft-surface border p-5 text-sm text-text-on-dark/75" key={point}>
                 {point}
               </div>
             ))}

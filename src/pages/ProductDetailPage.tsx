@@ -99,6 +99,7 @@ export function ProductDetailPage() {
   const inspectionNotes =
     product.inspectionNotes ?? [t('pages.productDetail.inspectionNotesFallback')];
   const documents = product.documents ?? [];
+  const isRequestOnlyDocument = (href: string) => href === routes.technicalLibrary;
 
   return (
     <>
@@ -224,21 +225,34 @@ export function ProductDetailPage() {
               <h2 className="text-[1.3rem] text-navy">{t('pages.productDetail.documentsTitle')}</h2>
               <div className="mt-4 grid gap-3">
                 {documents.length > 0 ? (
-                  documents.map((document) => (
-                    <a
-                      className="border border-border bg-surface-subtle p-4 text-sm text-text-muted transition hover:border-primary"
-                      href={document.href}
-                      key={document.title}
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <p className="font-semibold text-navy">{document.title}</p>
-                      <p className="mt-1 text-text-muted">
-                        {document.kind ? t(`pages.productDetail.documentKinds.${document.kind}`) : t('common.status.document')}
-                      </p>
-                      <p className="mt-1 text-xs text-text-muted">{t('common.status.openDocumentReference')}</p>
-                    </a>
-                  ))
+                  documents.map((document) =>
+                    isRequestOnlyDocument(document.href) ? (
+                      <div className="border border-border bg-surface-subtle p-4 text-sm text-text-muted" key={document.title}>
+                        <p className="font-semibold text-navy">{document.title}</p>
+                        <p className="mt-1 text-text-muted">
+                          {document.kind ? t(`pages.productDetail.documentKinds.${document.kind}`) : t('common.status.document')}
+                        </p>
+                        <p className="mt-2 text-xs text-text-muted">{t('pages.productDetail.requestOnlyDocumentNote')}</p>
+                        <Button className="mt-3 justify-center" to={routes.requestQuote} variant="secondary">
+                          {t('common.actions.requestDocuments')}
+                        </Button>
+                      </div>
+                    ) : (
+                      <a
+                        className="border border-border bg-surface-subtle p-4 text-sm text-text-muted transition hover:border-primary"
+                        href={document.href}
+                        key={document.title}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        <p className="font-semibold text-navy">{document.title}</p>
+                        <p className="mt-1 text-text-muted">
+                          {document.kind ? t(`pages.productDetail.documentKinds.${document.kind}`) : t('common.status.document')}
+                        </p>
+                        <p className="mt-1 text-xs text-text-muted">{t('common.status.openDocumentReference')}</p>
+                      </a>
+                    ),
+                  )
                 ) : (
                   <div className="border border-border bg-surface-subtle p-4 text-sm text-text-muted">
                     {t('pages.productDetail.documentsFallback')}
@@ -256,7 +270,7 @@ export function ProductDetailPage() {
                 <div className="border border-border bg-surface-subtle p-4 text-sm text-text-muted">
                   {t('pages.productDetail.deliveryContractPoints.1')}
                 </div>
-                <Button className="justify-center" to={routes.technicalLibrary} variant="secondary">
+                <Button className="justify-center" to={routes.requestQuote} variant="secondary">
                   {t('common.actions.requestDocuments')}
                 </Button>
               </div>

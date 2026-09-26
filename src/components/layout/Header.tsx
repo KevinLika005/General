@@ -8,6 +8,7 @@ import { getPrimaryNavigation, getSolutionLinks, getSupportLinks } from '../../d
 import { useLanguage } from '../../hooks/useLanguage';
 import { routes } from '../../utils/routes';
 import { Button } from '../common/Button';
+import { ThemeToggle } from '../common/ThemeToggle';
 import { SiteSearch } from '../search/SiteSearch';
 import { MegaMenu } from './MegaMenu';
 import { MobileMenu } from './MobileMenu';
@@ -37,7 +38,7 @@ function navClass(isActive: boolean) {
 const DropdownPanel = forwardRef<
   HTMLDivElement,
   {
-    items: ReadonlyArray<{ description: string; title: string; to: string }>;
+    items: ReadonlyArray<{ description: string; id?: string; title: string; to: string }>;
     panelId: string;
     style?: CSSProperties;
   }
@@ -57,7 +58,7 @@ const DropdownPanel = forwardRef<
         {items.map((item) => (
           <NavLink
             className="border border-border bg-surface-card px-3 py-3 transition hover:border-primary hover:bg-surface-subtle"
-            key={item.to}
+            key={item.id ?? `${item.to}-${item.title}`}
             to={item.to}
           >
             <p className="text-sm font-semibold text-navy">{item.title}</p>
@@ -239,7 +240,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
               {companyProfile.topUtilityNote ? <span className="hidden lg:inline">{companyProfile.topUtilityNote}</span> : null}
               <button
                 aria-label={t('common.language.switcher')}
-                className="border border-primary/25 bg-white/5 px-2 py-1 text-brand-gold-soft transition hover:border-primary/45 hover:text-text-on-dark"
+                className="inverse-soft-border inverse-soft-surface border px-2 py-1 text-brand-gold-soft transition hover:border-primary/45 hover:text-text-on-dark"
                 onClick={toggleLanguage}
                 title={t('common.language.toggle')}
                 type="button"
@@ -270,6 +271,8 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
           </div>
 
           <div className="flex items-center justify-end gap-3">
+            <ThemeToggle />
+
             <button
               aria-label={t('common.accessibility.openInquirySummary')}
               className="inline-flex h-10 w-10 items-center justify-center border border-border bg-surface-card text-navy transition hover:border-primary md:hidden"
@@ -338,7 +341,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
                   return (
                     <div
                       className="relative -mb-3 pb-3"
-                      key={link.to}
+                      key={link.id}
                       onFocusCapture={() => openMenu('products')}
                       onBlurCapture={(event) => {
                         if (!productsRef.current?.contains(event.relatedTarget as Node | null)) {
@@ -389,7 +392,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
                   return (
                     <div
                       className="relative -mb-3 pb-3"
-                      key={link.to}
+                      key={link.id}
                       onBlurCapture={(event) => {
                         if (!solutionRef.current?.contains(event.relatedTarget as Node | null)) {
                           scheduleClose('solutions');
@@ -441,7 +444,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
                   return (
                     <div
                       className="relative -mb-3 pb-3"
-                      key={link.to}
+                      key={link.id}
                       onBlurCapture={(event) => {
                         if (!supportRef.current?.contains(event.relatedTarget as Node | null)) {
                           scheduleClose('support');
@@ -488,7 +491,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
                 }
 
                 return (
-                  <NavLink className={({ isActive }) => navClass(isActive)} key={link.to} to={link.to}>
+                  <NavLink className={({ isActive }) => navClass(isActive)} key={link.id} to={link.to}>
                     {link.label}
                   </NavLink>
                 );
@@ -506,9 +509,11 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
 
         <MobileMenu
           inquiryCount={inquiryCount}
+          language={language}
           onClose={() => setMobileOpen(false)}
           onSearchChange={setSearch}
           onSearchSubmit={submitSearch}
+          onToggleLanguage={toggleLanguage}
           open={mobileOpen}
           search={search}
         />

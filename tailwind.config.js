@@ -65,9 +65,9 @@ export default {
         display: ['"IBM Plex Sans Condensed"', '"IBM Plex Sans"', 'sans-serif'],
       },
       boxShadow: {
-        card: '0 1px 2px rgba(39, 37, 33, 0.08)',
-        hover: '0 6px 18px rgba(39, 37, 33, 0.11)',
-        dropdown: '0 18px 40px rgba(39, 37, 33, 0.16)',
+        card: 'var(--shadow-card)',
+        hover: 'var(--shadow-hover)',
+        dropdown: 'var(--shadow-dropdown)',
       },
       borderRadius: {
         xl: '2px',

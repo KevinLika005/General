@@ -2,7 +2,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { SearchBar } from '../common/SearchBar';
-import { useSiteSearch } from '../../hooks/useSiteSearch';
+import { preloadSiteSearch, useSiteSearch } from '../../hooks/useSiteSearch';
 import { normalizeText } from '../../utils/filters';
 import { routes } from '../../utils/routes';
 import { SearchResultsList } from './SearchResultsList';
@@ -95,10 +95,17 @@ export function SiteSearch({
         inputRef={inputRef}
         label={t('common.accessibility.searchSite')}
         onChange={(nextValue) => {
+          if (normalizeText(nextValue).length >= minSuggestionChars - 1) {
+            preloadSiteSearch();
+          }
+
           onChange(nextValue);
           setOpen(normalizeText(nextValue).length >= minSuggestionChars);
         }}
-        onFocus={() => setOpen(normalizeText(value).length >= minSuggestionChars)}
+        onFocus={() => {
+          preloadSiteSearch();
+          setOpen(normalizeText(value).length >= minSuggestionChars);
+        }}
         onKeyDown={(event) => {
           if (event.key === 'Escape') {
             setOpen(false);

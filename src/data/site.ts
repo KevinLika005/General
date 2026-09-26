@@ -1,5 +1,7 @@
 import type { CompanyProfile, SiteMetadata, TrustFeature } from './types';
 import { localizeCatalogValue } from '../i18n/catalogLocale';
+import { getCategories } from './categories';
+import { getProducts } from './products';
 
 export const siteMetadata: SiteMetadata = {
   siteName: 'GENERAL TRADING',
@@ -14,12 +16,12 @@ const baseCompanyProfile: CompanyProfile = {
   parentName: 'GENERAL',
   shortDescription: 'Technical equipment catalog for construction machinery, tools, materials, transport assets, and site support handled through direct B2B inquiry.',
   tagline: 'Construction equipment, tools, materials, and contract-driven supply for serious work.',
-  phone: '',
-  secondaryPhone: '',
+  phone: '+355 68 204 4447',
+  secondaryPhone: '+355 68 311 1222',
   email: '',
-  address: '',
-  locationLabel: '',
-  hours: '',
+  address: 'Tirane, Rruga "Haxhi Kika", Njesia Administrative Nr. 5, Nr. Pasurie 6/538 H1, Ap. 4',
+  locationLabel: 'Tirane, Albania',
+  hours: 'Mon - Sat, 08:00 - 18:00',
   heroHeadline: 'Construction Machinery, Equipment & Parts for Serious Work',
   heroSubheadline: 'Browse available machinery, attachments, spare parts, tools, materials, and site equipment. Request product details, pricing, inspection, or contract discussion directly with the sales team.',
   topUtilityNote: 'Inquiry-commerce only. Quote, inspection, and contract follow-up handled directly.',
@@ -60,9 +62,9 @@ const baseTrustFeatures: TrustFeature[] = [
 ];
 
 const baseHomeStats = [
-  { label: 'Inventory records', value: '33' },
-  { label: 'Product groups', value: '7' },
-  { label: 'Active brands', value: '29' },
+  { label: 'Inventory records', value: 'inventory-records' },
+  { label: 'Product groups', value: 'product-groups' },
+  { label: 'Active brands', value: 'active-brands' },
   { label: 'Sales model', value: 'B2B only' },
 ];
 
@@ -146,14 +148,18 @@ export function getTrustFeatures(): TrustFeature[] {
 
 export function getHomeStats() {
   const localeKeys = ['inventoryRecords', 'productGroups', 'activeBrands', 'salesModel'] as const;
+  const products = getProducts();
+  const categories = getCategories();
+  const activeBrands = new Set(products.map((product) => product.brand)).size;
+  const statValues = [String(products.length), String(categories.length), String(activeBrands), 'B2B only'] as const;
 
   return baseHomeStats.map((stat, index) => ({
     ...stat,
     label: localizeCatalogValue(`site.homeStats.${localeKeys[index]}`, stat.label),
     value:
-      stat.value === 'B2B only'
-        ? localizeCatalogValue('site.homeStats.b2bOnly', stat.value)
-        : stat.value,
+      statValues[index] === 'B2B only'
+        ? localizeCatalogValue('site.homeStats.b2bOnly', statValues[index])
+        : statValues[index],
   }));
 }
 

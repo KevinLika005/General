@@ -1,3 +1,5 @@
+import i18n from '../i18n/config';
+
 export type SupportedFormType = 'contact' | 'request_quote';
 
 type ErrorCode =
@@ -29,12 +31,18 @@ interface SubmitFormOptions {
   formType: SupportedFormType;
 }
 
-const CONFIG_ERROR_MESSAGE = 'Form submissions are not configured right now. Please try again later.';
-const NETWORK_ERROR_MESSAGE = 'The request could not be sent right now. Please try again later.';
-const RESPONSE_ERROR_MESSAGE = 'The request could not be processed right now. Please try again later.';
-
 function getMailEndpoint() {
   return import.meta.env.VITE_MAIL_ENDPOINT?.trim() ?? '';
+}
+
+function isErrorCode(value: string): value is ErrorCode {
+  return (
+    value === 'CONFIG_ERROR' ||
+    value === 'VALIDATION_ERROR' ||
+    value === 'SPAM_REJECTED' ||
+    value === 'MAIL_FAILED' ||
+    value === 'SERVER_ERROR'
+  );
 }
 
 function isSubmissionFailure(value: unknown): value is FormSubmissionFailure {
@@ -43,7 +51,7 @@ function isSubmissionFailure(value: unknown): value is FormSubmissionFailure {
   }
 
   const candidate = value as Partial<FormSubmissionFailure>;
-  return candidate.ok === false && typeof candidate.code === 'string' && typeof candidate.message === 'string';
+  return candidate.ok === false && typeof candidate.code === 'string' && isErrorCode(candidate.code);
 }
 
 function isSubmissionSuccess(value: unknown): value is FormSubmissionSuccess {
@@ -59,6 +67,14 @@ export function createFormStartedAt() {
   return new Date().toISOString();
 }
 
+function getFailureMessage(code: ErrorCode) {
+  return i18n.t(`forms.shared.errors.${code}`);
+}
+
+function getSuccessMessage(formType: SupportedFormType) {
+  return i18n.t(formType === 'contact' ? 'forms.contact.success' : 'forms.quote.success');
+}
+
 export async function submitForm({
   extraFields = {},
   form,
@@ -70,7 +86,7 @@ export async function submitForm({
     return {
       ok: false,
       code: 'CONFIG_ERROR',
-      message: CONFIG_ERROR_MESSAGE,
+      message: getFailureMessage('CONFIG_ERROR'),
       fields: [],
     };
   }
@@ -106,7 +122,7 @@ export async function submitForm({
       return {
         ok: false,
         code: 'SERVER_ERROR',
-        message: RESPONSE_ERROR_MESSAGE,
+        message: getFailureMessage('SERVER_ERROR'),
         fields: [],
       };
     }
@@ -119,18 +135,22 @@ export async function submitForm({
       return {
         ok: false,
         code: 'SERVER_ERROR',
-        message: RESPONSE_ERROR_MESSAGE,
+        message: getFailureMessage('SERVER_ERROR'),
         fields: [],
       };
     }
 
     if (isSubmissionSuccess(payload)) {
-      return payload;
+      return {
+        ...payload,
+        message: getSuccessMessage(formType),
+      };
     }
 
     if (isSubmissionFailure(payload)) {
       return {
         ...payload,
+        message: getFailureMessage(payload.code),
         fields: Array.isArray(payload.fields) ? payload.fields.filter((field) => typeof field === 'string') : [],
       };
     }
@@ -138,14 +158,14 @@ export async function submitForm({
     return {
       ok: false,
       code: 'SERVER_ERROR',
-      message: RESPONSE_ERROR_MESSAGE,
+      message: getFailureMessage('SERVER_ERROR'),
       fields: [],
     };
   } catch {
     return {
       ok: false,
       code: 'MAIL_FAILED',
-      message: NETWORK_ERROR_MESSAGE,
+      message: getFailureMessage('MAIL_FAILED'),
       fields: [],
     };
   }

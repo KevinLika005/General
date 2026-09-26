@@ -1,17 +1,34 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getSiteSearchIndex, searchSite, type SiteSearchResult } from '../utils/siteSearch';
 import { normalizeText } from '../utils/filters';
+import type { SiteSearchResult } from '../utils/siteSearch';
 
 interface UseSiteSearchOptions {
   debounceMs?: number;
   limit?: number;
 }
 
+type SiteSearchModule = typeof import('../utils/siteSearch');
+
+let siteSearchModulePromise: Promise<SiteSearchModule> | null = null;
+
+function loadSiteSearchModule() {
+  if (!siteSearchModulePromise) {
+    siteSearchModulePromise = import('../utils/siteSearch');
+  }
+
+  return siteSearchModulePromise;
+}
+
+export function preloadSiteSearch() {
+  void loadSiteSearchModule();
+}
+
 export function useSiteSearch(query: string, options: UseSiteSearchOptions = {}) {
-  useTranslation();
+  const { i18n } = useTranslation();
   const { debounceMs = 120, limit } = options;
   const [debouncedQuery, setDebouncedQuery] = useState(query);
+  const [results, setResults] = useState<SiteSearchResult[]>([]);
 
   useEffect(() => {
     const timeoutId = window.setTimeout(() => setDebouncedQuery(query), debounceMs);
@@ -20,9 +37,31 @@ export function useSiteSearch(query: string, options: UseSiteSearchOptions = {})
 
   const normalizedQuery = useMemo(() => normalizeText(debouncedQuery), [debouncedQuery]);
 
-  getSiteSearchIndex();
+  useEffect(() => {
+    let cancelled = false;
 
-  const results: SiteSearchResult[] = normalizedQuery ? searchSite(debouncedQuery, limit) : [];
+    if (!normalizedQuery) {
+      setResults([]);
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    void (async () => {
+      const { getSiteSearchIndex, searchSite } = await loadSiteSearchModule();
+
+      getSiteSearchIndex();
+      const nextResults = searchSite(debouncedQuery, limit);
+
+      if (!cancelled) {
+        setResults(nextResults);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [debouncedQuery, i18n.resolvedLanguage, limit, normalizedQuery]);
 
   return {
     debouncedQuery,

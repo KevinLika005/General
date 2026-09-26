@@ -72,6 +72,12 @@ export function TechnicalLibraryPage() {
               </Button>
             </div>
           </div>
+          <div className="mt-4 subtle-panel p-4 sm:p-5">
+            <p className="line-label">{t('pages.technicalLibrary.requestOnlyNoticeTitle')}</p>
+            <p className="mt-2 max-w-[75ch] text-sm text-text-muted">
+              {t('pages.technicalLibrary.requestOnlyNoticeDescription')}
+            </p>
+          </div>
         </div>
       </section>
 
@@ -114,7 +120,8 @@ export function TechnicalLibraryPage() {
                 <div className={['mt-5 grid gap-2', isExpanded ? '' : 'hidden xl:grid'].join(' ')} id={`library-group-${group.key}`}>
                   {group.items.map((item) => (
                     <div className="subtle-panel px-4 py-3 text-sm text-text-muted" key={item}>
-                      {item}
+                      <p>{item}</p>
+                      <p className="mt-1 text-xs text-text-muted">{t('pages.technicalLibrary.availableOnRequest')}</p>
                     </div>
                   ))}
                 </div>

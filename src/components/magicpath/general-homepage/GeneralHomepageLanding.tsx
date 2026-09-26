@@ -55,7 +55,7 @@ export function GeneralHomepageLanding({
   return (
     <>
       <HomepageSection
-        className="section-band border-b border-border bg-[linear-gradient(180deg,rgba(255,255,255,0.6)_0%,rgba(237,231,219,0.58)_100%)]"
+        className="section-band surface-band border-b border-border"
         shellClassName="py-[clamp(2.75rem,5vw,5.5rem)]"
         shellVariant="band"
       >
@@ -128,13 +128,13 @@ export function GeneralHomepageLanding({
       </HomepageSection>
 
       <HomepageSection className="section-band" shellVariant="band">
-        <div className="hero-band border border-surface-dark px-5 py-6 text-white shadow-card sm:px-6 sm:py-8 lg:flex lg:items-center lg:justify-between lg:gap-8">
+        <div className="hero-band border border-surface-dark px-5 py-6 text-text-on-dark shadow-card sm:px-6 sm:py-8 lg:flex lg:items-center lg:justify-between lg:gap-8">
           <div>
-            <p className="kicker text-white/75">{t('pages.home.cta.eyebrow')}</p>
-            <h2 className="mt-3 max-w-[18ch] text-[clamp(1.6rem,1.15rem+1vw,2.2rem)] text-white">
+            <p className="kicker text-text-on-dark/75">{t('pages.home.cta.eyebrow')}</p>
+            <h2 className="mt-3 max-w-[18ch] text-[clamp(1.6rem,1.15rem+1vw,2.2rem)] text-text-on-dark">
               {t('pages.home.cta.title')}
             </h2>
-            <p className="text-measure mt-3 text-sm text-white/72">
+            <p className="text-measure mt-3 text-sm text-text-on-dark/72">
               {t('pages.home.cta.description')}
             </p>
           </div>

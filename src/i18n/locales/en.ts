@@ -7,6 +7,13 @@ export const en = {
       current: 'Current language: English',
       toggle: 'Switch language',
     },
+    theme: {
+      label: 'Color theme',
+      light: 'Light mode',
+      dark: 'Dark mode',
+      switchToLight: 'Switch to light mode',
+      switchToDark: 'Switch to dark mode',
+    },
     actions: {
       search: 'Search',
       searchCatalog: 'Search Catalog',
@@ -17,6 +24,8 @@ export const en = {
       browseEquipment: 'Browse Equipment',
       browseCategory: 'View Category',
       continueBrowsing: 'Continue Browsing',
+      add: 'Add',
+      addToInquiry: 'Add to Inquiry',
       clear: 'Clear',
       clearAll: 'Clear all',
       clearFilters: 'Clear Filters',
@@ -504,6 +513,10 @@ export const en = {
       searchPlaceholder: 'Search manuals, inspection documents, or specification sheets',
       requestNote:
         'If the exact file is not listed yet, use the request form and mention the product, model, or SKU.',
+      requestOnlyNoticeTitle: 'Document packs are prepared on request',
+      requestOnlyNoticeDescription:
+        'The groups below show the kinds of manuals, inspection records, specification sheets, and delivery references that the sales team can prepare for a specific product, model, or SKU. They are not presented here as a direct-download archive.',
+      availableOnRequest: 'Available on request for the matching product or SKU.',
       cta: {
         eyebrow: 'Need product-specific support?',
         title: 'Request a document pack tied to a specific listing',
@@ -838,6 +851,10 @@ export const en = {
       },
       documentsFallback:
         'Specific documents can be confirmed during the inquiry review, together with serial verification, service references, and commercial paperwork.',
+      imageFallback:
+        'Industrial product media can be shared during the inquiry process when visuals are limited for a listing.',
+      requestOnlyDocumentNote:
+        'This reference is shared on request after the sales team confirms the exact product, model, or SKU.',
       deliveryContractTitle: 'Delivery and contract path',
       deliveryContractPoints: [
         'Ask about inspection appointments, operating video, or site review before agreement.',
@@ -916,6 +933,13 @@ export const en = {
       sourcePath: 'Source path',
       sourceUrl: 'Source URL',
       startedAt: 'Form started at',
+      errors: {
+        CONFIG_ERROR: 'Form submissions are not configured right now. Please try again later.',
+        VALIDATION_ERROR: 'Please review the highlighted fields.',
+        SPAM_REJECTED: 'The request could not be submitted.',
+        MAIL_FAILED: 'The request could not be sent right now. Please try again later.',
+        SERVER_ERROR: 'The request could not be processed right now. Please try again later.',
+      },
     },
     contact: {
       eyebrow: 'Contact sales',
@@ -956,6 +980,7 @@ export const en = {
       ],
     },
     newsletter: {
+      emailPlaceholder: 'name@company.com',
       notice:
         'Stock alerts are not wired into the mail endpoint in this build yet.',
       success:
@@ -1040,9 +1065,9 @@ export const en = {
         name: 'GENERAL TRADING',
         parentName: 'GENERAL',
         shortDescription:
-          'Industrial equipment catalog for construction machinery, transport assets, parts, and site support handled through direct B2B inquiry.',
+          'Technical equipment catalog for construction machinery, tools, materials, transport assets, and site support handled through direct B2B inquiry.',
         tagline:
-          'Construction machinery, equipment, parts, and contract-driven supply for serious work.',
+          'Construction equipment, tools, materials, and contract-driven supply for serious work.',
         phone: '+355 68 204 4447',
         secondaryPhone: '+355 68 311 1222',
         email: '',
@@ -1055,11 +1080,7 @@ export const en = {
           'Browse available machinery, attachments, spare parts, tools, materials, and site equipment. Request product details, pricing, inspection, or contract discussion directly with the sales team.',
         topUtilityNote:
           'Inquiry-commerce only. Quote, inspection, and contract follow-up handled directly.',
-        socialLinks: [
-          { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
-          { label: 'Instagram', href: 'https://www.instagram.com/' },
-          { label: 'Facebook', href: 'https://www.facebook.com/' },
-        ],
+        socialLinks: [],
       },
       trustFeatures: [
         {
@@ -1100,9 +1121,9 @@ export const en = {
         },
       ],
       homeStats: [
-        { label: 'Inventory records', value: '33' },
-        { label: 'Product groups', value: '7' },
-        { label: 'Active brands', value: '29' },
+        { label: 'Inventory records', value: '20' },
+        { label: 'Product groups', value: '10' },
+        { label: 'Active brands', value: '18' },
         { label: 'Sales model', value: 'B2B only' },
       ],
       howItWorksSteps: [

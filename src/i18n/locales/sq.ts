@@ -7,6 +7,13 @@ export const sq = {
       current: 'Gjuha aktuale: Shqip',
       toggle: 'Ndrysho gjuhën',
     },
+    theme: {
+      label: 'Tema e ngjyrave',
+      light: 'Modaliteti i çelët',
+      dark: 'Modaliteti i errët',
+      switchToLight: 'Kalo në modalitet të çelët',
+      switchToDark: 'Kalo në modalitet të errët',
+    },
     actions: {
       search: 'Kërko',
       searchCatalog: 'Kërko në katalog',
@@ -17,6 +24,8 @@ export const sq = {
       browseEquipment: 'Shfleto pajisjet',
       browseCategory: 'Shiko kategorinë',
       continueBrowsing: 'Vazhdo shfletimin',
+      add: 'Shto',
+      addToInquiry: 'Shto në listën e kërkesave',
       clear: 'Pastro',
       clearAll: 'Pastro të gjitha',
       clearFilters: 'Pastro filtrat',
@@ -660,6 +669,10 @@ export const sq = {
         'Kjo faqe është strukturuar si një sipërfaqe dokumentesh e orientuar nga mbështetja për manuale produktesh, fletë specifikimesh, referenca inspektimi, regjistra dorëzimi dhe rrjedha kërkesash për dokumente.',
       searchPlaceholder: 'Kërko manuale, dokumente inspektimi ose fletë specifikimesh',
       requestNote: 'Nëse skedari i saktë nuk është ende i listuar, përdorni formularin e kërkesës dhe përmendni produktin, modelin ose SKU-në.',
+      requestOnlyNoticeTitle: 'Paketat e dokumenteve përgatiten sipas kërkesës',
+      requestOnlyNoticeDescription:
+        'Grupet më poshtë tregojnë llojet e manualeve, regjistrave të inspektimit, fletëve të specifikimeve dhe referencave të dorëzimit që ekipi i shitjeve mund të përgatisë për një produkt, model ose SKU specifik. Ato nuk paraqiten këtu si arkivë me shkarkim të drejtpërdrejtë.',
+      availableOnRequest: 'I disponueshëm sipas kërkesës për produktin ose SKU-në përkatëse.',
       cta: {
         eyebrow: 'Ju duhet mbështetje specifike për produktin?',
         title: 'Kërkoni një paketë dokumentesh të lidhur me një listim specifik',
@@ -823,6 +836,10 @@ export const sq = {
         video: 'video',
       },
       documentsFallback: 'Dokumentet specifike mund të konfirmohen gjatë shqyrtimit të kërkesës, bashkë me verifikimin serial, referencat e shërbimit dhe dokumentet komerciale.',
+      imageFallback:
+        'Pamjet e produktit mund të ndahen gjatë procesit të kërkesës kur një listim ka materiale vizuale të kufizuara.',
+      requestOnlyDocumentNote:
+        'Kjo referencë ndahet sipas kërkesës pasi ekipi i shitjeve të konfirmojë produktin, modelin ose SKU-në e saktë.',
       deliveryContractTitle: 'Rruga e dorëzimit dhe kontratës',
       deliveryContractPoints: [
         'Pyetni për takime inspektimi, video pune ose verifikim në vend para marrëveshjes.',
@@ -894,6 +911,13 @@ export const sq = {
       sourcePath: 'Rruga burimore',
       sourceUrl: 'URL-ja burimore',
       startedAt: 'Formulari nisi në',
+      errors: {
+        CONFIG_ERROR: 'Dërgimi i formularëve nuk është konfiguruar ende. Ju lutemi provoni përsëri më vonë.',
+        VALIDATION_ERROR: 'Ju lutemi rishikoni fushat e theksuara.',
+        SPAM_REJECTED: 'Kërkesa nuk mund të dërgohej.',
+        MAIL_FAILED: 'Kërkesa nuk mund të dërgohej tani për tani. Ju lutemi provoni përsëri më vonë.',
+        SERVER_ERROR: 'Kërkesa nuk mund të përpunohej tani për tani. Ju lutemi provoni përsëri më vonë.',
+      },
     },
     contact: {
       eyebrow: 'Kontakto shitjet',
@@ -924,6 +948,7 @@ export const sq = {
       ],
     },
     newsletter: {
+      emailPlaceholder: 'emri@kompania.com',
       notice:
         'Njoftimet e stokut nuk janë lidhur ende me endpoint-in e emailit në këtë build.',
       success: 'Kërkesa për njoftim u regjistrua në këtë build frontend. Integrimi i dërgesave dhe emailit mund të lidhet më vonë.',

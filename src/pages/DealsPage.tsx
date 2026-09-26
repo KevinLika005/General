@@ -158,10 +158,10 @@ export function DealsPage() {
               )}
             </div>
 
-            <div className="mt-10 hero-band border border-surface-dark p-6 text-white shadow-card">
-              <p className="kicker text-white/80">{t('pages.deals.cta.eyebrow')}</p>
-              <h2 className="mt-2 max-w-[22ch] text-[clamp(1.35rem,1rem+0.8vw,1.8rem)] text-white">{t('pages.deals.cta.title')}</h2>
-              <p className="text-measure mt-3 text-sm text-white/72">
+            <div className="mt-10 hero-band border border-surface-dark p-6 text-text-on-dark shadow-card">
+              <p className="kicker text-text-on-dark/80">{t('pages.deals.cta.eyebrow')}</p>
+              <h2 className="mt-2 max-w-[22ch] text-[clamp(1.35rem,1rem+0.8vw,1.8rem)] text-text-on-dark">{t('pages.deals.cta.title')}</h2>
+              <p className="text-measure mt-3 text-sm text-text-on-dark/72">
                 {t('pages.deals.cta.description')}
               </p>
             </div>

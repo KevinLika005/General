@@ -24,17 +24,17 @@ function FooterGroup({
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-t border-white/10 pt-4 xl:border-0 xl:pt-0">
+    <div className="border-t border-text-on-dark/10 pt-4 xl:border-0 xl:pt-0">
       <button
         aria-expanded={open}
-        className="flex w-full items-center justify-between text-left text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-white xl:pointer-events-none"
+        className="flex w-full items-center justify-between text-left text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-text-on-dark xl:pointer-events-none"
         onClick={() => setOpen((current) => !current)}
         type="button"
       >
         {title}
         <span className="xl:hidden">{open ? '-' : '+'}</span>
       </button>
-      <div className={[open ? 'mt-4 grid gap-2 text-sm text-white/70' : 'hidden', 'xl:mt-4 xl:grid xl:gap-2 xl:text-sm xl:text-white/70'].join(' ')}>
+      <div className={[open ? 'mt-4 grid gap-2 text-sm text-text-on-dark/70' : 'hidden', 'xl:mt-4 xl:grid xl:gap-2 xl:text-sm xl:text-text-on-dark/70'].join(' ')}>
         {children}
       </div>
     </div>
@@ -48,13 +48,13 @@ export function Footer() {
   const footerCompanyLinks = getFooterCompanyLinks();
 
   return (
-    <footer className="mt-16 border-t border-border-blue bg-surface-dark text-white">
+    <footer className="mt-16 border-t border-border-blue bg-surface-dark text-text-on-dark">
       <div className="wide-shell py-8 xl:py-12">
-        <div className="mb-8 border border-white/10 bg-white/5 px-5 py-5 lg:flex lg:items-center lg:justify-between">
+        <div className="mb-8 border border-text-on-dark/10 bg-text-on-dark/5 px-5 py-5 lg:flex lg:items-center lg:justify-between">
           <div>
-            <p className="kicker text-white/80">{t('layout.footer.cta.eyebrow')}</p>
-            <h2 className="mt-2 max-w-[26ch] text-[clamp(1.4rem,1rem+0.9vw,1.85rem)] leading-[1.08] text-white">{t('layout.footer.cta.title')}</h2>
-            <p className="text-measure mt-3 text-sm text-white/70">
+            <p className="kicker text-text-on-dark/80">{t('layout.footer.cta.eyebrow')}</p>
+            <h2 className="mt-2 max-w-[26ch] text-[clamp(1.4rem,1rem+0.9vw,1.85rem)] leading-[1.08] text-text-on-dark">{t('layout.footer.cta.title')}</h2>
+            <p className="text-measure mt-3 text-sm text-text-on-dark/70">
               {t('layout.footer.cta.description')}
             </p>
           </div>
@@ -68,8 +68,8 @@ export function Footer() {
         <div className="grid gap-6 xl:grid-cols-[1.1fr_0.85fr_0.8fr_1fr]">
           <div>
             <img alt={t('layout.header.logoAlt')} className="h-20 w-auto object-contain" src={companyLogo} />
-            <p className="mt-4 max-w-md text-sm text-white/72">{companyProfile.shortDescription}</p>
-            <div className="mt-5 space-y-2 text-sm text-white/72">
+            <p className="mt-4 max-w-md text-sm text-text-on-dark/72">{companyProfile.shortDescription}</p>
+            <div className="mt-5 space-y-2 text-sm text-text-on-dark/72">
               {companyProfile.address ? (
                 <p className="inline-flex items-start gap-3">
                   <MapPin className="mt-1 h-4 w-4 text-primary" />
@@ -95,7 +95,7 @@ export function Footer() {
 
                 return (
                   <a
-                    className="inline-flex h-9 w-9 items-center justify-center border border-white/10 text-white/72 transition hover:border-primary hover:text-white"
+                    className="inline-flex h-9 w-9 items-center justify-center border border-text-on-dark/10 text-text-on-dark/72 transition hover:border-primary hover:text-text-on-dark"
                     href={social.href}
                     key={social.label}
                     rel="noreferrer"
@@ -111,7 +111,7 @@ export function Footer() {
 
           <FooterGroup title={t('layout.footer.products')}>
               {categories.map((category) => (
-                <Link className="transition hover:text-white" key={category.slug} to={routes.category(category.slug)}>
+                <Link className="transition hover:text-text-on-dark" key={category.slug} to={routes.category(category.slug)}>
                   {category.title}
                 </Link>
               ))}
@@ -129,20 +129,20 @@ export function Footer() {
               <Link to={routes.contact}>{t('pages.contact.eyebrow')}</Link>
           </FooterGroup>
 
-          <div className="border-t border-white/10 pt-4 xl:border-0 xl:pt-0">
-            <h3 className="text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-white">{t('layout.footer.updatesTitle')}</h3>
-            <p className="mt-3 text-sm text-white/70">
+          <div className="border-t border-text-on-dark/10 pt-4 xl:border-0 xl:pt-0">
+            <h3 className="text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-text-on-dark">{t('layout.footer.updatesTitle')}</h3>
+            <p className="mt-3 text-sm text-text-on-dark/70">
               {t('layout.footer.updatesDescription')}
             </p>
             <NewsletterForm />
           </div>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-6 text-sm text-white/55">
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-text-on-dark/10 pt-6 text-sm text-text-on-dark/55">
           <p>{t('layout.footer.bottomNote')}</p>
           <div className="flex flex-wrap items-center gap-4">
             {footerCompanyLinks.map((link) => (
-              <Link key={link.to} to={link.to}>
+              <Link key={link.id} to={link.to}>
                 {link.label}
               </Link>
             ))}

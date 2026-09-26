@@ -1,4 +1,5 @@
 import { ChevronRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 interface BreadcrumbItem {
@@ -7,8 +8,10 @@ interface BreadcrumbItem {
 }
 
 export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
+  const { t } = useTranslation();
+
   return (
-    <nav aria-label="Breadcrumb" className="overflow-x-auto">
+    <nav aria-label={t('common.labels.breadcrumb')} className="overflow-x-auto">
       <ol className="flex min-w-max items-center gap-2 text-xs text-text-muted md:text-sm">
         {items.map((item, index) => (
           <li className="flex items-center gap-2" key={`${item.label}-${index}`}>

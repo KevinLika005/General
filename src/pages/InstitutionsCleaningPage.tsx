@@ -27,6 +27,17 @@ interface ProcessStep {
   description: string;
 }
 
+const visualPalette = {
+  accent: 'rgb(var(--primary))',
+  accentSoft: 'rgb(var(--brand-gold-soft))',
+  border: 'rgb(var(--border-default))',
+  ink: 'rgb(var(--navy))',
+  page: 'rgb(var(--surface-page))',
+  panel: 'rgb(var(--surface-card))',
+  subtle: 'rgb(var(--surface-subtle))',
+  textOnAccent: 'rgb(var(--primary-dark))',
+};
+
 function InstitutionCleaningVisual() {
   const { t } = useTranslation();
   const visualTiles = t('pages.institutionsCleaning.hero.visualTiles', {
@@ -56,55 +67,55 @@ function InstitutionCleaningVisual() {
           viewBox="0 0 420 320"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <rect fill="rgb(244 240 233)" height="320" rx="28" width="420" />
+          <rect fill={visualPalette.page} height="320" rx="28" width="420" />
           <path
             d="M57 266h304"
-            stroke="rgb(211 201 186)"
+            stroke={visualPalette.border}
             strokeLinecap="round"
             strokeWidth="8"
           />
           <path
             d="M95 266V118c0-8.837 7.163-16 16-16h78c8.837 0 16 7.163 16 16v148"
-            fill="rgb(255 255 255)"
-            stroke="rgb(39 37 33)"
+            fill={visualPalette.panel}
+            stroke={visualPalette.ink}
             strokeWidth="8"
           />
           <path
             d="M217 266V88c0-8.837 7.163-16 16-16h76c8.837 0 16 7.163 16 16v178"
-            fill="rgb(237 231 219)"
-            stroke="rgb(39 37 33)"
+            fill={visualPalette.subtle}
+            stroke={visualPalette.ink}
             strokeWidth="8"
           />
           <path
             d="M119 134h24v24h-24zm39 0h24v24h-24zm-39 42h24v24h-24zm39 0h24v24h-24zm83-46h21v21h-21zm39 0h21v21h-21zm-39 38h21v21h-21zm39 0h21v21h-21z"
-            fill="rgb(191 136 36)"
+            fill={visualPalette.accent}
             opacity="0.78"
           />
           <path
             d="M153 266v-44c0-6.627 5.373-12 12-12h16c6.627 0 12 5.373 12 12v44"
-            fill="rgb(246 238 223)"
-            stroke="rgb(39 37 33)"
+            fill={visualPalette.accentSoft}
+            stroke={visualPalette.ink}
             strokeWidth="8"
           />
           <circle
             cx="327"
             cy="219"
-            fill="rgb(246 238 223)"
+            fill={visualPalette.accentSoft}
             r="46"
-            stroke="rgb(191 136 36)"
+            stroke={visualPalette.accent}
             strokeWidth="8"
           />
           <path
             d="m307 219 13 13 28-32"
             fill="none"
-            stroke="rgb(112 75 15)"
+            stroke={visualPalette.textOnAccent}
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="10"
           />
           <path
             d="M306 61v18M297 70h18M343 96v14M336 103h14M74 82v14M67 89h14"
-            stroke="rgb(191 136 36)"
+            stroke={visualPalette.accent}
             strokeLinecap="round"
             strokeWidth="6"
           />
@@ -292,21 +303,21 @@ export function InstitutionsCleaningPage() {
       </section>
 
       <section className="wide-shell py-[clamp(2rem,3vw,3rem)]">
-        <div className="hero-band border border-surface-dark p-6 text-white shadow-card lg:p-7">
+        <div className="hero-band border border-surface-dark p-6 text-text-on-dark shadow-card lg:p-7">
           <div className="mx-auto max-w-[min(100%,56rem)] text-center">
-            <p className="kicker text-white/80">{t('pages.institutionsCleaning.process.eyebrow')}</p>
-            <h2 className="mt-2 text-[clamp(1.65rem,1.1rem+1.3vw,2.7rem)] leading-[1.04] text-white">
+            <p className="kicker text-text-on-dark/80">{t('pages.institutionsCleaning.process.eyebrow')}</p>
+            <h2 className="mt-2 text-[clamp(1.65rem,1.1rem+1.3vw,2.7rem)] leading-[1.04] text-text-on-dark">
               {t('pages.institutionsCleaning.process.title')}
             </h2>
           </div>
           <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {processSteps.map((step) => (
-              <article className="border border-white/10 bg-white/5 p-4" key={step.step}>
+              <article className="inverse-soft-border inverse-soft-surface border p-4" key={step.step}>
                 <p className="text-sm font-semibold uppercase tracking-[0.1em] text-brand-gold-soft">
                   {step.step}
                 </p>
-                <h2 className="mt-3 text-[1.05rem] text-white">{step.title}</h2>
-                <p className="mt-2 text-sm text-white/75">{step.description}</p>
+                <h2 className="mt-3 text-[1.05rem] text-text-on-dark">{step.title}</h2>
+                <p className="mt-2 text-sm text-text-on-dark/75">{step.description}</p>
               </article>
             ))}
           </div>
@@ -349,13 +360,13 @@ export function InstitutionsCleaningPage() {
 
       <section className="section-band py-[clamp(2rem,3vw,3.5rem)]">
         <div className="band-shell">
-          <div className="hero-band border border-surface-dark px-5 py-6 text-white shadow-card lg:flex lg:items-center lg:justify-between">
+          <div className="hero-band border border-surface-dark px-5 py-6 text-text-on-dark shadow-card lg:flex lg:items-center lg:justify-between">
             <div>
-              <p className="kicker text-white/80">{t('pages.institutionsCleaning.cta.eyebrow')}</p>
-              <h2 className="mt-2 max-w-[20ch] text-[clamp(1.45rem,1.1rem+0.9vw,1.95rem)] text-white">
+              <p className="kicker text-text-on-dark/80">{t('pages.institutionsCleaning.cta.eyebrow')}</p>
+              <h2 className="mt-2 max-w-[20ch] text-[clamp(1.45rem,1.1rem+0.9vw,1.95rem)] text-text-on-dark">
                 {t('pages.institutionsCleaning.cta.title')}
               </h2>
-              <p className="text-measure mt-3 text-sm text-white/72">
+              <p className="text-measure mt-3 text-sm text-text-on-dark/72">
                 {t('pages.institutionsCleaning.cta.description')}
               </p>
             </div>

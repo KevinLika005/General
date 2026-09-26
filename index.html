@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0928A4" />
+    <meta name="theme-color" content="#f4f0e9" data-light="#f4f0e9" data-dark="#181614" />
     <link rel="icon" type="image/png" href="/src/assets/general-logo-tab.png" />
     <title>GENERAL TRADING | Katalog teknik pajisjesh dhe kërkesa B2B</title>
     <meta
@@ -28,6 +28,34 @@
     <div id="root"></div>
     <script>
       (function () {
+        var root = document.documentElement;
+        var themeMeta = document.querySelector('meta[name="theme-color"]');
+        var storedTheme = null;
+
+        try {
+          var themeValue = window.localStorage.getItem('general-trading-theme');
+          storedTheme = themeValue === 'light' || themeValue === 'dark' ? themeValue : null;
+        } catch (error) {
+          storedTheme = null;
+        }
+
+        var prefersDark =
+          typeof window.matchMedia === 'function' &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = storedTheme || (prefersDark ? 'dark' : 'light');
+
+        root.dataset.theme = theme;
+        root.classList.toggle('dark', theme === 'dark');
+        root.style.colorScheme = theme;
+
+        if (themeMeta) {
+          var nextThemeColor =
+            theme === 'dark'
+              ? themeMeta.getAttribute('data-dark') || '#181614'
+              : themeMeta.getAttribute('data-light') || '#f4f0e9';
+          themeMeta.setAttribute('content', nextThemeColor);
+        }
+
         var language = window.localStorage.getItem('general-trading-language') === 'en' ? 'en' : 'sq';
         var localized = language === 'en'
           ? {

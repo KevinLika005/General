@@ -47,10 +47,77 @@
     --status-info: 23 92 211;
     --status-info-bg: 239 248 255;
     --status-neutral: 102 112 133;
+    --shadow-card: 0 1px 2px rgba(39, 37, 33, 0.08);
+    --shadow-hover: 0 6px 18px rgba(39, 37, 33, 0.11);
+    --shadow-dropdown: 0 18px 40px rgba(39, 37, 33, 0.16);
+    --grid-line: rgba(39, 37, 33, 0.055);
+    --hero-band-start: rgba(43, 40, 36, 0.98);
+    --hero-band-end: rgba(87, 83, 77, 0.98);
+    --surface-band-start: rgba(255, 255, 255, 0.6);
+    --surface-band-end: rgba(237, 231, 219, 0.58);
+    --selection-bg: rgba(191, 136, 36, 0.24);
+    --field-sheen: rgba(255, 255, 255, 0.55);
+    --inverse-border: 255 255 255 / 0.1;
+    --inverse-fill: 255 255 255 / 0.05;
+    --inverse-fill-strong: 255 255 255 / 0.1;
+    --inverse-text-muted: 249 246 239 / 0.72;
+  }
+
+  :root[data-theme='dark'] {
+    color-scheme: dark;
+    --primary: 214 170 83;
+    --primary-hover: 228 188 104;
+    --primary-active: 192 150 66;
+    --primary-dark: 246 221 171;
+    --secondary: 155 145 133;
+    --accent: 247 211 139;
+    --neutral: 148 140 129;
+    --navy: 242 238 230;
+    --brand-gold: 214 170 83;
+    --brand-gold-soft: 57 48 34;
+    --surface-dark: 20 18 16;
+    --surface-blue: 54 48 43;
+    --border-blue: 120 105 82;
+    --highlight: 247 211 139;
+    --focus-ring: 224 190 115;
+    --overlay: 10 9 8;
+    --text-on-dark: 248 244 237;
+    --text-primary: 242 238 230;
+    --text-muted: 179 171 160;
+    --surface-page: 24 22 20;
+    --surface-card: 34 31 28;
+    --surface-subtle: 43 39 35;
+    --border-default: 92 84 74;
+    --status-available: 94 223 166;
+    --status-available-bg: 26 52 40;
+    --status-incoming: 245 180 95;
+    --status-incoming-bg: 62 42 20;
+    --status-reserved: 198 191 181;
+    --status-reserved-bg: 56 50 45;
+    --status-sold: 248 136 123;
+    --status-sold-bg: 70 30 27;
+    --status-info: 125 180 255;
+    --status-info-bg: 30 50 77;
+    --status-neutral: 179 171 160;
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.34);
+    --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.34);
+    --shadow-dropdown: 0 24px 54px rgba(0, 0, 0, 0.48);
+    --grid-line: rgba(242, 238, 230, 0.06);
+    --hero-band-start: rgba(20, 18, 16, 0.98);
+    --hero-band-end: rgba(54, 48, 43, 0.98);
+    --surface-band-start: rgba(34, 31, 28, 0.86);
+    --surface-band-end: rgba(43, 39, 35, 0.72);
+    --selection-bg: rgba(214, 170, 83, 0.34);
+    --field-sheen: rgba(255, 255, 255, 0.04);
+    --inverse-border: 255 255 255 / 0.09;
+    --inverse-fill: 255 255 255 / 0.035;
+    --inverse-fill-strong: 255 255 255 / 0.08;
+    --inverse-text-muted: 248 244 237 / 0.72;
   }
 
   html {
     scroll-behavior: smooth;
+    background-color: rgb(var(--surface-page));
   }
 
   body {
@@ -103,7 +170,7 @@
   }
 
   ::selection {
-    background-color: rgba(191, 136, 36, 0.24);
+    background-color: var(--selection-bg);
     color: rgb(var(--text-primary));
   }
 }
@@ -190,7 +257,7 @@
 
   .field {
     @apply mt-2 min-h-11 w-full rounded-none border border-border bg-surface-card px-3 py-2.5 text-sm text-text shadow-none placeholder:text-text-muted/70 focus:border-primary;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    box-shadow: inset 0 1px 0 var(--field-sheen);
   }
 
   .surface-panel {
@@ -217,10 +284,14 @@
     @apply border-t border-border bg-surface-card/95 backdrop-blur;
   }
 
+  .surface-band {
+    background-image: linear-gradient(180deg, var(--surface-band-start) 0%, var(--surface-band-end) 100%);
+  }
+
   .technical-grid {
     background-image:
-      linear-gradient(rgba(39, 37, 33, 0.055) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(39, 37, 33, 0.055) 1px, transparent 1px);
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
     background-size: 18px 18px;
   }
 
@@ -238,7 +309,7 @@
   }
 
   .hero-band {
-    background-image: linear-gradient(135deg, rgba(43, 40, 36, 0.98), rgba(87, 83, 77, 0.98));
+    background-image: linear-gradient(135deg, var(--hero-band-start), var(--hero-band-end));
   }
 
   .section-divider {
@@ -251,6 +322,36 @@
 
   .nav-shell {
     @apply border-b border-border bg-surface-card;
+  }
+
+  .inverse-soft-border {
+    border-color: rgb(var(--inverse-border));
+  }
+
+  .inverse-soft-surface {
+    background-color: rgb(var(--inverse-fill));
+  }
+
+  .inverse-soft-surface-strong {
+    background-color: rgb(var(--inverse-fill-strong));
+  }
+
+  .inverse-muted-text {
+    color: rgb(var(--inverse-text-muted));
+  }
+
+  .inverse-divider {
+    border-color: rgb(var(--inverse-border));
+  }
+
+  .inverse-field {
+    border: 1px solid rgb(var(--inverse-border));
+    background-color: rgb(var(--inverse-fill-strong));
+    box-shadow: inset 0 1px 0 var(--field-sheen);
+  }
+
+  .inverse-field::placeholder {
+    color: rgb(var(--inverse-text-muted));
   }
 }
 

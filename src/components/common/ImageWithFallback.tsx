@@ -53,11 +53,11 @@ export function ImageWithFallback({
             <div className="flex items-center gap-3">
               <ImageOff className="h-5 w-5 text-brand-gold" />
               <span className="text-sm font-semibold text-navy">
-                GENERAL TRADING
+                {t('layout.header.logoAlt')}
               </span>
             </div>
             <p className="mt-3 max-w-xs text-sm leading-6 text-text-muted">
-              {t('pages.productDetail.documentsFallback', 'Industrial product media can be shared during the inquiry process when visuals are limited for a listing.')}
+              {t('pages.productDetail.imageFallback')}
             </p>
           </div>
         </div>

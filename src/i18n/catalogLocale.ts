@@ -76,8 +76,8 @@ export const sqCatalogLocale = {
       'Katalog pajisjesh industriale për makineri ndërtimi, mjete transporti, pjesë dhe mbështetje kantieri, i menaxhuar përmes kërkesave të drejtpërdrejta B2B.',
     tagline:
       'Makineri ndërtimi, pajisje, pjesë dhe furnizim me bazë kontrate për punë serioze.',
-    locationLabel: '',
-    hours: '',
+    locationLabel: 'Tiranë, Shqipëri',
+    hours: 'Hën - Sht, 08:00 - 18:00',
     heroHeadline: 'Makineri ndërtimi, pajisje dhe pjesë për punë serioze',
     heroSubheadline:
       'Shfletoni makineri, aksesorë, pjesë këmbimi dhe pajisje kantieri. Kërkoni detaje produkti, çmime, inspektim ose diskutim kontrate drejtpërdrejt me ekipin e shitjeve.',

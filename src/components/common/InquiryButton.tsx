@@ -43,10 +43,10 @@ export function InquiryButton({
         : compact
           ? added
             ? t('layout.header.inquiryList')
-            : t('common.actions.browse', 'Add')
+            : t('common.actions.add')
           : added
             ? t('layout.header.inquiryList')
-            : t('common.actions.requestInfo', 'Add to Inquiry')}
+            : t('common.actions.addToInquiry')}
     </Button>
   );
 }
