@@ -12,7 +12,7 @@
     --shell-wide-max: 96rem;
     --shell-catalog-max: 108rem;
     --measure-readable: 68ch;
-    --header-offset: 7rem;
+    --header-offset: 7.5rem;
     /* Brand colors live here first. Update this token set for future palette changes. */
     --primary: 191 136 36;
     --primary-hover: 210 166 80;

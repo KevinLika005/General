@@ -1,4 +1,4 @@
-import { ChevronDown, ClipboardList, Menu, Search } from 'lucide-react';
+import { ChevronDown, ClipboardList, Menu, Phone, Search } from 'lucide-react';
 import { forwardRef, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
@@ -30,8 +30,8 @@ const DESKTOP_MENU_CONFIG: Record<DesktopMenu, { position: MenuPosition }> = {
 
 function navClass(isActive: boolean) {
   return [
-    'text-[0.76rem] font-semibold uppercase tracking-[0.1em] transition',
-    isActive ? 'text-primary-dark' : 'text-text-muted hover:text-navy',
+    'whitespace-nowrap text-[0.875rem] font-medium transition-colors',
+    isActive ? 'text-accent' : 'text-text-on-dark/80 hover:text-text-on-dark',
   ].join(' ');
 }
 
@@ -49,15 +49,15 @@ const DropdownPanel = forwardRef<
 }, ref) {
   return (
     <div
-      className="absolute top-full z-40 w-[min(28rem,calc(100vw-(var(--shell-gutter)*2)))] max-w-[calc(100vw-(var(--shell-gutter)*2))] overflow-y-auto border border-border bg-surface-card p-4 shadow-dropdown"
+      className="absolute top-full z-40 w-[min(28rem,calc(100vw-(var(--shell-gutter)*2)))] max-w-[calc(100vw-(var(--shell-gutter)*2))] overflow-y-auto rounded-lg border border-border bg-surface-card p-2 shadow-dropdown"
       id={panelId}
       ref={ref}
       style={style}
     >
-      <div className="grid gap-2 wide:grid-cols-2">
+      <div className="grid gap-1 wide:grid-cols-2">
         {items.map((item) => (
           <NavLink
-            className="border border-border bg-surface-card px-3 py-3 transition hover:border-primary hover:bg-surface-subtle"
+            className="rounded px-3 py-2.5 transition-colors hover:bg-surface-subtle"
             key={item.id ?? `${item.to}-${item.title}`}
             to={item.to}
           >
@@ -221,43 +221,9 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
         {t('common.accessibility.skipToMain')}
       </a>
       <header className="sticky top-0 z-40 border-b border-border bg-surface-card/95 backdrop-blur-md">
-        <div className="hidden border-b border-border-blue bg-surface-dark text-text-on-dark xl:block">
-          <div className="wide-shell flex flex-wrap items-center justify-between gap-3 py-2 text-[0.72rem]">
-            <div className="flex flex-wrap items-center gap-4">
-              {companyProfile.phone ? (
-                <a className="transition hover:text-brand-gold-soft" href={`tel:${companyProfile.phone}`}>
-                  {companyProfile.phone}
-                </a>
-              ) : null}
-              {companyProfile.email ? (
-                <a className="transition hover:text-brand-gold-soft" href={`mailto:${companyProfile.email}`}>
-                  {companyProfile.email}
-                </a>
-              ) : null}
-              {companyProfile.locationLabel ? <span>{companyProfile.locationLabel}</span> : null}
-            </div>
-            <div className="flex items-center gap-3">
-              {companyProfile.topUtilityNote ? <span className="hidden lg:inline">{companyProfile.topUtilityNote}</span> : null}
-              <button
-                aria-label={t('common.language.switcher')}
-                className="inverse-soft-border inverse-soft-surface border px-2 py-1 text-brand-gold-soft transition hover:border-primary/45 hover:text-text-on-dark"
-                onClick={toggleLanguage}
-                title={t('common.language.toggle')}
-                type="button"
-              >
-                {language === 'en' ? 'EN / SQ' : 'SQ / EN'}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className="wide-shell grid min-h-[4.15rem] grid-cols-[auto_1fr_auto] items-center gap-3 py-3 xl:min-h-[4.9rem] xl:gap-4">
+        <div className="wide-shell grid min-h-16 grid-cols-[auto_1fr_auto] items-center gap-3 py-2.5 xl:gap-6">
           <Link className="flex min-w-0 items-center gap-3" to={routes.home}>
-            <img alt={t('layout.header.logoAlt')} className="h-14 w-auto object-contain sm:h-16" src={companyLogo} />
-            <div className="hidden min-w-0 wide:block">
-              <p className="kicker">{t('layout.header.tagline')}</p>
-              <p className="truncate text-sm text-text-muted">{t('layout.header.description')}</p>
-            </div>
+            <img alt={t('layout.header.logoAlt')} className="h-11 w-auto object-contain xl:h-12" src={companyLogo} />
           </Link>
 
           <div className="hidden px-2 xl:block xl:max-w-[52rem] xl:flex-1 xl:px-4">
@@ -274,8 +240,18 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
             <ThemeToggle />
 
             <button
+              aria-label={t('common.language.switcher')}
+              className="hidden h-10 items-center justify-center rounded border border-border bg-surface-card px-3 text-[0.8125rem] font-semibold text-navy transition-colors hover:border-primary xl:inline-flex"
+              onClick={toggleLanguage}
+              title={t('common.language.toggle')}
+              type="button"
+            >
+              {language === 'en' ? 'EN / SQ' : 'SQ / EN'}
+            </button>
+
+            <button
               aria-label={t('common.accessibility.openInquirySummary')}
-              className="inline-flex h-10 w-10 items-center justify-center border border-border bg-surface-card text-navy transition hover:border-primary md:hidden"
+              className="inline-flex h-10 w-10 items-center justify-center rounded border border-border bg-surface-card text-navy transition hover:border-primary md:hidden"
               onClick={onOpenInquirySummary}
               type="button"
             >
@@ -284,13 +260,13 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
 
             <button
               aria-label={t('common.accessibility.openInquirySummary')}
-              className="hidden border border-border bg-surface-card px-3 py-2 text-[0.78rem] font-semibold text-navy transition hover:border-primary md:inline-flex md:items-center md:gap-2"
+              className="hidden h-10 rounded border border-border bg-surface-card px-3 text-[0.8125rem] font-semibold text-navy transition hover:border-primary md:inline-flex md:items-center md:gap-2"
               onClick={onOpenInquirySummary}
               type="button"
             >
               <ClipboardList className="h-4 w-4" />
               {t('layout.header.inquiryList')}
-              <span className="border border-primary/30 bg-surface-subtle px-2 py-0.5 text-[0.65rem] text-primary-dark">
+              <span className="rounded-full bg-brand-gold-soft px-2 py-0.5 text-[0.75rem] font-semibold text-navy tabular-nums">
                 {inquiryCount}
               </span>
             </button>
@@ -301,7 +277,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
 
             <button
               aria-label={t('common.accessibility.searchSite')}
-              className="hidden h-10 w-10 items-center justify-center border border-border text-navy md:inline-flex xl:hidden"
+              className="hidden h-10 w-10 items-center justify-center rounded border border-border text-navy md:inline-flex xl:hidden"
               onClick={() => submitSearch()}
               type="button"
             >
@@ -312,7 +288,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
               aria-expanded={mobileOpen}
               aria-controls="mobile-navigation"
               aria-label={t('common.accessibility.openMobileNavigation')}
-              className="border border-border bg-surface-card p-2.5 text-navy xl:hidden"
+              className="rounded border border-border bg-surface-card p-2.5 text-navy xl:hidden"
               onClick={() => setMobileOpen(true)}
               type="button"
             >
@@ -331,16 +307,16 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
           />
         </div>
 
-        <div className="hidden border-t border-border xl:block">
-          <div className="wide-shell flex items-center justify-between gap-4 py-3">
-            <nav aria-label={t('common.labels.primaryNavigation')} className="flex items-center gap-6">
+        <div className="hidden bg-surface-dark xl:block">
+          <div className="wide-shell flex h-12 items-center justify-between gap-4">
+            <nav aria-label={t('common.labels.primaryNavigation')} className="flex h-full items-center gap-4 2xl:gap-7">
               {primaryNavigation.map((link) => {
                 if ('kind' in link && link.kind === 'products') {
                   const isOpen = openDesktopMenu === 'products';
 
                   return (
                     <div
-                      className="relative -mb-3 pb-3"
+                      className="relative flex h-full items-center"
                       key={link.id}
                       onFocusCapture={() => openMenu('products')}
                       onBlurCapture={(event) => {
@@ -361,7 +337,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
                           aria-expanded={isOpen}
                           aria-haspopup="true"
                           aria-label={t('common.accessibility.openProductsMenu')}
-                          className="p-1 text-text-muted transition hover:text-navy"
+                          className="p-1 text-text-on-dark/70 transition-colors hover:text-text-on-dark"
                           onClick={() => {
                             if (isOpen) {
                               closeMenu('products');
@@ -391,7 +367,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
 
                   return (
                     <div
-                      className="relative -mb-3 pb-3"
+                      className="relative flex h-full items-center"
                       key={link.id}
                       onBlurCapture={(event) => {
                         if (!solutionRef.current?.contains(event.relatedTarget as Node | null)) {
@@ -412,7 +388,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
                           aria-expanded={isOpen}
                           aria-haspopup="true"
                           aria-label={t('common.accessibility.openSolutionsMenu')}
-                          className="p-1 text-text-muted transition hover:text-navy"
+                          className="p-1 text-text-on-dark/70 transition-colors hover:text-text-on-dark"
                           onClick={() => {
                             if (isOpen) {
                               closeMenu('solutions');
@@ -443,7 +419,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
 
                   return (
                     <div
-                      className="relative -mb-3 pb-3"
+                      className="relative flex h-full items-center"
                       key={link.id}
                       onBlurCapture={(event) => {
                         if (!supportRef.current?.contains(event.relatedTarget as Node | null)) {
@@ -464,7 +440,7 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
                           aria-expanded={isOpen}
                           aria-haspopup="true"
                           aria-label={t('common.accessibility.openSupportMenu')}
-                          className="p-1 text-text-muted transition hover:text-navy"
+                          className="p-1 text-text-on-dark/70 transition-colors hover:text-text-on-dark"
                           onClick={() => {
                             if (isOpen) {
                               closeMenu('support');
@@ -498,11 +474,15 @@ export function Header({ inquiryCount, onOpenInquirySummary }: HeaderProps) {
               })}
             </nav>
 
-            <div className="hidden max-w-[22rem] wide:block">
-              <p className="text-[0.72rem] uppercase tracking-[0.12em] text-text-muted">
-                {t('layout.header.utilitySearchDescription')}
-              </p>
-            </div>
+            {companyProfile.phone ? (
+              <a
+                className="inline-flex shrink-0 items-center gap-2 text-[0.875rem] font-medium text-text-on-dark/80 transition-colors hover:text-text-on-dark"
+                href={`tel:${companyProfile.phone.replace(/\s+/g, '')}`}
+              >
+                <Phone aria-hidden="true" className="h-4 w-4" />
+                {companyProfile.phone}
+              </a>
+            ) : null}
           </div>
         </div>
       </header>

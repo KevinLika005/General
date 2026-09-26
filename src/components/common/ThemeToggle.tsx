@@ -14,7 +14,7 @@ export function ThemeToggle() {
     <button
       aria-label={actionLabel}
       aria-pressed={isDark}
-      className="inline-flex h-10 w-10 items-center justify-center border border-border bg-surface-card text-navy transition hover:border-primary hover:bg-surface-subtle"
+      className="inline-flex h-10 w-10 items-center justify-center rounded border border-border bg-surface-card text-navy transition hover:border-primary hover:bg-surface-subtle"
       onClick={toggleTheme}
       title={actionLabel}
       type="button"

@@ -68,7 +68,7 @@ export function MobileMenu({
           <img alt={t('layout.header.logoAlt')} className="h-12 w-auto object-contain" src={companyLogo} />
           <button
             aria-label={t('common.accessibility.closeMobileMenu')}
-            className="inline-flex h-10 w-10 items-center justify-center border border-border bg-surface-card text-navy transition hover:border-primary"
+            className="inline-flex h-10 w-10 items-center justify-center rounded border border-border bg-surface-card text-navy transition hover:border-primary"
             onClick={onClose}
             type="button"
           >
@@ -88,7 +88,7 @@ export function MobileMenu({
             value={search}
           />
 
-          <div className="mt-4 flex items-center justify-between gap-3 border border-border bg-surface-card px-4 py-3 shadow-card">
+          <div className="mt-4 flex items-center justify-between gap-3 rounded-lg border border-border bg-surface-card px-4 py-3">
             <div>
               <p className="line-label">{t('common.theme.label')}</p>
               <p className="mt-1 text-sm text-text-muted">
@@ -98,7 +98,7 @@ export function MobileMenu({
             <div className="flex items-center gap-2">
               <button
                 aria-label={t('common.language.switcher')}
-                className="inline-flex min-h-10 items-center justify-center border border-border bg-surface-subtle px-3 text-[0.76rem] font-semibold text-navy transition hover:border-primary"
+                className="inline-flex min-h-10 items-center justify-center rounded border border-border bg-surface-subtle px-3 text-[0.76rem] font-semibold text-navy transition hover:border-primary"
                 onClick={onToggleLanguage}
                 title={t('common.language.toggle')}
                 type="button"
@@ -112,7 +112,7 @@ export function MobileMenu({
           <div className="mt-5 grid gap-2">
             {mainLinks.map((link) => (
               <NavLink
-                className="border border-border bg-surface-card px-4 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-navy shadow-card"
+                className="rounded-md border border-border bg-surface-card px-4 py-3 text-[0.9375rem] font-semibold text-navy"
                 key={link.id}
                 onClick={onClose}
                 to={link.to}
@@ -122,14 +122,14 @@ export function MobileMenu({
             ))}
           </div>
 
-          <div className="mt-5 border border-border-blue bg-surface-dark p-4 text-text-on-dark shadow-card">
+          <div className="mt-5 rounded-lg bg-surface-dark p-4 text-text-on-dark">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <p className="kicker text-text-on-dark/80">{t('layout.header.inquiryList')}</p>
+                <p className="text-[0.9375rem] font-semibold text-text-on-dark">{t('layout.header.inquiryList')}</p>
                 <p className="mt-2 text-base text-text-on-dark">{t('common.status.itemCount', { count: inquiryCount })}</p>
                 <p className="mt-2 text-sm text-text-on-dark/75">{t('layout.mobileMenu.inquiryListDescription')}</p>
               </div>
-              <Button onClick={onClose} size="sm" to={routes.inquiryList}>
+              <Button className="shrink-0 whitespace-nowrap" onClick={onClose} size="sm" to={routes.inquiryList}>
                 {t('common.actions.openList')}
               </Button>
             </div>
@@ -142,12 +142,12 @@ export function MobileMenu({
           </div>
 
           <div className="mt-6 space-y-2">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-navy">{t('common.labels.productGroups')}</h2>
+            <h2 className="text-[1.0625rem] text-navy">{t('common.labels.productGroups')}</h2>
             {categories.map((category) => {
               const isExpanded = expanded === category.slug;
 
               return (
-                <div className="border border-border bg-surface-card shadow-card" key={category.slug}>
+                <div className="rounded-md border border-border bg-surface-card" key={category.slug}>
                   <button
                     aria-controls={`mobile-category-${category.slug}`}
                     aria-expanded={isExpanded}
@@ -156,7 +156,7 @@ export function MobileMenu({
                     type="button"
                   >
                     <div>
-                      <p className="text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-navy">
+                      <p className="text-[0.9375rem] font-semibold text-navy">
                         {category.title}
                       </p>
                       <p className="mt-1 text-sm text-text-muted">{category.shortDescription}</p>
@@ -168,7 +168,7 @@ export function MobileMenu({
                   {isExpanded ? (
                     <div className="border-t border-border px-4 py-3" id={`mobile-category-${category.slug}`}>
                       <Link
-                        className="mb-3 block border border-primary/30 bg-surface-subtle px-3 py-2 text-sm font-medium text-primary-dark"
+                        className="mb-3 block rounded border border-primary/30 bg-surface-subtle px-3 py-2 text-sm font-medium text-primary-dark"
                         onClick={onClose}
                         to={routes.category(category.slug)}
                       >
@@ -193,12 +193,12 @@ export function MobileMenu({
             })}
           </div>
 
-          <div className="mt-6 border border-border bg-surface-card p-4 shadow-card">
+          <div className="mt-6 rounded-lg border border-border bg-surface-card p-4">
             <p className="line-label">{t('common.labels.supportLinks')}</p>
             <div className="mt-3 grid gap-1">
               {supportLinks.map((link) => (
                 <NavLink
-                  className="px-3 py-2 text-sm text-navy transition hover:bg-surface-subtle"
+                  className="rounded px-3 py-2 text-sm text-navy transition hover:bg-surface-subtle"
                   key={link.id}
                   onClick={onClose}
                   to={link.to}
@@ -209,12 +209,12 @@ export function MobileMenu({
             </div>
           </div>
 
-          <div className="mt-6 border border-border bg-surface-card p-4 shadow-card">
+          <div className="mt-6 rounded-lg border border-border bg-surface-card p-4">
             <p className="line-label">{t('common.labels.company')}</p>
             <div className="mt-3 grid gap-1">
               {footerCompanyLinks.map((link) => (
                 <NavLink
-                  className="px-3 py-2 text-sm text-navy transition hover:bg-surface-subtle"
+                  className="rounded px-3 py-2 text-sm text-navy transition hover:bg-surface-subtle"
                   key={link.id}
                   onClick={onClose}
                   to={link.to}
