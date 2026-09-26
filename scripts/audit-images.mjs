@@ -7,10 +7,37 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..');
 
-async function loadTsModule(relativePath) {
+function findVariableInitializer(sourceFile, variableName) {
+  for (const statement of sourceFile.statements) {
+    if (!ts.isVariableStatement(statement)) {
+      continue;
+    }
+
+    for (const declaration of statement.declarationList.declarations) {
+      if (
+        ts.isIdentifier(declaration.name) &&
+        declaration.name.text === variableName &&
+        declaration.initializer
+      ) {
+        return declaration.initializer.getText(sourceFile);
+      }
+    }
+  }
+
+  return null;
+}
+
+async function loadTsConst(relativePath, variableName) {
   const filePath = path.join(repoRoot, relativePath);
   const source = fs.readFileSync(filePath, 'utf8');
-  const transpiled = ts.transpileModule(source, {
+  const sourceFile = ts.createSourceFile(filePath, source, ts.ScriptTarget.Latest, true);
+  const initializer = findVariableInitializer(sourceFile, variableName);
+
+  if (!initializer) {
+    throw new Error(`Could not find "${variableName}" in ${relativePath}.`);
+  }
+
+  const transpiled = ts.transpileModule(`export default ${initializer};`, {
     compilerOptions: {
       module: ts.ModuleKind.ES2022,
       target: ts.ScriptTarget.ES2022,
@@ -18,7 +45,8 @@ async function loadTsModule(relativePath) {
     fileName: filePath,
   }).outputText;
 
-  return import(`data:text/javascript;base64,${Buffer.from(transpiled).toString('base64')}`);
+  const module = await import(`data:text/javascript;base64,${Buffer.from(transpiled).toString('base64')}`);
+  return module.default;
 }
 
 function toPublicFilePath(src) {
@@ -29,10 +57,10 @@ function isRemoteUrl(src) {
   return /^https?:\/\//i.test(src);
 }
 
-const [{ products }, { categories }, { imageAttributions }] = await Promise.all([
-  loadTsModule('src/data/products.ts'),
-  loadTsModule('src/data/categories.ts'),
-  loadTsModule('src/data/imageAttributions.ts'),
+const [products, categories, imageAttributions] = await Promise.all([
+  loadTsConst('src/data/products.ts', 'baseProducts'),
+  loadTsConst('src/data/categories.ts', 'baseCategories'),
+  loadTsConst('src/data/imageAttributions.ts', 'imageAttributions'),
 ]);
 
 const failures = [];

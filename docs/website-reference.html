@@ -1,0 +1,517 @@
+<title>General Trading Reference</title>
+<meta name="description" content="Base reference document for the General Trading B2B equipment catalog: structure, purpose, and goal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #f2efe8;
+    --paper-raised: #ffffff;
+    --ink: #23241f;
+    --ink-soft: #55564c;
+    --line: #ddd8c9;
+    --navy: #1c2b45;
+    --navy-soft: #2e3f5c;
+    --gold: #a67c2e;
+    --gold-soft: #e4d3ab;
+    --tag-open-bg: #fbe9d7;
+    --tag-open-fg: #8a4b12;
+    --tag-done-bg: #dfe9dd;
+    --tag-done-fg: #2d5c3c;
+    --code-bg: #e8e3d3;
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #191a17;
+      --paper-raised: #232420;
+      --ink: #ece8dc;
+      --ink-soft: #b7b3a3;
+      --line: #3a3b34;
+      --navy: #9db2d8;
+      --navy-soft: #7f9bc9;
+      --gold: #d8b872;
+      --gold-soft: #4a3f22;
+      --tag-open-bg: #4a3620;
+      --tag-open-fg: #f0c391;
+      --tag-done-bg: #2a3f2d;
+      --tag-done-fg: #a9d6b3;
+      --code-bg: #2c2d27;
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #191a17;
+    --paper-raised: #232420;
+    --ink: #ece8dc;
+    --ink-soft: #b7b3a3;
+    --line: #3a3b34;
+    --navy: #9db2d8;
+    --navy-soft: #7f9bc9;
+    --gold: #d8b872;
+    --gold-soft: #4a3f22;
+    --tag-open-bg: #4a3620;
+    --tag-open-fg: #f0c391;
+    --tag-done-bg: #2a3f2d;
+    --tag-done-fg: #a9d6b3;
+    --code-bg: #2c2d27;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 15.5px;
+    line-height: 1.65;
+    padding: 0 20px;
+    padding-block: 40px;
+  }
+
+  .sheet {
+    max-width: 840px;
+    margin: 0 auto;
+  }
+
+  header.doc-head {
+    border-bottom: 3px solid var(--navy);
+    padding-bottom: 20px;
+    margin-bottom: 36px;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    display: inline-block;
+  }
+
+  h1.doc-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 6vw, 3rem);
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 10px 0 8px;
+    color: var(--ink);
+  }
+
+  .doc-sub {
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+    max-width: 60ch;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .meta-row strong { color: var(--ink); font-weight: 500; }
+
+  nav.toc {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 18px 22px;
+    margin-bottom: 40px;
+  }
+
+  nav.toc .toc-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  nav.toc ol {
+    columns: 2;
+    column-gap: 28px;
+    margin: 0;
+    padding-left: 1.2em;
+    font-size: 13.5px;
+  }
+
+  nav.toc li { break-inside: avoid; margin-bottom: 6px; }
+  nav.toc a { color: var(--navy-soft); text-decoration: none; }
+  nav.toc a:hover { text-decoration: underline; }
+
+  section {
+    margin-bottom: 44px;
+    scroll-margin-top: 20px;
+  }
+
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 1.55rem;
+    color: var(--navy);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  h2 .num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.55em;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin: 22px 0 8px;
+    color: var(--ink);
+  }
+
+  p { margin: 0 0 12px; max-width: 68ch; }
+  ul, ol { max-width: 68ch; padding-left: 1.3em; margin: 0 0 12px; }
+  li { margin-bottom: 5px; }
+
+  code, .code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.88em;
+    background: var(--code-bg);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  .callout {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--navy);
+    padding: 14px 18px;
+    border-radius: 2px;
+    margin: 16px 0;
+  }
+
+  .callout.gold { border-left-color: var(--gold); }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.8px;
+    margin: 10px 0 18px;
+  }
+
+  .table-wrap { overflow-x: auto; }
+
+  th, td {
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+
+  th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    border-bottom: 2px solid var(--navy);
+  }
+
+  td .code { white-space: nowrap; }
+
+  .pill-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 18px;
+  }
+
+  .pill {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    padding: 4px 10px;
+    border-radius: 3px;
+    color: var(--ink-soft);
+  }
+
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 10px 0 18px;
+  }
+
+  @media (max-width: 560px) {
+    .cat-grid { grid-template-columns: 1fr; }
+    nav.toc ol { columns: 1; }
+  }
+
+  .cat-card {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    padding: 10px 13px;
+    border-radius: 2px;
+  }
+
+  .cat-card .name {
+    font-weight: 600;
+    font-size: 13.5px;
+  }
+
+  .cat-card .slug {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+
+  .tag {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+
+  .tag.open { background: var(--tag-open-bg); color: var(--tag-open-fg); }
+  .tag.done { background: var(--tag-done-bg); color: var(--tag-done-fg); }
+
+  footer.doc-foot {
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+    margin-top: 50px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  a { color: var(--navy-soft); }
+</style>
+
+<div class="sheet">
+  <header class="doc-head">
+    <div class="eyebrow">Reference document &middot; v1 &middot; living baseline</div>
+    <h1 class="doc-title">General Trading — Website Reference</h1>
+    <p class="doc-sub">What the site is, how it is put together, and where it currently stands. Written as the shared starting point for future decisions, not a one-time report.</p>
+    <div class="meta-row">
+      <span><strong>Project:</strong> General / General Trading</span>
+      <span><strong>Stack:</strong> Vite + React + TypeScript + Tailwind</span>
+      <span><strong>Repo path:</strong> <code>~/Documents/General</code></span>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <span class="toc-label">Contents</span>
+    <ol>
+      <li><a href="#purpose">Purpose &amp; goal</a></li>
+      <li><a href="#model">Business model</a></li>
+      <li><a href="#stack">Technical stack</a></li>
+      <li><a href="#sitemap">Site map</a></li>
+      <li><a href="#catalog">Catalog structure</a></li>
+      <li><a href="#data">Data architecture</a></li>
+      <li><a href="#forms">Inquiry &amp; email pipeline</a></li>
+      <li><a href="#i18n">Localization</a></li>
+      <li><a href="#status">Current status</a></li>
+      <li><a href="#next">Where to go from here</a></li>
+    </ol>
+  </nav>
+
+  <section id="purpose">
+    <h2><span class="num">01</span> Purpose &amp; goal</h2>
+    <p><strong>General Trading</strong> is a B2B technical equipment catalog for construction machinery, tools, materials, transport assets, and site-support products, operated under the parent company <strong>GENERAL</strong> and based in Tirana, Albania.</p>
+    <p>The site's job is not to sell online. It exists to let procurement teams, contractors, and fleet operators browse a serious technical catalog, build up a request, and hand it to the sales team as one structured inquiry. Everything after that — pricing negotiation, inspection, contracts, delivery — is handled offline, company to company.</p>
+    <div class="callout">
+      <span class="label">Working definition</span>
+      <p>An <strong>inquiry-commerce</strong> catalog: full ecommerce browsing and filtering mechanics (search, categories, brands, product detail, a cart-like list), with no checkout, no online payment, and no live pricing engine at the end of it.</p>
+    </div>
+  </section>
+
+  <section id="model">
+    <h2><span class="num">02</span> Business model</h2>
+    <p>The commercial flow is deliberately offline past the point of first contact:</p>
+    <ol>
+      <li>A visitor browses the catalog by category, brand, model, SKU, or keyword.</li>
+      <li>They add one or more products to an <strong>Inquiry List</strong> (kept in the browser, not a server cart).</li>
+      <li>They submit one <strong>Request Quote</strong> form covering the whole list, or a general <strong>Contact</strong> form for a non-product question.</li>
+      <li>The sales team receives the request by email and takes it from there: pricing, technical clarification, inspection scheduling, delivery/logistics, and contract terms all happen directly between the two companies.</li>
+    </ol>
+    <p>Three pricing modes exist per product, reflecting that this is quote-driven, not shelf-priced, retail:</p>
+    <table>
+      <tr><th>Mode</th><th>Shown as</th><th>Meaning</th></tr>
+      <tr><td><code>visible</code></td><td>EUR 78,500</td><td>Firm listed price</td></tr>
+      <tr><td><code>starting-from</code></td><td>Starting from EUR 89,500</td><td>Floor price, variant-dependent</td></tr>
+      <tr><td><code>price-on-request</code></td><td>Price on request</td><td>No price shown; inquiry required</td></tr>
+    </table>
+    <p>Products also carry an availability state — <code>available</code>, <code>reserved</code>, <code>incoming</code>, or <code>sold</code> — which controls whether an item can still be added to the inquiry list.</p>
+  </section>
+
+  <section id="stack">
+    <h2><span class="num">03</span> Technical stack</h2>
+    <div class="pill-grid">
+      <span class="pill">Vite 5</span>
+      <span class="pill">React 18 + TypeScript</span>
+      <span class="pill">React Router 7</span>
+      <span class="pill">Tailwind CSS 3</span>
+      <span class="pill">i18next / react-i18next</span>
+      <span class="pill">lucide-react</span>
+      <span class="pill">PHP mail endpoint</span>
+    </div>
+    <p>The frontend is a single-page app: all catalog, brand, and content data lives in static TypeScript files under <code>src/data</code> rather than a database or CMS. There is no backend for the catalog itself — the only server-side piece is a small PHP script (<code>server/mail/send.php</code>) that receives form submissions and emails them to the sales inbox.</p>
+    <p>This means updating the catalog today means editing code (guided by <code>INVENTORY_GUIDE.md</code> at the repo root), not logging into an admin panel. That trade-off is worth flagging early: it keeps the stack simple while the catalog is small, but it will not scale gracefully once someone other than a developer needs to manage inventory day to day.</p>
+  </section>
+
+  <section id="sitemap">
+    <h2><span class="num">04</span> Site map</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Route</th><th>Page</th><th>Role</th></tr>
+      <tr><td><code>/</code></td><td>Home</td><td>Hero, trust features, featured products, category entry points</td></tr>
+      <tr><td><code>/search</code></td><td>Search</td><td>Site-wide search across products and content</td></tr>
+      <tr><td><code>/equipment</code></td><td>Catalog</td><td>Full catalog with filters</td></tr>
+      <tr><td><code>/equipment/:category</code></td><td>Category</td><td>Category + subcategory browsing</td></tr>
+      <tr><td><code>/equipment/:category/:product</code></td><td>Product detail</td><td>Specs, gallery, documents, add to inquiry</td></tr>
+      <tr><td><code>/brands</code></td><td>Brands</td><td>Manufacturer index</td></tr>
+      <tr><td><code>/deals</code></td><td>Deals / Available Now</td><td>Current stock highlighted for quick action</td></tr>
+      <tr><td><code>/technical-library</code></td><td>Technical Library</td><td>Manuals, spec sheets, reference documents</td></tr>
+      <tr><td><code>/inquiry-list</code></td><td>Inquiry List</td><td>The buyer's running request (quote cart)</td></tr>
+      <tr><td><code>/request-quote</code></td><td>Request Quote</td><td>Submits the inquiry list as one lead</td></tr>
+      <tr><td><code>/how-it-works</code></td><td>How It Works</td><td>Explains the inquiry-only process</td></tr>
+      <tr><td><code>/financing-contracts</code></td><td>Financing &amp; Contracts</td><td>Offline commercial handling explained</td></tr>
+      <tr><td><code>/delivery-inspection</code></td><td>Delivery &amp; Inspection</td><td>Logistics and inspection expectations</td></tr>
+      <tr><td><code>/services/institutions-cleaning</code></td><td>Institution Cleaning</td><td>Adjacent service line, not equipment sales</td></tr>
+      <tr><td><code>/about</code>, <code>/faq</code>, <code>/contact</code></td><td>Company pages</td><td>Standard supporting content</td></tr>
+      <tr><td><code>/privacy</code>, <code>/terms</code></td><td>Legal</td><td>Standard supporting content</td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section id="catalog">
+    <h2><span class="num">05</span> Catalog structure</h2>
+    <p>The catalog is organized as <strong>category &rarr; subcategory &rarr; product type &rarr; product</strong>, defined in <code>src/data/categories.ts</code>. Ten top-level categories currently exist:</p>
+    <div class="cat-grid">
+      <div class="cat-card"><div class="name">Heavy Equipment</div><div class="slug">heavy-equipment</div></div>
+      <div class="cat-card"><div class="name">Lifting &amp; Access</div><div class="slug">lifting-access</div></div>
+      <div class="cat-card"><div class="name">Trucks &amp; Transport</div><div class="slug">trucks-transport</div></div>
+      <div class="cat-card"><div class="name">Site Power &amp; Support</div><div class="slug">site-power-support</div></div>
+      <div class="cat-card"><div class="name">Tools &amp; Workshop</div><div class="slug">tools-workshop</div></div>
+      <div class="cat-card"><div class="name">Electrical &amp; Lighting</div><div class="slug">electrical-lighting</div></div>
+      <div class="cat-card"><div class="name">Plumbing &amp; Hydraulic</div><div class="slug">plumbing-hydraulic</div></div>
+      <div class="cat-card"><div class="name">Building Materials &amp; Chemicals</div><div class="slug">building-materials-chemicals</div></div>
+      <div class="cat-card"><div class="name">Attachments &amp; Spare Parts</div><div class="slug">attachments-spare-parts</div></div>
+      <div class="cat-card"><div class="name">Safety &amp; Workwear</div><div class="slug">safety-workwear</div></div>
+    </div>
+    <p>Below those sit subcategories such as tracked excavators, mini excavators, telehandlers, dump trucks, lowbed trailers, diesel generators, power tools, and hand-safety items — around 40 subcategory slugs in total today.</p>
+    <p>Brand coverage (<code>src/data/brands.ts</code>) spans major equipment and tool manufacturers: Atlas Copco, Bomag, Bosch Professional, Caterpillar, DeWalt, Epiroc, Faymonville, Fischer, Fluke, Honda, JCB, Knauf, Kubota, Mercedes-Benz, Perkins, RIDGID, Schneider Electric, and Volvo.</p>
+    <div class="callout gold">
+      <span class="label">Reality check</span>
+      <p>The taxonomy is built out for a large catalog, but the live product count is currently small (around 20 products). The structure is ready to scale; the inventory behind it is not yet filled in.</p>
+    </div>
+  </section>
+
+  <section id="data">
+    <h2><span class="num">06</span> Data architecture</h2>
+    <p>Everything content-related lives under <code>src/data</code> as typed TypeScript, so there is a single source of truth per concept and the compiler catches mistakes before they reach production:</p>
+    <table>
+      <tr><th>File</th><th>Holds</th></tr>
+      <tr><td><code>products.ts</code></td><td>Every product: specs, pricing, images, documents, inspection notes, tags</td></tr>
+      <tr><td><code>categories.ts</code></td><td>Category &rarr; subcategory &rarr; product-type taxonomy</td></tr>
+      <tr><td><code>brands.ts</code></td><td>Brand definitions used for filtering and the brand index page</td></tr>
+      <tr><td><code>productTemplate.ts</code></td><td>Copy-paste starting point for a new product</td></tr>
+      <tr><td><code>site.ts</code></td><td>Company profile, trust features, homepage stats, how-it-works steps</td></tr>
+      <tr><td><code>navigation.ts</code></td><td>Header/footer navigation and mega-menu link groups</td></tr>
+      <tr><td><code>contact.ts</code></td><td>Sales contacts (currently empty — see status below)</td></tr>
+      <tr><td><code>faq.ts</code>, <code>technicalLibrary.ts</code></td><td>FAQ entries and technical library documents</td></tr>
+      <tr><td><code>imageAttributions.ts</code></td><td>Sourcing/licensing metadata for stock imagery in use</td></tr>
+    </table>
+    <p><code>INVENTORY_GUIDE.md</code> at the repo root is the working manual for adding products, categories, and brands without touching the surrounding page logic — that is the right first stop for day-to-day catalog edits.</p>
+  </section>
+
+  <section id="forms">
+    <h2><span class="num">07</span> Inquiry &amp; email pipeline</h2>
+    <p>Two forms carry every lead:</p>
+    <ul>
+      <li><strong>Contact form</strong> (<code>/contact</code>) — general inquiries: name, company, contact details, inquiry type, timeline, message.</li>
+      <li><strong>Request Quote form</strong> (<code>/request-quote</code>) — everything the contact form has, plus company role, VAT number, delivery preference, and the full product list pulled from the Inquiry List (quantities, notes, pricing, SKUs, product URLs).</li>
+    </ul>
+    <p>Submissions post to a PHP endpoint (<code>server/mail/send.php</code>) which validates the payload, checks a honeypot field and submission timing for spam, then sends the email via SMTP with the visitor's address set only as <code>Reply-To</code> — never as the sending address. Local development uses Mailpit/MailHog as an SMTP catcher; production needs real SMTP credentials configured in a git-ignored <code>server/mail/config.local.php</code>, which must never be committed. Full setup and test steps are documented in <code>docs/email-system.md</code>.</p>
+  </section>
+
+  <section id="i18n">
+    <h2><span class="num">08</span> Localization</h2>
+    <p>The site is bilingual, Albanian and English, via <code>i18next</code>. Albanian (<code>sq</code>) is the default and fallback language; the visitor's choice is remembered in <code>localStorage</code>. Locale strings live in <code>src/i18n/locales/en.ts</code> and <code>sq.ts</code>, with a separate <code>catalogLocale.ts</code> helper that overlays translated copy onto the base English data in <code>src/data</code>. An <code>npm run audit:i18n</code> script checks for missing keys or English text leaking into the Albanian experience.</p>
+  </section>
+
+  <section id="status">
+    <h2><span class="num">09</span> Current status</h2>
+    <p>Two internal audits already sit in the repo root and are worth reading in full before major work: <code>PROJECT_COMPLETION_TODOS.md</code> (a launch-readiness checklist) and <code>redesign-plan.md</code> (a visual/structural redesign brief toward a lighter, Rafin navy/gold industrial-marketplace look). Their headline findings:</p>
+    <table>
+      <tr><th>Check</th><th>Result</th></tr>
+      <tr><td><code>npm run lint</code></td><td><span class="tag done">passes</span></td></tr>
+      <tr><td><code>npm run typecheck</code></td><td><span class="tag done">passes</span></td></tr>
+      <tr><td><code>npm run audit:i18n</code></td><td><span class="tag done">passes</span></td></tr>
+      <tr><td><code>npm run check:images</code></td><td><span class="tag open">fails</span> — script crashes importing data modules</td></tr>
+      <tr><td>Production build (<code>vite build</code>)</td><td><span class="tag done">passes</span>, with a bundle-size warning</td></tr>
+    </table>
+    <p>Open blockers called out most consistently across both documents:</p>
+    <ul>
+      <li>The lead-generation forms are not fully turnkey: they depend on a manually configured <code>VITE_MAIL_ENDPOINT</code> and PHP backend, with English-only runtime/server messages.</li>
+      <li>Real business contact data is missing — <code>src/data/contact.ts</code> currently has no sales contacts filled in.</li>
+      <li>Dark/light theme work is present but not fully integrated or QA'd.</li>
+      <li>The visual design is still the earlier dark, brochure-style presentation; <code>redesign-plan.md</code> proposes moving to a lighter, denser, ecommerce-style catalog with Rafin navy/gold branding.</li>
+      <li>Some content is still placeholder or illustrative rather than production-ready.</li>
+    </ul>
+  </section>
+
+  <section id="next">
+    <h2><span class="num">10</span> Where to go from here</h2>
+    <p>This document is meant to stay accurate as a baseline, not to be the final word. Three natural next conversations:</p>
+    <ol>
+      <li><strong>Content completion</strong> — fill in real sales contacts, finish translating any remaining English strings, and grow the catalog toward the scale the taxonomy already supports.</li>
+      <li><strong>Visual direction</strong> — decide whether to execute the redesign plan as written, adjust it, or shelve it.</li>
+      <li><strong>Operational readiness</strong> — get the mail pipeline running against a real mailbox, fix the image audit script, and work through the launch checklist in <code>PROJECT_COMPLETION_TODOS.md</code>.</li>
+    </ol>
+  </section>
+
+  <footer class="doc-foot">
+    Based on a direct read of the General/General Trading repository (routes, data files, docs, and the two internal audit documents in the repo root). Treat figures like product/brand counts as a snapshot at the time this was written, not a live count.
+  </footer>
+</div>
