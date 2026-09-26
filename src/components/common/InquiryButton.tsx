@@ -42,7 +42,7 @@ export function InquiryButton({
           : t('common.status.soldReference')
         : compact
           ? added
-            ? t('layout.header.inquiryList')
+            ? <span className="sr-only">{t('layout.header.inquiryList')}</span>
             : t('common.actions.add')
           : added
             ? t('layout.header.inquiryList')

@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { DataPlateCell, DataPlateKey, DataPlateVariant } from '../../utils/dataPlate';
 
@@ -22,15 +23,22 @@ export function DataPlate({ cells, variant }: { cells: DataPlateCell[]; variant:
     <dl
       className={[
         'grid overflow-hidden rounded border-b border-r border-border',
-        variant === 'detail' ? 'grid-cols-2 md:grid-cols-3' : '',
+        variant === 'detail'
+          ? 'grid-cols-2 md:grid-cols-3'
+          : 'grid-cols-[repeat(var(--plate-cols-sm),minmax(0,1fr))] md:grid-cols-[repeat(var(--plate-cols),minmax(0,1fr))]',
       ].join(' ')}
-      style={variant === 'card' ? { gridTemplateColumns: `repeat(${cells.length}, minmax(0, 1fr))` } : undefined}
+      style={
+        variant === 'card'
+          ? ({ '--plate-cols': cells.length, '--plate-cols-sm': Math.min(cells.length, 2) } as CSSProperties)
+          : undefined
+      }
     >
-      {cells.map((cell) => (
+      {cells.map((cell, index) => (
         <div
           className={[
             'min-w-0 border-l border-t border-border bg-surface-subtle',
             variant === 'card' ? 'px-2 py-1.5' : 'px-3 py-2.5',
+            variant === 'card' && index >= 2 ? 'hidden md:block' : '',
           ].join(' ')}
           key={cell.key}
         >
