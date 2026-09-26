@@ -48,18 +48,15 @@ export function ImageWithFallback({
           src={src}
         />
       ) : (
-        <div className="technical-grid flex h-full min-h-[220px] w-full items-end bg-surface-subtle p-5">
-          <div className="border border-border bg-surface-card/95 px-4 py-4 text-text shadow-card">
-            <div className="flex items-center gap-3">
-              <ImageOff className="h-5 w-5 text-brand-gold" />
-              <span className="text-sm font-semibold text-navy">
-                {t('layout.header.logoAlt')}
-              </span>
-            </div>
-            <p className="mt-3 max-w-xs text-sm leading-6 text-text-muted">
-              {t('pages.productDetail.imageFallback')}
-            </p>
-          </div>
+        <div
+          aria-label={alt}
+          className="technical-grid flex h-full min-h-[6rem] w-full flex-col items-center justify-center gap-2 bg-surface-subtle p-3 text-center"
+          role="img"
+        >
+          <ImageOff aria-hidden="true" className="h-6 w-6 shrink-0 text-text-muted" />
+          <p className="line-clamp-2 max-w-[16rem] text-[0.75rem] leading-snug text-text-muted">
+            {t('pages.productDetail.imageFallback')}
+          </p>
         </div>
       )}
     </div>

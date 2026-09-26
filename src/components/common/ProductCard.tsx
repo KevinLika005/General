@@ -1,14 +1,13 @@
-import { ArrowUpRight, Gauge, MapPin, Package, Tag, Timer, Truck } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import type { Product } from '../../data/catalog';
-import {
-  getProductAvailabilityLabel,
-  getTaxonomyLabelsForProduct,
-} from '../../utils/catalog';
+import { useLanguage } from '../../hooks/useLanguage';
+import { getProductAvailabilityLabel } from '../../utils/catalog';
+import { getDataPlateCells } from '../../utils/dataPlate';
 import { formatProductPrice } from '../../utils/formatPrice';
 import { routes } from '../../utils/routes';
 import { Badge } from './Badge';
-import { Button } from './Button';
+import { DataPlate } from './DataPlate';
 import { ImageWithFallback } from './ImageWithFallback';
 import { InquiryButton } from './InquiryButton';
 
@@ -26,30 +25,6 @@ function getAvailabilityTone(availability: Product['availability']) {
   }
 }
 
-function getCardSpecs(product: Product, t: ReturnType<typeof useTranslation>['t']) {
-  if (product.mileageKm !== undefined) {
-    return {
-      primary: t('common.status.year', { value: product.year }),
-      secondary: `${product.mileageKm} km`,
-      tertiary: product.capacity ?? product.transmission ?? t('common.status.commercialDetailsOnRequest'),
-    };
-  }
-
-  if (product.operatingHours !== undefined) {
-    return {
-      primary: t('common.status.year', { value: product.year }),
-      secondary: `${product.operatingHours} h`,
-      tertiary: product.capacity ?? product.weight ?? product.enginePower ?? t('common.status.commercialDetailsOnRequest'),
-    };
-  }
-
-  return {
-    primary: t('common.status.year', { value: product.year }),
-    secondary: product.unitOfMeasure ? t('common.status.unit', { value: product.unitOfMeasure }) : t('common.status.warehouseItem'),
-    tertiary: product.capacity ?? product.weight ?? product.enginePower ?? t('common.status.commercialDetailsOnRequest'),
-  };
-}
-
 export function ProductCard({
   layout = 'grid',
   product,
@@ -58,133 +33,55 @@ export function ProductCard({
   layout?: 'grid' | 'list';
 }) {
   const { t } = useTranslation();
-  const specs = getCardSpecs(product, t);
+  const { language } = useLanguage();
   const isList = layout === 'list';
-  const taxonomy = getTaxonomyLabelsForProduct(product);
+  const isSold = product.availability === 'sold';
+  const cells = getDataPlateCells(product, 'card', language);
 
   return (
     <article
       className={[
-        'group w-full overflow-hidden border bg-surface-card shadow-card transition duration-150 hover:border-primary hover:shadow-hover',
-        isList ? '' : 'mx-auto max-w-[22rem] self-start',
-        product.availability === 'sold'
-          ? 'border-status-sold/30'
-          : product.availability === 'reserved'
-            ? 'border-primary/30'
-            : 'border-border',
+        'group relative flex h-full overflow-hidden rounded-md border border-border bg-surface-card transition-shadow duration-150 hover:shadow-hover focus-within:shadow-hover',
+        isList ? 'flex-row' : 'flex-row md:flex-col',
       ].join(' ')}
     >
-      <div
-        className={isList ? 'md:grid md:grid-cols-[clamp(14rem,24vw,18rem)_minmax(0,1fr)]' : ''}
-      >
-        <div className="relative">
-          <ImageWithFallback
-            alt={product.title}
-            aspectRatio="wide"
-            className="rounded-none border-x-0 border-t-0"
-            imageClassName="transition duration-300 group-hover:scale-[1.02]"
-            src={product.images[0]?.src}
-          />
-          <div className="absolute left-2 top-2 flex flex-wrap gap-1.5">
-            <Badge tone={getAvailabilityTone(product.availability)}>
-              {getProductAvailabilityLabel(product.availability)}
-            </Badge>
-            <Badge tone={product.condition === 'new' ? 'blue' : 'slate'}>
-              {t(`common.status.${product.condition}`)}
-            </Badge>
-            {product.deal ? <Badge tone="primary">{t('common.status.deal')}</Badge> : null}
-          </div>
-          {product.availability === 'sold' ? (
-            <div className="absolute inset-x-0 bottom-0 bg-status-sold/95 px-3 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.06em] text-white">
-              {t('common.status.soldBanner')}
-            </div>
-          ) : product.availability === 'reserved' ? (
-            <div className="absolute inset-x-0 bottom-0 bg-surface-dark/94 px-3 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.06em] text-white">
-              {t('common.status.reservedBanner')}
-            </div>
-          ) : null}
+      <div className={['relative shrink-0 self-start', isList ? 'w-[40%] md:w-64' : 'w-[40%] md:w-full'].join(' ')}>
+        <ImageWithFallback
+          alt={product.images[0]?.alt ?? product.title}
+          aspectRatio="video"
+          className="border-0"
+          src={product.images[0]?.src}
+        />
+        <div className="absolute left-2 top-2 flex flex-wrap gap-1">
+          <Badge tone={getAvailabilityTone(product.availability)}>
+            {getProductAvailabilityLabel(product.availability)}
+          </Badge>
+          {product.deal && !isSold ? <Badge tone="primary">{t('common.status.deal')}</Badge> : null}
         </div>
-        <div className="p-3">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <p className="line-label">
-                {taxonomy.productTypeTitle} | {product.sku}
-              </p>
-              <h3 className="mt-1.5 line-clamp-2 text-[1rem] leading-tight text-brand-navy md:text-[1.08rem]">
-                {product.title}
-              </h3>
-              <p className="mt-1 text-[0.78rem] text-text-muted md:text-sm">
-                {product.brand} / {product.model} / {taxonomy.subcategoryTitle}
-              </p>
-            </div>
-            <p className="max-w-[8rem] text-right text-[0.82rem] font-bold text-navy md:text-sm">
-              {formatProductPrice(product)}
-            </p>
-          </div>
+      </div>
 
-          <div
-            className={[
-              'mt-3 grid gap-2',
-              isList ? 'sm:grid-cols-2 xl:grid-cols-4' : 'md:grid-cols-2',
-            ].join(' ')}
+      <div className="flex min-w-0 flex-1 flex-col gap-2 p-3">
+        <p className="truncate text-[0.8125rem] text-text-muted">
+          {product.brand} {product.model}
+        </p>
+        <h3 className="line-clamp-2 font-sans text-[0.9375rem] font-semibold leading-snug text-navy">
+          <Link
+            className="after:absolute after:inset-0 after:content-['']"
+            to={routes.product(product.categorySlug, product.slug)}
           >
-            <div className="flex items-center gap-2 text-xs text-text-muted">
-              <Truck className="h-3.5 w-3.5 text-primary" />
-              <span>{specs.primary}</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs text-text-muted">
-              <MapPin className="h-3.5 w-3.5 text-primary" />
-              <span>{product.location}</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs text-text-muted">
-              {product.mileageKm !== undefined ? (
-                <Truck className="h-3.5 w-3.5 text-primary" />
-              ) : product.operatingHours !== undefined ? (
-                <Timer className="h-3.5 w-3.5 text-primary" />
-              ) : (
-                <Package className="h-3.5 w-3.5 text-primary" />
-              )}
-              <span>{specs.secondary}</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs text-text-muted">
-              <Gauge className="h-3.5 w-3.5 text-primary" />
-              <span>{specs.tertiary}</span>
-            </div>
-          </div>
-
-          <div className="mt-3 flex flex-wrap gap-1.5">
-            {[taxonomy.categoryTitle, ...product.tags].slice(0, 2).map((tag) => (
-              <span
-                className="inline-flex items-center gap-1 border border-border bg-surface-subtle px-2 py-1 text-[0.7rem] text-text-muted"
-                key={tag}
-              >
-                <Tag className="h-3 w-3" />
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          <div
-            className={[
-              'mt-4 grid gap-2',
-              isList ? 'sm:grid-cols-2 xl:max-w-[24rem]' : 'md:grid-cols-2',
-            ].join(' ')}
-          >
-            <InquiryButton
-              disabled={product.availability === 'sold'}
-              fullWidth
-              productId={product.id}
-            />
-            <Button
-              className="w-full"
-              size="xs"
-              to={routes.product(product.categorySlug, product.slug)}
-              variant="secondary"
-            >
-              {t('common.actions.viewDetails')}
-              <ArrowUpRight className="h-4 w-4" />
-            </Button>
-          </div>
+            {product.title}
+          </Link>
+        </h3>
+        <DataPlate cells={cells} variant="card" />
+        <div className="mt-auto flex items-center justify-between gap-2 pt-1">
+          <p className="min-w-0 text-[0.9375rem] font-semibold leading-tight tabular-nums text-navy">
+            {formatProductPrice(product)}
+          </p>
+          {isSold ? (
+            <span className="text-[0.8125rem] font-medium text-status-sold">{t('common.status.sold')}</span>
+          ) : (
+            <InquiryButton className="relative z-10 shrink-0" compact productId={product.id} />
+          )}
         </div>
       </div>
     </article>
