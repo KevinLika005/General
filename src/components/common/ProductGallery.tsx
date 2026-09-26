@@ -19,27 +19,27 @@ export function ProductGallery({ images, title }: ProductGalleryProps) {
   const activeImage = images[activeImageIndex] ?? images[0];
 
   return (
-    <div className="mx-auto max-w-[52rem] 3xl:max-w-none">
+    <div className="w-full">
       <ImageWithFallback
         alt={activeImage?.alt ?? title}
-        aspectRatio="wide"
-        className="min-h-[320px] rounded-none 3xl:min-h-[360px]"
+        aspectRatio="video"
+        className="rounded-lg"
         loading="eager"
         src={activeImage?.src}
       />
-      <div className="mt-4 grid gap-3 sm:grid-cols-3">
+      <div className="mt-3 grid grid-cols-4 gap-2">
         {images.map((image, index) => (
           <button
             aria-label={t('common.accessibility.viewProductImage', { index: index + 1, count: images.length })}
             className={[
-              'overflow-hidden rounded-none border transition',
-              index === activeImageIndex ? 'border-brand-gold shadow-card' : 'border-border',
+              'overflow-hidden rounded border-2 transition-colors',
+              index === activeImageIndex ? 'border-primary' : 'border-transparent hover:border-border',
             ].join(' ')}
             key={image.src}
             onClick={() => setActiveImageIndex(index)}
             type="button"
           >
-            <ImageWithFallback alt={image.alt} aspectRatio="wide" className="rounded-none" src={image.src} />
+            <ImageWithFallback alt={image.alt} aspectRatio="video" className="border-0" src={image.src} />
           </button>
         ))}
       </div>

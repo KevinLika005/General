@@ -293,11 +293,11 @@
 
   .spec-table th,
   .spec-table td {
-    @apply border-b border-border px-3 py-3 text-sm;
+    @apply border-b border-border px-4 py-2.5 text-sm;
   }
 
   .spec-table th {
-    @apply bg-surface-subtle text-left font-semibold text-navy;
+    @apply bg-surface-subtle text-left font-medium text-navy;
   }
 
   .hero-band {
