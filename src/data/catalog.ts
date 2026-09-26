@@ -13,7 +13,7 @@ import {
   siteMetadata,
   getTrustFeatures as getLocalizedTrustFeatures,
 } from './site';
-import type { Brand, Product } from './types';
+import type { Brand } from './types';
 
 export * from './types';
 export {
@@ -91,12 +91,6 @@ export function getBrands(): Brand[] {
     .filter((brand) => brand.productCount > 0);
 }
 
-export function getAvailableNowProducts() {
-  return getProducts().filter(
-    (product) => product.availability === 'available' || product.availability === 'incoming',
-  );
-}
-
 export function getFeaturedProducts() {
   return getProducts().filter(
     (product) => product.featured && product.availability !== 'sold',
@@ -106,11 +100,5 @@ export function getFeaturedProducts() {
 export function getDealProducts() {
   return getProducts().filter(
     (product) => product.deal && product.availability !== 'sold',
-  );
-}
-
-export function getNewestProducts(): Product[] {
-  return [...getProducts()].sort((first, second) =>
-    second.createdAt.localeCompare(first.createdAt),
   );
 }

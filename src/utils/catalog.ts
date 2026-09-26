@@ -1,5 +1,4 @@
 import {
-  getBrands,
   getCategories,
   getFaqItems,
   legacyCategoryAliases,
@@ -12,7 +11,6 @@ import {
   type ProductAvailability,
 } from '../data/catalog';
 import i18n from '../i18n/config';
-import { formatProductPrice } from './formatPrice';
 
 function normalizeValue(value: string) {
   return value
@@ -120,11 +118,6 @@ export function resolveTaxonomySelection({
   };
 }
 
-export function getProductBySlug(productSlug: string) {
-  const products = getProducts();
-  return products.find((product) => product.slug === productSlug);
-}
-
 export function getProductBySlugs(categorySlug: string, productSlug: string) {
   const products = getProducts();
   const resolvedCategorySlug = resolveCategorySlug(categorySlug);
@@ -214,33 +207,6 @@ export function getProductsByCategory(categorySlug: string) {
   return products.filter((product) => product.categorySlug === resolvedCategorySlug);
 }
 
-export function getProductsByBrand(brandQuery: string) {
-  const brands = getBrands();
-  const products = getProducts();
-  const normalized = normalizeValue(brandQuery);
-
-  if (!normalized) {
-    return [];
-  }
-
-  const brand = brands.find(
-    (candidate) =>
-      candidate.slug.toLowerCase() === normalized ||
-      normalizeValue(candidate.name) === normalized,
-  );
-
-  if (!brand) {
-    return [];
-  }
-
-  return products.filter((product) => product.brand === brand.name);
-}
-
-export function getBrandBySlug(brandSlug: string) {
-  const brands = getBrands();
-  return brands.find((brand) => brand.slug === normalizeValue(brandSlug));
-}
-
 export function getFeaturedProducts(limit?: number) {
   const products = getProducts();
   const items = products.filter(
@@ -257,34 +223,6 @@ export function getDealProducts(limit?: number) {
   );
 
   return typeof limit === 'number' ? items.slice(0, limit) : items;
-}
-
-export function getAvailableProducts(limit?: number) {
-  const products = getProducts();
-  const items = products.filter(
-    (product) =>
-      product.availability === 'available' || product.availability === 'incoming',
-  );
-
-  return typeof limit === 'number' ? items.slice(0, limit) : items;
-}
-
-export function getAllProductTypes(categorySlug?: string, subcategorySlug?: string) {
-  const categories = getCategories();
-  const category = categorySlug ? getCategoryBySlug(categorySlug) : undefined;
-  const subcategory = category && subcategorySlug
-    ? getSubcategoryBySlug(category.slug, subcategorySlug)
-    : undefined;
-
-  if (subcategory) {
-    return subcategory.productTypes;
-  }
-
-  if (category) {
-    return category.subcategories.flatMap((item) => item.productTypes);
-  }
-
-  return categories.flatMap((item) => item.subcategories.flatMap((subcategoryItem) => subcategoryItem.productTypes));
 }
 
 export function getSimilarProducts(product: Product, limit = 3) {
@@ -333,10 +271,6 @@ export function getAdjacentProductsInCategory(categorySlug: string, productId: s
         ? categoryProducts[index + 1]
         : undefined,
   };
-}
-
-export function getProductPriceLabel(product: Pick<Product, 'priceMode' | 'price' | 'priceCurrency'>) {
-  return formatProductPrice(product);
 }
 
 export function getProductAvailabilityLabel(availability: ProductAvailability) {

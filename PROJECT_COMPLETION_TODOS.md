@@ -98,8 +98,7 @@ Do not invent any of this data.
 
 ## Post-launch (not blocking)
 
-- Redesign per `redesign-plan.md` (that plan predates the current implementation; re-check before executing).
-- Duplicate logo asset: `src/general-logo.png` is unused (`src/assets/general-logo.png` is canonical).
+- Visual redesign done on `feature/visual-redesign` (spec: `docs/superpowers/specs/2026-09-26-visual-redesign-design.md`).
 - Favicon references `/src/assets/general-logo-tab.png` from `index.html` (works in Vite; move to `public/` if preferred).
 - Brand cards use initials instead of logos.
 - Filter placeholder examples (`FilterSidebar.tsx`).

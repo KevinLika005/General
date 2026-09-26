@@ -1,10 +1,7 @@
 export const en = {
   common: {
     language: {
-      en: 'EN',
-      sq: 'SQ',
       switcher: 'Language selector',
-      current: 'Current language: English',
       toggle: 'Switch language',
     },
     theme: {
@@ -26,7 +23,6 @@ export const en = {
       continueBrowsing: 'Continue Browsing',
       add: 'Add',
       addToInquiry: 'Add to Inquiry',
-      clear: 'Clear',
       clearAll: 'Clear all',
       clearFilters: 'Clear Filters',
       clearInquiryList: 'Clear Inquiry List',
@@ -37,7 +33,6 @@ export const en = {
       contactSales: 'Contact Sales',
       contactSupport: 'Contact Support',
       goHome: 'Go Home',
-      viewDetails: 'View Details',
       viewAvailableNow: 'View Available Now',
       resetCategoryFilters: 'Reset Category Filters',
       startB2BRequest: 'Start a B2B Request',
@@ -47,7 +42,6 @@ export const en = {
       sending: 'Sending...',
       getAlerts: 'Get alerts',
       reviewInquiryList: 'Review Inquiry List',
-      requestInfo: 'Request information',
     },
     labels: {
       home: 'Home',
@@ -95,14 +89,11 @@ export const en = {
       businessHours: 'Business Hours',
       address: 'Address',
       salesPhone: 'Sales Phone',
-      selectedProducts: 'Selected products',
-      technicalData: 'Technical data',
       productNotesForInquiry: 'Product notes for this inquiry',
       documentRequest: 'Document request',
       searchDocumentGroups: 'Search document groups',
       technicalSpecifications: 'Technical specifications',
       technicalLibrary: 'Technical Library',
-      inquiryAction: 'Inquiry action',
     },
     status: {
       availableNow: 'Available now',
@@ -169,7 +160,6 @@ export const en = {
       skipToMain: 'Skip to main content',
       openInquirySummary: 'Open inquiry list summary',
       closeInquirySummary: 'Close inquiry summary',
-      inquirySummary: 'Inquiry summary',
       searchCatalog: 'Search catalog',
       searchSite: 'Search products, categories, services, solutions, and pages',
       openMobileNavigation: 'Open mobile navigation',
@@ -305,83 +295,32 @@ export const en = {
     home: {
       quickSearches: ['Tracked Excavators', 'Diesel Generators', 'Telehandlers', 'Hydraulic Breakers'],
       hero: {
-        eyebrow: 'GENERAL TRADING',
         title: 'Machinery supply for contractors, fleets, and procurement teams',
-        description:
-          'Use the homepage to enter the right category, review current stock, and move quickly into quote, inspection, or document follow-up.',
-        searchLabel: 'Search products, categories, services, solutions, or pages',
         searchPlaceholder: 'Search by product, category, service, solution, brand, model, or page',
-        searchNote:
-          'Start typing to jump directly to matching products, categories, service pages, solutions, or important site pages.',
-        trustPoints: [
-          'Inquiry-first commercial flow with no checkout or auto-purchase language.',
-          'Inspection, delivery, and document support handled directly with the sales team.',
-          'Focused navigation for machinery, transport, and job-site supply.',
-        ],
-        panelEyebrow: 'Priority product paths',
-        panelTitle: 'Start with the category that matches your project',
-        panelDescription:
-          'These routes cover the main equipment and support groups, then lead into dedicated catalog filters and product pages.',
-        supportEyebrow: 'Need stock visibility first?',
-        supportNote:
-          'Go to the available-now page when your team is buying against shorter timelines or inbound availability.',
       },
       categories: {
-        eyebrow: 'Featured categories',
         title: 'Browse the core categories first',
-        description:
-          'The homepage highlights the most important product groups, while deeper comparison stays inside the catalog.',
-      },
-      support: {
-        eyebrow: 'Process and support',
-        title: 'Keep workflow details on dedicated pages',
-        description:
-          'Use these pages for buying-process guidance, inspection planning, and technical documents without expanding the homepage.',
-        links: {
-          howItWorks: {
-            title: 'How it works',
-            description:
-              'See the path from shortlist and inquiry to inspection, quote discussion, and next steps.',
-          },
-          deliveryInspection: {
-            title: 'Delivery and inspection',
-            description:
-              'Review how inspection timing, delivery planning, and handover are coordinated.',
-          },
-          technicalLibrary: {
-            title: 'Technical library',
-            description:
-              'Open manuals, specification references, and document request routes in one place.',
-          },
-        },
       },
       inventory: {
-        eyebrow: 'Available now',
         title: 'See active stock at a glance',
-        description:
-          'A short preview surfaces current sourcing opportunities while the full stock view stays on its own page.',
       },
       cta: {
-        eyebrow: 'Quote and contact',
         title: 'Need pricing, inspection planning, or a specific unit?',
         description:
           'Send one focused request or contact sales directly when you already know the product or category you need.',
       },
     },
     brands: {
-      eyebrow: 'Brands',
       title: 'Browse the manufacturers represented in current stock',
       description:
         'Each brand tile leads back into the catalog filtered by manufacturer so buyers can move quickly from brand preference to specific available listings.',
       section: {
-        eyebrow: 'Manufacturers',
         title: 'Active brands in the catalog',
         description:
           'Machinery, roadwork, transport, support-equipment, and parts brands already present in the current static catalog.',
       },
     },
     about: {
-      eyebrow: 'About',
       title: 'GENERAL TRADING, built for professional equipment buying',
       description:
         'GENERAL TRADING is a commercial equipment catalog focused on trustworthy listing detail, equipment knowledge, and a clear company-to-company sales process.',
@@ -405,10 +344,6 @@ export const en = {
         'Search inventory, narrow by category or product family, and add products to your Inquiry List before requesting pricing, inspection, information, or contract follow-up.',
       searchPlaceholder:
         'Search by product, product type, brand, model, SKU, location, or technical keyword',
-      workflowNote:
-        'Inquiry-only workflow. Final pricing, inspection, delivery, and contract handling stay offline.',
-      toolbarDescription:
-        'Product-first listing view with canonical category, subcategory, and product-type filters',
       noResults: {
         title: 'No matching products',
         description:
@@ -417,7 +352,6 @@ export const en = {
       mobileFiltersLabel: 'Catalog filters',
     },
     search: {
-      eyebrow: 'Search',
       title: 'Search across products, categories, services, solutions, and pages',
       description:
         'Use the website search to jump directly into matching inventory, taxonomy pages, service pages, solution pages, and key company information.',
@@ -455,8 +389,6 @@ export const en = {
     },
     category: {
       searchWithin: 'Search within {{category}}',
-      workflowNote:
-        'Add products to your Inquiry List, then continue with quote, inspection, documentation, or contract follow-up offline.',
       clearCategoryFilters: 'Clear category filters',
       emptyCategory: {
         title: 'No live products in this category yet',
@@ -469,13 +401,11 @@ export const en = {
           'No products in this category match the current search or filter settings. Reset filters or return to the full catalog.',
       },
       faq: {
-        eyebrow: 'Category FAQ',
         title: 'Questions buyers ask about {{category}}',
         description:
           'Answers focused on this product group and how the sales team handles inspection, availability, documentation, and contract discussion.',
       },
       support: {
-        eyebrow: 'Support for this category',
         title: 'Need documents, inspection details, or a bundled request?',
         description:
           'Use the inquiry workflow for product packs, compatibility questions, delivery planning, or contract handling tied to this category.',
@@ -489,16 +419,11 @@ export const en = {
         'Focus on products suited to shorter procurement cycles. These listings still move through direct inquiry, inspection review, and offline company-to-company agreement.',
       searchPlaceholder:
         'Search current stock by product, machine, brand, model, SKU, or technical keyword',
-      note:
-        'Use this view when your team needs stock visibility before requesting pricing or inspection.',
-      toolbarDescription:
-        'Available, incoming, or deal-tagged inventory ready for direct inquiry',
       noResults: {
         title: 'No matching available stock',
         description: 'Try a broader stock status, price band, or brand to surface more current inventory.',
       },
       cta: {
-        eyebrow: 'Need confirmation?',
         title: 'Current stock still follows the same offline inquiry process',
         description:
           'If a listing looks close but not exact, use the Inquiry List or request sourcing support directly from the sales team.',
@@ -506,7 +431,6 @@ export const en = {
       mobileFiltersLabel: 'Available stock filters',
     },
     technicalLibrary: {
-      eyebrow: 'Technical library',
       title: 'Find technical references, inspection records, and support documents',
       description:
         'This page is structured as a support-first document surface for product manuals, specification sheets, inspection references, delivery records, and request-document workflows.',
@@ -518,14 +442,12 @@ export const en = {
         'The groups below show the kinds of manuals, inspection records, specification sheets, and delivery references that the sales team can prepare for a specific product, model, or SKU. They are not presented here as a direct-download archive.',
       availableOnRequest: 'Available on request for the matching product or SKU.',
       cta: {
-        eyebrow: 'Need product-specific support?',
         title: 'Request a document pack tied to a specific listing',
         description:
           'Mention the category, model, SKU, or product page in your message and the sales team can prepare the relevant manual, inspection record, specification sheet, or delivery reference.',
       },
     },
     requestQuote: {
-      eyebrow: 'Request quote',
       title: 'Send a commercial request to GENERAL TRADING',
       description:
         'Use one form for product information, quotations, inspection appointments, delivery discussion, document requests, or contract follow-up. This is an inquiry-only process, not a checkout.',
@@ -591,7 +513,6 @@ export const en = {
         visualTiles: ['Daily routines', 'Quality checks', 'Flexible scheduling'],
       },
       intro: {
-        eyebrow: 'Trusted support',
         title: 'Professional cleaning built for institutional routines',
         paragraphs: [
           'Institutional cleaning is not only about appearance. It is about creating safe, organized, and hygienic environments for employees, visitors, students, and administrative staff every day.',
@@ -604,7 +525,6 @@ export const en = {
         ],
       },
       coverage: {
-        eyebrow: 'Service coverage',
         title: 'Spaces we clean and maintain',
         description:
           'Programs are organized around the real traffic, hygiene, and usage needs of institutional environments.',
@@ -642,7 +562,6 @@ export const en = {
         ],
       },
       benefits: {
-        eyebrow: 'Why choose us',
         title: 'A reliable service model for institutional standards',
         items: [
           {
@@ -678,7 +597,6 @@ export const en = {
         ],
       },
       process: {
-        eyebrow: 'Working process',
         title: 'A straightforward path from assessment to ongoing support',
         steps: [
           {
@@ -714,7 +632,6 @@ export const en = {
         ],
       },
       served: {
-        eyebrow: 'Institutions served',
         title: 'Suitable for a wide range of professional environments',
         description:
           'GENERAL TRADING can support cleaning programs for institutions and organizations that require dependable hygiene and operational continuity.',
@@ -731,7 +648,6 @@ export const en = {
           'Our focus is structured service, reliable communication, and practical cleaning plans that can be maintained consistently over the life of the contract.',
       },
       cta: {
-        eyebrow: 'Request a quote',
         title: 'Need a cleaning plan for your institution or facility?',
         description:
           'Request a quote, site inspection, or consultation and GENERAL TRADING will help define the right institutional cleaning solution for your building and schedule.',
@@ -749,11 +665,9 @@ export const en = {
       description:
         'Use the forms on this page for product information, inspection coordination, delivery discussion, or contract handling.',
       salesContacts: {
-        eyebrow: 'Sales contacts',
         title: 'Commercial contacts by scope',
       },
       visit: {
-        eyebrow: 'Visit and inspection',
         title: 'Sales and inspection coordination',
         description:
           'Use the contact form to request office coordination, yard visits, machine inspection, or delivery planning after inquiry review.',
@@ -762,7 +676,6 @@ export const en = {
       },
     },
     inquiryList: {
-      eyebrow: 'Inquiry List',
       title: 'Build one useful request around the products your team needs',
       description:
         'This is not a checkout. Your Inquiry List helps the sales team prepare product details, pricing, inspection options, document support, delivery discussion, and contract next steps.',
@@ -774,7 +687,6 @@ export const en = {
       notesPlaceholder:
         'Example: request inspection timing, serial confirmation, compatibility checks, spare parts, or delivery discussion.',
       summary: {
-        eyebrow: 'Request summary',
         description:
           'Continue to the request form when your list reflects the machines, tools, or parts your company wants to discuss.',
       },
@@ -787,7 +699,6 @@ export const en = {
       ],
     },
     privacy: {
-      eyebrow: 'Privacy',
       title: 'Privacy notice guidance',
       description:
         'Website forms can route through a configured mail endpoint. Before production launch, the company should publish a full privacy notice covering inquiry records, contact data, retention, and follow-up handling.',
@@ -795,7 +706,6 @@ export const en = {
         'The company should confirm how inquiry data is stored, who can access it, how long it is retained, and which internal business systems receive it after a buyer submits a request.',
     },
     terms: {
-      eyebrow: 'Terms',
       title: 'Terms of use guidance',
       description:
         'Product information in this frontend build is illustrative catalog content for an inquiry-based sales process. Final commercial terms are confirmed directly with the sales team.',
@@ -809,13 +719,9 @@ export const en = {
     },
     productDetail: {
       keyFacts: {
-        brandModel: 'Brand / Model',
         condition: 'Condition',
-        availability: 'Availability',
         operatingHours: 'Operating Hours',
         mileage: 'Mileage',
-        unitOfMeasure: 'Unit of Measure',
-        usageUnit: 'Usage / Unit',
         serialStock: 'Serial / Stock',
       },
       specs: {
@@ -827,18 +733,9 @@ export const en = {
         unitOfMeasure: 'Unit of Measure',
       },
       inspectionNotesFallback: 'Inspection notes can be shared directly during the inquiry review.',
-      inspectionHighlightsEyebrow: 'Inspection highlights',
       inspectionHighlightsTitle: 'Why buyers ask about this listing',
-      inquiryActionsEyebrow: 'Inquiry actions',
       inquiryActionsNote:
         'Evaluate the product here first. Final pricing, inspection scope, documentation, negotiation, and contract terms are handled directly after inquiry.',
-      sideNotes: {
-        location: 'Inspection and pickup or delivery arrangements can be discussed for {{location}}.',
-        inquiryList:
-          'Add this item to the Inquiry List if you want one request covering several machines, tools, materials, or attachments.',
-        documents:
-          'Need manuals or reference documents? Use the Technical Library or request them through the quote form.',
-      },
       inspectionNotesTitle: 'Inspection notes',
       documentsTitle: 'Documents and support references',
       documentKinds: {
@@ -874,19 +771,14 @@ export const en = {
   layout: {
     header: {
       logoAlt: 'General Trading',
-      tagline: 'Technical equipment catalog',
-      description: 'Construction machinery, parts, support equipment, and direct B2B inquiry',
       desktopSearchPlaceholder:
         'Search products, categories, services, solutions, or pages',
       mobileSearchPlaceholder:
         'Search products, categories, services, solutions, or pages',
-      utilitySearchDescription:
-        'Product-first catalog. Search by product, SKU, model, brand, or technical keyword.',
       inquiryList: 'Inquiry List',
     },
     footer: {
       cta: {
-        eyebrow: 'Buyer support',
         title: 'Build an Inquiry List, then request a quote, document pack, or contract discussion',
         description:
           'This website is a procurement-oriented catalog. Final negotiation, inspection, documentation, delivery, and contract handling stay direct between companies.',
@@ -906,9 +798,7 @@ export const en = {
       viewAllCategory: 'View all {{category}}',
     },
     megaMenu: {
-      productsEyebrow: 'Products',
       productsTitle: 'Browse machinery, attachments, tools, parts, and support equipment',
-      featuredEyebrow: 'Featured path',
       featuredTitle: 'Available stock and inbound units',
       featuredDescription:
         'Go straight to the listings buyers usually need first: available machinery, incoming stock, and deal-tagged equipment.',
@@ -942,7 +832,6 @@ export const en = {
       },
     },
     contact: {
-      eyebrow: 'Contact sales',
       title: 'Start a direct equipment conversation',
       description:
         'Use this form for product details, quote requests, inspection planning, delivery coordination, or contract discussion.',
@@ -954,7 +843,6 @@ export const en = {
         'Your request was sent successfully.',
     },
     quote: {
-      eyebrow: 'Request quote or contract',
       title: 'Prepare one commercial request for your selected products',
       description:
         'Use one form for product information, quote requests, contract discussion, inspection planning, delivery questions, or document requests.',
@@ -983,8 +871,6 @@ export const en = {
       emailPlaceholder: 'name@company.com',
       notice:
         'Stock alerts are not wired into the mail endpoint in this build yet.',
-      success:
-        'Alert request recorded in this frontend build. Delivery and mailing integration can be connected later.',
     },
   },
   catalog: {
@@ -1003,178 +889,5 @@ export const en = {
       { slug: 'under-100000', label: 'Under EUR 100,000' },
       { slug: 'price-on-request', label: 'Price on request' },
     ],
-    navigation: {
-      primary: [
-        { label: 'Products', to: '/equipment', kind: 'products' },
-        { label: 'Solutions', to: '/how-it-works', kind: 'solutions' },
-        { label: 'Services & Support', to: '/technical-library', kind: 'support' },
-        { label: 'Deals / Available Now', to: '/deals' },
-        { label: 'Technical Library', to: '/technical-library' },
-        { label: 'Contact', to: '/contact' },
-      ],
-      solutions: [
-        {
-          title: 'How It Works',
-          description: 'Understand the inquiry-only product request process.',
-          to: '/how-it-works',
-        },
-        {
-          title: 'Financing & Contracts',
-          description: 'Review offline commercial handling and contract discussion paths.',
-          to: '/financing-contracts',
-        },
-        {
-          title: 'Delivery & Inspection',
-          description: 'See how inspection scheduling and logistics support are handled.',
-          to: '/delivery-inspection',
-        },
-      ],
-      support: [
-        {
-          title: 'Technical Library',
-          description: 'Manuals, spec sheets, inspection references, and request-document paths.',
-          to: '/technical-library',
-        },
-        {
-          title: 'FAQ',
-          description: 'Quick answers for pricing modes, inspection, documentation, and delivery.',
-          to: '/faq',
-        },
-        {
-          title: 'Contact Sales',
-          description: 'Speak directly with the sales and support team.',
-          to: '/contact',
-        },
-        {
-          title: 'Brands',
-          description: 'Jump into the catalog by manufacturer.',
-          to: '/brands',
-        },
-      ],
-      footerCompany: [
-        { label: 'About', to: '/about' },
-        { label: 'Privacy', to: '/privacy' },
-        { label: 'Terms', to: '/terms' },
-      ],
-    },
-    site: {
-      siteName: 'GENERAL TRADING',
-      ogType: 'website',
-      themeColor: '#2B2824',
-      companyProfile: {
-        name: 'GENERAL TRADING',
-        parentName: 'GENERAL',
-        shortDescription:
-          'Technical equipment catalog for construction machinery, tools, materials, transport assets, and site support handled through direct B2B inquiry.',
-        tagline:
-          'Construction equipment, tools, materials, and contract-driven supply for serious work.',
-        phone: '+355 68 204 4447',
-        secondaryPhone: '+355 68 311 1222',
-        email: '',
-        address:
-          'Tirane, Rruga "Haxhi Kika", Njesia Administrative Nr. 5, Nr. Pasurie 6/538 H1, Ap. 4',
-        locationLabel: 'Tirane, Albania',
-        hours: 'Mon - Sat, 08:00 - 18:00',
-        heroHeadline: 'Construction Machinery, Equipment & Parts for Serious Work',
-        heroSubheadline:
-          'Browse available machinery, attachments, spare parts, tools, materials, and site equipment. Request product details, pricing, inspection, or contract discussion directly with the sales team.',
-        topUtilityNote:
-          'Inquiry-commerce only. Quote, inspection, and contract follow-up handled directly.',
-        socialLinks: [],
-      },
-      trustFeatures: [
-        {
-          title: 'Commercially useful listing detail',
-          description:
-            'Listings prioritize specification highlights, condition notes, and availability context for technical buyers.',
-          icon: 'shield',
-        },
-        {
-          title: 'Company-to-company request handling',
-          description:
-            'Requests are reviewed directly with the sales team for procurement teams, contractors, and fleet operators.',
-          icon: 'building',
-        },
-        {
-          title: 'Inspection support',
-          description:
-            'Machines can be reviewed in person or prepared for scheduled inspection before commercial confirmation.',
-          icon: 'search',
-        },
-        {
-          title: 'Delivery and logistics support',
-          description:
-            'Transport planning, export handling, and local delivery terms are handled after inquiry review.',
-          icon: 'truck',
-        },
-        {
-          title: 'Documentation support',
-          description:
-            'Inspection references, serial verification, and relevant machine documents are handled through the offline sales process.',
-          icon: 'file',
-        },
-        {
-          title: 'No online payment flow',
-          description:
-            'Negotiation, contracts, approvals, and final agreement remain direct between companies and off the website.',
-          icon: 'wrench',
-        },
-      ],
-      homeStats: [
-        { label: 'Inventory records', value: '20' },
-        { label: 'Product groups', value: '10' },
-        { label: 'Active brands', value: '18' },
-        { label: 'Sales model', value: 'B2B only' },
-      ],
-      howItWorksSteps: [
-        {
-          step: '01',
-          title: 'Browse the catalog',
-          description: 'Search by machine type, brand, model, SKU, stock status, or technical keyword.',
-        },
-        {
-          step: '02',
-          title: 'Build an Inquiry List',
-          description:
-            'Collect one or multiple products and keep notes for procurement, technical review, or contract follow-up.',
-        },
-        {
-          step: '03',
-          title: 'Send one commercial request',
-          description:
-            'Ask for pricing, technical clarification, inspection scheduling, delivery planning, or contract discussion.',
-        },
-        {
-          step: '04',
-          title: 'The sales team reviews your request',
-          description:
-            'The sales team checks product availability, technical fit, documentation, and the right commercial follow-up path.',
-        },
-        {
-          step: '05',
-          title: 'Inspection and clarification follow',
-          description:
-            'Machine review, clarifications, bundled parts, and documentation discussion continue directly with the sales team.',
-        },
-        {
-          step: '06',
-          title: 'Contract terms are handled offline',
-          description:
-            'Invoices, approvals, contract wording, and payment terms are discussed company-to-company after the inquiry stage.',
-        },
-        {
-          step: '07',
-          title: 'Delivery and logistics are coordinated',
-          description:
-            'Pickup, local delivery, export planning, and handover details are discussed once the commercial basis is agreed.',
-        },
-      ],
-    },
-    brands: [],
-    categories: [],
-    faqItems: [],
-    salesContacts: [],
-    technicalLibraryGroups: [],
-    products: [],
   },
 } as const;

@@ -35,18 +35,6 @@ export function setStoredTheme(theme: Theme) {
   }
 }
 
-export function clearStoredTheme() {
-  if (typeof window === 'undefined') {
-    return;
-  }
-
-  try {
-    window.localStorage.removeItem(THEME_STORAGE_KEY);
-  } catch {
-    // Ignore storage failures so restricted browsers cannot blank the app.
-  }
-}
-
 export function getSystemTheme(): Theme {
   if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
     return DEFAULT_THEME;

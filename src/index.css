@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -55,8 +55,6 @@
     --grid-line: rgba(39, 37, 33, 0.055);
     --hero-band-start: rgba(43, 40, 36, 0.98);
     --hero-band-end: rgba(87, 83, 77, 0.98);
-    --surface-band-start: rgba(255, 255, 255, 0.6);
-    --surface-band-end: rgba(237, 231, 219, 0.58);
     --selection-bg: rgba(191, 136, 36, 0.24);
     --field-sheen: rgba(255, 255, 255, 0.55);
     --inverse-border: 255 255 255 / 0.1;
@@ -108,8 +106,6 @@
     --grid-line: rgba(242, 238, 230, 0.06);
     --hero-band-start: rgba(20, 18, 16, 0.98);
     --hero-band-end: rgba(54, 48, 43, 0.98);
-    --surface-band-start: rgba(34, 31, 28, 0.86);
-    --surface-band-end: rgba(43, 39, 35, 0.72);
     --selection-bg: rgba(214, 170, 83, 0.34);
     --field-sheen: rgba(255, 255, 255, 0.04);
     --inverse-border: 255 255 255 / 0.09;
@@ -211,13 +207,6 @@
     width: 100%;
   }
 
-  .category-grid {
-    display: grid;
-    gap: clamp(0.875rem, 0.7rem + 0.4vw, 1.25rem);
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
-    justify-items: center;
-  }
-
   .brand-grid {
     display: grid;
     gap: clamp(0.875rem, 0.7rem + 0.4vw, 1.25rem);
@@ -251,20 +240,8 @@
     @apply rounded-lg border border-border bg-surface-card;
   }
 
-  .drawer-panel {
-    @apply border border-border bg-surface-card shadow-dropdown;
-  }
-
   .chip {
     @apply inline-flex min-h-9 items-center rounded border border-border bg-surface-card px-3 py-1.5 text-[0.8125rem] font-medium text-navy transition-colors hover:border-primary;
-  }
-
-  .sticky-bar {
-    @apply border-t border-border bg-surface-card/95 backdrop-blur;
-  }
-
-  .surface-band {
-    background-image: linear-gradient(180deg, var(--surface-band-start) 0%, var(--surface-band-end) 100%);
   }
 
   .technical-grid {
@@ -272,10 +249,6 @@
       linear-gradient(var(--grid-line) 1px, transparent 1px),
       linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
     background-size: 18px 18px;
-  }
-
-  .industrial-grid {
-    @apply technical-grid;
   }
 
   .spec-table th,
@@ -291,36 +264,12 @@
     background-image: linear-gradient(135deg, var(--hero-band-start), var(--hero-band-end));
   }
 
-  .section-divider {
-    @apply border-t border-border;
-  }
-
-  .data-grid-card {
-    @apply rounded-lg border border-border bg-surface-card px-4 py-4;
-  }
-
-  .nav-shell {
-    @apply border-b border-border bg-surface-card;
-  }
-
   .inverse-soft-border {
     border-color: rgb(var(--inverse-border));
   }
 
   .inverse-soft-surface {
     background-color: rgb(var(--inverse-fill));
-  }
-
-  .inverse-soft-surface-strong {
-    background-color: rgb(var(--inverse-fill-strong));
-  }
-
-  .inverse-muted-text {
-    color: rgb(var(--inverse-text-muted));
-  }
-
-  .inverse-divider {
-    border-color: rgb(var(--inverse-border));
   }
 
   .inverse-field {

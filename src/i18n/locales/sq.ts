@@ -1,10 +1,7 @@
 export const sq = {
   common: {
     language: {
-      en: 'EN',
-      sq: 'SQ',
       switcher: 'Përzgjedhësi i gjuhës',
-      current: 'Gjuha aktuale: Shqip',
       toggle: 'Ndrysho gjuhën',
     },
     theme: {
@@ -26,7 +23,6 @@ export const sq = {
       continueBrowsing: 'Vazhdo shfletimin',
       add: 'Shto',
       addToInquiry: 'Shto në listën e kërkesave',
-      clear: 'Pastro',
       clearAll: 'Pastro të gjitha',
       clearFilters: 'Pastro filtrat',
       clearInquiryList: 'Pastro listën e kërkesave',
@@ -37,7 +33,6 @@ export const sq = {
       contactSales: 'Kontakto shitjet',
       contactSupport: 'Kontakto mbështetjen',
       goHome: 'Kthehu në krye',
-      viewDetails: 'Shiko detajet',
       viewAvailableNow: 'Shiko stokun e gatshëm',
       resetCategoryFilters: 'Rivendos filtrat e kategorisë',
       startB2BRequest: 'Nis një kërkesë B2B',
@@ -47,7 +42,6 @@ export const sq = {
       sending: 'Duke dërguar...',
       getAlerts: 'Merr njoftime',
       reviewInquiryList: 'Rishiko listën e kërkesave',
-      requestInfo: 'Kërko informacion',
     },
     labels: {
       home: 'Kreu',
@@ -95,14 +89,11 @@ export const sq = {
       businessHours: 'Orari i punës',
       address: 'Adresa',
       salesPhone: 'Telefoni i shitjeve',
-      selectedProducts: 'Produktet e zgjedhura',
-      technicalData: 'Të dhëna teknike',
       productNotesForInquiry: 'Shënime për këtë kërkesë',
       documentRequest: 'Kërkesë dokumentesh',
       searchDocumentGroups: 'Kërko grupet e dokumenteve',
       technicalSpecifications: 'Specifikime teknike',
       technicalLibrary: 'Biblioteka teknike',
-      inquiryAction: 'Veprimi i kërkesës',
     },
     status: {
       availableNow: 'I disponueshëm tani',
@@ -169,7 +160,6 @@ export const sq = {
       skipToMain: 'Kalo te përmbajtja kryesore',
       openInquirySummary: 'Hap përmbledhjen e listës së kërkesave',
       closeInquirySummary: 'Mbyll përmbledhjen e listës së kërkesave',
-      inquirySummary: 'Përmbledhja e listës së kërkesave',
       searchCatalog: 'Kërko në katalog',
       searchSite: 'Kërko produkte, kategori, shërbime, zgjidhje dhe faqe',
       openMobileNavigation: 'Hap navigimin celular',
@@ -320,7 +310,6 @@ export const sq = {
         visualTiles: ['Rutina ditore', 'Kontrolle cilësie', 'Planifikim fleksibël'],
       },
       intro: {
-        eyebrow: 'Mbështetje e besueshme',
         title: 'Pastrim profesional i ndërtuar për ritmin e institucioneve',
         paragraphs: [
           'Pastrimi institucional nuk ka të bëjë vetëm me pamjen. Ai lidhet me krijimin e mjediseve të sigurta, të rregullta dhe higjienike për stafin, vizitorët, nxënësit dhe administratën në përditshmëri.',
@@ -333,7 +322,6 @@ export const sq = {
         ],
       },
       coverage: {
-        eyebrow: 'Fusha e shërbimit',
         title: 'Ambientet që pastrojmë dhe mirëmbajmë',
         description:
           'Programet organizohen sipas qarkullimit real, nivelit të higjienës dhe përdorimit të përditshëm të ambienteve institucionale.',
@@ -371,7 +359,6 @@ export const sq = {
         ],
       },
       benefits: {
-        eyebrow: 'Pse ne',
         title: 'Një model i besueshëm shërbimi për standarde institucionale',
         items: [
           {
@@ -407,7 +394,6 @@ export const sq = {
         ],
       },
       process: {
-        eyebrow: 'Procesi i punës',
         title: 'Një rrugë e qartë nga vlerësimi te mbështetja e vazhdueshme',
         steps: [
           {
@@ -443,7 +429,6 @@ export const sq = {
         ],
       },
       served: {
-        eyebrow: 'Institucione që mbulojmë',
         title: 'I përshtatshëm për një gamë të gjerë ambientesh profesionale',
         description:
           'GENERAL TRADING mund të mbështesë programe pastrimi për institucione dhe organizata që kërkojnë higjienë, besueshmëri dhe vazhdimësi në operim.',
@@ -460,14 +445,12 @@ export const sq = {
           'Fokusi ynë është te shërbimi i strukturuar, komunikimi i besueshëm dhe planet praktike të pastrimit që mund të mbahen vazhdimisht gjatë gjithë kontratës.',
       },
       cta: {
-        eyebrow: 'Kërko ofertë',
         title: 'Ju duhet një plan pastrimi për institucionin ose objektin tuaj?',
         description:
           'Kërkoni ofertë, inspektim në objekt ose konsultim dhe GENERAL TRADING do të ndihmojë në përcaktimin e zgjidhjes së duhur të pastrimit institucional për ndërtesën dhe orarin tuaj.',
       },
     },
     search: {
-      eyebrow: 'Kërko',
       title: 'Kërko te produktet, kategoritë, shërbimet, zgjidhjet dhe faqet',
       description:
         'Përdorni kërkimin e faqes për të kaluar drejtpërdrejt te inventari përkatës, faqet e taksonomisë, faqet e shërbimeve, faqet e zgjidhjeve dhe informacioni kryesor i kompanisë.',
@@ -511,84 +494,33 @@ export const sq = {
         'Çekiçë hidraulikë',
       ],
       hero: {
-        eyebrow: 'GENERAL TRADING',
         title: 'Furnizim makinerish për kontraktorë, flota dhe ekipe prokurimi',
-        description:
-          'Përdorni faqen hyrëse për të hyrë në kategorinë e duhur, për të parë stokun aktual dhe për të kaluar shpejt te oferta, inspektimi ose dokumentacioni.',
-        searchLabel: 'Kërko produkte, kategori, shërbime, zgjidhje ose faqe',
         searchPlaceholder:
           'Kërko sipas produktit, kategorisë, shërbimit, zgjidhjes, markës, modelit ose faqes',
-        searchNote:
-          'Filloni të shkruani për të kaluar drejtpërdrejt te produktet, kategoritë, faqet e shërbimeve, zgjidhjet ose faqet kryesore të sajtit që përputhen.',
-        trustPoints: [
-          'Rrjedhë komerciale e bazuar në kërkesë, pa checkout ose blerje automatike.',
-          'Inspektimi, dorëzimi dhe mbështetja dokumentare trajtohen drejtpërdrejt me ekipin e shitjeve.',
-          'Navigim i fokusuar për makineri, transport dhe furnizim për kantier.',
-        ],
-        panelEyebrow: 'Rrugë prioritare produktesh',
-        panelTitle: 'Nisni me kategorinë që i përshtatet projektit tuaj',
-        panelDescription:
-          'Këto rrugë mbulojnë grupet kryesore të pajisjeve dhe mbështetjes, pastaj ju çojnë te filtrat e plotë të katalogut dhe faqet e produkteve.',
-        supportEyebrow: 'Ju duhet fillimisht pamje mbi stokun?',
-        supportNote:
-          'Kaloni te faqja e stokut të gatshëm kur ekipi juaj po blen me afate më të shkurtra ose sipas disponueshmërisë në ardhje.',
       },
       categories: {
-        eyebrow: 'Kategori të zgjedhura',
         title: 'Shfletoni fillimisht kategoritë kryesore',
-        description:
-          'Faqja hyrëse nxjerr në pah grupet më të rëndësishme të produkteve, ndërsa krahasimi më i thellë mbetet brenda katalogut.',
-      },
-      support: {
-        eyebrow: 'Proces dhe mbështetje',
-        title: 'Mbajini detajet e procesit në faqe të dedikuara',
-        description:
-          'Përdorni këto faqe për udhëzimin e procesit të blerjes, planifikimin e inspektimit dhe dokumentet teknike pa e zmadhuar faqen hyrëse.',
-        links: {
-          howItWorks: {
-            title: 'Si funksionon',
-            description:
-              'Shikoni rrugën nga përzgjedhja dhe kërkesa deri te inspektimi, diskutimi i ofertës dhe hapat e radhës.',
-          },
-          deliveryInspection: {
-            title: 'Dorëzimi dhe inspektimi',
-            description:
-              'Shikoni si koordinohen koha e inspektimit, planifikimi i dorëzimit dhe handover-i komercial.',
-          },
-          technicalLibrary: {
-            title: 'Biblioteka teknike',
-            description:
-              'Hapni manuale, referenca specifikimesh dhe rrugë për kërkesa dokumentesh në një vend.',
-          },
-        },
       },
       inventory: {
-        eyebrow: 'Të disponueshme tani',
         title: 'Shikoni stokun aktiv me një vështrim',
-        description:
-          'Një pamje e shkurtër nxjerr në pah mundësi aktuale furnizimi, ndërsa pamja e plotë e stokut mbetet në faqen e vet.',
       },
       cta: {
-        eyebrow: 'Ofertë dhe kontakt',
         title: 'Ju duhet çmim, planifikim inspektimi ose një njësi specifike?',
         description:
           'Dërgoni një kërkesë të fokusuar ose kontaktoni drejtpërdrejt shitjet kur e dini tashmë produktin ose kategorinë që ju duhet.',
       },
     },
     brands: {
-      eyebrow: 'Markat',
       title: 'Shfletoni prodhuesit e përfaqësuar në stokun aktual',
       description:
         'Çdo kartë marke ju kthen te katalogu i filtruar sipas prodhuesit, që blerësit të kalojnë shpejt nga preferenca e markës te listimet konkrete të disponueshme.',
       section: {
-        eyebrow: 'Prodhuesit',
         title: 'Markat aktive në katalog',
         description:
           'Marka makinerish, punimesh rrugore, transporti, pajisjesh mbështetëse dhe pjesësh tashmë të pranishme në katalogun aktual statik.',
       },
     },
     about: {
-      eyebrow: 'Rreth nesh',
       title: 'GENERAL TRADING, i ndërtuar për blerje profesionale pajisjesh',
       description:
         'GENERAL TRADING është një katalog komercial pajisjesh me fokus te detajet e besueshme të listimeve, njohuria për makineritë dhe një proces i qartë shitjeje kompani me kompani.',
@@ -611,8 +543,6 @@ export const sq = {
       description:
         'Kërkoni në inventar, ngushtoni sipas kategorisë ose familjes së produktit dhe shtoni produkte në Listën tuaj të Kërkesave para se të kërkoni çmime, inspektim, informacion ose ndjekje kontrate.',
       searchPlaceholder: 'Kërko sipas produktit, llojit të produktit, markës, modelit, SKU-së, vendndodhjes ose fjalës kyçe teknike',
-      workflowNote: 'Rrjedhë pune vetëm me kërkesë. Çmimi final, inspektimi, dorëzimi dhe trajtimi i kontratës mbeten offline.',
-      toolbarDescription: 'Pamje listimesh e orientuar nga produkti me filtra kanonikë për kategori, nënkategori dhe lloj produkti',
       noResults: {
         title: 'Nuk u gjetën produkte që përputhen',
         description: 'Asnjë produkt nuk përputhet me kombinimin aktual të kërkimit dhe filtrave. Rivendosni filtrat ose kthehuni te pamja më e gjerë e katalogut.',
@@ -621,7 +551,6 @@ export const sq = {
     },
     category: {
       searchWithin: 'Kërko brenda {{category}}',
-      workflowNote: 'Shtoni produkte në Listën tuaj të Kërkesave, pastaj vazhdoni me ofertë, inspektim, dokumentacion ose ndjekje kontrate offline.',
       clearCategoryFilters: 'Pastro filtrat e kategorisë',
       emptyCategory: {
         title: 'Nuk ka ende produkte aktive në këtë kategori',
@@ -632,12 +561,10 @@ export const sq = {
         description: 'Asnjë produkt në këtë kategori nuk përputhet me kërkimin ose filtrat aktualë. Rivendosni filtrat ose kthehuni te katalogu i plotë.',
       },
       faq: {
-        eyebrow: 'Pyetje të shpeshta të kategorisë',
         title: 'Pyetjet që bëjnë blerësit për {{category}}',
         description: 'Përgjigje të fokusuara në këtë grup produktesh dhe mënyrën se si ekipi i shitjeve trajton inspektimin, disponueshmërinë, dokumentacionin dhe diskutimin e kontratës.',
       },
       support: {
-        eyebrow: 'Mbështetje për këtë kategori',
         title: 'Ju duhen dokumente, detaje inspektimi ose një kërkesë e kombinuar?',
         description: 'Përdorni rrjedhën e kërkesës për paketa produktesh, pyetje për përputhshmërinë, planifikim dorëzimi ose trajtim kontrate të lidhur me këtë kategori.',
       },
@@ -649,21 +576,17 @@ export const sq = {
       description:
         'Përqendrohuni te produktet e përshtatshme për cikle më të shkurtra prokurimi. Këto listime kalojnë sërish përmes kërkesës së drejtpërdrejtë, rishikimit të inspektimit dhe marrëveshjes offline kompani me kompani.',
       searchPlaceholder: 'Kërko stokun aktual sipas produktit, makinerisë, markës, modelit, SKU-së ose fjalës kyçe teknike',
-      note: 'Përdoreni këtë pamje kur ekipi juaj ka nevojë për dukshmëri të stokut para se të kërkojë çmim ose inspektim.',
-      toolbarDescription: 'Inventar i disponueshëm, në ardhje ose me etiketë oferte, gati për kërkesë të drejtpërdrejtë',
       noResults: {
         title: 'Nuk u gjet stok i gatshëm që përputhet',
         description: 'Provoni një status më të gjerë stoku, diapazon çmimi ose markë për të nxjerrë më shumë inventar aktual.',
       },
       cta: {
-        eyebrow: 'Ju duhet konfirmim?',
         title: 'Stoku aktual ndjek të njëjtin proces offline të kërkesës',
         description: 'Nëse një listim duket afër por jo i saktë, përdorni Listën e Kërkesave ose kërkoni mbështetje furnizimi drejtpërdrejt nga ekipi i shitjeve.',
       },
       mobileFiltersLabel: 'Filtrat e stokut të gatshëm',
     },
     technicalLibrary: {
-      eyebrow: 'Biblioteka teknike',
       title: 'Gjeni referenca teknike, regjistra inspektimi dhe dokumente mbështetëse',
       description:
         'Kjo faqe është strukturuar si një sipërfaqe dokumentesh e orientuar nga mbështetja për manuale produktesh, fletë specifikimesh, referenca inspektimi, regjistra dorëzimi dhe rrjedha kërkesash për dokumente.',
@@ -674,14 +597,12 @@ export const sq = {
         'Grupet më poshtë tregojnë llojet e manualeve, regjistrave të inspektimit, fletëve të specifikimeve dhe referencave të dorëzimit që ekipi i shitjeve mund të përgatisë për një produkt, model ose SKU specifik. Ato nuk paraqiten këtu si arkivë me shkarkim të drejtpërdrejtë.',
       availableOnRequest: 'I disponueshëm sipas kërkesës për produktin ose SKU-në përkatëse.',
       cta: {
-        eyebrow: 'Ju duhet mbështetje specifike për produktin?',
         title: 'Kërkoni një paketë dokumentesh të lidhur me një listim specifik',
         description:
           'Përmendni kategorinë, modelin, SKU-në ose faqen e produktit në mesazhin tuaj dhe ekipi i shitjeve mund të përgatisë manualin, regjistrin e inspektimit, fletën e specifikimeve ose referencën e dorëzimit që ju nevojitet.',
       },
     },
     requestQuote: {
-      eyebrow: 'Kërko ofertë',
       title: 'Dërgoni një kërkesë komerciale te GENERAL TRADING',
       description:
         'Përdorni një formular të vetëm për informacion produkti, oferta, takime inspektimi, diskutim dorëzimi, kërkesa dokumentesh ose ndjekje kontrate. Ky është proces vetëm me kërkesë, jo checkout.',
@@ -740,11 +661,9 @@ export const sq = {
       description:
         'Përdorni formularët e kësaj faqeje për informacion produkti, koordinim inspektimi, diskutim dorëzimi ose trajtim kontrate.',
       salesContacts: {
-        eyebrow: 'Kontaktet e shitjeve',
         title: 'Kontaktet komerciale sipas fushës',
       },
       visit: {
-        eyebrow: 'Vizitë dhe inspektim',
         title: 'Koordinim për shitje dhe inspektim',
         description:
           'Përdorni formularin e kontaktit për të kërkuar koordinim zyre, vizita në oborr, inspektim makinerie ose planifikim dorëzimi pas shqyrtimit të kërkesës.',
@@ -752,7 +671,6 @@ export const sq = {
       },
     },
     inquiryList: {
-      eyebrow: 'Lista e Kërkesave',
       title: 'Ndërtoni një kërkesë të dobishme rreth produkteve që i duhen ekipit tuaj',
       description:
         'Kjo nuk është checkout. Lista juaj e Kërkesave e ndihmon ekipin e shitjeve të përgatisë detaje produkti, çmime, opsione inspektimi, mbështetje dokumentesh, diskutim dorëzimi dhe hapat e ardhshëm të kontratës.',
@@ -763,7 +681,6 @@ export const sq = {
       },
       notesPlaceholder: 'Shembull: kërkesë për kohën e inspektimit, konfirmim seriali, kontrolle përputhshmërie, pjesë këmbimi ose diskutim dorëzimi.',
       summary: {
-        eyebrow: 'Përmbledhja e kërkesës',
         description:
           'Vazhdoni te formulari i kërkesës kur lista juaj pasqyron makineritë, mjetet ose pjesët që kompania juaj dëshiron të diskutojë.',
       },
@@ -776,7 +693,6 @@ export const sq = {
       ],
     },
     privacy: {
-      eyebrow: 'Privatësia',
       title: 'Udhëzim për njoftimin e privatësisë',
       description:
         'Formularët e faqes mund të dërgohen përmes një endpoint-i emaili të konfiguruar. Para publikimit në prodhim, kompania duhet të publikojë një njoftim të plotë privatësie që mbulon regjistrat e kërkesave, të dhënat e kontaktit, ruajtjen dhe trajtimin e ndjekjes.',
@@ -784,7 +700,6 @@ export const sq = {
         'Kompania duhet të konfirmojë se si ruhen të dhënat e kërkesës, kush ka qasje, sa kohë ruhen dhe cilat sisteme të brendshme biznesi i marrin ato pasi një blerës dërgon një kërkesë.',
     },
     terms: {
-      eyebrow: 'Kushtet',
       title: 'Udhëzim për kushtet e përdorimit',
       description:
         'Informacioni i produktit në këtë build frontend është përmbajtje ilustrative katalogu për një proces shitjeje të bazuar në kërkesë. Kushtet përfundimtare komerciale konfirmohen drejtpërdrejt me ekipin e shitjeve.',
@@ -798,13 +713,9 @@ export const sq = {
     },
     productDetail: {
       keyFacts: {
-        brandModel: 'Marka / Modeli',
         condition: 'Gjendja',
-        availability: 'Disponueshmëria',
         operatingHours: 'Orët e punës',
         mileage: 'Kilometrazhi',
-        unitOfMeasure: 'Njësia matëse',
-        usageUnit: 'Përdorimi / Njësia',
         serialStock: 'Seriali / Stoku',
       },
       specs: {
@@ -816,15 +727,8 @@ export const sq = {
         unitOfMeasure: 'Njësia matëse',
       },
       inspectionNotesFallback: 'Shënimet e inspektimit mund të ndahen drejtpërdrejt gjatë shqyrtimit të kërkesës.',
-      inspectionHighlightsEyebrow: 'Pikat kryesore të inspektimit',
       inspectionHighlightsTitle: 'Pse blerësit pyesin për këtë listim',
-      inquiryActionsEyebrow: 'Veprimet e kërkesës',
       inquiryActionsNote: 'Vlerësojeni fillimisht produktin këtu. Çmimi final, fushëveprimi i inspektimit, dokumentacioni, negociatat dhe kushtet e kontratës trajtohen drejtpërdrejt pas kërkesës.',
-      sideNotes: {
-        location: 'Mund të diskutohen inspektimi dhe marrja ose organizimi i dorëzimit për {{location}}.',
-        inquiryList: 'Shtojeni këtë artikull në Listën e Kërkesave nëse dëshironi një kërkesë të vetme që mbulon disa makineri, mjete, materiale ose aksesorë.',
-        documents: 'Ju duhen manuale ose dokumente reference? Përdorni Bibliotekën Teknike ose kërkojini përmes formularit të ofertës.',
-      },
       inspectionNotesTitle: 'Shënime inspektimi',
       documentsTitle: 'Dokumente dhe referenca mbështetëse',
       documentKinds: {
@@ -858,18 +762,14 @@ export const sq = {
   layout: {
     header: {
       logoAlt: 'General Trading',
-      tagline: 'Katalog teknik pajisjesh',
-      description: 'Makineri ndërtimi, pjesë, pajisje mbështetëse dhe kërkesë e drejtpërdrejtë B2B',
       desktopSearchPlaceholder:
         'Kërko produkte, kategori, shërbime, zgjidhje ose faqe',
       mobileSearchPlaceholder:
         'Kërko produkte, kategori, shërbime, zgjidhje ose faqe',
-      utilitySearchDescription: 'Katalog i orientuar nga produkti. Kërko sipas produktit, SKU-së, modelit, markës ose fjalës kyçe teknike.',
       inquiryList: 'Lista e Kërkesave',
     },
     footer: {
       cta: {
-        eyebrow: 'Mbështetje për blerësin',
         title: 'Ndërtoni një Listë Kërkesash, pastaj kërkoni ofertë, paketë dokumentesh ose diskutim kontrate',
         description:
           'Kjo faqe është një katalog i orientuar drejt prokurimit. Negociatat përfundimtare, inspektimi, dokumentacioni, dorëzimi dhe trajtimi i kontratës mbeten të drejtpërdrejta mes kompanive.',
@@ -886,9 +786,7 @@ export const sq = {
       viewAllCategory: 'Shiko të gjitha {{category}}',
     },
     megaMenu: {
-      productsEyebrow: 'Produkte',
       productsTitle: 'Shfletoni makineri, aksesorë, mjete, pjesë dhe pajisje mbështetëse',
-      featuredEyebrow: 'Rruga e veçuar',
       featuredTitle: 'Stoku i gatshëm dhe njësitë në ardhje',
       featuredDescription: 'Kaloni drejtpërdrejt te listimet që blerësit zakonisht u nevojiten të parat: makineri të disponueshme, stok në ardhje dhe pajisje me etiketë oferte.',
       quickLinks: 'Lidhje të shpejta',
@@ -920,7 +818,6 @@ export const sq = {
       },
     },
     contact: {
-      eyebrow: 'Kontakto shitjet',
       title: 'Nisni një bisedë të drejtpërdrejtë për pajisjet',
       description: 'Përdoreni këtë formular për detaje produkti, kërkesa ofertash, planifikim inspektimi, koordinim dorëzimi ose diskutim kontrate.',
       messagePlaceholder: 'Ndani makineritë, pjesët ose mbështetjen që ju nevojitet, bashkë me detaje për inspektimin, dorëzimin ose kontratën.',
@@ -928,7 +825,6 @@ export const sq = {
       success: 'Kërkesa juaj u dërgua me sukses.',
     },
     quote: {
-      eyebrow: 'Kërko ofertë ose kontratë',
       title: 'Përgatitni një kërkesë komerciale për produktet tuaja të zgjedhura',
       description: 'Përdorni një formular të vetëm për informacion produkti, kërkesa ofertash, diskutim kontrate, planifikim inspektimi, pyetje për dorëzimin ose kërkesa dokumentesh.',
       buyerDetails: 'Detajet e blerësit dhe kompanisë',
@@ -951,7 +847,6 @@ export const sq = {
       emailPlaceholder: 'emri@kompania.com',
       notice:
         'Njoftimet e stokut nuk janë lidhur ende me endpoint-in e emailit në këtë build.',
-      success: 'Kërkesa për njoftim u regjistrua në këtë build frontend. Integrimi i dërgesave dhe emailit mund të lidhet më vonë.',
     },
   },
   catalog: {

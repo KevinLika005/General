@@ -52,8 +52,4 @@ export function getCurrentLanguage(): AppLanguage {
   return i18n.resolvedLanguage === 'en' ? 'en' : 'sq';
 }
 
-export function getLocalizedResource<T>(key: string) {
-  return i18n.t(key, { returnObjects: true }) as T;
-}
-
 export default i18n;
