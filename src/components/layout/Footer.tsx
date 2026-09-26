@@ -6,6 +6,7 @@ import companyLogo from '../../assets/general-logo.png';
 import { getCategories, getCompanyProfile } from '../../data/catalog';
 import { getFooterCompanyLinks } from '../../data/navigation';
 import { routes } from '../../utils/routes';
+import { Button } from '../common/Button';
 import { NewsletterForm } from '../forms/NewsletterForm';
 
 const socialIcons = {
@@ -27,7 +28,7 @@ function FooterGroup({
     <div className="border-t border-text-on-dark/10 pt-4 xl:border-0 xl:pt-0">
       <button
         aria-expanded={open}
-        className="flex w-full items-center justify-between text-left text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-text-on-dark xl:pointer-events-none"
+        className="flex w-full items-center justify-between text-left text-[0.9375rem] font-semibold text-text-on-dark xl:pointer-events-none"
         onClick={() => setOpen((current) => !current)}
         type="button"
       >
@@ -50,24 +51,23 @@ export function Footer() {
   return (
     <footer className="mt-16 border-t border-border-blue bg-surface-dark text-text-on-dark">
       <div className="wide-shell py-8 xl:py-12">
-        <div className="mb-8 border border-text-on-dark/10 bg-text-on-dark/5 px-5 py-5 lg:flex lg:items-center lg:justify-between">
+        <div className="mb-10 rounded-lg bg-text-on-dark/5 px-5 py-6 lg:flex lg:items-center lg:justify-between lg:px-8">
           <div>
-            <p className="kicker text-text-on-dark/80">{t('layout.footer.cta.eyebrow')}</p>
-            <h2 className="mt-2 max-w-[26ch] text-[clamp(1.4rem,1rem+0.9vw,1.85rem)] leading-[1.08] text-text-on-dark">{t('layout.footer.cta.title')}</h2>
+            <h2 className="max-w-[26ch] text-[clamp(1.4rem,1rem+0.9vw,1.85rem)] leading-[1.08] text-text-on-dark">{t('layout.footer.cta.title')}</h2>
             <p className="text-measure mt-3 text-sm text-text-on-dark/70">
               {t('layout.footer.cta.description')}
             </p>
           </div>
           <div className="mt-4 lg:mt-0">
-            <Link className="inline-flex min-h-12 items-center justify-center border border-primary bg-brand-gold-soft px-6 text-[0.82rem] font-semibold text-primary-dark transition hover:border-primary-hover hover:bg-primary hover:text-text-on-dark" to={routes.requestQuote}>
+            <Button size="lg" to={routes.requestQuote}>
               {t('common.actions.requestQuote')}
-            </Link>
+            </Button>
           </div>
         </div>
 
         <div className="grid gap-6 xl:grid-cols-[1.1fr_0.85fr_0.8fr_1fr]">
           <div>
-            <img alt={t('layout.header.logoAlt')} className="h-20 w-auto object-contain" src={companyLogo} />
+            <img alt={t('layout.header.logoAlt')} className="h-14 w-auto object-contain" src={companyLogo} />
             <p className="mt-4 max-w-md text-sm text-text-on-dark/72">{companyProfile.shortDescription}</p>
             <div className="mt-5 space-y-2 text-sm text-text-on-dark/72">
               {companyProfile.address ? (
@@ -95,7 +95,7 @@ export function Footer() {
 
                 return (
                   <a
-                    className="inline-flex h-9 w-9 items-center justify-center border border-text-on-dark/10 text-text-on-dark/72 transition hover:border-primary hover:text-text-on-dark"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded border border-text-on-dark/10 text-text-on-dark/72 transition hover:border-primary hover:text-text-on-dark"
                     href={social.href}
                     key={social.label}
                     rel="noreferrer"
@@ -130,7 +130,7 @@ export function Footer() {
           </FooterGroup>
 
           <div className="border-t border-text-on-dark/10 pt-4 xl:border-0 xl:pt-0">
-            <h3 className="text-[0.74rem] font-semibold uppercase tracking-[0.12em] text-text-on-dark">{t('layout.footer.updatesTitle')}</h3>
+            <h3 className="text-[0.9375rem] text-text-on-dark">{t('layout.footer.updatesTitle')}</h3>
             <p className="mt-3 text-sm text-text-on-dark/70">
               {t('layout.footer.updatesDescription')}
             </p>
