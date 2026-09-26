@@ -18,7 +18,6 @@ export function FAQPage() {
       <section className="page-shell">
         <SectionHeader
           description={t('pages.faq.description')}
-          eyebrow={t('pages.faq.eyebrow')}
           title={t('pages.faq.title')}
           titleAs="h1"
         />

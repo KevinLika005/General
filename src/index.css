@@ -12,11 +12,13 @@
     --shell-wide-max: 96rem;
     --shell-catalog-max: 108rem;
     --measure-readable: 68ch;
+    --header-offset: 7rem;
     /* Brand colors live here first. Update this token set for future palette changes. */
     --primary: 191 136 36;
-    --primary-hover: 168 118 28;
+    --primary-hover: 210 166 80;
     --primary-active: 140 97 20;
     --primary-dark: 112 75 15;
+    --on-primary: 39 37 33;
     --secondary: 107 115 126;
     --accent: 233 201 133;
     --neutral: 124 121 116;
@@ -32,10 +34,10 @@
     --text-on-dark: 249 246 239;
     --text-primary: 39 37 33;
     --text-muted: 101 97 90;
-    --surface-page: 244 240 233;
+    --surface-page: 242 241 238;
     --surface-card: 255 255 255;
-    --surface-subtle: 237 231 219;
-    --border-default: 211 201 186;
+    --surface-subtle: 234 231 225;
+    --border-default: 218 213 204;
     --status-available: 18 128 92;
     --status-available-bg: 236 253 243;
     --status-incoming: 181 71 8;
@@ -69,6 +71,7 @@
     --primary-hover: 228 188 104;
     --primary-active: 192 150 66;
     --primary-dark: 246 221 171;
+    --on-primary: 24 22 20;
     --secondary: 155 145 133;
     --accent: 247 211 139;
     --neutral: 148 140 129;
@@ -155,9 +158,9 @@
   h4,
   h5,
   h6 {
-    @apply font-sans text-navy;
-    line-height: 1.08;
-    letter-spacing: -0.01em;
+    @apply font-display font-semibold text-navy;
+    line-height: 1.1;
+    letter-spacing: -0.005em;
   }
 
   p {
@@ -208,19 +211,12 @@
     width: 100%;
   }
 
-  .product-grid {
-    display: grid;
-    gap: clamp(0.875rem, 0.7rem + 0.4vw, 1.25rem);
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16.75rem), 1fr));
-    justify-items: center;
-  }
-
+  .product-grid,
   .catalog-product-grid {
     display: grid;
-    gap: clamp(0.875rem, 0.7rem + 0.4vw, 1.25rem);
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15.25rem), 1fr));
-    align-items: start;
-    justify-items: center;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    align-items: stretch;
   }
 
   .category-grid {
@@ -243,33 +239,29 @@
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
   }
 
-  .kicker {
-    @apply text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-primary;
-  }
-
+  .kicker,
   .eyebrow {
-    @apply kicker;
+    @apply text-[0.8125rem] font-medium text-text-muted;
   }
 
   .line-label {
-    @apply text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-text-muted;
+    @apply text-[0.75rem] font-medium text-text-muted;
   }
 
   .field {
-    @apply mt-2 min-h-11 w-full rounded-none border border-border bg-surface-card px-3 py-2.5 text-sm text-text shadow-none placeholder:text-text-muted/70 focus:border-primary;
-    box-shadow: inset 0 1px 0 var(--field-sheen);
+    @apply mt-2 min-h-11 w-full rounded border border-border bg-surface-card px-3 py-2.5 text-sm text-text placeholder:text-text-muted/70 focus:border-primary;
   }
 
   .surface-panel {
-    @apply border border-border bg-surface-card shadow-card;
+    @apply rounded-lg border border-border bg-surface-card;
   }
 
   .subtle-panel {
-    @apply border border-border bg-surface-subtle;
+    @apply rounded-lg border border-border bg-surface-subtle;
   }
 
   .toolbar-panel {
-    @apply border border-border bg-surface-card;
+    @apply rounded-lg border border-border bg-surface-card;
   }
 
   .drawer-panel {
@@ -277,7 +269,7 @@
   }
 
   .chip {
-    @apply inline-flex min-h-10 items-center border border-border bg-surface-subtle px-3 py-2 text-[0.76rem] font-medium text-navy transition hover:border-primary hover:text-primary-dark;
+    @apply inline-flex min-h-9 items-center rounded border border-border bg-surface-card px-3 py-1.5 text-[0.8125rem] font-medium text-navy transition-colors hover:border-primary;
   }
 
   .sticky-bar {
@@ -317,7 +309,7 @@
   }
 
   .data-grid-card {
-    @apply border border-border bg-surface-card px-4 py-4;
+    @apply rounded-lg border border-border bg-surface-card px-4 py-4;
   }
 
   .nav-shell {
@@ -357,28 +349,8 @@
 
 @media (min-width: 1680px) {
   @layer components {
-    .catalog-product-grid {
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 14.5rem), 1fr));
-    }
-
-    .product-grid {
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
-    }
-
     .brand-grid {
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 12.5rem), 1fr));
-    }
-  }
-}
-
-@media (min-width: 2048px) {
-  @layer components {
-    .catalog-product-grid {
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.75rem), 1fr));
-    }
-
-    .product-grid {
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 15.5rem), 1fr));
     }
   }
 }

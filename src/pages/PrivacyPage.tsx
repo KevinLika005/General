@@ -12,7 +12,6 @@ export function PrivacyPage() {
   return (
     <section className="page-shell">
       <SectionHeader
-        eyebrow={t('pages.privacy.eyebrow')}
         title={t('pages.privacy.title')}
         titleAs="h1"
         description={t('pages.privacy.description')}

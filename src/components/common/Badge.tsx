@@ -18,7 +18,7 @@ export function Badge({ children, tone = 'slate' }: BadgeProps) {
   return (
     <span
       className={[
-        'inline-flex items-center rounded-none border px-2 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.06em]',
+        'inline-flex items-center rounded-full border px-2.5 py-0.5 text-[0.75rem] font-medium',
         tones[tone],
       ].join(' ')}
     >

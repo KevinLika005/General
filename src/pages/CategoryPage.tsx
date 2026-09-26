@@ -292,7 +292,6 @@ export function CategoryPage() {
           <div>
             <SectionHeader
               description={t('pages.category.faq.description')}
-              eyebrow={t('pages.category.faq.eyebrow')}
               title={t('pages.category.faq.title', { category: category.title.toLowerCase() })}
             />
             <div className="mt-6 grid gap-4">

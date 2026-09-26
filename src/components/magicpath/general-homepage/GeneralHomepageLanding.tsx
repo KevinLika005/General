@@ -73,7 +73,6 @@ export function GeneralHomepageLanding({
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeader
             description={t('pages.home.categories.description')}
-            eyebrow={t('pages.home.categories.eyebrow')}
             title={t('pages.home.categories.title')}
           />
           <Button to={routes.equipment} variant="secondary">
@@ -91,7 +90,6 @@ export function GeneralHomepageLanding({
       <HomepageSection className="section-band border-y border-border bg-surface-subtle/45" shellVariant="band">
         <SectionHeader
           description={t('pages.home.support.description')}
-          eyebrow={t('pages.home.support.eyebrow')}
           title={t('pages.home.support.title')}
         />
 
@@ -112,7 +110,6 @@ export function GeneralHomepageLanding({
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeader
             description={t('pages.home.inventory.description')}
-            eyebrow={t('pages.home.inventory.eyebrow')}
             title={t('pages.home.inventory.title')}
           />
           <Button to={routes.deals} variant="secondary">

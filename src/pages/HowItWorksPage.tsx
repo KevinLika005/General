@@ -18,7 +18,6 @@ export function HowItWorksPage() {
       <section className="page-shell">
         <SectionHeader
           description={t('pages.howItWorks.description')}
-          eyebrow={t('pages.howItWorks.eyebrow')}
           title={t('pages.howItWorks.title')}
           titleAs="h1"
         />

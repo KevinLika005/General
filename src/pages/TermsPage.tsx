@@ -12,7 +12,6 @@ export function TermsPage() {
   return (
     <section className="page-shell">
       <SectionHeader
-        eyebrow={t('pages.terms.eyebrow')}
         title={t('pages.terms.title')}
         titleAs="h1"
         description={t('pages.terms.description')}

@@ -18,7 +18,6 @@ export function DeliveryInspectionPage() {
       <section className="page-shell">
         <SectionHeader
           description={t('pages.deliveryInspection.description')}
-          eyebrow={t('pages.deliveryInspection.eyebrow')}
           title={t('pages.deliveryInspection.title')}
           titleAs="h1"
         />

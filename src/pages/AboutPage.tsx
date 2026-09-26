@@ -17,7 +17,6 @@ export function AboutPage() {
       <section className="page-shell">
         <SectionHeader
           description={t('pages.about.description')}
-          eyebrow={t('pages.about.eyebrow')}
           title={t('pages.about.title')}
           titleAs="h1"
         />

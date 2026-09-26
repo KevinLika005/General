@@ -30,7 +30,6 @@ export function ContactPage() {
       <section className="page-shell">
         <SectionHeader
           description={t('pages.contact.description')}
-          eyebrow={t('pages.contact.eyebrow')}
           title={t('pages.contact.title')}
           titleAs="h1"
         />

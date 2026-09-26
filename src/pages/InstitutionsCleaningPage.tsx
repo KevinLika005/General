@@ -239,7 +239,6 @@ export function InstitutionsCleaningPage() {
           <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(18rem,0.78fr)]">
             <SectionHeader
               description={t('pages.institutionsCleaning.intro.paragraphs.0')}
-              eyebrow={t('pages.institutionsCleaning.intro.eyebrow')}
               title={t('pages.institutionsCleaning.intro.title')}
             />
             <div className="surface-panel p-5 shadow-card">
@@ -263,7 +262,6 @@ export function InstitutionsCleaningPage() {
         <SectionHeader
           align="center"
           description={t('pages.institutionsCleaning.coverage.description')}
-          eyebrow={t('pages.institutionsCleaning.coverage.eyebrow')}
           title={t('pages.institutionsCleaning.coverage.title')}
         />
         <div className="support-grid mt-6">
@@ -284,7 +282,6 @@ export function InstitutionsCleaningPage() {
       <section className="wide-shell py-[clamp(2rem,3vw,3rem)]">
         <SectionHeader
           align="center"
-          eyebrow={t('pages.institutionsCleaning.benefits.eyebrow')}
           title={t('pages.institutionsCleaning.benefits.title')}
         />
         <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -329,7 +326,6 @@ export function InstitutionsCleaningPage() {
           <div>
             <SectionHeader
               description={t('pages.institutionsCleaning.served.description')}
-              eyebrow={t('pages.institutionsCleaning.served.eyebrow')}
               title={t('pages.institutionsCleaning.served.title')}
             />
             <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">

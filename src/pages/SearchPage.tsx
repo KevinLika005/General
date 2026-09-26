@@ -48,7 +48,6 @@ export function SearchPage() {
       <section className="page-shell">
         <SectionHeader
           description={t('pages.search.description')}
-          eyebrow={t('pages.search.eyebrow')}
           title={t('pages.search.title')}
           titleAs="h1"
         />

@@ -27,7 +27,6 @@ export function BrandsPage() {
       <section className="wide-shell pb-24">
         <SectionHeader
           description={t('pages.brands.section.description')}
-          eyebrow={t('pages.brands.section.eyebrow')}
           title={t('pages.brands.section.title')}
         />
         <div className="brand-grid mt-6">

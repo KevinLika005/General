@@ -62,7 +62,7 @@ export function SearchBar({
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" />
           <input
             className={[
-              'w-full rounded-none border border-border bg-surface-card pl-10 text-text shadow-none placeholder:text-text-muted/70 focus:border-primary',
+              'w-full rounded border border-border bg-surface-card pl-10 text-text shadow-none placeholder:text-text-muted/70 focus:border-primary',
               compact ? 'h-11 pr-4 text-sm' : 'h-12 min-h-[3rem] pr-4 text-sm md:text-[0.95rem]',
             ].join(' ')}
             aria-autocomplete={ariaAutocomplete}
@@ -85,7 +85,7 @@ export function SearchBar({
         {onSubmit ? (
           <button
             className={[
-              'shrink-0 rounded-none border border-primary bg-primary px-4 text-[0.8rem] font-semibold text-text-on-dark transition hover:border-primary-hover hover:bg-primary-hover',
+              'shrink-0 rounded border border-primary bg-primary px-4 text-[0.875rem] font-semibold text-on-primary transition-colors hover:border-primary-hover hover:bg-primary-hover',
               compact ? 'h-11' : 'min-h-[3rem] lg:min-w-[9rem]',
             ].join(' ')}
             type="submit"

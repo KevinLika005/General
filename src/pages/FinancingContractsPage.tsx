@@ -16,7 +16,6 @@ export function FinancingContractsPage() {
       <section className="page-shell">
         <SectionHeader
           description={t('pages.financingContracts.description')}
-          eyebrow={t('pages.financingContracts.eyebrow')}
           title={t('pages.financingContracts.title')}
           titleAs="h1"
         />

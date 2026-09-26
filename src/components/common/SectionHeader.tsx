@@ -1,5 +1,4 @@
 interface SectionHeaderProps {
-  eyebrow?: string;
   title: string;
   description?: string;
   align?: 'left' | 'center';
@@ -9,7 +8,6 @@ interface SectionHeaderProps {
 export function SectionHeader({
   align = 'left',
   description,
-  eyebrow,
   title,
   titleAs = 'h2',
 }: SectionHeaderProps) {
@@ -17,9 +15,8 @@ export function SectionHeader({
 
   return (
     <div className={align === 'center' ? 'mx-auto max-w-[min(100%,56rem)] text-center' : 'max-w-[min(100%,56rem)]'}>
-      {eyebrow ? <p className="kicker">{eyebrow}</p> : null}
-      <TitleTag className="mt-2 text-[clamp(1.65rem,1.1rem+1.3vw,2.7rem)] leading-[1.04] text-navy">{title}</TitleTag>
-      {description ? <p className="text-measure mt-2 text-sm text-text-muted md:text-[0.94rem]">{description}</p> : null}
+      <TitleTag className="text-[clamp(1.5rem,1.1rem+1.1vw,2rem)] text-navy">{title}</TitleTag>
+      {description ? <p className="text-measure mt-2 text-[0.9375rem] text-text-muted">{description}</p> : null}
     </div>
   );
 }

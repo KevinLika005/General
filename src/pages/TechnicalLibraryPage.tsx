@@ -46,7 +46,6 @@ export function TechnicalLibraryPage() {
       <section className="page-shell">
         <div className="surface-panel p-5 sm:p-6">
           <SectionHeader
-            eyebrow={t('pages.technicalLibrary.eyebrow')}
             title={t('pages.technicalLibrary.title')}
             titleAs="h1"
             description={t('pages.technicalLibrary.description')}
