@@ -102,7 +102,7 @@ Submitted fields:
 
 ## Frontend configuration
 
-Create `.env.local` in the repo root:
+Copy `.env.example` to `.env.local` in the repo root and adjust it as needed:
 
 ```env
 VITE_MAIL_ENDPOINT=http://127.0.0.1:8001/send.php
