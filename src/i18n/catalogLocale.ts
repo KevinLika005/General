@@ -272,7 +272,7 @@ export const sqCatalogLocale = {
       title: 'Elektrike & Ndriçim',
       shortDescription: 'Produkte testimi elektrik dhe mbrojtjeje qarku për kontraktorë dhe ekipe objektesh.',
       description: 'Produkte mbështetëse elektrike për instalues, ekipe mirëmbajtjeje dhe blerës prokurimi që kanë nevojë për të dhëna produkti të drejtuara nga specifikimet dhe trajtim RFQ, jo rrjedhë retail për konsumatorin.',
-      seoIntro: 'Shikoni produkte testimi elektrik dhe mbrojtjeje përmes një katalogu të strukturuar B2B me rrjedhë të përbashkët ofertash dhe materiale ilustrative lokale.',
+      seoIntro: 'Instrumente testimi elektrik dhe produkte mbrojtjeje qarku për ekipe mirëmbajtjeje, instalues dhe montues panelesh, me një kërkesë të vetme oferte për porosi të përziera.',
       subcategories: {
         'test-protection': {
           title: 'Testim & Mbrojtje',
@@ -304,7 +304,7 @@ export const sqCatalogLocale = {
       title: 'Materiale Ndërtimi & Kimikate',
       shortDescription: 'Sisteme ankorimi dhe materiale pllakash të certifikuara për fit-out dhe punime rezistente ndaj zjarrit.',
       description: 'Materiale ndërtimi dhe sisteme kimike të përzgjedhura për blerës profesionistë që kanë nevojë për informacion komercial, trajtim sipas njësisë dhe mbështetje për oferta B2B pa porosi online.',
-      seoIntro: 'Shfletoni ankora kimike dhe materiale pllakash rezistente ndaj zjarrit me të dhëna produkti sipas njësisë dhe referenca teknike ilustrative të lidhura me familjet e produkteve.',
+      seoIntro: 'Shfletoni ankora kimike dhe pllaka rezistente ndaj zjarrit me të dhëna produkti sipas njësisë dhe referenca teknike të lidhura me familjet e produkteve.',
       subcategories: {
         'fixings-boards': {
           title: 'Fiksime & Pllaka',
@@ -320,7 +320,7 @@ export const sqCatalogLocale = {
       title: 'Aksesorë & Pjesë Këmbimi',
       shortDescription: 'Aksesorë makinerish dhe komponentë mbështetës për rritje produktiviteti.',
       description: 'Për kontraktorë dhe menaxherë flote që kanë nevojë për përmirësime produktiviteti ose komponentë zëvendësues, kjo kategori mbulon aksesorë dhe furnizime të lidhura me makinerinë me trajtim të drejtpërdrejtë kërkese.',
-      seoIntro: 'Kërkoni aksesorë makinerish dhe komponentë mbështetës të flotës përmes një katalogu frontend të orientuar nga oferta dhe përputhshmëria.',
+      seoIntro: 'Kova, çekiçë hidraulikë dhe aksesorë të tjerë makinerish e pjesë këmbimi për flotën. Pyesni për përputhshmërinë me makineritë tuaja kur kërkoni ofertë.',
       subcategories: {
         'machine-attachments': {
           title: 'Aksesorë makinerish',
@@ -336,7 +336,7 @@ export const sqCatalogLocale = {
       title: 'Siguri & Veshje Pune',
       shortDescription: 'PPE dhe kategori veshjesh pune gati për zgjerim të ardhshëm të orientuar nga furnizimi.',
       description: 'Kjo kategori përfshihet si degë reale e taksonomisë edhe pse nuk ka produkte të mbjella në këtë fazë. Ajo duhet të mbështesë kërkesat për furnizim, inventarin e ardhshëm dhe vazhdimësinë e rrugëve që nga lançimi i parë.',
-      seoIntro: 'Siguria dhe veshjet e punës do të zgjerohet përmes një modeli kërkese të drejtuar nga furnizimi, me strukturën ilustrative të kategorisë tashmë të disponueshme në katalog.',
+      seoIntro: 'Pajisje sigurie dhe veshje pune për ekipet e kantierit. Pyesni ekipin e shitjeve për disponueshmërinë aktuale.',
       subcategories: {
         'site-safety': {
           title: 'Siguri kantieri',
@@ -381,45 +381,45 @@ export const sqCatalogLocale = {
       title: 'Manuale produktesh',
       description: 'Manuale përdorimi, udhëzime nisjeje, referenca mirëmbajtjeje dhe instruksione përdorimi të lidhura me familjet ekzistuese të produkteve.',
       items: [
-        'Vendmbajtës për manualin e funksionimit të eskavatorit me zinxhirë',
-        'Vendmbajtës për udhëzuesin e përdorimit të kompresorit portativ të ajrit',
-        'Vendmbajtës për instruksionet e përdorimit të makinës së filetimit të tubave',
+        'Manuali i funksionimit të eskavatorit me zinxhirë',
+        'Udhëzuesi i përdorimit të kompresorit portativ të ajrit',
+        'Instruksionet e përdorimit të makinës së filetimit të tubave',
       ],
     },
     'spec-sheets': {
       title: 'Fletë specifikimesh',
       description: 'Fletë të dhënash, përmbledhje modelesh, referenca përputhshmërie dhe pasqyra teknike të lidhura me familjet aktuale të produkteve.',
       items: [
-        'Vendmbajtës për përmbledhjen e modelit telehandler',
-        'Vendmbajtës për referencën e përputhshmërisë së çekiçit hidraulik',
-        'Vendmbajtës për pasqyrën teknike të pllakës rezistente ndaj zjarrit',
+        'Përmbledhja e modelit telehandler',
+        'Referenca e përputhshmërisë së çekiçit hidraulik',
+        'Pasqyra teknike e pllakës rezistente ndaj zjarrit',
       ],
     },
     inspection: {
       title: 'Dokumente inspektimi',
       description: 'Përmbledhje gjendjeje, shënime inspektimi, lista kontrolli dhe regjistra rishikimi para dorëzimit për pajisjet dhe mjetet e transportit.',
       items: [
-        'Vendmbajtës për listën e kontrollit të inspektimit të eskavatorit me zinxhirë',
-        'Vendmbajtës për përmbledhjen e gjendjes së kamionit vetëshkarkues',
-        'Vendmbajtës për regjistrin e kontrollit vizual të ngarkuesit me goma',
+        'Lista e kontrollit të inspektimit të eskavatorit me zinxhirë',
+        'Përmbledhja e gjendjes së kamionit vetëshkarkues',
+        'Regjistri i kontrollit vizual të ngarkuesit me goma',
       ],
     },
     'delivery-contract': {
       title: 'Dokumente dorëzimi dhe kontrate',
       description: 'Referenca të fushës së dorëzimit, përgatitje dorëzimi dhe kërkesa dokumentesh mbështetëse për kontrata në pajisje, vegla dhe materiale.',
       items: [
-        'Vendmbajtës për fushën e dorëzimit të rimorkios lowbed',
-        'Vendmbajtës për listën e kontrollit të dorëzimit të gjeneratorit',
-        'Vendmbajtës për kërkesën komerciale për materiale dhe konsumues',
+        'Fusha e dorëzimit të rimorkios lowbed',
+        'Lista e kontrollit të dorëzimit të gjeneratorit',
+        'Skica e kërkesës komerciale për materiale dhe konsumues',
       ],
     },
     safety: {
       title: 'Dokumente sigurie dhe përdorimi',
       description: 'Shënime sigurie, udhëzime trajtimi, masa paraprake për përdorim në kantier dhe materiale ndërgjegjësimi për operatorët të lidhura me familjet aktive të produkteve.',
       items: [
-        'Vendmbajtës për masat paraprake të përdorimit të çekiçit rrotullues',
-        'Vendmbajtës për njoftimin e trajtimit të ankorës kimike',
-        'Vendmbajtës për udhëzimin e sigurisë në kantier për pompën sipërfaqësore të ujit',
+        'Masat paraprake për përdorimin e çekiçit rrotullues',
+        'Njoftimi për trajtimin e ankorës kimike',
+        'Udhëzimi i sigurisë në kantier për pompën sipërfaqësore të ujit',
       ],
     },
   },

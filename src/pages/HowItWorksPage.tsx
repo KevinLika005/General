@@ -2,17 +2,11 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '../components/common/Button';
 import { SectionHeader } from '../components/common/SectionHeader';
 import { getHowItWorksSteps } from '../data/catalog';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 import { routes } from '../utils/routes';
 
 export function HowItWorksPage() {
   const { t } = useTranslation();
   const howItWorksSteps = getHowItWorksSteps();
-  usePageMetadata({
-    title: t('metadata.howItWorks.title'),
-    description: t('metadata.howItWorks.description'),
-  });
-
   return (
     <>
       <section className="page-shell">

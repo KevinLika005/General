@@ -1,14 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { SectionHeader } from '../components/common/SectionHeader';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 
 export function TermsPage() {
   const { t } = useTranslation();
-  usePageMetadata({
-    title: t('metadata.terms.title'),
-    description: t('metadata.terms.description'),
-  });
-
   return (
     <section className="page-shell">
       <SectionHeader

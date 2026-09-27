@@ -5,24 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f2f1ee" data-light="#f2f1ee" data-dark="#181614" />
     <link rel="icon" type="image/png" href="/src/assets/general-logo-tab.png" />
-    <title>GENERAL TRADING | Katalog teknik pajisjesh dhe kërkesa B2B</title>
-    <meta
-      name="description"
-      content="Shfletoni makineri ndërtimi, pajisje mbështetëse, aksesorë dhe pjesë përmes një katalogu teknik B2B të ndërtuar për kërkesa, oferta, inspektime dhe ndjekje kontratash."
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600&display=swap"
     />
-    <meta property="og:title" content="GENERAL TRADING | Katalog teknik pajisjesh dhe kërkesa B2B" />
-    <meta
-      property="og:description"
-      content="Shfletoni makineri ndërtimi, pajisje mbështetëse, aksesorë dhe pjesë përmes një katalogu teknik B2B të ndërtuar për kërkesa, oferta, inspektime dhe ndjekje kontratash."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="GENERAL TRADING" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="GENERAL TRADING | Katalog teknik pajisjesh dhe kërkesa B2B" />
-    <meta
-      name="twitter:description"
-      content="Shfletoni makineri ndërtimi, pajisje mbështetëse, aksesorë dhe pjesë përmes një katalogu teknik B2B të ndërtuar për kërkesa, oferta, inspektime dhe ndjekje kontratash."
-    />
+    <!-- seo:start (replaced per route by scripts/prerender.mjs; set at runtime by useRouteSeo) -->
+    <title>GENERAL TRADING</title>
+    <!-- seo:end -->
   </head>
   <body>
     <div id="root"></div>
@@ -56,33 +47,16 @@
           themeMeta.setAttribute('content', nextThemeColor);
         }
 
-        var language = window.localStorage.getItem('general-trading-language') === 'en' ? 'en' : 'sq';
-        var localized = language === 'en'
-          ? {
-              title: 'GENERAL TRADING | Technical Equipment Catalog and B2B Inquiry Requests',
-              description:
-                'Browse construction machinery, support equipment, attachments, and parts through a technical B2B catalog built for inquiry, quote, inspection, and contract follow-up.',
-            }
-          : {
-              title: 'GENERAL TRADING | Katalog teknik pajisjesh dhe kërkesa B2B',
-              description:
-                'Shfletoni makineri ndërtimi, pajisje mbështetëse, aksesorë dhe pjesë përmes një katalogu teknik B2B të ndërtuar për kërkesa, oferta, inspektime dhe ndjekje kontratash.',
-            };
-
-        document.documentElement.lang = language;
-        document.title = localized.title;
-        var mappings = [
-          ['meta[name="description"]', 'content', localized.description],
-          ['meta[property="og:title"]', 'content', localized.title],
-          ['meta[property="og:description"]', 'content', localized.description],
-          ['meta[name="twitter:title"]', 'content', localized.title],
-          ['meta[name="twitter:description"]', 'content', localized.description],
-        ];
-
-        mappings.forEach(function (entry) {
-          var element = document.querySelector(entry[0]);
-          if (element) element.setAttribute(entry[1], entry[2]);
-        });
+        try {
+          // /en/... pages exist only when English URLs are enabled; there the URL decides.
+          document.documentElement.lang =
+            /^\/en(\/|$)/.test(window.location.pathname) ||
+            window.localStorage.getItem('general-trading-language') === 'en'
+              ? 'en'
+              : 'sq';
+        } catch (error) {
+          // Keep the default lang="sq".
+        }
       })();
     </script>
     <script type="module" src="/src/main.tsx"></script>

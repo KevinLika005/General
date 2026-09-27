@@ -109,7 +109,7 @@ function buildPageDocuments() {
       description: i18n.t('pages.technicalLibrary.description'),
       href: routes.technicalLibrary,
       type: 'service',
-      keywords: technicalLibraryGroups.flatMap((group) => [group.title, group.description, ...group.items]),
+      keywords: technicalLibraryGroups.flatMap((group) => [group.title, group.description, ...group.items.map((item) => item.title)]),
     }),
     createDocument({
       id: 'page-request-quote',

@@ -1,14 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { SectionHeader } from '../components/common/SectionHeader';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 
 export function PrivacyPage() {
   const { t } = useTranslation();
-  usePageMetadata({
-    title: t('metadata.privacy.title'),
-    description: t('metadata.privacy.description'),
-  });
-
   return (
     <section className="page-shell">
       <SectionHeader

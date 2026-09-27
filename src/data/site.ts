@@ -1,15 +1,7 @@
-import type { CompanyProfile, SiteMetadata, TrustFeature } from './types';
+import type { CompanyProfile, TrustFeature } from './types';
 import { localizeCatalogValue } from '../i18n/catalogLocale';
 import { getCategories } from './categories';
 import { getProducts } from './products';
-
-export const siteMetadata: SiteMetadata = {
-  siteName: 'GENERAL TRADING',
-  title: 'GENERAL TRADING | Technical Equipment Catalog and B2B Inquiry Requests',
-  description: 'Browse construction machinery, tools, materials, transport assets, and site-support products through a technical B2B catalog built for inquiry, quote, inspection, and contract follow-up.',
-  ogType: 'website',
-  themeColor: '#2B2824',
-};
 
 const baseCompanyProfile: CompanyProfile = {
   name: 'GENERAL TRADING',
@@ -26,6 +18,16 @@ const baseCompanyProfile: CompanyProfile = {
   heroSubheadline: 'Browse available machinery, attachments, spare parts, tools, materials, and site equipment. Request product details, pricing, inspection, or contract discussion directly with the sales team.',
   topUtilityNote: 'Inquiry-commerce only. Quote, inspection, and contract follow-up handled directly.',
   socialLinks: [],
+};
+
+/*
+  LocalBusiness structured data stays off until the owner confirms all of: a real company email
+  (baseCompanyProfile.email), that the address is a visitable location, both phone numbers, and
+  the opening hours below. Then set confirmed: true.
+*/
+export const localBusiness = {
+  confirmed: false,
+  openingHours: 'Mo-Sa 08:00-18:00',
 };
 
 const baseTrustFeatures: TrustFeature[] = [

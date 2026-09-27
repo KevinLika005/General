@@ -165,11 +165,3 @@ export interface CompanyProfile {
   topUtilityNote: string;
   socialLinks: SocialLink[];
 }
-
-export interface SiteMetadata {
-  siteName: string;
-  title: string;
-  description: string;
-  ogType: 'website';
-  themeColor: string;
-}

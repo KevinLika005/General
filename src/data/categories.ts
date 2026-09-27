@@ -67,7 +67,7 @@ const baseCategories: CatalogCategory[] = [
     description: 'This category serves contractors and industrial buyers who need reach, handling stability, and compact access equipment supported through a direct inquiry workflow.',
     heroImage: '/images/categories/lifting-access-hero.webp',
     accent: 'from-stone-200/15 via-transparent to-transparent',
-    seoIntro: 'Review lifting and access products with clear reach, handling, and availability metadata before requesting quote or inspection support.',
+    seoIntro: 'Review telehandlers and lifting equipment with clear reach, handling, and availability details before requesting a quote or inspection.',
     subcategories: [
       {
         slug: 'telescopic-handling',
@@ -174,7 +174,7 @@ const baseCategories: CatalogCategory[] = [
     description: 'Electrical support products for installers, maintenance teams, and procurement buyers who need specification-led product data and RFQ handling rather than consumer retail flow.',
     heroImage: '/images/categories/electrical-lighting-hero.webp',
     accent: 'from-sky-200/25 via-transparent to-transparent',
-    seoIntro: 'Review electrical test and protection products through a structured B2B catalog with a shared quote workflow and clear product-family references.',
+    seoIntro: 'Electrical test instruments and circuit protection products for maintenance teams, installers, and panel builders, with one quote request for mixed orders.',
     subcategories: [
       {
         slug: 'test-protection',
@@ -258,7 +258,7 @@ const baseCategories: CatalogCategory[] = [
     description: 'For contractors and fleet managers who need productivity upgrades or replacement components, this category covers attachments and machine-facing supply with direct inquiry handling.',
     heroImage: '/images/categories/attachments-spare-parts-hero.webp',
     accent: 'from-amber-300/25 via-transparent to-transparent',
-    seoIntro: 'Search machine attachments and supporting fleet components through a quote-first, compatibility-aware frontend catalog.',
+    seoIntro: 'Buckets, hydraulic breakers, and other machine attachments and fleet spare parts. Ask about compatibility with your machines when you request a quote.',
     subcategories: [
       {
         slug: 'machine-attachments',
@@ -286,7 +286,7 @@ const baseCategories: CatalogCategory[] = [
     description: 'This category is included as a real taxonomy branch even though no seed products ship in this pass. It should support sourcing requests, future inventory, and route continuity from the first launch.',
     heroImage: '/images/categories/safety-workwear-hero.webp',
     accent: 'from-lime-200/20 via-transparent to-transparent',
-    seoIntro: 'Safety and workwear can expand through the same sourcing-led inquiry model already used across the catalog structure.',
+    seoIntro: 'Safety equipment and workwear for site crews. Ask the sales team about current availability.',
     subcategories: [
       {
         slug: 'site-safety',

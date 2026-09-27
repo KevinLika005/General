@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '../components/common/Button';
 import { SectionHeader } from '../components/common/SectionHeader';
 import { getTechnicalLibraryGroups } from '../data/technicalLibrary';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 import { routes } from '../utils/routes';
 
 const iconMap = {
@@ -21,11 +20,6 @@ export function TechnicalLibraryPage() {
   const [search, setSearch] = useState('');
   const [expanded, setExpanded] = useState<string | null>(technicalLibraryGroups[0]?.key ?? null);
 
-  usePageMetadata({
-    title: t('metadata.technicalLibrary.title'),
-    description: t('metadata.technicalLibrary.description'),
-  });
-
   const filteredGroups = useMemo(() => {
     const query = search.trim().toLowerCase();
 
@@ -34,7 +28,7 @@ export function TechnicalLibraryPage() {
     }
 
     return technicalLibraryGroups.filter((group) =>
-      [group.title, group.description, ...group.items]
+      [group.title, group.description, ...group.items.map((item) => item.title)]
         .join(' ')
         .toLowerCase()
         .includes(query),
@@ -81,7 +75,7 @@ export function TechnicalLibraryPage() {
       </section>
 
       <section className="wide-shell pb-24">
-        <div className="grid gap-4 3xl:grid-cols-2">
+        <div className="grid gap-4 3xl:grid-cols-2 5xl:grid-cols-3">
           {filteredGroups.map((group) => {
             const Icon = iconMap[group.key];
             const isExpanded = expanded === group.key;
@@ -117,12 +111,25 @@ export function TechnicalLibraryPage() {
                 </button>
                 <p className="text-measure mt-3 text-sm text-text-muted">{group.description}</p>
                 <div className={['mt-5 grid gap-2', isExpanded ? '' : 'hidden xl:grid'].join(' ')} id={`library-group-${group.key}`}>
-                  {group.items.map((item) => (
-                    <div className="subtle-panel px-4 py-3 text-sm text-text-muted" key={item}>
-                      <p>{item}</p>
-                      <p className="mt-1 text-xs text-text-muted">{t('pages.technicalLibrary.availableOnRequest')}</p>
-                    </div>
-                  ))}
+                  {group.items.map((item) =>
+                    item.fileUrl ? (
+                      <a
+                        className="subtle-panel block px-4 py-3 text-sm text-text-muted transition-colors hover:bg-surface-card"
+                        href={item.fileUrl}
+                        key={item.title}
+                        rel="noopener"
+                        target="_blank"
+                      >
+                        <p className="font-semibold text-navy">{item.title}</p>
+                        <p className="mt-1 text-xs text-text-muted">{t('pages.technicalLibrary.downloadPdf')}</p>
+                      </a>
+                    ) : (
+                      <div className="subtle-panel px-4 py-3 text-sm text-text-muted" key={item.title}>
+                        <p>{item.title}</p>
+                        <p className="mt-1 text-xs text-text-muted">{t('pages.technicalLibrary.availableOnRequest')}</p>
+                      </div>
+                    ),
+                  )}
                 </div>
               </article>
             );

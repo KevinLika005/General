@@ -40,7 +40,6 @@ export const sq = {
       submitRequest: 'Dërgo kërkesën',
       sendRequest: 'Dërgo kërkesën',
       sending: 'Duke dërguar...',
-      getAlerts: 'Merr njoftime',
       reviewInquiryList: 'Rishiko listën e kërkesave',
     },
     labels: {
@@ -197,24 +196,24 @@ export const sq = {
   },
   metadata: {
     home: {
-      title: 'GENERAL TRADING | Katalog teknik pajisjesh dhe kërkesa B2B',
+      title: 'Makineri dhe pajisje ndërtimi në Tiranë | GENERAL TRADING',
       description:
-        'Shfletoni makineri ndërtimi, mjete transporti dhe produkte mbështetëse përmes një homepage më të pastër B2B të fokusuar te zbulimi i kategorive, inventari aktiv dhe ndjekja direkte e ofertave.',
+        'Katalog B2B për makineri ndërtimi, mjete pune, materiale dhe pajisje kantieri në Tiranë. Kërkoni çmim, inspektim dhe dorëzim nga GENERAL TRADING.',
     },
     catalog: {
-      title: 'Katalogu | GENERAL TRADING',
+      title: 'Katalogu i makinerive, mjeteve dhe pjesëve | GENERAL TRADING',
       description:
-        'Kërkoni në katalogun GENERAL TRADING sipas kategorisë, nënkategorisë, llojit të produktit, markës, SKU-së, disponueshmërisë dhe mënyrës së çmimit në një ndërfaqe kompakte të fokusuar te kërkesat B2B.',
+        'Shfletoni makineri ndërtimi, aksesorë, pjesë këmbimi, mjete pune dhe materiale sipas kategorisë, markës ose modelit. Shtojini në një kërkesë dhe kërkoni ofertë.',
     },
     brands: {
-      title: 'Markat | GENERAL TRADING',
+      title: 'Markat e pajisjeve në katalog | GENERAL TRADING',
       description:
-        'Shfletoni prodhuesit e përfaqësuar në inventarin aktual të GENERAL TRADING dhe kaloni drejtpërdrejt te rezultatet e filtruara sipas markës.',
+        'Shfletoni prodhuesit në katalogun aktual të GENERAL TRADING dhe shikoni të gjitha produktet e listuara për secilën markë, nga makineritë e rënda te mjetet e punës.',
     },
     deals: {
-      title: 'Stoku i gatshëm dhe ofertat | GENERAL TRADING',
+      title: 'Të disponueshme tani: stok dhe oferta | GENERAL TRADING',
       description:
-        'Shikoni stokun e gatshëm me qarkullim të shpejtë, njësitë në ardhje dhe makineritë ose pjesët me etiketë oferte në një pamje kompakte të fokusuar te kërkesat.',
+        'Makineri, pjesë dhe mjete të disponueshme tani ose në ardhje, si dhe listime me ofertë. Kontrolloni gjendjen dhe specifikimet, pastaj kërkoni ofertë.',
     },
     technicalLibrary: {
       title: 'Biblioteka teknike | GENERAL TRADING',
@@ -227,14 +226,14 @@ export const sq = {
         'Rishikoni makineritë, pjesët dhe mjetet e zgjedhura përpara se të dërgoni një kërkesë të përmbledhur B2B për ofertë ose kontratë te ekipi i shitjeve.',
     },
     requestQuote: {
-      title: 'Kërko ofertë | GENERAL TRADING',
+      title: 'Kërkoni ofertë për pajisje | GENERAL TRADING',
       description:
-        'Dërgoni një kërkesë B2B për makineri, pjesë, inspektim, planifikim dorëzimi, dokumente ose diskutim kontrate. Faqja mbështet vetëm kërkesa dhe marrëveshje offline.',
+        'Dërgoni një kërkesë B2B për makineri, pjesë, mjete ose materiale: çmim, inspektim, dokumente, dorëzim ose kushte kontrate. Ekipi i shitjeve ju përgjigjet drejtpërdrejt.',
     },
     howItWorks: {
-      title: 'Si funksionon | GENERAL TRADING',
+      title: 'Si funksionojnë kërkesat për pajisje | GENERAL TRADING',
       description:
-        'Kuptoni si GENERAL TRADING menaxhon kërkesat, ndjekjen e ofertave, inspektimet, negociatat dhe marrëveshjet offline kompani me kompani.',
+        'Nga kërkimi në katalog te oferta, inspektimi, kontrata dhe dorëzimi: si i trajton GENERAL TRADING kërkesat B2B për pajisje, hap pas hapi.',
     },
     financingContracts: {
       title: 'Financimi dhe kontratat | GENERAL TRADING',
@@ -252,19 +251,19 @@ export const sq = {
         'Shërbime profesionale pastrimi për zyra, shkolla, ndërtesa administrative dhe institucione publike ose private.',
     },
     about: {
-      title: 'Rreth nesh | GENERAL TRADING',
+      title: 'Rreth GENERAL TRADING | Furnizues pajisjesh në Tiranë',
       description:
-        'Mësoni si GENERAL TRADING paraqet pajisje ndërtimi, aksesorë, mjete, materiale dhe inventar mbështetës për blerës profesionistë të kompanive.',
+        'GENERAL TRADING furnizon kompani, kontraktorë dhe operatorë flotash me makineri ndërtimi, aksesorë, mjete pune, materiale dhe pajisje kantieri nga Tirana.',
     },
     faq: {
-      title: 'Pyetje të shpeshta | GENERAL TRADING',
+      title: 'Pyetje të shpeshta për kërkesat | GENERAL TRADING',
       description:
         'Pyetje të zakonshme rreth procesit të kërkesave në GENERAL TRADING, mënyrave të çmimit, inspektimeve, dokumenteve, mbështetjes së dorëzimit dhe trajtimit të kontratave.',
     },
     contact: {
-      title: 'Kontakt | GENERAL TRADING',
+      title: 'Kontaktoni ekipin e shitjeve | GENERAL TRADING',
       description:
-        'Përdorni formularët e kontaktit dhe ofertës për detaje produktesh, planifikim inspektimi, organizim dorëzimi, pjesë këmbimi dhe diskutim kontrate.',
+        'Telefononi ose shkruani GENERAL TRADING në Tiranë për detaje produktesh, çmime, inspektim, pjesë këmbimi, dorëzim ose kontrata. E hënë–e shtunë, 08:00–18:00.',
     },
     privacy: {
       title: 'Privatësia | GENERAL TRADING',
@@ -282,13 +281,11 @@ export const sq = {
         'Faqja e kërkuar e katalogut nuk u gjet. Kthehuni në faqen kryesore ose vazhdoni shfletimin e inventarit aktiv të makinerive.',
     },
     productDetail: {
-      fallbackTitle: 'Detajet e produktit | GENERAL TRADING',
-      fallbackDescription:
-        'Shikoni specifikimet e produktit, disponueshmërinë, dokumentet dhe opsionet e kërkesës në katalogun GENERAL TRADING.',
+      title: '{{product}} | GENERAL TRADING',
+      descriptionSuffix: 'Marka: {{brand}}. Gjendja: {{condition}}. Kërkoni çmim, inspektim ose dokumente.',
     },
     category: {
-      fallbackTitle: 'Kategoria | GENERAL TRADING',
-      fallbackDescription: 'Shfletoni inventarin e makinerive sipas kategorisë në katalogun GENERAL TRADING.',
+      title: '{{category}} – katalog dhe oferta | GENERAL TRADING',
     },
   },
   pages: {
@@ -511,7 +508,7 @@ export const sq = {
       },
     },
     brands: {
-      title: 'Shfletoni prodhuesit e përfaqësuar në stokun aktual',
+      title: 'Markat',
       description:
         'Çdo kartë marke ju kthen te katalogu i filtruar sipas prodhuesit, që blerësit të kalojnë shpejt nga preferenca e markës te listimet konkrete të disponueshme.',
       section: {
@@ -539,6 +536,7 @@ export const sq = {
     },
     catalog: {
       eyebrow: 'Produkte',
+      heading: 'Katalogu i pajisjeve',
       title: 'Shfletoni makineri, materiale, mjete, pajisje mbështetëse dhe aksesorë',
       description:
         'Kërkoni në inventar, ngushtoni sipas kategorisë ose familjes së produktit dhe shtoni produkte në Listën tuaj të Kërkesave para se të kërkoni çmime, inspektim, informacion ose ndjekje kontrate.',
@@ -554,7 +552,7 @@ export const sq = {
       clearCategoryFilters: 'Pastro filtrat e kategorisë',
       emptyCategory: {
         title: 'Nuk ka ende produkte aktive në këtë kategori',
-        description: 'Kjo kategori është aktive për furnizim dhe zgjerim të ardhshëm, por ende nuk ka listime të mbjella. Përdorni rrjedhën e kërkesës për të kërkuar mbështetje për siguri, PPE ose furnizime të ngjashme.',
+        description: 'Ende nuk ka produkte të listuara në këtë kategori. Dërgoni një kërkesë dhe ekipi i shitjeve do t’ju tregojë çfarë mund të furnizojë.',
       },
       noMatches: {
         title: 'Nuk ka produkte që përputhen në këtë kategori',
@@ -572,6 +570,7 @@ export const sq = {
     },
     deals: {
       eyebrow: 'Të disponueshme tani',
+      heading: 'Pajisje të disponueshme tani',
       title: 'Stok me lëvizje të shpejtë, njësi në ardhje dhe listime me etiketë oferte',
       description:
         'Përqendrohuni te produktet e përshtatshme për cikle më të shkurtra prokurimi. Këto listime kalojnë sërish përmes kërkesës së drejtpërdrejtë, rishikimit të inspektimit dhe marrëveshjes offline kompani me kompani.',
@@ -587,7 +586,7 @@ export const sq = {
       mobileFiltersLabel: 'Filtrat e stokut të gatshëm',
     },
     technicalLibrary: {
-      title: 'Gjeni referenca teknike, regjistra inspektimi dhe dokumente mbështetëse',
+      title: 'Biblioteka teknike',
       description:
         'Kjo faqe është strukturuar si një sipërfaqe dokumentesh e orientuar nga mbështetja për manuale produktesh, fletë specifikimesh, referenca inspektimi, regjistra dorëzimi dhe rrjedha kërkesash për dokumente.',
       searchPlaceholder: 'Kërko manuale, dokumente inspektimi ose fletë specifikimesh',
@@ -595,6 +594,7 @@ export const sq = {
       requestOnlyNoticeTitle: 'Paketat e dokumenteve përgatiten sipas kërkesës',
       requestOnlyNoticeDescription:
         'Grupet më poshtë tregojnë llojet e manualeve, regjistrave të inspektimit, fletëve të specifikimeve dhe referencave të dorëzimit që ekipi i shitjeve mund të përgatisë për një produkt, model ose SKU specifik. Ato nuk paraqiten këtu si arkivë me shkarkim të drejtpërdrejtë.',
+      downloadPdf: 'Hap PDF-në',
       availableOnRequest: 'I disponueshëm sipas kërkesës për produktin ose SKU-në përkatëse.',
       cta: {
         title: 'Kërkoni një paketë dokumentesh të lidhur me një listim specifik',
@@ -603,7 +603,7 @@ export const sq = {
       },
     },
     requestQuote: {
-      title: 'Dërgoni një kërkesë komerciale te GENERAL TRADING',
+      title: 'Kërko ofertë',
       description:
         'Përdorni një formular të vetëm për informacion produkti, oferta, takime inspektimi, diskutim dorëzimi, kërkesa dokumentesh ose ndjekje kontrate. Ky është proces vetëm me kërkesë, jo checkout.',
     },
@@ -776,8 +776,6 @@ export const sq = {
       },
       products: 'Produkte',
       servicesSupport: 'Shërbime & Mbështetje',
-      updatesTitle: 'Përditësime teknike dhe stoku',
-      updatesDescription: 'Kërkoni njoftime stoku për makineri, pjesë dhe përditësime të mbështetjes së dokumenteve teknike.',
       bottomNote: 'Katalog i orientuar nga kërkesa. Ofertat, kontratat, inspektimi dhe kushtet komerciale trajtohen drejtpërdrejt me ekipin e shitjeve.',
     },
     mobileMenu: {
@@ -842,11 +840,6 @@ export const sq = {
         'Shënimet e inspektimit, dokumentacioni, fushëveprimi i dorëzimit dhe detajet e kontratës mund të sqarohen më pas drejtpërdrejt.',
         'Në këtë faqe nuk ndodh pagesë online ose marrëveshje automatike.',
       ],
-    },
-    newsletter: {
-      emailPlaceholder: 'emri@kompania.com',
-      notice:
-        'Njoftimet e stokut nuk janë lidhur ende me endpoint-in e emailit në këtë build.',
     },
   },
   catalog: {

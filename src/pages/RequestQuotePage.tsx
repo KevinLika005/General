@@ -1,16 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { RequestQuoteForm } from '../components/forms/RequestQuoteForm';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 import { useInquiryList } from '../hooks/useInquiryList';
 
 export function RequestQuotePage() {
   const { t } = useTranslation();
   const { items } = useInquiryList();
-
-  usePageMetadata({
-    title: t('metadata.requestQuote.title'),
-    description: t('metadata.requestQuote.description'),
-  });
 
   return (
     <>

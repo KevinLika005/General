@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useInquiryList } from '../../hooks/useInquiryList';
+import { useRouteSeo } from '../../seo/useRouteSeo';
 import { InquirySummary } from '../common/InquirySummary';
 import { Footer } from './Footer';
 import { Header } from './Header';
@@ -9,6 +10,7 @@ export function Layout({ children }: { children: ReactNode }) {
   const { itemCount } = useInquiryList();
   const [summaryOpen, setSummaryOpen] = useState(false);
   const location = useLocation();
+  useRouteSeo();
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;

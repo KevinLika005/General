@@ -64,9 +64,6 @@ Do not invent any of this data.
 ### [P1] Social links
 - `socialLinks` is empty. Acceptable if none exist.
 
-### [P1] Newsletter form
-- `src/components/forms/NewsletterForm.tsx` accepts an email and sends nothing; it then shows a notice that alerts are not wired.
-- Recommended for launch: remove it from the footer, or integrate a real service.
 
 ### [P1] Product document links
 - 25 product `documents` entries in `src/data/products.ts` link to `/technical-library`, which is placeholder content.
@@ -100,3 +97,30 @@ Do not invent any of this data.
 - Split large files (`Header.tsx`, `CatalogPage.tsx`, `CategoryPage.tsx`, `ProductDetailPage.tsx`, `RequestQuoteForm.tsx`) only if it simplifies work.
 - `README.md` is empty.
 - Inquiry list is localStorage-only; confirm that is acceptable.
+
+## Phase 3: SEO launch inputs (owner decision)
+
+Details and ready-made plans: `docs/seo-plan.md`. Deploy steps: `docs/deploy-hostinger.md`.
+**Send the owner `docs/owner-catalog-checklist.md`**: it covers photos, licenses, serials, prices, contacts and the domain in one pass.
+
+### [P0] Production domain
+- Owner confirms the domain and www vs non-www. Set `VITE_SITE_URL=https://<domain>` in `.env.production.local`.
+- `npm run build` refuses a missing or placeholder domain; `npm run build:local` is for local testing only.
+
+### [P1] Catalog authenticity (blocks Product structured data)
+- Confirm each listing's serial, SKU, price, stock state and photo. Example mismatch: the Bomag BW213D listing photo shows a Caterpillar roller.
+
+### [P1] LocalBusiness
+- Needs a real company email, confirmation that the address can be visited, phones, and hours. Then set `localBusiness.confirmed` in `src/data/site.ts`.
+
+### [P1] Analytics provider
+- Choose Plausible, Umami or GA4 (GA4 needs a consent banner). Events already fire via `src/utils/analytics.ts`.
+
+### [P0] Image licenses
+- 15 CC BY / BY-SA product photos require a visible credit, and the site shows none. Replace them, or add credit lines (see checklist 1.2).
+
+### [P2] Technical library
+- `noindex` until a real PDF is linked via `fileUrl` in `src/data/technicalLibrary.ts`; then indexable automatically.
+
+### [P2] English URLs
+- Built and switched off (`VITE_ENGLISH_URLS`). Activation steps: `docs/seo-plan.md` §2.

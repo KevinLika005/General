@@ -7,7 +7,6 @@ import { getCategories, getCompanyProfile } from '../../data/catalog';
 import { getFooterCompanyLinks } from '../../data/navigation';
 import { routes } from '../../utils/routes';
 import { Button } from '../common/Button';
-import { NewsletterForm } from '../forms/NewsletterForm';
 
 const socialIcons = {
   LinkedIn: Linkedin,
@@ -69,7 +68,7 @@ export function Footer() {
           </div>
         ) : null}
 
-        <div className="grid gap-6 xl:grid-cols-[1.1fr_0.85fr_0.8fr_1fr]">
+        <div className="grid gap-6 xl:grid-cols-[1.1fr_0.85fr_0.8fr]">
           <div>
             <img alt={t('layout.header.logoAlt')} className="h-14 w-auto object-contain" src={companyLogo} />
             <p className="mt-4 max-w-md text-sm text-text-on-dark/72">{companyProfile.shortDescription}</p>
@@ -132,14 +131,6 @@ export function Footer() {
               <Link to={routes.faq}>{t('pages.faq.eyebrow')}</Link>
               <Link to={routes.contact}>{t('pages.contact.eyebrow')}</Link>
           </FooterGroup>
-
-          <div className="border-t border-text-on-dark/10 pt-4 xl:border-0 xl:pt-0">
-            <h3 className="text-[0.9375rem] text-text-on-dark">{t('layout.footer.updatesTitle')}</h3>
-            <p className="mt-3 text-sm text-text-on-dark/70">
-              {t('layout.footer.updatesDescription')}
-            </p>
-            <NewsletterForm />
-          </div>
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-text-on-dark/10 pt-6 text-sm text-text-on-dark/55">

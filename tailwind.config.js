@@ -10,6 +10,10 @@ export default {
       xl: '1024px',
       '2xl': '1280px',
       '3xl': '1536px',
+      // Large desktop, 2K/QHD and ultrawide/4K tiers. Keep in sync with the shell media queries in src/index.css.
+      '4xl': '1920px',
+      '5xl': '2560px',
+      '6xl': '3200px',
       tablet: '768px',
       wide: '1280px',
     },

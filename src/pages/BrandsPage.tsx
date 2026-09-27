@@ -2,16 +2,10 @@ import { useTranslation } from 'react-i18next';
 import { BrandCard } from '../components/common/BrandCard';
 import { SectionHeader } from '../components/common/SectionHeader';
 import { getBrands } from '../data/catalog';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 
 export function BrandsPage() {
   const { t } = useTranslation();
   const brands = getBrands();
-  usePageMetadata({
-    title: t('metadata.brands.title'),
-    description: t('metadata.brands.description'),
-  });
-
   return (
     <>
       <section className="page-shell">

@@ -1,15 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '../components/common/Button';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 import { routes } from '../utils/routes';
 
 export function NotFoundPage() {
   const { t } = useTranslation();
-  usePageMetadata({
-    title: t('metadata.notFound.title'),
-    description: t('metadata.notFound.description'),
-  });
-
   return (
     <section className="page-shell text-center">
       <div className="rounded-lg border border-border bg-surface-card px-6 py-12">

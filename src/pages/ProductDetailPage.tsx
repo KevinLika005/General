@@ -13,7 +13,6 @@ import { ProductGallery } from '../components/common/ProductGallery';
 import { ProductSpecs } from '../components/common/ProductSpecs';
 import { getCompanyProfile } from '../data/catalog';
 import { useLanguage } from '../hooks/useLanguage';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 import {
   getAdjacentProductsInCategory,
   getProductAvailabilityLabel,
@@ -46,14 +45,6 @@ export function ProductDetailPage() {
       ? getAdjacentProductsInCategory(categorySlug, product.id)
       : { next: undefined, previous: undefined };
 
-  usePageMetadata({
-    title: product ? `${product.title} | GENERAL TRADING` : t('metadata.productDetail.fallbackTitle'),
-    description:
-      product?.excerpt ??
-      t('metadata.productDetail.fallbackDescription'),
-    ogType: 'product',
-  });
-
   if (!categorySlug || !productSlug || !product || !taxonomy) {
     return <NotFoundPage />;
   }
@@ -85,7 +76,7 @@ export function ProductDetailPage() {
 
   return (
     <>
-      <section className="wide-shell pt-5">
+      <section className="wide-shell 6xl:[--shell-max-width:120rem] pt-5">
         <Breadcrumbs
           items={[
             { label: t('common.labels.home'), to: routes.home },
@@ -96,7 +87,7 @@ export function ProductDetailPage() {
         />
       </section>
 
-      <section className="wide-shell pb-10 pt-4">
+      <section className="wide-shell 6xl:[--shell-max-width:120rem] pb-10 pt-4">
         <div className="grid gap-8 xl:grid-cols-12">
           <div className="xl:col-span-7">
             <ProductGallery images={product.images} title={product.title} />
@@ -137,7 +128,7 @@ export function ProductDetailPage() {
         </div>
       </section>
 
-      <section className="wide-shell pb-10">
+      <section className="wide-shell 6xl:[--shell-max-width:120rem] pb-10">
         <div className="grid gap-8 xl:grid-cols-12">
           <div className="space-y-8 xl:col-span-7">
             <div>
@@ -224,7 +215,7 @@ export function ProductDetailPage() {
         </div>
       </section>
 
-      <section className="wide-shell pb-20">
+      <section className="wide-shell 6xl:[--shell-max-width:120rem] pb-20">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           {previous ? (
             <Button to={routes.product(previous.categorySlug, previous.slug)} variant="secondary">
@@ -250,7 +241,7 @@ export function ProductDetailPage() {
         </div>
       </section>
 
-      <section className="wide-shell pb-24">
+      <section className="wide-shell 6xl:[--shell-max-width:120rem] pb-24">
         <h2 className="text-[clamp(1.5rem,1.1rem+1.1vw,2rem)]">{t('pages.productDetail.similarProductsTitle')}</h2>
         {relatedProducts.length > 0 ? (
           <div className="mt-4 grid gap-4 md:grid-cols-2 2xl:grid-cols-4">

@@ -6,6 +6,7 @@ import {
   type ReactNode,
 } from 'react';
 import type { InquiryItem } from '../data/catalog';
+import { trackEvent } from '../utils/analytics';
 
 interface InquiryContextValue {
   items: InquiryItem[];
@@ -77,6 +78,7 @@ export function InquiryProvider({ children }: { children: ReactNode }) {
       items,
       itemCount: items.reduce((total, item) => total + item.quantity, 0),
       addItem: (productId: string) => {
+        trackEvent('inquiry_add', { product_id: productId });
         setItems((currentItems) => {
           const existing = currentItems.find((item) => item.productId === productId);
 
@@ -92,6 +94,7 @@ export function InquiryProvider({ children }: { children: ReactNode }) {
         });
       },
       removeItem: (productId: string) => {
+        trackEvent('inquiry_remove', { product_id: productId });
         setItems((currentItems) =>
           currentItems.filter((item) => item.productId !== productId),
         );

@@ -13,7 +13,6 @@ import {
 import { useTranslation } from 'react-i18next';
 import { Button } from '../components/common/Button';
 import { SectionHeader } from '../components/common/SectionHeader';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 import { routes } from '../utils/routes';
 
 interface DetailItem {
@@ -135,11 +134,6 @@ function InstitutionCleaningVisual() {
 
 export function InstitutionsCleaningPage() {
   const { t } = useTranslation();
-
-  usePageMetadata({
-    title: t('metadata.institutionsCleaning.title'),
-    description: t('metadata.institutionsCleaning.description'),
-  });
 
   const heroHighlights = t('pages.institutionsCleaning.hero.highlights', {
     returnObjects: true,

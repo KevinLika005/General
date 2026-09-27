@@ -1,5 +1,7 @@
 import type { BrandDefinition } from './types';
 import { localizeCatalogValue } from '../i18n/catalogLocale';
+import { brandIntros } from './content/brandIntros';
+import { pickParagraphs } from './content/paragraphs';
 
 /*
   Brand maintenance notes
@@ -30,7 +32,16 @@ const baseBrandDefinitions: BrandDefinition[] = [
   { slug: 'volvo', name: 'Volvo', description: 'Construction equipment known for loading performance and operator comfort.', logoText: 'VOL' },
 ];
 
-export const brandDefinitions: BrandDefinition[] = baseBrandDefinitions.map((brand) => ({
-  ...brand,
-  description: localizeCatalogValue(`brands.${brand.slug}.description`, brand.description),
-}));
+export function getBrandDefinitions(): BrandDefinition[] {
+  return baseBrandDefinitions.map((brand) => {
+    const ownerIntro = pickParagraphs(brandIntros[brand.slug]);
+
+    return {
+      ...brand,
+      description:
+        ownerIntro.length > 0
+          ? ownerIntro.join(' ')
+          : localizeCatalogValue(`brands.${brand.slug}.description`, brand.description),
+    };
+  });
+}

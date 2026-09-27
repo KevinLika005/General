@@ -1,4 +1,4 @@
-import { brandDefinitions } from './brands';
+import { getBrandDefinitions } from './brands';
 import { getCategories as getLocalizedCategories, legacyCategoryAliases, legacyFilterAliases } from './categories';
 import { getSalesContacts as getLocalizedSalesContacts } from './contact';
 import { getFaqItems as getLocalizedFaqItems } from './faq';
@@ -10,19 +10,16 @@ import {
   getCompanyProfile as getLocalizedCompanyProfile,
   getHomeStats as getLocalizedHomeStats,
   getHowItWorksSteps as getLocalizedHowItWorksSteps,
-  siteMetadata,
   getTrustFeatures as getLocalizedTrustFeatures,
 } from './site';
 import type { Brand } from './types';
 
 export * from './types';
 export {
-  brandDefinitions,
   imageAttributions,
   legacyCategoryAliases,
   legacyFilterAliases,
   productTemplate,
-  siteMetadata,
 };
 
 export const sortOptions = [
@@ -83,7 +80,7 @@ export function getProducts() {
 export function getBrands(): Brand[] {
   const products = getProducts();
 
-  return brandDefinitions
+  return getBrandDefinitions()
     .map((definition) => ({
       ...definition,
       productCount: products.filter((product) => product.brand === definition.name).length,

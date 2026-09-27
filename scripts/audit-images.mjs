@@ -53,6 +53,11 @@ function toPublicFilePath(src) {
   return path.join(repoRoot, 'public', src.replace(/^\//, '').replaceAll('/', path.sep));
 }
 
+// srcset only uses thumbnails listed in src/data/imageThumbnails.json (scripts/make-thumbnails.mjs).
+function thumbnailPath(src) {
+  return src.replace(/\/([^/]+)\.webp$/, '/thumbs/$1.jpg');
+}
+
 function isRemoteUrl(src) {
   return /^https?:\/\//i.test(src);
 }
@@ -113,6 +118,14 @@ for (const category of categories) {
   }
 }
 
+const imagesWithThumbnail = JSON.parse(fs.readFileSync(path.join(repoRoot, 'src/data/imageThumbnails.json'), 'utf8'));
+
+for (const src of imagesWithThumbnail) {
+  if (!fs.existsSync(toPublicFilePath(src)) || !fs.existsSync(toPublicFilePath(thumbnailPath(src)))) {
+    failures.push(`imageThumbnails.json lists ${src}, but it or its thumbnail is missing. Run npm run images:thumbs`);
+  }
+}
+
 if (imageAttributions.length !== products.length) {
   failures.push(`Image attribution count mismatch. Expected ${products.length}, found ${imageAttributions.length}.`);
 }
@@ -126,4 +139,4 @@ if (failures.length > 0) {
 }
 
 console.log(`Audited ${products.length} products, ${categories.length} categories, and ${imageAttributions.length} attribution records.`);
-console.log('All product images are local, all referenced files exist, and all category heroes are present.');
+console.log('All product images are local, all referenced files and listed srcset thumbnails exist, and all category heroes are present.');

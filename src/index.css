@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -274,6 +272,39 @@
 
   .inverse-field::placeholder {
     color: rgb(var(--inverse-text-muted));
+  }
+}
+
+/* Large and ultrawide screens (Tailwind 4xl / 5xl / 6xl). Below 1920px nothing changes.
+   The shells widen so pages use the screen instead of a 1536px column. From 2560px the rem base
+   grows too, so type, spacing and cards keep their proportions instead of shrinking to specks.
+   Percentages keep the visitor's own browser font-size setting. */
+@media (min-width: 1920px) {
+  :root {
+    --shell-page-max: 93rem;
+    --shell-wide-max: 112rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  :root {
+    --shell-page-max: 108rem;
+    --shell-wide-max: 130rem;
+  }
+
+  html {
+    font-size: 112.5%;
+  }
+}
+
+@media (min-width: 3200px) {
+  :root {
+    --shell-page-max: 125rem;
+    --shell-wide-max: 150rem;
+  }
+
+  html {
+    font-size: 125%;
   }
 }
 

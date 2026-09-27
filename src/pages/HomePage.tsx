@@ -6,7 +6,6 @@ import {
   getHomepageCategoryPreviews,
   getHomepageStockPreviewProducts,
 } from '../data/homepage';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 import { routes } from '../utils/routes';
 
 export function HomePage() {
@@ -16,11 +15,6 @@ export function HomePage() {
   const quickSearches = t('pages.home.quickSearches', { returnObjects: true }) as string[];
   const categoryPreviews = getHomepageCategoryPreviews();
   const previewProducts = getHomepageStockPreviewProducts();
-
-  usePageMetadata({
-    title: t('metadata.home.title'),
-    description: t('metadata.home.description'),
-  });
 
   return (
     <GeneralHomepageLanding

@@ -1,16 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '../components/common/Button';
 import { SectionHeader } from '../components/common/SectionHeader';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 import { routes } from '../utils/routes';
 
 export function DeliveryInspectionPage() {
   const { t } = useTranslation();
-  usePageMetadata({
-    title: t('metadata.deliveryInspection.title'),
-    description: t('metadata.deliveryInspection.description'),
-  });
-
   const points = t('pages.deliveryInspection.points', { returnObjects: true }) as string[];
 
   return (

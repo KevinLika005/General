@@ -1,17 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { SectionHeader } from '../components/common/SectionHeader';
 import { getCompanyProfile, getTrustFeatures } from '../data/catalog';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 
 export function AboutPage() {
   const { t } = useTranslation();
   const companyProfile = getCompanyProfile();
   const trustFeatures = getTrustFeatures();
-  usePageMetadata({
-    title: t('metadata.about.title'),
-    description: t('metadata.about.description'),
-  });
-
   return (
     <>
       <section className="page-shell">

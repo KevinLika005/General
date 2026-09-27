@@ -6,7 +6,6 @@ import { EmptyState } from '../components/common/EmptyState';
 import { SectionHeader } from '../components/common/SectionHeader';
 import { SiteSearch } from '../components/search/SiteSearch';
 import { SearchResultsList } from '../components/search/SearchResultsList';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 import { getSearchTypeCounts, searchSite } from '../utils/siteSearch';
 import { normalizeText } from '../utils/filters';
 import { routes } from '../utils/routes';
@@ -24,13 +23,6 @@ export function SearchPage() {
   const normalizedQuery = useMemo(() => normalizeText(queryFromUrl), [queryFromUrl]);
   const results = normalizedQuery ? searchSite(queryFromUrl) : [];
   const typeCounts = getSearchTypeCounts(results);
-
-  usePageMetadata({
-    title: normalizedQuery
-      ? t('pages.search.metadataTitleWithQuery', { query: queryFromUrl })
-      : t('pages.search.metadataTitle'),
-    description: t('pages.search.metadataDescription'),
-  });
 
   const submitQuery = (query: string) => {
     const nextQuery = query.trim();

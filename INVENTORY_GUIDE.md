@@ -109,25 +109,29 @@ The deals page also shows current available and incoming stock. Sold products ar
 
 ## 10. How to add product images
 
-Recommended local path format:
+Path format (enforced by `npm run check:images`):
 
 ```ts
 images: [
-  { src: '/images/products/cat-320d-1.jpg', alt: 'Caterpillar 320D left side view' },
-  { src: '/images/products/cat-320d-2.jpg', alt: 'Caterpillar 320D bucket detail' },
+  { src: '/images/products/caterpillar-320d-tracked-excavator-01.webp', alt: 'Caterpillar 320D tracked excavator, left side' },
 ]
 ```
 
 Place the files in:
 
-- `public/images/products/`
+- `public/images/products/` (WebP, 1200-1440px wide)
+
+Then run `npm run images:thumbs` (macOS). It writes an 800px thumbnail in
+`public/images/products/thumbs/` (kept only when clearly smaller than the original) and updates
+`src/data/imageThumbnails.json`. Phones and product cards load it via `srcset`. Skipping this
+step is safe: the image then loads at full size.
 
 Naming guidance:
 
-- Use lowercase file names.
-- Use hyphens instead of spaces.
-- Include the machine model if possible.
+- Use `<product-slug>-01.webp` for the main image.
+- Use lowercase file names and hyphens instead of spaces.
 - Keep the first image as the main card/detail image.
+- The alt text should describe the actual unit in the photo, not a generic machine.
 
 ## 11. How to add specs
 

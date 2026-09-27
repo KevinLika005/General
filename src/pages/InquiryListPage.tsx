@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '../components/common/Button';
 import { EmptyState } from '../components/common/EmptyState';
 import { ImageWithFallback } from '../components/common/ImageWithFallback';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 import { useInquiryList } from '../hooks/useInquiryList';
 import { getProductAvailabilityLabel, getProductsByIds } from '../utils/catalog';
 import { formatProductPrice } from '../utils/formatPrice';
@@ -13,11 +12,6 @@ export function InquiryListPage() {
   const { t } = useTranslation();
   const { clearItems, items, removeItem, updateNotes, updateQuantity } = useInquiryList();
   const products = getProductsByIds(items.map((item) => item.productId));
-
-  usePageMetadata({
-    title: t('metadata.inquiryList.title'),
-    description: t('metadata.inquiryList.description'),
-  });
 
   return (
     <>

@@ -3,7 +3,6 @@ import { Clock3, Mail, MapPin, Phone } from 'lucide-react';
 import { SectionHeader } from '../components/common/SectionHeader';
 import { ContactForm } from '../components/forms/ContactForm';
 import { getCompanyProfile, getSalesContacts } from '../data/catalog';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 
 export function ContactPage() {
   const { t } = useTranslation();
@@ -20,11 +19,6 @@ export function ContactPage() {
     value: string;
     secondaryValue?: string;
   }>;
-  usePageMetadata({
-    title: t('metadata.contact.title'),
-    description: t('metadata.contact.description'),
-  });
-
   return (
     <>
       <section className="page-shell">

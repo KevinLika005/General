@@ -7,9 +7,10 @@ import { EmptyState } from '../components/common/EmptyState';
 import { CatalogResults } from '../components/common/CatalogResults';
 import { SearchBar } from '../components/common/SearchBar';
 import { SectionHeader } from '../components/common/SectionHeader';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 import { useCatalogFilters } from '../hooks/useCatalogFilters';
 import type { CatalogProductType } from '../data/catalog';
+import { categoryIntros } from '../data/content/categoryIntros';
+import { pickParagraphs } from '../data/content/paragraphs';
 import {
   getCategoryBySlug,
   getFaqsByCategory,
@@ -17,6 +18,7 @@ import {
   getSubcategoryBySlug,
   resolveTaxonomySelection,
 } from '../utils/catalog';
+import { getSrcSet } from '../utils/images';
 import { routes } from '../utils/routes';
 import { NotFoundPage } from './NotFoundPage';
 
@@ -30,6 +32,7 @@ export function CategoryPage() {
   const viewParam = searchParams.get('view') ?? '';
 
   const category = categorySlug ? getCategoryBySlug(categorySlug) : undefined;
+  const ownerIntro = category ? pickParagraphs(categoryIntros[category.slug]) : [];
   const products = categorySlug ? getProductsByCategory(categorySlug) : [];
   const faqs = categorySlug ? getFaqsByCategory(categorySlug) : [];
 
@@ -52,11 +55,6 @@ export function CategoryPage() {
   const visibleProductTypes: CatalogProductType[] = activeSubcategory
     ? activeSubcategory.productTypes
     : category?.subcategories.flatMap((subcategory) => subcategory.productTypes) ?? [];
-
-  usePageMetadata({
-    title: category ? `${category.title} | GENERAL TRADING` : t('metadata.category.fallbackTitle'),
-    description: category?.seoIntro ?? t('metadata.category.fallbackDescription'),
-  });
 
   useEffect(() => {
     setFilters((current) => ({
@@ -122,7 +120,15 @@ export function CategoryPage() {
           ]}
         />
         <div className="relative mt-3 overflow-hidden rounded-lg bg-surface-dark">
-          <img alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover opacity-35" src={category.heroImage} />
+          {/* Decorative and dimmed to 35%, so phones get the thumbnail; wider screens the full image. */}
+          <img
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover opacity-35"
+            sizes="(min-width: 768px) 100vw, 320px"
+            src={category.heroImage}
+            srcSet={getSrcSet(category.heroImage)}
+          />
           <div className="relative px-5 py-6 md:px-7 md:py-8">
             <h1 className="text-[clamp(1.875rem,1.4rem+1.3vw,2.75rem)] text-text-on-dark">{category.title}</h1>
             <p className="mt-2 max-w-[60ch] text-[0.9375rem] text-text-on-dark/80">{category.shortDescription}</p>
@@ -220,7 +226,11 @@ export function CategoryPage() {
       <section className="wide-shell pb-24">
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_20rem]">
           <div>
-            <p className="text-measure mb-6 text-[0.9375rem] text-text-muted">{category.description}</p>
+            <div className="text-measure mb-6 space-y-3 text-[0.9375rem] text-text-muted">
+              {(ownerIntro.length > 0 ? ownerIntro : [category.description]).map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
             <SectionHeader
               description={t('pages.category.faq.description')}
               title={t('pages.category.faq.title', { category: category.title.toLowerCase() })}

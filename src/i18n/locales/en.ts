@@ -40,7 +40,6 @@ export const en = {
       submitRequest: 'Submit Request',
       sendRequest: 'Send Request',
       sending: 'Sending...',
-      getAlerts: 'Get alerts',
       reviewInquiryList: 'Review Inquiry List',
     },
     labels: {
@@ -197,24 +196,24 @@ export const en = {
   },
   metadata: {
     home: {
-      title: 'GENERAL TRADING | Technical Equipment Catalog and B2B Inquiry Requests',
+      title: 'Construction Machinery & Equipment – Tirana | GENERAL TRADING',
       description:
-        'Browse construction machinery, transport assets, and site-support products through a cleaner B2B homepage focused on category discovery, active inventory, and direct quote follow-up.',
+        'B2B catalog of construction machinery, tools, materials and site equipment in Tirana, Albania. Request pricing, inspection and delivery from GENERAL TRADING.',
     },
     catalog: {
-      title: 'Catalog | GENERAL TRADING',
+      title: 'Equipment Catalog: Machinery, Tools & Parts | GENERAL TRADING',
       description:
-        'Search the GENERAL TRADING catalog by category, subcategory, product type, brand, SKU, availability, and price mode through a compact B2B inquiry-focused interface.',
+        'Browse construction machinery, attachments, spare parts, tools and materials by category, brand or model. Add items to one inquiry and request a quote.',
     },
     brands: {
-      title: 'Brands | GENERAL TRADING',
+      title: 'Equipment Brands in Our Catalog | GENERAL TRADING',
       description:
-        'Browse manufacturers represented in the current GENERAL TRADING inventory and jump straight into brand-filtered catalog results.',
+        'Browse the manufacturers in the current GENERAL TRADING catalog and see every listed product for each brand, from heavy machinery to hand tools.',
     },
     deals: {
-      title: 'Available Stock and Deals | GENERAL TRADING',
+      title: 'Available Now: Stock & Deals | GENERAL TRADING',
       description:
-        'Review fast-moving available stock, incoming units, and deal-tagged machinery or parts through a compact inquiry-focused listing view.',
+        'Machinery, parts and tools available now or arriving soon, plus deal-tagged listings. Check condition and specifications, then request a quote.',
     },
     technicalLibrary: {
       title: 'Technical Library | GENERAL TRADING',
@@ -227,14 +226,14 @@ export const en = {
         'Review selected machinery, parts, and tools before sending one consolidated B2B quote or contract request to the sales team.',
     },
     requestQuote: {
-      title: 'Request Quote | GENERAL TRADING',
+      title: 'Request a Quote for Equipment | GENERAL TRADING',
       description:
-        'Send a B2B request for machinery, parts, inspection, delivery planning, documents, or contract discussion. The website supports inquiry and offline agreement only.',
+        'Send one B2B request for machinery, parts, tools or materials: pricing, inspection, documents, delivery or contract terms. The sales team replies directly.',
     },
     howItWorks: {
-      title: 'How It Works | GENERAL TRADING',
+      title: 'How Equipment Inquiries Work | GENERAL TRADING',
       description:
-        'Understand how GENERAL TRADING handles inquiry, quote follow-up, inspection, negotiation, and offline company-to-company agreement.',
+        'From catalog search to quote, inspection, contract and delivery: how GENERAL TRADING handles B2B equipment inquiries step by step.',
     },
     financingContracts: {
       title: 'Financing and Contracts | GENERAL TRADING',
@@ -252,19 +251,19 @@ export const en = {
         'Professional institution cleaning services for offices, schools, administrative buildings, and public or private facilities.',
     },
     about: {
-      title: 'About | GENERAL TRADING',
+      title: 'About GENERAL TRADING | Equipment Supplier in Tirana',
       description:
-        'Learn how GENERAL TRADING presents construction equipment, attachments, tools, materials, and support inventory for professional company buyers.',
+        'GENERAL TRADING supplies construction machinery, attachments, tools, materials and site equipment to companies, contractors and fleet operators from Tirana.',
     },
     faq: {
-      title: 'FAQ | GENERAL TRADING',
+      title: 'Equipment Inquiry FAQ | GENERAL TRADING',
       description:
         'Common questions about the GENERAL TRADING inquiry workflow, pricing modes, inspections, documents, delivery support, and contract handling.',
     },
     contact: {
-      title: 'Contact | GENERAL TRADING',
+      title: 'Contact the Sales Team | GENERAL TRADING',
       description:
-        'Use the contact and quote forms to request product details, inspection scheduling, delivery planning, spare parts, and contract discussion.',
+        'Call or write to GENERAL TRADING in Tirana about product details, pricing, inspection, spare parts, delivery or contracts. Mon–Sat, 08:00–18:00.',
     },
     privacy: {
       title: 'Privacy | GENERAL TRADING',
@@ -282,13 +281,11 @@ export const en = {
         'The requested catalog page could not be found. Return to the home page or continue browsing active machinery inventory.',
     },
     productDetail: {
-      fallbackTitle: 'Product Detail | GENERAL TRADING',
-      fallbackDescription:
-        'Review product specifications, availability, documents, and inquiry options in the GENERAL TRADING catalog.',
+      title: '{{product}} | GENERAL TRADING',
+      descriptionSuffix: 'Brand: {{brand}}. Condition: {{condition}}. Request price, inspection or documents.',
     },
     category: {
-      fallbackTitle: 'Category | GENERAL TRADING',
-      fallbackDescription: 'Browse machinery inventory by category in the GENERAL TRADING catalog.',
+      title: '{{category}} – Catalog & Quotes | GENERAL TRADING',
     },
   },
   pages: {
@@ -311,7 +308,7 @@ export const en = {
       },
     },
     brands: {
-      title: 'Browse the manufacturers represented in current stock',
+      title: 'Brands',
       description:
         'Each brand tile leads back into the catalog filtered by manufacturer so buyers can move quickly from brand preference to specific available listings.',
       section: {
@@ -339,6 +336,7 @@ export const en = {
     },
     catalog: {
       eyebrow: 'Products',
+      heading: 'Equipment catalog',
       title: 'Browse machinery, materials, tools, support equipment, and attachments',
       description:
         'Search inventory, narrow by category or product family, and add products to your Inquiry List before requesting pricing, inspection, information, or contract follow-up.',
@@ -393,7 +391,7 @@ export const en = {
       emptyCategory: {
         title: 'No live products in this category yet',
         description:
-          'This category is live for sourcing and future expansion, but there are no seeded listings yet. Use the inquiry flow to request safety, PPE, or related supply support.',
+          'No products are listed in this category yet. Send a request and the sales team will tell you what they can supply.',
       },
       noMatches: {
         title: 'No matching products in this category',
@@ -414,6 +412,7 @@ export const en = {
     },
     deals: {
       eyebrow: 'Available now',
+      heading: 'Equipment available now',
       title: 'Fast-moving stock, incoming units, and deal-tagged listings',
       description:
         'Focus on products suited to shorter procurement cycles. These listings still move through direct inquiry, inspection review, and offline company-to-company agreement.',
@@ -431,7 +430,7 @@ export const en = {
       mobileFiltersLabel: 'Available stock filters',
     },
     technicalLibrary: {
-      title: 'Find technical references, inspection records, and support documents',
+      title: 'Technical library',
       description:
         'This page is structured as a support-first document surface for product manuals, specification sheets, inspection references, delivery records, and request-document workflows.',
       searchPlaceholder: 'Search manuals, inspection documents, or specification sheets',
@@ -440,6 +439,7 @@ export const en = {
       requestOnlyNoticeTitle: 'Document packs are prepared on request',
       requestOnlyNoticeDescription:
         'The groups below show the kinds of manuals, inspection records, specification sheets, and delivery references that the sales team can prepare for a specific product, model, or SKU. They are not presented here as a direct-download archive.',
+      downloadPdf: 'Open PDF',
       availableOnRequest: 'Available on request for the matching product or SKU.',
       cta: {
         title: 'Request a document pack tied to a specific listing',
@@ -448,7 +448,7 @@ export const en = {
       },
     },
     requestQuote: {
-      title: 'Send a commercial request to GENERAL TRADING',
+      title: 'Request quote',
       description:
         'Use one form for product information, quotations, inspection appointments, delivery discussion, document requests, or contract follow-up. This is an inquiry-only process, not a checkout.',
     },
@@ -785,9 +785,6 @@ export const en = {
       },
       products: 'Products',
       servicesSupport: 'Services & Support',
-      updatesTitle: 'Technical and stock updates',
-      updatesDescription:
-        'Request stock alerts for available-now machinery, parts, and technical-document support updates.',
       bottomNote:
         'Inquiry-first catalog. Quotes, contracts, inspection, and commercial terms are handled directly with the sales team.',
     },
@@ -866,11 +863,6 @@ export const en = {
         'Inspection notes, documentation, delivery scope, and contract details can then be clarified directly.',
         'No online payment or automatic agreement happens on this website.',
       ],
-    },
-    newsletter: {
-      emailPlaceholder: 'name@company.com',
-      notice:
-        'Stock alerts are not wired into the mail endpoint in this build yet.',
     },
   },
   catalog: {

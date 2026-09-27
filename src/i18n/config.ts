@@ -2,6 +2,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { en } from './locales/en';
 import { sq } from './locales/sq';
+import { getLanguageFromPath } from './urls';
 
 export const LANGUAGE_STORAGE_KEY = 'general-trading-language';
 export const DEFAULT_LANGUAGE = 'sq';
@@ -12,6 +13,12 @@ export type AppLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 function getInitialLanguage(): AppLanguage {
   if (typeof window === 'undefined') {
     return DEFAULT_LANGUAGE;
+  }
+
+  const fromUrl = getLanguageFromPath(window.location.pathname);
+
+  if (fromUrl) {
+    return fromUrl;
   }
 
   const stored = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);

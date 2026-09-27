@@ -24,7 +24,10 @@ Before saying a task is done, run:
 - `npm run lint`
 - `npm run typecheck`
 - `npm run audit:i18n`
-- `npm run build`
+- `npm run check:images`
+- `npm run build:local` (local check; allows a placeholder `VITE_SITE_URL`)
+
+`npm run build` is the production build: it refuses a missing or placeholder `VITE_SITE_URL`. Never deploy a `build:local` output. SEO setup: `docs/seo-plan.md`.
 
 ## Known blockers
 - `VITE_MAIL_ENDPOINT` + PHP mail pipeline not fully turnkey.

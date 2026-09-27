@@ -1,16 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '../components/common/Button';
 import { SectionHeader } from '../components/common/SectionHeader';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 import { routes } from '../utils/routes';
 
 export function FinancingContractsPage() {
   const { t } = useTranslation();
-  usePageMetadata({
-    title: t('metadata.financingContracts.title'),
-    description: t('metadata.financingContracts.description'),
-  });
-
   return (
     <>
       <section className="page-shell">

@@ -1,10 +1,24 @@
 Options -Indexes
 
-# Single-page app: real files (assets, images, /mail/send.php) are served as-is,
-# every other path goes to index.html so React Router can render it.
+# Clean URLs without trailing slashes: /equipment must not 301 to /equipment/ just because
+# dist/equipment/ is also a directory. Safe with -Indexes (no directory listings).
+DirectorySlash Off
+
+# Unknown URLs get a real 404 status. 404.html is the app shell (noindex); React renders
+# the "page not found" view.
+ErrorDocument 404 /404.html
+
 RewriteEngine On
 RewriteBase /
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^ - [L]
-RewriteRule ^ index.html [L]
+
+# One URL per page: /about/ -> /about
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+# Every app route is prerendered at build time (scripts/prerender.mjs):
+# /equipment/heavy-equipment is served from equipment/heavy-equipment.html.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+)$ $1.html [L]
+
+# Real files (assets, images, robots.txt, sitemap.xml, /mail/send.php) are served as-is;
+# anything else falls through to the 404 above.

@@ -25,6 +25,7 @@ export function ProductGallery({ images, title }: ProductGalleryProps) {
         aspectRatio="video"
         className="rounded-lg"
         loading="eager"
+        sizes="(min-width: 1280px) 58vw, 100vw"
         src={activeImage?.src}
       />
       <div className="mt-3 grid grid-cols-4 gap-2">

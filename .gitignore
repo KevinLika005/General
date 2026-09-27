@@ -8,3 +8,4 @@ dist
 server/mail/config.local.php
 tmp_*.png
 .playwright-mcp
+dist-ssr

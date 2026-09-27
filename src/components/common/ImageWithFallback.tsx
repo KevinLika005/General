@@ -1,6 +1,7 @@
 import { ImageOff } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { getSrcSet } from '../../utils/images';
 
 interface ImageWithFallbackProps {
   src?: string;
@@ -8,6 +9,8 @@ interface ImageWithFallbackProps {
   className?: string;
   imageClassName?: string;
   loading?: 'eager' | 'lazy';
+  /** Rendered width hint for srcset; the default suits cards and thumbnails. */
+  sizes?: string;
   aspectRatio?: 'square' | 'video' | 'portrait' | 'wide' | 'auto';
 }
 
@@ -17,6 +20,7 @@ export function ImageWithFallback({
   className,
   imageClassName,
   loading = 'lazy',
+  sizes = '(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 40vw',
   src,
 }: ImageWithFallbackProps) {
   const { t } = useTranslation();
@@ -45,7 +49,9 @@ export function ImageWithFallback({
           className={['h-full w-full object-cover', imageClassName].filter(Boolean).join(' ')}
           loading={loading}
           onError={() => setFailed(true)}
+          sizes={sizes}
           src={src}
+          srcSet={getSrcSet(src)}
         />
       ) : (
         <div

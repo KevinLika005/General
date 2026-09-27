@@ -6,7 +6,6 @@ import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { CatalogResults } from '../components/common/CatalogResults';
 import { SearchBar } from '../components/common/SearchBar';
 import { getCategories, getProducts } from '../data/catalog';
-import { usePageMetadata } from '../hooks/usePageMetadata';
 import { useCatalogFilters } from '../hooks/useCatalogFilters';
 import { resolveTaxonomySelection } from '../utils/catalog';
 import { routes } from '../utils/routes';
@@ -44,11 +43,6 @@ export function CatalogPage() {
     initialSearch: queryParam || undefined,
   });
   const { clearAllFilters, filteredProducts, filters, setFilters } = catalog;
-
-  usePageMetadata({
-    title: t('metadata.catalog.title'),
-    description: t('metadata.catalog.description'),
-  });
 
   useEffect(() => {
     setFilters((current) => ({
@@ -143,7 +137,7 @@ export function CatalogPage() {
       <section className="wide-shell pb-4 pt-5">
         <Breadcrumbs items={[{ label: t('common.labels.home'), to: routes.home }, { label: t('common.labels.equipment') }]} />
         <div className="mt-3 flex flex-col gap-3 xl:flex-row xl:items-end xl:justify-between">
-          <h1 className="text-[clamp(1.875rem,1.4rem+1.3vw,2.75rem)]">{t('pages.catalog.eyebrow')}</h1>
+          <h1 className="text-[clamp(1.875rem,1.4rem+1.3vw,2.75rem)]">{t('pages.catalog.heading')}</h1>
           <div className="w-full xl:max-w-md">
             <SearchBar
               buttonLabel={t('common.actions.searchCatalog')}

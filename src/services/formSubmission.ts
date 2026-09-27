@@ -1,4 +1,5 @@
 import i18n from '../i18n/config';
+import { trackEvent } from '../utils/analytics';
 
 export type SupportedFormType = 'contact' | 'request_quote';
 
@@ -141,6 +142,7 @@ export async function submitForm({
     }
 
     if (isSubmissionSuccess(payload)) {
+      trackEvent(formType === 'contact' ? 'contact_submit' : 'quote_submit');
       return {
         ...payload,
         message: getSuccessMessage(formType),
