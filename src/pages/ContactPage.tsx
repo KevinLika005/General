@@ -64,7 +64,7 @@ export function ContactPage() {
         )}
       </section>
 
-      <section className="catalog-shell pb-24">
+      <section className="wide-shell pb-24">
         <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(19rem,0.82fr)]">
           <ContactForm />
           <div className="space-y-5">

@@ -23,7 +23,7 @@ export function RequestQuotePage() {
         </div>
       </section>
 
-      <section className="catalog-shell pb-24">
+      <section className="wide-shell pb-24">
         <RequestQuoteForm inquiryItems={items} />
       </section>
     </>

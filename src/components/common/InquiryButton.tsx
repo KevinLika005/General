@@ -9,6 +9,8 @@ interface InquiryButtonProps {
   fullWidth?: boolean;
   compact?: boolean;
   disabled?: boolean;
+  /** Names the product for screen readers when the visible label is just "Add". */
+  productTitle?: string;
 }
 
 export function InquiryButton({
@@ -17,13 +19,21 @@ export function InquiryButton({
   disabled = false,
   fullWidth = false,
   productId,
+  productTitle,
 }: InquiryButtonProps) {
   const { t } = useTranslation();
   const { addItem, isInInquiryList } = useInquiryList();
   const added = isInInquiryList(productId);
+  const label = disabled
+    ? t('common.status.soldReference')
+    : added
+      ? t('layout.header.inquiryList')
+      : t(compact ? 'common.actions.add' : 'common.actions.addToInquiry');
+  const fullLabel = added || disabled ? label : t('common.actions.addToInquiry');
 
   return (
     <Button
+      aria-label={productTitle ? `${fullLabel}: ${productTitle}` : undefined}
       aria-pressed={added}
       className={[fullWidth ? 'w-full' : '', className].filter(Boolean).join(' ')}
       disabled={disabled}
@@ -36,17 +46,7 @@ export function InquiryButton({
       variant={added ? 'secondary' : 'primary'}
     >
       {added ? <Check className="h-4 w-4" /> : <ClipboardPlus className="h-4 w-4" />}
-      {disabled
-        ? compact
-          ? t('common.status.sold')
-          : t('common.status.soldReference')
-        : compact
-          ? added
-            ? <span className="sr-only">{t('layout.header.inquiryList')}</span>
-            : t('common.actions.add')
-          : added
-            ? t('layout.header.inquiryList')
-            : t('common.actions.addToInquiry')}
+      {compact && added ? <span className="sr-only">{label}</span> : label}
     </Button>
   );
 }

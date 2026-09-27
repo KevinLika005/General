@@ -10,7 +10,6 @@
     --shell-gutter: clamp(1rem, 0.65rem + 1vw, 2rem);
     --shell-page-max: 80rem;
     --shell-wide-max: 96rem;
-    --shell-catalog-max: 108rem;
     --measure-readable: 68ch;
     --header-offset: 7.5rem;
     /* Brand colors live here first. Update this token set for future palette changes. */
@@ -178,7 +177,6 @@
   .page-shell,
   .section-shell,
   .wide-shell,
-  .catalog-shell,
   .band-shell {
     margin-inline: auto;
     width: min(calc(100% - (var(--shell-gutter) * 2)), var(--shell-max-width));
@@ -193,10 +191,6 @@
   .wide-shell,
   .band-shell {
     --shell-max-width: var(--shell-wide-max);
-  }
-
-  .catalog-shell {
-    --shell-max-width: var(--shell-catalog-max);
   }
 
   .text-measure {

@@ -21,10 +21,6 @@ function isPlainObject(value) {
 }
 
 function collectIssues(enValue, sqValue, currentPath, issues) {
-  if (currentPath === 'catalog') {
-    return;
-  }
-
   if (typeof enValue === 'string') {
     if (typeof sqValue !== 'string') {
       issues.push({ type: 'missing', path: currentPath, enValue });
@@ -98,11 +94,9 @@ function looksLikeUnexpectedEnglish(value, currentPath) {
 
 const en = loadLocaleObject('src/i18n/locales/en.ts', 'en');
 const sq = loadLocaleObject('src/i18n/locales/sq.ts', 'sq');
-const sqCatalogLocale = loadLocaleObject('src/i18n/catalogLocale.ts', 'sqCatalogLocale');
 const issues = [];
 
 collectIssues(en, sq, '', issues);
-collectIssues(en.catalog, sqCatalogLocale, 'catalog', issues);
 
 if (issues.length === 0) {
   console.log('SQ locale audit passed: no missing keys or suspicious English fallback detected.');

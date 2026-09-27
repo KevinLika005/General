@@ -3,7 +3,7 @@ export type Theme = 'light' | 'dark';
 export const THEME_STORAGE_KEY = 'general-trading-theme';
 export const DEFAULT_THEME: Theme = 'light';
 
-const LIGHT_THEME_COLOR = '#f4f0e9';
+const LIGHT_THEME_COLOR = '#f2f1ee';
 const DARK_THEME_COLOR = '#181614';
 
 function isTheme(value: string | null): value is Theme {

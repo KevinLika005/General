@@ -140,7 +140,7 @@ export function CatalogPage() {
 
   return (
     <>
-      <section className="catalog-shell pb-4 pt-5">
+      <section className="wide-shell pb-4 pt-5">
         <Breadcrumbs items={[{ label: t('common.labels.home'), to: routes.home }, { label: t('common.labels.equipment') }]} />
         <div className="mt-3 flex flex-col gap-3 xl:flex-row xl:items-end xl:justify-between">
           <h1 className="text-[clamp(1.875rem,1.4rem+1.3vw,2.75rem)]">{t('pages.catalog.eyebrow')}</h1>
@@ -164,7 +164,7 @@ export function CatalogPage() {
         </nav>
       </section>
 
-      <section className="catalog-shell pb-20">
+      <section className="wide-shell pb-20">
         <CatalogResults
           catalog={catalog}
           clearLabel={t('common.actions.clearAll')}

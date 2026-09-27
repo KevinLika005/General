@@ -113,7 +113,7 @@ export function CategoryPage() {
 
   return (
     <>
-      <section className="catalog-shell pb-4 pt-5">
+      <section className="wide-shell pb-4 pt-5">
         <Breadcrumbs
           items={[
             { label: t('common.labels.home'), to: routes.home },
@@ -187,7 +187,7 @@ export function CategoryPage() {
         </div>
       </section>
 
-      <section className="catalog-shell pb-12">
+      <section className="wide-shell pb-12">
         <CatalogResults
           catalog={catalog}
           clearLabel={t('pages.category.clearCategoryFilters')}

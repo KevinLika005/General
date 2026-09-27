@@ -80,7 +80,7 @@ export function ProductCard({
           {isSold ? (
             <span className="text-[0.8125rem] font-medium text-status-sold">{t('common.status.sold')}</span>
           ) : (
-            <InquiryButton className="relative z-10 shrink-0" compact productId={product.id} />
+            <InquiryButton className="relative z-10 shrink-0" compact productId={product.id} productTitle={product.title} />
           )}
         </div>
       </div>

@@ -32,7 +32,7 @@ export function InquiryListPage() {
         </div>
       </section>
 
-      <section className="catalog-shell pb-24">
+      <section className="wide-shell pb-24">
         {products.length === 0 ? (
           <EmptyState
             actionLabel={t('common.actions.browseEquipment')}

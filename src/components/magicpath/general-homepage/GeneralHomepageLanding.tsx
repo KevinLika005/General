@@ -53,7 +53,7 @@ export function GeneralHomepageLanding({
             {t('common.actions.browseCatalog')}
           </Button>
         </div>
-        <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-5">
+        <div className="mt-6 grid grid-cols-2 gap-3 xl:grid-cols-5">
           {categoryPreviews.map((preview) => (
             <HomepageCategoryPreviewCard key={preview.category.slug} preview={preview} />
           ))}
