@@ -1,0 +1,10 @@
+Options -Indexes
+
+# Single-page app: real files (assets, images, /mail/send.php) are served as-is,
+# every other path goes to index.html so React Router can render it.
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule ^ index.html [L]

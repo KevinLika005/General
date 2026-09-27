@@ -1,0 +1,7 @@
+# Only send.php is a public endpoint; Mailer.php, templates/ and config*.php are includes.
+<FilesMatch "\.php$">
+  Require all denied
+</FilesMatch>
+<Files "send.php">
+  Require all granted
+</Files>

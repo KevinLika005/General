@@ -30,17 +30,10 @@ This file lists **open work only**. Closed items live in git history.
 
 ## Phase 1: Hosting and mail (launch blockers)
 
-### [P0] Choose the production host
-- PHP mail endpoint (`server/mail/send.php`) needs a PHP-capable host.
-- Simplest path: shared/cPanel hosting serving `dist/` and `server/mail/` together.
-- Static hosts (Netlify/Vercel) require hosting the PHP endpoint separately.
-- **Owner decision.**
+Host: **Hostinger** (PHP shared hosting). Step-by-step deploy: `docs/deploy-hostinger.md`.
 
-### [P0] SPA deep-link fallback
-- App uses `BrowserRouter`; no rewrite config exists.
-- Without one, refreshing or sharing `/equipment/...` URLs returns 404 in production.
-- Fix: add host-appropriate fallback to `index.html` (e.g. `public/.htaccess` for Apache).
-- Acceptance: direct load of `/equipment/<category>/<product>` works on the live host.
+Done:
+- `public/.htaccess` routes app paths to `index.html` (deep links no longer 404); `server/mail/.htaccess` blocks everything in `mail/` except `send.php`. Both verified on a local Apache 2.4.
 
 ### [P0] Production mail configuration
 - On the server only (never commit): create `server/mail/config.local.php` from `config.example.php` with:
