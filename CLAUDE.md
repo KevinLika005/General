@@ -29,6 +29,4 @@ Before saying a task is done, run:
 ## Known blockers
 - `VITE_MAIL_ENDPOINT` + PHP mail pipeline not fully turnkey.
 - `src/data/contact.ts` missing real sales contacts.
-- `npm run check:images` fails.
 - Dark/light theme not fully QA'd.
-- Redesign plan exists but is not fully executed.
