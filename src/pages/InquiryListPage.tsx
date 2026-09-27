@@ -73,7 +73,7 @@ export function InquiryListPage() {
                         </button>
                       </div>
 
-                      <div className="mt-4 grid gap-px border border-border bg-border sm:grid-cols-3">
+                      <div className="mt-4 grid gap-px border border-border bg-border md:grid-cols-3">
                         <div className="bg-surface-subtle p-4">
                           <p className="line-label">{t('common.labels.priceMode')}</p>
                           <p className="mt-1 text-sm font-semibold text-navy">{formatProductPrice(product)}</p>

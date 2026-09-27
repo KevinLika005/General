@@ -16,7 +16,7 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
         {items.map((item, index) => (
           <li className="flex items-center gap-2" key={`${item.label}-${index}`}>
             {item.to ? (
-              <Link className="transition hover:text-navy" to={item.to}>
+              <Link className="inline-block py-1.5 transition hover:text-navy" to={item.to}>
                 {item.label}
               </Link>
             ) : (

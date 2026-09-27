@@ -40,7 +40,7 @@ export function HowItWorksPage() {
       <section className="section-shell pb-24">
         <div className="hero-band rounded-lg border border-surface-dark p-6 text-text-on-dark">
           <h2 className="text-[1.7rem] text-text-on-dark">{t('pages.howItWorks.afterInquiryTitle')}</h2>
-          <div className="mt-5 grid gap-4 sm:grid-cols-3">
+          <div className="mt-5 grid gap-4 lg:grid-cols-3">
             {(t('pages.howItWorks.afterInquiryPoints', { returnObjects: true }) as string[]).map((point) => (
               <div className="inverse-soft-border inverse-soft-surface border p-5 text-sm text-text-on-dark/75" key={point}>
                 {point}

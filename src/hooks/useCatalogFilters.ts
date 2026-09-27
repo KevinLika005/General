@@ -294,7 +294,7 @@ export function useCatalogFilters(
           )
         : undefined;
 
-    if (filters.search) chips.push({ key: 'search', label: `Search: ${filters.search}` });
+    if (filters.search) chips.push({ key: 'search', label: t('common.status.searchChip', { value: filters.search }) });
     // A category page's own category is not a user-applied filter.
     if (filters.category !== 'all' && filters.category !== options.fixedCategory) {
       chips.push({ key: 'category', label: selectedCategory?.title ?? filters.category });
@@ -319,13 +319,14 @@ export function useCatalogFilters(
       chips.push({ key: 'availability', label: t(`common.status.${filters.availability}`) });
     }
     if (filters.priceBand !== 'all') {
-      chips.push({ key: 'priceBand', label: filters.priceBand.replace(/-/g, ' ') });
+      const bands = t('catalog.budgetBands', { returnObjects: true }) as Array<{ slug: string; label: string }>;
+      chips.push({ key: 'priceBand', label: bands.find((band) => band.slug === filters.priceBand)?.label ?? filters.priceBand });
     }
-    if (filters.yearMin) chips.push({ key: 'yearMin', label: `From ${filters.yearMin}` });
-    if (filters.yearMax) chips.push({ key: 'yearMax', label: `To ${filters.yearMax}` });
-    if (filters.hoursMax) chips.push({ key: 'hoursMax', label: `Hours under ${filters.hoursMax}` });
+    if (filters.yearMin) chips.push({ key: 'yearMin', label: t('common.status.fromYear', { value: filters.yearMin }) });
+    if (filters.yearMax) chips.push({ key: 'yearMax', label: t('common.status.toYear', { value: filters.yearMax }) });
+    if (filters.hoursMax) chips.push({ key: 'hoursMax', label: t('common.status.hoursUnder', { value: filters.hoursMax }) });
     if (filters.mileageMax) {
-      chips.push({ key: 'mileageMax', label: `Mileage under ${filters.mileageMax}` });
+      chips.push({ key: 'mileageMax', label: t('common.status.mileageUnderValue', { value: filters.mileageMax }) });
     }
     if (filters.location !== 'all') chips.push({ key: 'location', label: filters.location });
     if (filters.tag !== 'all') chips.push({ key: 'tag', label: filters.tag });

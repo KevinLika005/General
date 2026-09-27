@@ -28,7 +28,7 @@ function FooterGroup({
     <div className="border-t border-text-on-dark/10 pt-4 xl:border-0 xl:pt-0">
       <button
         aria-expanded={open}
-        className="flex w-full items-center justify-between text-left text-[0.9375rem] font-semibold text-text-on-dark xl:pointer-events-none"
+        className="flex min-h-11 w-full items-center justify-between text-left text-[0.9375rem] font-semibold text-text-on-dark xl:pointer-events-none xl:min-h-0"
         onClick={() => setOpen((current) => !current)}
         type="button"
       >

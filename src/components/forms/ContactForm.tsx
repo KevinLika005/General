@@ -90,7 +90,7 @@ export function ContactForm() {
         </p>
       </div>
 
-      <fieldset className="mt-6 grid gap-4 sm:grid-cols-2" disabled={isSubmitting}>
+      <fieldset className="mt-6 grid gap-4 md:grid-cols-2" disabled={isSubmitting}>
         <label className="block text-sm text-text-muted">
           {t('common.labels.fullName')}
           <input aria-invalid={hasFieldError('fullName')} className={getFieldClass(hasFieldError('fullName'))} name="fullName" required type="text" />
@@ -141,7 +141,7 @@ export function ContactForm() {
             <option value="flexible">{t('common.forms.flexible')}</option>
           </select>
         </label>
-        <label className="block text-sm text-text-muted sm:col-span-2">
+        <label className="block text-sm text-text-muted md:col-span-2">
           {t('common.labels.message')}
           <textarea
             aria-invalid={hasFieldError('message')}

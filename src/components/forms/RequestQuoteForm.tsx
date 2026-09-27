@@ -20,7 +20,7 @@ interface RequestQuoteFormProps {
 function RequiredLabel({ children }: { children: string }) {
   return (
     <span>
-      {children} <span aria-hidden="true" className="text-primary">*</span>
+      {children} <span aria-hidden="true" className="text-primary-dark">*</span>
     </span>
   );
 }
@@ -122,7 +122,7 @@ export function RequestQuoteForm({ inquiryItems }: RequestQuoteFormProps) {
         </div>
 
         <fieldset className="mt-6 space-y-7" disabled={isSubmitting}>
-          <fieldset className="grid gap-4 sm:grid-cols-2">
+          <fieldset className="grid gap-4 md:grid-cols-2">
             <legend className="mb-1 text-base font-semibold text-navy">{t('forms.quote.buyerDetails')}</legend>
             <label className="block text-sm text-text-muted">
               <RequiredLabel>{t('common.labels.fullName')}</RequiredLabel>
@@ -148,13 +148,13 @@ export function RequestQuoteForm({ inquiryItems }: RequestQuoteFormProps) {
               <RequiredLabel>{t('common.labels.phone')}</RequiredLabel>
               <input aria-invalid={hasFieldError('phone')} className={getFieldClass(hasFieldError('phone'))} name="phone" required type="tel" />
             </label>
-            <label className="block text-sm text-text-muted sm:col-span-2">
+            <label className="block text-sm text-text-muted md:col-span-2">
               <RequiredLabel>{t('common.labels.countryCity')}</RequiredLabel>
               <input aria-invalid={hasFieldError('location')} className={getFieldClass(hasFieldError('location'))} name="location" required type="text" />
             </label>
           </fieldset>
 
-          <fieldset className="grid gap-4 border-t border-border pt-6 sm:grid-cols-2">
+          <fieldset className="grid gap-4 border-t border-border pt-6 md:grid-cols-2">
             <legend className="mb-1 text-base font-semibold text-navy">{t('forms.quote.requestIntent')}</legend>
             <label className="block text-sm text-text-muted">
               <RequiredLabel>{t('common.labels.requestType')}</RequiredLabel>

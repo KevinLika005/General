@@ -7,3 +7,4 @@ dist
 .env.*.local
 server/mail/config.local.php
 tmp_*.png
+.playwright-mcp
